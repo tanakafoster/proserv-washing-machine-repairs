@@ -61,7 +61,7 @@ Title column shows the character count in brackets.
 | `/services/washer-dryer-repairs/` | Washer Dryer Repairs at Home \| ProServ (38) | 136 | Washer dryer repairs for combo machines | washer dryer repairs | 797 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, Service, FAQPage | OK |
 | `/services/washing-machine-installation/` | Washing Machine Installation & Plumbing \| ProServ (49) | 130 | Washing machine installation and plumbing-in | washing machine installation | 832 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, Service, FAQPage | OK |
 | `/services/washing-machine-parts-replacement/` | Washing Machine Parts Replacement \| ProServ (43) | 133 | Washing machine parts replacement | washing machine parts replacement | 907 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, Service, FAQPage | OK |
-| `/services/washing-machine-servicing/` | Washing Machine Servicing & Maintenance \| ProServ (49) | 134 | Washing machine servicing and maintenance | washing machine servicing | 750 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, Service, FAQPage | OK |
+| `/services/washing-machine-servicing/` | Washing Machine Servicing & Maintenance \| ProServ (49) | 134 | Washing machine servicing and maintenance | washing machine servicing | 751 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, Service, FAQPage | OK |
 | `/thank-you/` | Thank You \| ProServ (19) | 71 | Thanks, we've got your request | — | 60 | HomeAndConstructionBusiness, WebSite, BreadcrumbList | noindex |
 | `/washing-machine-repair-cost/` | Washing Machine Repair Cost in South Africa \| ProServ (53) | 135 | Washing machine repair cost | washing machine repair cost | 863 | HomeAndConstructionBusiness, WebSite, BreadcrumbList, FAQPage | OK |
 

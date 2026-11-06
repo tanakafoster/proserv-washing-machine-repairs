@@ -181,7 +181,7 @@ export const services: Service[] = [
     primaryKeyword: 'washing machine servicing',
     summary: 'A full check of filters, hoses, seals, bearings and brushes to catch problems early.',
     image: { src: '/images/service-servicing.webp', alt: 'Technician cleaning the drain pump filter at the bottom of a front loader', width: 960, height: 640 },
-    intro: `<p>Washing machine servicing is the cheapest repair you'll ever pay for, because it heads off the expensive ones. A machine that runs a load or two a day in a busy home works hard. A service catches the worn hose before it bursts, the blocked filter before it kills the pump, and the noisy bearing before it wrecks the tub.</p>`,
+    intro: `<p>Washing machine servicing costs far less than most repairs, because it heads off the expensive ones before they happen. A machine that runs a load or two a day in a busy home works hard. A service catches the worn hose before it bursts, the blocked filter before it kills the pump, and the noisy bearing before it wrecks the tub.</p>`,
     body: `
 <h2>What a ProServ service covers</h2>
 <ol>

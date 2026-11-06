@@ -18,7 +18,7 @@ export function businessSchema() {
   if (site.address.postalCode) address.postalCode = site.address.postalCode;
 
   return {
-    '@type': ['HomeAndConstructionBusiness', 'LocalBusiness'],
+    '@type': 'HomeAndConstructionBusiness', // a LocalBusiness subtype
     '@id': businessId,
     name: site.name,
     url: `${site.url}/`,
@@ -58,7 +58,7 @@ export function websiteSchema() {
   };
 }
 
-export function serviceSchema(opts: { name: string; description: string; path: string; serviceType?: string; areaName?: string; brand?: string }) {
+export function serviceSchema(opts: { name: string; description: string; path: string; serviceType?: string; areaName?: string }) {
   return {
     '@type': 'Service',
     '@id': `${abs(opts.path)}#service`,
@@ -70,7 +70,6 @@ export function serviceSchema(opts: { name: string; description: string; path: s
     areaServed: opts.areaName
       ? { '@type': 'City', name: opts.areaName }
       : site.areas.map((a) => ({ '@type': 'City', name: a.name })),
-    ...(opts.brand ? { brand: { '@type': 'Brand', name: opts.brand } } : {}),
   };
 }
 

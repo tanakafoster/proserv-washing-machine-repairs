@@ -32,10 +32,10 @@
     @apply bg-white font-sans text-ink antialiased;
   }
   a {
-    @apply text-brand-dark underline-offset-2;
+    @apply text-brand-dark underline underline-offset-2;
   }
   a:hover {
-    @apply underline;
+    @apply decoration-2;
   }
   :focus-visible {
     outline: 3px solid var(--color-brand);

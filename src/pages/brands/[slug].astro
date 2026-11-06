@@ -20,7 +20,7 @@ const others = brands.filter((o) => o.slug !== b.slug);
   title={b.title}
   description={b.description}
   crumbs={[{ name: 'Brands', href: '/brands/' }, { name: b.brand, href: path }]}
-  schema={[serviceSchema({ name: `${b.brand} washing machine repairs`, description: b.description, path, brand: b.brand }), faqSchema(b.faqs)]}
+  schema={[serviceSchema({ name: `${b.brand} washing machine repairs`, description: b.description, path }), faqSchema(b.faqs)]}
 >
   <PageHero h1={b.h1} intro={b.intro} eyebrow="Brands we repair" />
   <section class="section section-alt pt-10">

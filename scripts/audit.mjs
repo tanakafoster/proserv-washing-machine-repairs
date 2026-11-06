@@ -142,7 +142,7 @@ for (const p of pages) {
 // Blog keywords come from frontmatter (also listed in the map)
 for (const e of broken) errors.push(`Broken link: ${e}`);
 for (const [t, v] of dupTitles) errors.push(`Duplicate title "${t}": ${v.join(', ')}`);
-for (const [t, v] of dupDescs) errors.push(`Duplicate meta description: ${v.join(', ')}`);
+for (const [, v] of dupDescs) errors.push(`Duplicate meta description: ${v.join(', ')}`);
 for (const o of orphans) errors.push(`Orphan page (no internal links in): ${o}`);
 
 // Primary keyword uniqueness
