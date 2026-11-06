@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+const f = site.facts;
+const items = [
+  { icon: 'clock', t: `${f.yearsInBusiness} years`, d: 'repairing washing machines' },
+  { icon: 'tool', t: `${f.repairsCompleted} repairs`, d: 'completed in Gauteng homes' },
+  { icon: 'shield', t: `${f.warranty} warranty`, d: 'on parts and labour' },
+  { icon: 'map', t: `Arrival ${f.arrivalTime}`, d: 'on urgent call-outs' },
+] as const;
+---
+<section class="border-y border-line bg-brand-tint" aria-label="Why choose ProServ">
+  <ul class="container-site grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
+    {items.map((i) => (
+      <li class="flex items-start gap-3">
+        <span class="mt-0.5 text-brand-dark"><Icon name={i.icon} class="h-6 w-6" /></span>
+        <span><strong class="block text-ink">{i.t}</strong><span class="text-sm text-ink-soft">{i.d}</span></span>
+      </li>
+    ))}
+  </ul>
+</section>

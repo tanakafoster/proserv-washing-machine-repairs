@@ -1,0 +1,15 @@
+---
+import { site, telHref, whatsappHref } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { class?: string; size?: 'md' | 'lg' }
+const { class: cls = '', size = 'md' } = Astro.props;
+const big = size === 'lg' ? 'text-lg px-6 min-h-14' : '';
+---
+<div class={`flex flex-col gap-3 sm:flex-row ${cls}`}>
+  <a href={telHref} class={`btn btn-primary ${big}`} data-track="call">
+    <Icon name="phone" /> Call {site.phone.display}
+  </a>
+  <a href={whatsappHref} class={`btn btn-whatsapp ${big}`} target="_blank" rel="noopener" data-track="whatsapp">
+    <Icon name="whatsapp" /> WhatsApp us
+  </a>
+</div>

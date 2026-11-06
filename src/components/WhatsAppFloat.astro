@@ -1,0 +1,9 @@
+---
+import { whatsappHref } from '../data/site';
+import Icon from './Icon.astro';
+---
+<a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp"
+  class="fixed right-6 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-whatsapp-dark text-white shadow-lg transition hover:scale-105 md:flex"
+  aria-label="Chat to ProServ on WhatsApp">
+  <Icon name="whatsapp" class="h-8 w-8" />
+</a>

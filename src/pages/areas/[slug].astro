@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import { site, areaUrl } from '../../data/site';
+import { areaContent, type AreaContent } from '../../data/areas';
+import { services, serviceUrl } from '../../data/services';
+import { serviceSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return site.areas.map((a) => {
+    const c = areaContent[a.slug];
+    if (!c) throw new Error(`Area "${a.name}" is in src/data/site.ts but has no content in src/data/areas.ts. Add unique content before publishing it.`);
+    return { params: { slug: `washing-machine-repairs-${a.slug}` }, props: { area: a, c } };
+  });
+}
+const { area, c } = Astro.props as { area: { name: string; slug: string }; c: AreaContent };
+const path = areaUrl(area.slug);
+const nearby = c.nearby.map((s) => site.areas.find((a) => a.slug === s)).filter(Boolean) as { name: string; slug: string }[];
+---
+<BaseLayout
+  title={c.title}
+  description={c.description}
+  crumbs={[{ name: 'Areas', href: '/areas/' }, { name: area.name, href: path }]}
+  schema={[serviceSchema({ name: `Washing machine repairs in ${area.name}`, description: c.description, path, areaName: area.name }), faqSchema(c.faqs)]}
+>
+  <PageHero h1={c.h1} intro={c.intro} eyebrow={`Serving ${area.name}`} />
+  <section class="section section-alt pt-10">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_320px]">
+      <article class="prose-site max-w-3xl" set:html={c.body} />
+      <aside class="lg:sticky lg:top-28 lg:self-start">
+        <div class="card">
+          <h2 class="text-lg font-semibold">Suburbs we cover in {area.name} <span class="placeholder-note text-xs">[CONFIRM]</span></h2>
+          <ul class="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm text-ink-soft">
+            {c.suburbs.map((s) => <li>{s}</li>)}
+          </ul>
+          <p class="mt-3 text-sm text-ink-soft">Not listed? Ask us. We probably cover you.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <LinkCards heading={`Our services in ${area.name}`} headingId="svc-h" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))} />
+  <HowItWorks heading={`How a repair works in ${area.name}`} />
+  {nearby.length > 0 && (
+    <LinkCards alt heading="Nearby areas" headingId="nearby-h" items={nearby.map((n) => ({ href: areaUrl(n.slug), title: `Washing machine repairs ${n.name}` }))} />
+  )}
+  <Faq items={c.faqs} heading={`Washing machine repairs in ${area.name}: FAQs`} />
+  <CtaBand heading={`Need a washing machine technician in ${area.name}?`} />
+</BaseLayout>

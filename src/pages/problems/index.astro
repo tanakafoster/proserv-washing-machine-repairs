@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { problems, problemUrl } from '../../data/problems';
+---
+<BaseLayout
+  title="Washing Machine Problems & What They Mean | ProServ"
+  description="Common washing machine problems explained in plain language: drainage, spin, leaks, power, doors, noise and codes. Call 079 895 0496."
+  crumbs={[{ name: 'Problems', href: '/problems/' }]}
+>
+  <PageHero
+    h1="Common washing machine problems"
+    eyebrow="What's wrong with my machine?"
+    intro={`<p>Washing machine problems usually show up in one of a few ways: water that won't drain, a drum that won't spin, a puddle on the floor, a dead display, a stuck door, a loud noise, an error code, or a machine that won't fill. Pick the one that matches yours below. Each guide explains the likely causes in plain language, the simple checks you can safely do, and when it's time to call a technician.</p>`}
+  />
+  <LinkCards alt heading="Pick your problem" headingId="prob-list" cols={4} items={problems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary }))} />
+  <section class="section">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>A word on safety</h2>
+      <p>Our guides only suggest checks that don't involve electrical work: things like making sure the tap is open, the hose isn't kinked, or the pump filter is clear. Always switch off and unplug the machine first. Please don't open panels, test wiring or replace electrical parts yourself. A washing machine combines mains electricity and water, and that's a job for a qualified technician.</p>
+      <h2>Why the same symptom can have different causes</h2>
+      <p>A machine that "won't spin" might have an unbalanced load, water that hasn't drained, worn carbon brushes, a broken belt or a door lock fault. That's why we diagnose before we quote, rather than guessing over the phone. What you tell us still helps a lot: the brand and model number, what the machine was doing when it stopped, any error code on the display, and whether there were any unusual sounds or smells.</p>
+      <h2>Brand-specific help</h2>
+      <p>If your machine shows a code, see our guides to <a href="/error-codes/">washing machine error codes</a>. For common faults by brand, visit <a href="/brands/">brands we repair</a>.</p>
+      <h2>Ready to book?</h2>
+      <p>Call or WhatsApp us, or use our <a href="/contact/">booking form</a>. We'll arrange a time and send a technician to your home. You'll get a quote before any work starts.</p>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>

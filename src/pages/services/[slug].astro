@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import { services, serviceUrl, type Service } from '../../data/services';
+import { problems, problemUrl } from '../../data/problems';
+import { site, areaUrl } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Service };
+const path = serviceUrl(s.slug);
+const relatedProblems = problems.filter((p) => p.serviceSlug === s.slug);
+const otherServices = services.filter((o) => o.slug !== s.slug);
+---
+<BaseLayout
+  title={s.title}
+  description={s.description}
+  crumbs={[{ name: 'Services', href: '/services/' }, { name: s.name, href: path }]}
+  schema={[serviceSchema({ name: s.name, description: s.description, path, serviceType: s.serviceType }), faqSchema(s.faqs)]}
+>
+  <PageHero h1={s.h1} intro={s.intro} eyebrow="Washing machine repair services" image={s.image} />
+  <section class="section section-alt pt-10">
+    <div class="container-site">
+      <article class="prose-site max-w-3xl" set:html={s.body} />
+    </div>
+  </section>
+  {relatedProblems.length > 0 && (
+    <LinkCards heading="Problems this service fixes" headingId="rel-problems" items={relatedProblems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary }))} />
+  )}
+  <HowItWorks />
+  <LinkCards
+    alt
+    heading="Where we work"
+    headingId="areas-h"
+    cols={3}
+    items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `${s.name} in ${a.name}` }))}
+  />
+  <LinkCards heading="Other services" headingId="other-services" items={otherServices.map((o) => ({ href: serviceUrl(o.slug), title: o.name, text: o.summary }))} />
+  <Faq items={s.faqs} heading={`${s.name}: questions we get asked`} />
+  <CtaBand />
+</BaseLayout>

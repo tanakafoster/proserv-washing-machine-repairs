@@ -1,0 +1,23 @@
+---
+import ContactButtons from './ContactButtons.astro';
+interface Props {
+  h1: string;
+  intro: string;
+  eyebrow?: string;
+  image?: { src: string; alt: string; width: number; height: number };
+}
+const { h1, intro, eyebrow, image } = Astro.props;
+---
+<section class="pt-6 pb-10 sm:pb-14">
+  <div class:list={['container-site', image && 'grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]']}>
+    <div>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="mt-2 text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">{h1}</h1>
+      <div class="prose-site mt-5 max-w-3xl text-lg" set:html={intro} />
+      <ContactButtons class="mt-6" />
+    </div>
+    {image && (
+      <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" fetchpriority="high" class="h-auto w-full rounded-2xl border border-line object-cover shadow-sm" />
+    )}
+  </div>
+</section>
