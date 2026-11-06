@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you/
+
+Sitemap: https://proservwashingmachinerepairs.co.za/sitemap.xml

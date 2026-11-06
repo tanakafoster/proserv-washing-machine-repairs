@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqSchema } from '../lib/schema';
+const path = '/repair-or-replace/';
+const faqs = [
+  { q: 'How long should a washing machine last?', a: 'With reasonable care, many washing machines last around 8 to 12 years, and some well-built machines last much longer. Heavy use, surges and poor maintenance shorten that.' },
+  { q: 'Is it worth fixing a 10-year-old washing machine?', a: 'Often, yes, for common faults like pumps, door locks, brushes and inlet valves. For major repairs like bearings on a sealed tub, or a control board on an older machine, replacement may make more sense.' },
+  { q: 'Will you tell me if it is not worth repairing?', a: 'Yes. If the repair does not make financial sense, we will tell you before any work starts. You only pay the call-out fee if you decide not to go ahead.' },
+];
+---
+<BaseLayout
+  title="Repair or Replace Your Washing Machine? | ProServ"
+  description="Repair or replace your washing machine? Weigh up age, fault, repair cost and condition with our honest guide. Advice on 079 895 0496."
+  crumbs={[{ name: 'Repair or replace', href: path }]}
+  schema={[faqSchema(faqs)]}
+>
+  <PageHero
+    h1="Should you repair or replace your washing machine?"
+    eyebrow="Honest advice"
+    intro={`<p>Whether to repair or replace a washing machine comes down to four things: how old it is, what's wrong with it, what the repair costs compared with a new machine, and the overall condition of the machine. Most of the time a repair is the better value, but not always. Here's how we help customers decide, honestly.</p>`}
+  />
+  <section class="section section-alt pt-10">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>The 50% rule of thumb</h2>
+      <p>A simple guide: if the repair would cost more than about half the price of a comparable new machine, and your machine is more than about seven or eight years old, replacement deserves serious thought. If the repair is a fraction of that price, repair is almost always the better choice.</p>
+
+      <h2>Usually worth repairing</h2>
+      <ul>
+        <li>Drain pump blocked or failed</li>
+        <li>Door lock, door handle or catch</li>
+        <li>Carbon brushes on a brushed motor</li>
+        <li>Inlet valve not letting water in</li>
+        <li>Heating element</li>
+        <li>Door seal</li>
+        <li>Shock absorbers, springs or suspension rods</li>
+        <li>Belt, coupling or lid switch on a top loader</li>
+      </ul>
+      <p>These are routine <a href="/services/washing-machine-parts-replacement/">parts replacements</a>, often finished in one visit.</p>
+
+      <h2>Worth a careful look</h2>
+      <ul>
+        <li><strong>Drum bearings.</strong> On a split tub, it's a labour-heavy but worthwhile repair. On a sealed tub, the whole tub assembly is needed. See <a href="/blog/signs-washing-machine-bearings-are-worn/">signs of worn bearings</a>.</li>
+        <li><strong>Control boards.</strong> Prices vary a lot between brands. Some boards can be repaired rather than replaced.</li>
+        <li><strong>Motors</strong> on direct drive or inverter machines.</li>
+      </ul>
+
+      <h2>Usually time to replace</h2>
+      <ul>
+        <li>The outer tub is cracked or the drum is damaged</li>
+        <li>The cabinet or base has rusted through</li>
+        <li>Several major parts have failed at once on an older machine</li>
+        <li>Parts are no longer available for the model</li>
+      </ul>
+
+      <h2>Things that tip the balance</h2>
+      <h3>Build quality</h3>
+      <p>A well-built machine that's had one fault in ten years is worth more repairs than a budget machine that's had three faults in four years.</p>
+      <h3>Energy and water use</h3>
+      <p>Newer machines can use less water and electricity, which matters with rising tariffs. But making a new machine also has a cost, and an efficient older machine that's been repaired can still be the greener choice.</p>
+      <h3>Your situation</h3>
+      <p>If you're moving soon or your household is changing size, a new machine of the right capacity may make sense. If you need the machine back this week, a repair is usually quicker than shopping, delivery and installation.</p>
+
+      <h2>How we help you decide</h2>
+      <p>Our technician diagnoses the fault and gives you a price before any work. If the repair doesn't make sense, we'll tell you. If you decide to replace, our <a href="/services/washing-machine-installation/">installation service</a> can connect and test the new machine, and our guide to <a href="/blog/front-loader-vs-top-loader/">front loaders vs top loaders</a> may help you choose. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what drives repair prices.</p>
+    </div>
+  </section>
+  <Faq items={faqs} />
+  <CtaBand heading="Not sure if it's worth fixing?" text="Book a diagnosis. We'll tell you what's wrong, what it costs, and whether repairing it makes sense." />
+</BaseLayout>

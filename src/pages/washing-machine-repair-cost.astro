@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+import { faqSchema } from '../lib/schema';
+const f = site.facts;
+const path = '/washing-machine-repair-cost/';
+
+// [PLACEHOLDER] Replace each price with your real "from" price in Rands, e.g. 'From R650'.
+const prices = [
+  { job: 'Call-out and diagnosis', price: `${f.calloutFee} (only payable if you decline the quote)`, note: 'Covers travel and finding the fault' },
+  { job: 'Pump filter or drain blockage cleared', price: '[PLACEHOLDER]', note: 'No parts needed in most cases' },
+  { job: 'Drain pump replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
+  { job: 'Carbon brushes replacement', price: '[PLACEHOLDER]', note: 'Brushed motors only' },
+  { job: 'Door lock / interlock replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
+  { job: 'Door seal (gasket) replacement', price: '[PLACEHOLDER]', note: 'Varies by model' },
+  { job: 'Inlet valve replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
+  { job: 'Heating element replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
+  { job: 'Drum bearing and seal replacement', price: '[PLACEHOLDER]', note: 'Split tubs; sealed tubs cost more' },
+  { job: 'Shock absorbers / suspension', price: '[PLACEHOLDER]', note: 'Usually replaced in pairs' },
+  { job: 'Control board (PCB) repair or replacement', price: '[PLACEHOLDER]', note: 'Depends heavily on brand and model' },
+  { job: 'Installation and plumbing-in', price: '[PLACEHOLDER]', note: 'Existing tap and drain' },
+  { job: 'Full service', price: '[PLACEHOLDER]', note: 'Parts extra if needed' },
+];
+const faqs = [
+  { q: 'How much does it cost to repair a washing machine?', a: 'It depends on the fault, the part and the brand. Simple blockages cost little more than the call-out. Bearings and control boards are at the higher end. You always get a quote before we start.' },
+  { q: 'How much is bearing replacement?', a: 'Bearing replacement is one of the bigger repairs because the machine has to be stripped down. On machines with a sealed tub, the whole tub assembly is needed, which costs more. We confirm which type you have before quoting.' },
+  { q: 'Do I pay the call-out fee if I go ahead with the repair?', a: `No. The ${f.calloutFee} call-out fee is ${f.calloutCondition}.` },
+  { q: 'Do you charge more on Saturdays?', a: '[CONFIRM: weekend or after-hours rates]' },
+];
+---
+<BaseLayout
+  title="Washing Machine Repair Cost in South Africa | ProServ"
+  description="Washing machine repair cost explained: parts, brand, labour and call-out fee. Get an exact quote before work starts. Call 079 895 0496."
+  crumbs={[{ name: 'Repair cost', href: path }]}
+  schema={[faqSchema(faqs)]}
+>
+  <PageHero
+    h1="Washing machine repair cost"
+    eyebrow="Prices"
+    intro={`<p>The washing machine repair cost for your machine depends on what has failed, which part it needs, the brand and model, and how long the repair takes. We can't give an exact price until we've diagnosed the machine, but we can explain what drives the price, and you will always get a clear quote in Rands before any work starts.</p>`}
+  />
+  <section class="section section-alt pt-10">
+    <div class="container-site">
+      <div class="prose-site max-w-3xl">
+        <h2>What affects the price of a repair?</h2>
+        <h3>1. The part</h3>
+        <p>The part is usually the biggest variable. A drain blockage might need no parts at all. Carbon brushes, door locks and inlet valves are relatively inexpensive. Door seals and heating elements sit in the middle. Drum bearings, motors and control boards are the bigger repairs.</p>
+        <h3>2. The brand and model</h3>
+        <p>Parts for common machines are widely stocked in South Africa and reasonably priced. Parts for premium European brands, or for less common models, cost more and may need to be ordered in. Some models use one-off parts that are only available from the manufacturer.</p>
+        <h3>3. Labour</h3>
+        <p>Labour depends on how long the job takes. Replacing a pump on a front loader is quick. Replacing bearings means stripping the whole machine down to the tub. Integrated machines also take extra time to remove from and refit into the kitchen cabinets.</p>
+        <h3>4. The call-out</h3>
+        <p>Our call-out fee is {f.calloutFee}. It covers the technician's travel and the diagnosis, and it's {f.calloutCondition}. If you go ahead with the repair, you only pay for the repair.</p>
+      </div>
+
+      <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Typical repair prices</h2>
+      <p class="mt-2 max-w-3xl text-ink-soft">Guide prices including labour. Your exact price is confirmed after diagnosis. All repairs carry our {f.warranty} warranty.</p>
+      <div class="mt-6 overflow-x-auto rounded-xl border border-line bg-white">
+        <table class="w-full min-w-[560px] border-collapse text-left">
+          <caption class="sr-only">Typical washing machine repair prices in Rands</caption>
+          <thead>
+            <tr class="bg-surface">
+              <th scope="col" class="border-b-2 border-brand px-3 py-3">Repair</th>
+              <th scope="col" class="border-b-2 border-brand px-3 py-3">Guide price</th>
+              <th scope="col" class="border-b-2 border-brand px-3 py-3">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {prices.map((p) => (
+              <tr>
+                <th scope="row" class="border-b border-line px-3 py-3 font-medium">{p.job}</th>
+                <td class="border-b border-line px-3 py-3">{p.price}</td>
+                <td class="border-b border-line px-3 py-3 text-ink-soft">{p.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose-site mt-10 max-w-3xl">
+        <h2>Bearing replacement cost</h2>
+        <p>Bearing replacement cost surprises a lot of people, so it's worth explaining. The bearings sit at the back of the outer tub, behind the drum. To reach them, the technician removes the top, the front panel, the door seal, the motor, the counterweights and the tub, then splits the tub, presses out the old bearings and fits new bearings and a new seal. It's several hours of work.</p>
+        <p>Many newer machines have a <strong>sealed (welded) tub</strong> that can't be split. On those, the whole tub and drum assembly has to be replaced, which costs more. We'll tell you which type you have before quoting. Read more in <a href="/blog/signs-washing-machine-bearings-are-worn/">signs your washing machine bearings are worn</a>.</p>
+
+        <h2>How to keep the cost down</h2>
+        <ul>
+          <li><strong>Act early.</strong> A noisy bearing left too long can damage the seal, shaft and tub. A slow drain can burn out the pump.</li>
+          <li><strong>Empty pockets.</strong> Coins and hair clips cause many pump repairs.</li>
+          <li><strong>Use the right detergent dose.</strong> Excess suds strain the pump and leave residue.</li>
+          <li><strong>Protect against surges.</strong> See <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your machine from load shedding</a>.</li>
+          <li><strong>Book a service</strong> every year or so. See <a href="/services/washing-machine-servicing/">washing machine servicing</a>.</li>
+        </ul>
+
+        <h2>Is it worth repairing?</h2>
+        <p>For most faults on machines under about ten years old, a repair is far cheaper than a new machine. If a repair would cost more than about half the price of a comparable new machine, it's worth thinking twice. Our <a href="/repair-or-replace/">repair or replace guide</a> walks through the decision. For specific faults, see <a href="/services/washing-machine-parts-replacement/">parts replacement</a>.</p>
+      </div>
+    </div>
+  </section>
+  <Faq items={faqs} heading="Repair cost questions" />
+  <CtaBand heading="Want an exact price?" text="Call or WhatsApp us with your machine's brand, model and fault. We'll book a technician to diagnose it and quote before any work starts." />
+</BaseLayout>

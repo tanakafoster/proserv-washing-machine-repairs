@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout
+  title="Washing Machine Tips & Advice Blog | ProServ"
+  description="Washing machine tips from Gauteng technicians: smells, bearings, load shedding, buying advice and more. Need a repair? Call 079 895 0496."
+  crumbs={[{ name: 'Blog', href: '/blog/' }]}
+>
+  <section class="pt-6 pb-10">
+    <div class="container-site">
+      <p class="eyebrow">Blog</p>
+      <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl">Washing machine tips and advice</h1>
+      <div class="prose-site mt-4 max-w-3xl text-lg">
+        <p>Practical washing machine tips from the technicians who fix them every day. We write about the problems we see most in Gauteng homes: how to keep your machine running, how to spot trouble early, and how to protect it from power problems. No DIY electrical work, just honest advice that saves you money.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt pt-10">
+    <ul class="container-site grid gap-6 sm:grid-cols-2">
+      {posts.map((p, i) => (
+        <li>
+          <a href={`/blog/${p.id}/`} class="card-link h-full overflow-hidden p-0">
+            <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" class="h-auto w-full" />
+            <span class="block p-5">
+              <span class="block text-sm text-ink-soft"><time datetime={p.data.pubDate.toISOString().slice(0, 10)}>{fmt(p.data.pubDate)}</time></span>
+              <span class="mt-1 block text-xl font-semibold text-ink">{p.data.title}</span>
+              <span class="mt-2 block text-ink-soft">{p.data.summary}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <section class="section">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>Looking for help with a specific fault?</h2>
+      <p>Our <a href="/problems/">washing machine problems</a> guides cover not draining, not spinning, leaks, power, doors, noise, error codes and filling problems. For codes on the display, see our <a href="/error-codes/">error code guides</a>.</p>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+const updated = '6 November 2026';
+---
+<BaseLayout
+  title="Privacy Policy | ProServ"
+  description="How ProServ Washing Machine Repairs collects, uses and protects your personal information under POPIA. Questions? Call 079 895 0496."
+  crumbs={[{ name: 'Privacy policy', href: '/privacy-policy/' }]}
+>
+  <section class="section pt-6">
+    <div class="container-site prose-site max-w-3xl">
+      <h1 class="text-3xl font-extrabold sm:text-4xl">Privacy policy</h1>
+      <p class="text-ink-soft">Last updated: {updated}</p>
+      <p>{site.name} ("ProServ", "we") respects your privacy. This policy explains what personal information we collect, why, and your rights under the Protection of Personal Information Act, 2013 (POPIA).</p>
+
+      <h2>Who is responsible</h2>
+      <p>The responsible party is {site.name} [CONFIRM: registered business name and registration number, if any]. Our Information Officer is [CONFIRM: name], contactable at <a href={`mailto:${site.email}`}>{site.email}</a> or {site.phone.display}.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Details you give us</strong> when you call, WhatsApp, email or use our booking form: your name, phone number, area or address, machine brand and model, a description of the fault, and your preferred appointment time.</li>
+        <li><strong>Website usage data</strong> through Google Tag Manager and Google Analytics, such as pages visited, device type, approximate location and which buttons were clicked. This uses cookies.</li>
+      </ul>
+
+      <h2>Why we use it</h2>
+      <ul>
+        <li>To respond to your request, book and carry out repairs, and send quotes and invoices.</li>
+        <li>To honour our repair warranty.</li>
+        <li>To ask, once, whether you're happy to leave a review. You can ignore it.</li>
+        <li>To understand how people use the website and improve it, and to measure our advertising.</li>
+      </ul>
+      <p>We don't sell your information. We don't send marketing messages unless you've agreed to receive them.</p>
+
+      <h2>Who we share it with</h2>
+      <p>Only with service providers that help us run the business, such as our form provider (Web3Forms), email and hosting providers, Google (analytics), and our accountant. Some of these providers may store data outside South Africa. We use reputable providers with appropriate safeguards.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep job records for as long as needed for warranty, tax and legal purposes, and then delete them.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask to see the personal information we hold about you, ask us to correct or delete it, or object to us using it. Contact us at <a href={`mailto:${site.email}`}>{site.email}</a>. If you're not satisfied with our response, you can complain to the Information Regulator of South Africa.</p>
+
+      <h2>Cookies</h2>
+      <p>Analytics cookies help us understand website use. You can block or delete cookies in your browser settings; the site will still work.</p>
+
+      <h2>Changes</h2>
+      <p>We may update this policy. The date at the top shows the latest version.</p>
+    </div>
+  </section>
+</BaseLayout>

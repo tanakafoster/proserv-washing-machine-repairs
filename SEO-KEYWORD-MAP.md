@@ -97,9 +97,9 @@ Pattern: `washing machine repairs [area]`. Areas come from `src/data/site.ts` ([
 
 | URL | Primary keyword | Secondary keywords |
 |---|---|---|
-| `/blog/why-does-my-washing-machine-smell/` | washing machine smells | smelly washing machine, washing machine smells like rotten eggs, how to stop washing machine smelling |
+| `/blog/why-does-my-washing-machine-smell/` | washing machine smell | smelly washing machine, why does my washing machine smell, washing machine smells like rotten eggs, how to stop washing machine smelling |
 | `/blog/signs-washing-machine-bearings-are-worn/` | worn washing machine bearings | washing machine bearing noise, bearing replacement cost, drum bearings |
-| `/blog/protect-washing-machine-from-load-shedding/` | load shedding washing machine | power surge washing machine, surge protector for washing machine, washing machine after power outage |
+| `/blog/protect-washing-machine-from-load-shedding/` | protect washing machine from load shedding | load shedding washing machine, power surge washing machine, surge protector for washing machine, washing machine after power outage |
 | `/blog/front-loader-vs-top-loader/` | front loader vs top loader | which washing machine is better, top loader or front loader South Africa |
 
 The remaining 8 planned articles and their keywords are in `CONTENT-PLAN.md`.

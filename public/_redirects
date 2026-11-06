@@ -1,0 +1,4 @@
+# Netlify: force canonical https non-www (Netlify already redirects http -> https once HTTPS is on)
+http://proservwashingmachinerepairs.co.za/*      https://proservwashingmachinerepairs.co.za/:splat 301!
+http://www.proservwashingmachinerepairs.co.za/*  https://proservwashingmachinerepairs.co.za/:splat 301!
+https://www.proservwashingmachinerepairs.co.za/* https://proservwashingmachinerepairs.co.za/:splat 301!

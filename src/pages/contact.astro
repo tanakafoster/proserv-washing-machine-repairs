@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactButtons from '../components/ContactButtons.astro';
+import Icon from '../components/Icon.astro';
+import { site, telHref, whatsappHref, mailHref, hoursText } from '../data/site';
+import { brands, otherBrands } from '../data/brands';
+const path = '/contact/';
+const f = site.facts;
+const thankYou = `${site.url}/thank-you/`;
+const brandOptions = [...brands.map((b) => b.brand), ...otherBrands, 'Other / not sure'];
+---
+<BaseLayout
+  title="Book a Washing Machine Repair | ProServ"
+  description="Book a washing machine repair: call, WhatsApp or send the form and we'll arrange a technician at your door. Call 079 895 0496."
+  crumbs={[{ name: 'Contact', href: path }]}
+>
+  <section class="pt-6 pb-12">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div>
+        <p class="eyebrow">Contact and bookings</p>
+        <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl">Book a washing machine repair</h1>
+        <p class="mt-4 text-lg text-ink-soft">The quickest way to book a washing machine repair is to call or WhatsApp us. Tell us the brand, the model if you have it, and what the machine is doing. A photo of the error code or a short video helps. Prefer to write? Use the form and we'll get back to you during business hours.</p>
+        <ContactButtons class="mt-6" size="lg" />
+        <ul class="mt-8 space-y-4">
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="phone" /></span><span><strong class="block">Phone</strong><a href={telHref} data-track="call">{site.phone.display}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="whatsapp" /></span><span><strong class="block">WhatsApp</strong><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">{site.phone.display}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="mail" /></span><span><strong class="block">Email</strong><a href={mailHref} class="break-all">{site.email}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="clock" /></span><span><strong class="block">Hours</strong>{hoursText()}<br />{site.hoursNote}</span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="map" /></span><span><strong class="block">Areas</strong>{site.areas.map((a) => a.name).join(', ')}. <a href="/areas/">See all areas</a>.</span></li>
+        </ul>
+        <div class="card mt-8 bg-brand-tint">
+          <h2 class="font-semibold">Good to know</h2>
+          <p class="mt-2 text-sm text-ink-soft">The call-out fee is {f.calloutFee}, {f.calloutCondition}. Every repair carries our {f.warranty} warranty. We're a mobile service, so there's no walk-in workshop.</p>
+        </div>
+      </div>
+
+      <div class="card p-6 sm:p-8">
+        <h2 class="text-2xl font-bold">Request a technician</h2>
+        <p class="mt-1 text-sm text-ink-soft">Fields marked * are required.</p>
+        <!--
+          FORM DELIVERY: Web3Forms (https://web3forms.com).
+          Set your access key in src/data/site.ts → web3formsKey. Create the key with
+          info@proservwashingmachinerepairs.co.za so submissions are delivered there.
+          For a cPanel PHP alternative, see extras/cpanel/contact-handler.php.
+        -->
+        <form id="booking-form" action="https://api.web3forms.com/submit" method="POST" class="mt-6 space-y-4" novalidate>
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input type="hidden" name="subject" value="New washing machine repair request (website)" />
+          <input type="hidden" name="from_name" value="ProServ website" />
+          <input type="hidden" name="redirect" value={thankYou} />
+          <!-- Honeypot spam trap: real people never see or tick this. -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div>
+            <label for="name" class="block font-medium">Your name *</label>
+            <input id="name" name="name" type="text" required autocomplete="name" class="mt-1 w-full rounded-lg border border-gray-400 px-3 py-3" />
+          </div>
+          <div>
+            <label for="phone" class="block font-medium">Phone number *</label>
+            <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" pattern="[0-9 +()\-]{9,}" class="mt-1 w-full rounded-lg border border-gray-400 px-3 py-3" />
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="area" class="block font-medium">Area *</label>
+              <select id="area" name="area" required class="mt-1 w-full rounded-lg border border-gray-400 bg-white px-3 py-3">
+                <option value="">Choose your area</option>
+                {site.areas.map((a) => <option>{a.name}</option>)}
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="brand" class="block font-medium">Machine brand *</label>
+              <select id="brand" name="brand" required class="mt-1 w-full rounded-lg border border-gray-400 bg-white px-3 py-3">
+                <option value="">Choose a brand</option>
+                {brandOptions.map((b) => <option>{b}</option>)}
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="problem" class="block font-medium">What's the problem? *</label>
+            <textarea id="problem" name="problem" rows="4" required placeholder="e.g. Front loader, won't drain, showing OE" class="mt-1 w-full rounded-lg border border-gray-400 px-3 py-3"></textarea>
+          </div>
+          <div>
+            <label for="preferred" class="block font-medium">Preferred day and time</label>
+            <input id="preferred" name="preferred_day_time" type="text" placeholder="e.g. Tuesday morning" class="mt-1 w-full rounded-lg border border-gray-400 px-3 py-3" />
+          </div>
+          <p class="text-sm text-ink-soft">We use your details only to respond to your request. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+          <button type="submit" class="btn btn-primary w-full">Send request</button>
+          <p id="form-status" class="text-sm" role="status" aria-live="polite"></p>
+          <p id="form-error" class="hidden rounded-lg bg-brand-tint p-3 text-sm" role="alert">Sorry, that didn't send. Please call or WhatsApp us on <a href={telHref} data-track="call">{site.phone.display}</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Progressive enhancement: submit with fetch, fire form_submit, then go to /thank-you/.
+    // Without JS the form still posts to Web3Forms, which redirects to /thank-you/.
+    const form = document.getElementById('booking-form') as HTMLFormElement | null;
+    const status = document.getElementById('form-status');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      btn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === false) throw new Error(json.message || 'Request failed');
+        const w = window as unknown as { dataLayer: object[] };
+        w.dataLayer = w.dataLayer || [];
+        let done = false;
+        const go = () => { if (!done) { done = true; window.location.href = '/thank-you/'; } };
+        w.dataLayer.push({ event: 'form_submit', form_id: 'booking-form', area: (form.elements.namedItem('area') as HTMLSelectElement).value, eventCallback: go, eventTimeout: 1500 });
+        setTimeout(go, 1600);
+      } catch {
+        btn.disabled = false;
+        if (status) status.textContent = '';
+        document.getElementById('form-error')?.classList.remove('hidden');
+      }
+    });
+  </script>
+</BaseLayout>
