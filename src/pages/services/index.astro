@@ -11,13 +11,13 @@ import { faqSchema } from '../../lib/schema';
 const f = site.facts;
 const faqs = [
   { q: 'Do you repair washing machines at home?', a: 'Yes. All our repairs are done at your home. We only take a machine away in rare cases where a workshop repair is needed, and we will discuss that with you first.' },
-  { q: 'Do you charge a call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. If you go ahead with the repair, you only pay for the repair.` },
+  { q: 'Do you charge a call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. You get a quote before any work starts.` },
   { q: 'Is the repair guaranteed?', a: `Yes. Repairs carry our ${f.warranty} warranty on parts and labour.` },
 ];
 ---
 <BaseLayout
   title="Washing Machine Repair Services | ProServ"
-  description="Washing machine repair services at your home: front and top loaders, washer-dryers, installation, servicing and parts. Call 079 895 0496."
+  description={`Washing machine repair services at your home: front and top loaders, washer-dryers, installation, servicing and parts. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Services', href: '/services/' }]}
   schema={[faqSchema(faqs)]}
 >

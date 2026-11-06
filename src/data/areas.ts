@@ -23,7 +23,7 @@ export interface AreaContent {
 export const areaContent: Record<string, AreaContent> = {
   johannesburg: {
     title: 'Washing Machine Repairs Johannesburg | ProServ',
-    description: 'Washing machine repairs in Johannesburg, from Randburg to Joburg South. Technician at your door, quote first. Call 079 895 0496.',
+    description: `Washing machine repairs in Johannesburg, from Randburg to Joburg South. Technician at your door, quote first. Call ${site.phone.display}.`,
     h1: 'Washing machine repairs in Johannesburg',
     intro: `<p>ProServ does washing machine repairs across Johannesburg, from the leafy older suburbs like Parkhurst and Melville to Randburg, Roodepoort and the south. Joburg homes run their machines hard, and many have been through years of load shedding and power dips, so we see a lot of pump, board and bearing faults. Our technician comes to your house or flat, diagnoses the problem and quotes before starting.</p>`,
     suburbs: ['Randburg', 'Roodepoort', 'Northcliff', 'Melville', 'Parkhurst', 'Greenside', 'Linden', 'Rosebank', 'Parktown North', 'Killarney', 'Houghton', 'Fourways', 'Mondeor', 'Glenvista', 'Bassonia', 'Weltevreden Park'],
@@ -51,7 +51,7 @@ export const areaContent: Record<string, AreaContent> = {
   },
   pretoria: {
     title: 'Washing Machine Repairs Pretoria | ProServ',
-    description: 'Washing machine repairs in Pretoria East, Hatfield, Montana and beyond. Diagnose and quote at your home. Call ProServ: 079 895 0496.',
+    description: `Washing machine repairs in Pretoria East, Hatfield, Montana and beyond. Diagnose and quote at your home. Call ProServ: ${site.phone.display}.`,
     h1: 'Washing machine repairs in Pretoria',
     intro: `<p>ProServ offers washing machine repairs throughout Pretoria, from Pretoria East and Moreleta Park to Hatfield, Arcadia and Montana in the north. Pretoria has everything from student flats and rental units to big family homes in the east, and each comes with its own kinds of washing machine trouble. Our technician comes to you, finds the fault and gives you a price before any work begins.</p>`,
     suburbs: ['Hatfield', 'Brooklyn', 'Menlo Park', 'Waterkloof', 'Lynnwood', 'Faerie Glen', 'Garsfontein', 'Moreleta Park', 'Silver Lakes', 'Montana', 'Sinoville', 'Pretoria North', 'Arcadia', 'Sunnyside', 'Silverton', 'Queenswood'],
@@ -78,7 +78,7 @@ export const areaContent: Record<string, AreaContent> = {
   },
   centurion: {
     title: 'Washing Machine Repairs Centurion | ProServ',
-    description: 'Washing machine repairs in Centurion: Irene, Eldoraigne, Rooihuiskraal and more. Technician at your door, quote first. Call 079 895 0496.',
+    description: `Washing machine repairs in Centurion: Irene, Eldoraigne, Rooihuiskraal and more. Technician at your door, quote first. Call ${site.phone.display}.`,
     h1: 'Washing machine repairs in Centurion',
     intro: `<p>Our washing machine repairs in Centurion cover the established suburbs like Lyttelton, Eldoraigne and Clubview as well as the estates and complexes around Irene, Rooihuiskraal and Olievenhoutbosch. Centurion is a mix of family homes and newer townhouse developments, and plenty of the machines we fix are in compact laundry spaces or kitchen nooks.</p>`,
     suburbs: ['Lyttelton', 'Clubview', 'Eldoraigne', 'Rooihuiskraal', 'Wierdapark', 'Zwartkop', 'Die Hoewes', 'Irene', 'Highveld', 'Heuweloord', 'Raslouw', 'Thatchfield', 'Olievenhoutbosch', 'Hennopspark', 'Doringkloof'],
@@ -106,7 +106,7 @@ export const areaContent: Record<string, AreaContent> = {
   },
   sandton: {
     title: 'Washing Machine Repairs Sandton | ProServ',
-    description: 'Washing machine repairs in Sandton, Bryanston, Rivonia and Sunninghill. Premium and integrated machines. Call or WhatsApp 079 895 0496.',
+    description: `Washing machine repairs in Sandton, Bryanston, Rivonia and Sunninghill. Premium and integrated machines. Call or WhatsApp ${site.phone.display}.`,
     h1: 'Washing machine repairs in Sandton',
     intro: `<p>We carry out washing machine repairs all over Sandton, from apartments in Sandton Central and Morningside to family homes in Bryanston, Rivonia and Sunninghill. Sandton has a lot of premium European front loaders, washer-dryers and integrated machines built into kitchen cabinetry, so our technicians are used to working carefully in finished spaces and with high-end machines.</p>`,
     suburbs: ['Bryanston', 'Morningside', 'Rivonia', 'Sunninghill', 'Paulshof', 'Woodmead', 'Illovo', 'Hyde Park', 'Sandhurst', 'Benmore', 'Wendywood', 'Lonehill', 'Douglasdale', 'Parkmore', 'Atholl', 'Inanda'],
@@ -129,7 +129,7 @@ export const areaContent: Record<string, AreaContent> = {
   },
   midrand: {
     title: 'Washing Machine Repairs Midrand | ProServ',
-    description: 'Washing machine repairs in Midrand: Kyalami, Waterfall, Carlswald, Noordwyk and more. Diagnose and quote at home. Call 079 895 0496.',
+    description: `Washing machine repairs in Midrand: Kyalami, Waterfall, Carlswald, Noordwyk and more. Diagnose and quote at home. Call ${site.phone.display}.`,
     h1: 'Washing machine repairs in Midrand',
     intro: `<p>ProServ handles washing machine repairs across Midrand, from Halfway House and Noordwyk to Kyalami, Carlswald and the newer developments at Waterfall. Midrand sits between Johannesburg and Pretoria, so it's an easy area for our technicians to reach. Many of the homes here are newer complexes and estates, with machines that are only a few years old but already working hard.</p>`,
     suburbs: ['Halfway House', 'Noordwyk', 'Vorna Valley', 'Carlswald', 'Kyalami', 'Blue Hills', 'Waterfall', 'Glen Austin', 'Crowthorne', 'Erand Gardens', 'Barbeque Downs', 'Midridge Park', 'Country View', 'President Park'],
@@ -160,7 +160,7 @@ export const areaContent: Record<string, AreaContent> = {
   },
   'east-rand': {
     title: 'Washing Machine Repairs East Rand | ProServ',
-    description: 'Washing machine repairs on the East Rand: Benoni, Boksburg, Kempton Park, Germiston, Edenvale and more. Call ProServ on 079 895 0496.',
+    description: `Washing machine repairs on the East Rand: Benoni, Boksburg, Kempton Park, Germiston, Edenvale and more. Call ProServ on ${site.phone.display}.`,
     h1: 'Washing machine repairs on the East Rand',
     intro: `<p>ProServ provides washing machine repairs right across the East Rand (Ekurhuleni), including Benoni, Boksburg, Kempton Park, Germiston, Edenvale and Bedfordview. The East Rand has a lot of established family homes with big households and hard-working top loaders, as well as newer estates around Benoni and Boksburg. We come to you, find the fault and quote first.</p>`,
     suburbs: ['Benoni', 'Boksburg', 'Kempton Park', 'Germiston', 'Edenvale', 'Bedfordview', 'Springs', 'Brakpan', 'Birchleigh', 'Bonaero Park', 'Northmead', 'Farrarmere', 'Beyers Park', 'Sunward Park'],

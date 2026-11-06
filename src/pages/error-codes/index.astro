@@ -4,11 +4,11 @@ import PageHero from '../../components/PageHero.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { errorGuides } from '../../data/errorCodes';
-import { errorCodeUrl } from '../../data/site';
+import { site, errorCodeUrl } from '../../data/site';
 ---
 <BaseLayout
   title="Washing Machine Error Codes by Brand | ProServ"
-  description="Washing machine error codes explained for LG, Samsung, Bosch and Defy, with safe first checks. Code won't clear? Call 079 895 0496."
+  description={`Washing machine error codes explained for LG, Samsung, Bosch and Defy, with safe first checks. Code won't clear? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Error codes', href: '/error-codes/' }]}
 >
   <PageHero

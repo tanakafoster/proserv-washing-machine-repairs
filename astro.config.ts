@@ -1,11 +1,12 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from './integrations/sitemap.mjs';
+import remarkSiteTokens from './integrations/remark-site-tokens.mjs';
+import { site, markdownTokens } from './src/data/site';
 
 export default defineConfig({
-  // Canonical URL: https, non-www. Change here and in src/data/site.ts if the domain changes.
-  site: 'https://proservwashingmachinerepairs.co.za',
+  // Canonical URL (https, non-www) comes from src/data/site.ts.
+  site: site.url,
   trailingSlash: 'always',
   output: 'static',
   build: {
@@ -14,6 +15,10 @@ export default defineConfig({
   },
   compressHTML: true,
   integrations: [sitemap()],
+  markdown: {
+    // Blog posts write {{PHONE}}, {{TEL}} and {{WHATSAPP}} instead of the number itself.
+    remarkPlugins: [[remarkSiteTokens, { tokens: markdownTokens }]],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

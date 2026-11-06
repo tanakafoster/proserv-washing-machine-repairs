@@ -18,7 +18,7 @@ Rules used when writing each page:
 | `/` | washing machine repairs | washing machine repair, washing machine technician, washing machine repairs Gauteng |
 | `/services/` | washing machine repair services | appliance repair technician, washing machine repair company |
 | `/problems/` | washing machine problems | common washing machine faults, washing machine troubleshooting |
-| `/brands/` | washing machine repairs all brands | washing machine brands we repair, Miele washing machine repairs, Smeg washing machine repairs, Electrolux washing machine repairs, Speed Queen repairs |
+| `/brands/` | washing machine repairs all major brands | washing machine brands we repair, Miele washing machine repairs, Smeg washing machine repairs, Electrolux washing machine repairs, Speed Queen repairs |
 | `/error-codes/` | washing machine error codes | washing machine error code meaning, error code on washing machine display |
 | `/areas/` | washing machine repairs Gauteng | washing machine repair areas, mobile washing machine technician |
 | `/washing-machine-repair-cost/` | washing machine repair cost | bearing replacement cost, washing machine call-out fee, washing machine repair prices |

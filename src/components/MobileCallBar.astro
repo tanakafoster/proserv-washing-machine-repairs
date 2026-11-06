@@ -3,10 +3,10 @@ import { telHref, whatsappHref } from '../data/site';
 import Icon from './Icon.astro';
 ---
 <div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-line bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.08)] md:hidden" style="padding-bottom: env(safe-area-inset-bottom)">
-  <a href={telHref} class="flex min-h-14 items-center justify-center gap-2 bg-brand-dark font-semibold text-white no-underline" data-track="call">
+  <a href={telHref} class="flex min-h-14 items-center justify-center gap-2 bg-brand-dark font-semibold text-white no-underline focus-visible:-outline-offset-4 focus-visible:outline-white" data-track="call">
     <Icon name="phone" /> Call now
   </a>
-  <a href={whatsappHref} target="_blank" rel="noopener" class="flex min-h-14 items-center justify-center gap-2 bg-whatsapp-dark font-semibold text-white no-underline" data-track="whatsapp">
+  <a href={whatsappHref} target="_blank" rel="noopener" class="flex min-h-14 items-center justify-center gap-2 bg-whatsapp-dark font-semibold text-white no-underline focus-visible:-outline-offset-4 focus-visible:outline-white" data-track="whatsapp">
     <Icon name="whatsapp" /> WhatsApp
   </a>
 </div>

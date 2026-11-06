@@ -1,5 +1,7 @@
 import type { ContentPage } from './types';
-import { errorCodeUrl } from './site';
+import { site, errorCodeUrl } from './site';
+
+const f = site.facts;
 
 export interface Problem extends ContentPage {
   /** Matching service page slug (problem → service internal link). */
@@ -14,7 +16,7 @@ export const problems: Problem[] = [
     name: 'Not draining',
     serviceSlug: 'washing-machine-parts-replacement',
     title: 'Washing Machine Not Draining? Causes & Fix | ProServ',
-    description: 'Washing machine not draining? Usual causes are a blocked filter, hose or failed pump. Get a technician at your door: 079 895 0496.',
+    description: `Washing machine not draining? Usual causes are a blocked filter, hose or failed pump. Get a technician at your door: ${site.phone.display}.`,
     h1: 'Washing machine not draining',
     primaryKeyword: 'washing machine not draining',
     summary: 'Water left in the drum at the end of the cycle.',
@@ -46,7 +48,7 @@ ${safety}
 <p>Our technician will drain the machine safely, find the cause and quote before fixing it. Pumps are often on the van, so it's usually a one-visit job. Read more about <a href="/services/washing-machine-parts-replacement/">pump and parts replacement</a>, or <a href="/contact/">book a repair</a>.</p>`,
     faqs: [
       { q: 'Can I still use my washing machine if it is not draining?', a: 'No. Running more cycles can overheat the pump and may cause a leak. Switch it off and get it checked.' },
-      { q: 'How much does it cost to fix a washing machine that will not drain?', a: 'If it is a blockage, it is usually just the call-out and labour. A new pump costs more. See our washing machine repair cost page for what affects the price.' },
+      { q: 'How much does it cost to fix a washing machine that will not drain?', a: `A blockage is one of the cheaper fixes, because clearing it is mostly labour. A new pump costs more. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. See our washing machine repair cost page for what affects the price.` },
       { q: 'Why does my machine drain slowly but eventually empty?', a: 'A partly blocked filter, hose or household drain is the usual reason. A weak pump can also do it.' },
     ],
   },
@@ -55,7 +57,7 @@ ${safety}
     name: 'Not spinning',
     serviceSlug: 'front-loader-repairs',
     title: 'Washing Machine Not Spinning? Likely Causes | ProServ',
-    description: 'Washing machine not spinning or clothes still soaking wet? Find the likely cause, then call 079 895 0496 for a technician at your door.',
+    description: `Washing machine not spinning or clothes still soaking wet? Find the likely cause, then call ${site.phone.display} for a technician at your door.`,
     h1: 'Washing machine not spinning',
     primaryKeyword: 'washing machine not spinning',
     summary: 'Clothes come out soaking wet, or the drum won\'t turn at all.',
@@ -97,7 +99,7 @@ ${safety}
     name: 'Leaking',
     serviceSlug: 'washing-machine-parts-replacement',
     title: 'Washing Machine Leaking? Find the Cause | ProServ',
-    description: 'Washing machine leaking from the front, back or bottom? Common causes and when to call. Fast help in Gauteng on 079 895 0496.',
+    description: `Washing machine leaking from the front, back or bottom? Common causes and when to call. Fast help in Gauteng on ${site.phone.display}.`,
     h1: 'Washing machine leaking: where it comes from and why',
     primaryKeyword: 'washing machine leaking',
     summary: 'Puddles under the machine, at the door or behind it.',
@@ -143,7 +145,7 @@ ${safety}
     name: 'Won\'t switch on',
     serviceSlug: 'washing-machine-parts-replacement',
     title: 'Washing Machine Won\'t Turn On? What to Do | ProServ',
-    description: 'Washing machine won\'t turn on? Check the simple things first, then call 079 895 0496 for a technician to test the board and power safely.',
+    description: `Washing machine won't turn on? Check the simple things first, then call ${site.phone.display} for a technician to test the board and power safely.`,
     h1: 'Washing machine won\'t turn on',
     primaryKeyword: 'washing machine won\'t turn on',
     summary: 'No lights, no display, no response from the buttons.',
@@ -184,7 +186,7 @@ ${safety}
     name: 'Door won\'t open or lock',
     serviceSlug: 'front-loader-repairs',
     title: 'Washing Machine Door Won\'t Open or Lock | ProServ',
-    description: 'Washing machine door won\'t open, or won\'t lock so the cycle can\'t start? Causes and what to do. Technician help on 079 895 0496.',
+    description: `Washing machine door won't open, or won't lock so the cycle can't start? Causes and what to do. Technician help on ${site.phone.display}.`,
     h1: 'Washing machine door won\'t open (or won\'t lock)',
     primaryKeyword: 'washing machine door won\'t open',
     summary: 'Door stuck shut after a wash, or the machine won\'t start because it won\'t lock.',
@@ -225,7 +227,7 @@ ${safety}
     name: 'Noisy or shaking',
     serviceSlug: 'front-loader-repairs',
     title: 'Washing Machine Noisy When Spinning? Causes | ProServ',
-    description: 'Washing machine noisy when spinning, banging or shaking? Find the cause before it gets worse. Technician help in Gauteng: 079 895 0496.',
+    description: `Washing machine noisy when spinning, banging or shaking? Find the cause before it gets worse. Technician help in Gauteng: ${site.phone.display}.`,
     h1: 'Washing machine noisy when spinning or shaking',
     primaryKeyword: 'washing machine noisy when spinning',
     summary: 'Rumbling, grinding, banging or a machine that walks across the floor.',
@@ -268,7 +270,7 @@ ${safety}
     name: 'Showing an error code',
     serviceSlug: 'front-loader-repairs',
     title: 'Washing Machine Showing Error Code? Next Steps | ProServ',
-    description: 'Washing machine showing an error code? What codes mean, safe first steps and when to call. Brand code guides inside. Call 079 895 0496.',
+    description: `Washing machine showing an error code? What codes mean, safe first steps and when to call. Brand code guides inside. Call ${site.phone.display}.`,
     h1: 'Washing machine showing an error code',
     primaryKeyword: 'washing machine showing error code',
     summary: 'Letters, numbers or flashing lights on the display.',
@@ -319,7 +321,7 @@ ${safety}
     name: 'Not filling with water',
     serviceSlug: 'washing-machine-parts-replacement',
     title: 'Washing Machine Not Filling With Water? | ProServ',
-    description: 'Washing machine not filling with water or filling slowly? Check the tap, hose and pressure, then call ProServ on 079 895 0496.',
+    description: `Washing machine not filling with water or filling slowly? Check the tap, hose and pressure, then call ProServ on ${site.phone.display}.`,
     h1: 'Washing machine not filling with water',
     primaryKeyword: 'washing machine not filling with water',
     summary: 'The machine hums or clicks but no water comes in, or it fills very slowly.',

@@ -3,19 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { site, areaUrl } from '../../data/site';
+import { site, areaUrl, areaList } from '../../data/site';
 import { areaContent } from '../../data/areas';
 const f = site.facts;
 ---
 <BaseLayout
   title="Washing Machine Repairs Gauteng: Areas | ProServ"
-  description="Washing machine repairs across Gauteng: Johannesburg, Pretoria, Centurion, Sandton, Midrand and East Rand. Call 079 895 0496."
+  description={`Washing machine repairs across Gauteng: ${areaList()}. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Areas', href: '/areas/' }]}
 >
   <PageHero
     h1="Washing machine repairs across Gauteng"
     eyebrow="Areas we cover"
-    intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. Our technicians drive to you, so there's no need to take your machine anywhere. We cover ${site.areas.map((a) => a.name).join(', ')} and many suburbs in between [CONFIRM]. Choose your area below for local details and the suburbs we work in.</p>`}
+    intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. Our technicians drive to you, so there's no need to take your machine anywhere. We cover ${areaList()}, plus many suburbs in between [CONFIRM]. Choose your area below for local details and the suburbs we work in.</p>`}
   />
   <LinkCards alt heading="Choose your area" headingId="area-list" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}`, text: areaContent[a.slug]?.suburbs.slice(0, 4).join(', ') + '…' }))} />
   <section class="section">

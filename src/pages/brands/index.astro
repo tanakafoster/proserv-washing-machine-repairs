@@ -5,7 +5,7 @@ import LinkCards from '../../components/LinkCards.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { brands, otherBrands, trademarkNote } from '../../data/brands';
-import { brandUrl } from '../../data/site';
+import { site, brandUrl } from '../../data/site';
 import { faqSchema } from '../../lib/schema';
 const faqs = [
   { q: 'Are you an authorised agent for any brand?', a: 'No. ProServ is an independent repairer. We repair all major washing machine brands, but we are not affiliated with or authorised by any manufacturer. If your machine is under the manufacturer\'s warranty, contact the manufacturer first.' },
@@ -14,15 +14,15 @@ const faqs = [
 ];
 ---
 <BaseLayout
-  title="Washing Machine Repairs for All Brands | ProServ"
-  description="Washing machine repairs for all brands: Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele and more. Call 079 895 0496."
+  title="Washing Machine Repairs for All Major Brands | ProServ"
+  description={`Washing machine repairs for all major brands: Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele and more. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Brands', href: '/brands/' }]}
   schema={[faqSchema(faqs)]}
 >
   <PageHero
-    h1="Washing machine repairs for all brands"
+    h1="Washing machine repairs for all major brands"
     eyebrow="Brands we repair"
-    intro={`<p>We offer washing machine repairs for all brands commonly sold in South Africa. We repair all major washing machine brands, from everyday family machines to premium European models, front loaders, top loaders and washer-dryers. Choose your brand below to see the faults we fix most often and what to tell us when you book.</p>`}
+    intro={`<p>We repair all major washing machine brands sold in South Africa, from everyday family machines to premium European models: front loaders, top loaders and washer-dryers. If your brand isn't listed, ask us: we'll check whether parts are available before booking. Choose your brand below to see the faults we fix most often and what to tell us when you book.</p>`}
   />
   <LinkCards alt heading="Choose your brand" headingId="brand-list" cols={4} items={brands.map((b) => ({ href: brandUrl(b.slug), title: `${b.brand} washing machine repairs`, text: b.summary }))} />
   <section class="section">

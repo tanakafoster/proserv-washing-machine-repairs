@@ -4,14 +4,14 @@ Work through this in order. Tick each item as you go.
 
 ## 1. Before going live
 - [ ] Replace every `[PLACEHOLDER]`, `[CONFIRM]` and `[VERIFY]` (run `grep -rn "\[PLACEHOLDER\|\[CONFIRM\|\[VERIFY" src` and see `PAGE-AUDIT.md`)
-- [ ] Facts in `src/data/site.ts` confirmed: years in business, repairs completed, review count, arrival time, call-out fee, warranty
+- [ ] Facts in `src/data/site.ts` confirmed: years in business, repairs completed, review count, arrival time, call-out fee, **when the call-out fee is charged** (`calloutCondition` and `calloutConditionShort`, currently "only payable if you decide not to go ahead with the quote"), warranty
 - [ ] Hours confirmed, then `hoursConfirmed: true` in `src/data/site.ts`
 - [ ] Service areas and suburb lists confirmed (`src/data/site.ts`, `src/data/areas.ts`)
 - [ ] Error codes checked against manufacturers' manuals; set `verify: false` on each confirmed code in `src/data/errorCodes.ts`
 - [ ] Real prices added on `/washing-machine-repair-cost/` and the installation and servicing pages
 - [ ] Web3Forms access key added (`web3formsKey`), created with info@proservwashingmachinerepairs.co.za
 - [ ] GTM container ID added (`gtmId`)
-- [ ] Real photos swapped in (same file names and sizes, see README)
+- [ ] Real photos swapped in (same file names and sizes, see README). Don't run `npm run images -- --force` afterwards: it would overwrite them with placeholders
 - [ ] About page placeholder paragraph replaced with your story
 - [ ] Privacy policy: business name and Information Officer filled in
 - [ ] `npm run build && npm run audit` shows 0 errors
@@ -22,15 +22,16 @@ Work through this in order. Tick each item as you go.
 - [ ] `http://proservwashingmachinerepairs.co.za` → 301 → `https://proservwashingmachinerepairs.co.za/`
 - [ ] `https://www.proservwashingmachinerepairs.co.za` → 301 → `https://proservwashingmachinerepairs.co.za/`
 - [ ] `http://www.…` → single 301 → `https://proservwashingmachinerepairs.co.za/`
-- [ ] `/services` (no slash) → 301 → `/services/`
+- [ ] `/services` (no slash) → 301 → `/services/` (Vercel answers this one with a 308, which Google treats the same as a 301)
 - [ ] A made-up URL such as `/does-not-exist/` shows the 404 page **with a 404 status** (check with `curl -I` or httpstatus.io)
-- [ ] `/thank-you/` has `noindex` (view source) and isn't in the sitemap
+- [ ] `/thank-you/` has `noindex` (view source) and isn't in the sitemap. It is deliberately **not** blocked in `robots.txt`, because Google has to crawl the page to see the noindex
 - [ ] `https://proservwashingmachinerepairs.co.za/robots.txt` and `/sitemap.xml` load
 
 ## 3. Google Search Console
 - [ ] Add a **Domain property** for `proservwashingmachinerepairs.co.za` (search.google.com/search-console) and verify it with the DNS TXT record at your domain registrar
 - [ ] Sitemaps → submit `https://proservwashingmachinerepairs.co.za/sitemap.xml`
 - [ ] URL Inspection → request indexing for: home, `/services/`, `/areas/`, each area page, `/contact/`
+- [ ] URL Inspection on `https://proservwashingmachinerepairs.co.za/thank-you/` → Test live URL: it should show "Crawl allowed: Yes" and "Indexing allowed: No: 'noindex' detected"
 - [ ] After a few days, check Pages (indexing) and Enhancements (Breadcrumbs, FAQ) for errors
 - [ ] Run 3–4 pages through the Rich Results Test (search.google.com/test/rich-results) and the Schema Markup Validator (validator.schema.org)
 

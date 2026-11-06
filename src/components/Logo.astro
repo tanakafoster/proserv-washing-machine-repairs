@@ -1,15 +1,16 @@
 ---
 /**
- * Text-based wordmark. Replace with your own logo later:
- * swap this SVG (and public/logo.svg + public/logo.png used by schema and social cards).
+ * Text-based wordmark. Its colours come from the @theme block in src/styles/global.css.
+ * Replace with your own logo later: swap this SVG (and public/logo.svg + public/logo.png,
+ * used by schema and social cards).
  */
 interface Props { class?: string }
 const { class: cls = '' } = Astro.props;
 ---
 <svg class={cls} viewBox="0 0 220 44" width="220" height="44" role="img" aria-label="ProServ Washing Machine Repairs" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="4" width="36" height="36" rx="8" fill="#F97316" />
-  <circle cx="18" cy="22" r="10" fill="none" stroke="#1F2937" stroke-width="3" />
-  <circle cx="18" cy="22" r="4" fill="#1F2937" />
-  <text x="44" y="26" font-family="'Inter Variable', Arial, sans-serif" font-size="22" font-weight="800" fill="#1F2937">Pro<tspan fill="#C2410C">Serv</tspan></text>
-  <text x="45" y="40" font-family="'Inter Variable', Arial, sans-serif" font-size="9.5" font-weight="600" letter-spacing="0.6" fill="#4B5563">WASHING MACHINE REPAIRS</text>
+  <rect x="0" y="4" width="36" height="36" rx="8" class="fill-brand" />
+  <circle cx="18" cy="22" r="10" fill="none" stroke-width="3" class="stroke-ink" />
+  <circle cx="18" cy="22" r="4" class="fill-ink" />
+  <text x="44" y="26" font-family="'Inter Variable', Arial, sans-serif" font-size="22" font-weight="800" class="fill-ink">Pro<tspan class="fill-brand-dark">Serv</tspan></text>
+  <text x="45" y="40" font-family="'Inter Variable', Arial, sans-serif" font-size="9.5" font-weight="600" letter-spacing="0.6" class="fill-ink-soft">WASHING MACHINE REPAIRS</text>
 </svg>

@@ -8,7 +8,7 @@
 export const site = {
   name: 'ProServ Washing Machine Repairs',
   shortName: 'ProServ',
-  /** Canonical origin: https, non-www, no trailing slash. Also set in astro.config.mjs. */
+  /** Canonical origin: https, non-www, no trailing slash. astro.config.ts reads it from here. */
   url: 'https://proservwashingmachinerepairs.co.za',
   domain: 'proservwashingmachinerepairs.co.za',
 
@@ -59,7 +59,14 @@ export const site = {
     fiveStarReviews: '[PLACEHOLDER: 500]',
     arrivalTime: '[PLACEHOLDER: within 1 hour]',
     calloutFee: '[PLACEHOLDER: R300]',
-    calloutCondition: 'only payable if you decide not to go ahead with the quote',
+    /**
+     * When the call-out fee is charged. Read as "The call-out fee is R300, <calloutCondition>."
+     * If your policy is different (e.g. always charged but deducted from the repair), change both
+     * lines: every page that mentions the call-out reads them from here.
+     */
+    calloutCondition: '[PLACEHOLDER: only payable if you decide not to go ahead with the quote]',
+    /** Short form for tight spaces: the home page hero and the price table. */
+    calloutConditionShort: '[PLACEHOLDER: only if you decline the quote]',
     warranty: '[PLACEHOLDER: 6-month]',
   },
 
@@ -87,20 +94,33 @@ export const site = {
   /**
    * Service areas. [CONFIRM] Each area needs a matching content entry in src/data/areas.ts,
    * otherwise the build stops with an error (prevents thin "doorway" pages).
+   * `inName` and `label` are how the place reads in a sentence: "repairs on the East Rand",
+   * "Midrand and the East Rand". For most places they are simply "in X" and "X".
    */
   areas: [
-    { name: 'Johannesburg', slug: 'johannesburg' },
-    { name: 'Pretoria', slug: 'pretoria' },
-    { name: 'Centurion', slug: 'centurion' },
-    { name: 'Sandton', slug: 'sandton' },
-    { name: 'Midrand', slug: 'midrand' },
-    { name: 'East Rand', slug: 'east-rand' },
+    { name: 'Johannesburg', slug: 'johannesburg', inName: 'in Johannesburg', label: 'Johannesburg' },
+    { name: 'Pretoria', slug: 'pretoria', inName: 'in Pretoria', label: 'Pretoria' },
+    { name: 'Centurion', slug: 'centurion', inName: 'in Centurion', label: 'Centurion' },
+    { name: 'Sandton', slug: 'sandton', inName: 'in Sandton', label: 'Sandton' },
+    { name: 'Midrand', slug: 'midrand', inName: 'in Midrand', label: 'Midrand' },
+    { name: 'East Rand', slug: 'east-rand', inName: 'on the East Rand', label: 'the East Rand' },
   ],
 } as const;
 
 export const telHref = `tel:${site.phone.e164}`;
 export const whatsappHref = `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(site.whatsapp.message)}`;
 export const mailHref = `mailto:${site.email}`;
+/**
+ * Tokens for the Markdown blog posts (body and frontmatter), so the number is never typed into a post:
+ * write {{PHONE}} for the number, [{{PHONE}}]({{TEL}}) for a call link and {{WHATSAPP}} for a WhatsApp link.
+ */
+export const markdownTokens: Record<string, string> = {
+  '{{PHONE}}': site.phone.display,
+  '{{TEL}}': telHref,
+  '{{WHATSAPP}}': whatsappHref,
+};
+export const fillTokens = (s: string) => s.replace(/\{\{[A-Z]+\}\}/g, (t) => markdownTokens[t] ?? t);
+
 export const businessId = `${site.url}/#business`;
 export const websiteId = `${site.url}/#website`;
 
@@ -109,6 +129,12 @@ export const brandUrl = (slug: string) => `/brands/${slug}-washing-machine-repai
 export const errorCodeUrl = (slug: string) => `/error-codes/${slug}-washing-machine-error-codes/`;
 
 export const isPlaceholder = (v: string) => /\[(PLACEHOLDER|CONFIRM|VERIFY)/.test(v);
+
+/** The areas as a sentence list: "Johannesburg, Pretoria, Centurion, Sandton, Midrand and the East Rand". */
+export const areaList = () => {
+  const l = site.areas.map((a) => a.label as string);
+  return l.length > 1 ? `${l.slice(0, -1).join(', ')} and ${l[l.length - 1]}` : l.join('');
+};
 
 export const hoursText = () =>
   site.hours.map((h) => `${h.label}: ${h.opens}–${h.closes}`).join(' · ') +

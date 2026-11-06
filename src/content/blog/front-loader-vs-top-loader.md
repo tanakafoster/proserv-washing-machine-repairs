@@ -1,7 +1,7 @@
 ---
 title: "Front loader vs top loader: which washing machine is right for your home?"
 metaTitle: "Front Loader vs Top Loader: Which Is Better? | ProServ"
-description: "Front loader vs top loader: cleaning, water and power use, cost, space and repairs compared by technicians. Need advice? Call 079 895 0496."
+description: "Front loader vs top loader: cleaning, water and power use, cost, space and repairs compared by technicians. Need advice? Call {{PHONE}}."
 primaryKeyword: "front loader vs top loader"
 pubDate: 2026-11-06
 image: "/images/blog-front-vs-top-loader.webp"
@@ -57,8 +57,8 @@ Entry-level top loaders are usually cheaper to buy than entry-level front loader
 This is where we can add something you won't hear in a shop.
 
 **Common front loader repairs:**
-- Drain pump blockages (coins, hair clips, underwires)
-- Door locks and door seals
+- Drain pump blockages (coins, hair clips, underwires), the usual reason a [washing machine is not draining](/problems/washing-machine-not-draining/)
+- Door locks and door seals (see [washing machine door won't open](/problems/washing-machine-door-wont-open/))
 - Drum bearings on well-used machines (see [signs your bearings are worn](/blog/signs-washing-machine-bearings-are-worn/))
 - Carbon brushes on brushed motors
 - Heating elements
@@ -67,7 +67,7 @@ This is where we can add something you won't hear in a shop.
 **Common top loader repairs:**
 - Lid switches and lid locks
 - Drive couplings, clutches and gearboxes
-- Suspension rods (when the machine bangs and walks on spin)
+- Suspension rods (when the machine bangs and walks on spin; see [washing machine noisy when spinning](/problems/washing-machine-noisy-when-spinning/))
 - Inlet valves and drain pumps
 
 Neither type is clearly more reliable than the other. Build quality varies far more between brands and price points than between front and top loaders. Two things make a big difference to how long any machine lasts: not overloading it, and using the right amount of detergent.
@@ -97,4 +97,4 @@ One point to note: bearing replacement on a front loader is a big job, and on ma
 
 Front loaders are more efficient and clean better; top loaders are quicker, easier to load and a little simpler to repair. Both can serve you well for many years if they're installed properly and looked after. If you're deciding whether to replace a broken machine at all, read our [repair or replace guide](/repair-or-replace/) first.
 
-**Need your current machine fixed, or a new one installed?** Call or WhatsApp ProServ on [079 895 0496](tel:+27798950496) or [book online](/contact/). We repair all major washing machine brands, front loaders and top loaders.
+**Need your current machine fixed, or a new one installed?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book online](/contact/). We repair all major washing machine brands, front loaders and top loaders.

@@ -1,7 +1,7 @@
 ---
 title: "6 signs of worn washing machine bearings"
 metaTitle: "Worn Washing Machine Bearings: 6 Signs | ProServ"
-description: "Worn washing machine bearings cause rumbling, drum play and leaks. Learn the signs, why it matters and what a repair involves. Call 079 895 0496."
+description: "Worn washing machine bearings cause rumbling, drum play and leaks. Learn the signs, why it matters and what a repair involves. Call {{PHONE}}."
 primaryKeyword: "worn washing machine bearings"
 pubDate: 2026-11-06
 image: "/images/blog-worn-bearings.webp"
@@ -75,4 +75,4 @@ For a short while, but not for long. Each wash causes more wear, and if a bearin
 
 A rumble on spin, a rough-feeling drum, play when you lift the drum, or water under the middle of the machine are all signs your bearings need attention. Catching it early keeps the repair simpler and cheaper. Our [front loader repairs](/services/front-loader-repairs/) service covers bearing and seal replacement on all major brands.
 
-**Hear a rumble on spin?** Call or WhatsApp ProServ on [079 895 0496](tel:+27798950496) or [book a technician online](/contact/). We'll check the bearings, tell you whether your machine has a split or sealed tub, and quote before any work starts.
+**Hear a rumble on spin?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll check the bearings, tell you whether your machine has a split or sealed tub, and quote before any work starts.

@@ -14,7 +14,7 @@ export const services: Service[] = [
     serviceType: 'Front loader washing machine repair',
     title: 'Front Loader Repairs in Gauteng | ProServ',
     description:
-      'Front loader repairs at your door: bearings, pumps, door seals, PCBs and more. Quote before we start. Call or WhatsApp 079 895 0496.',
+      `Front loader repairs at your door: bearings, pumps, door seals, PCBs and more. Quote before we start. Call or WhatsApp ${site.phone.display}.`,
     h1: 'Front loader repairs at your home',
     primaryKeyword: 'front loader repairs',
     summary: 'Bearings, pumps, door locks, seals and control boards on all front loading machines.',
@@ -33,7 +33,7 @@ export const services: Service[] = [
 
 <h2>How a front loader repair works with ProServ</h2>
 <p>You call or WhatsApp us with the brand, the model if you have it, and what the machine is doing. We book a time that suits you and aim to arrive ${f.arrivalTime} on urgent jobs. The technician runs a proper diagnosis: we check the error history where the machine stores one, test the motor, pump, heater and lock, and inspect the bearings and seal. You get a clear quote before any work starts.</p>
-<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. If you go ahead, you only pay for the repair. Every repair carries our ${f.warranty} warranty on parts and labour.</p>
+<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Every repair carries our ${f.warranty} warranty on parts and labour.</p>
 
 <h2>Brands of front loader we repair</h2>
 <p>We repair all major washing machine brands. Front loaders we see often include <a href="${brandUrl('lg')}">LG</a>, <a href="${brandUrl('samsung')}">Samsung</a>, <a href="${brandUrl('bosch')}">Bosch</a>, <a href="${brandUrl('defy')}">Defy</a>, <a href="${brandUrl('siemens')}">Siemens</a>, <a href="${brandUrl('aeg')}">AEG</a> and <a href="${brandUrl('hisense')}">Hisense</a>. If your machine is showing a code, our guides to <a href="${errorCodeUrl('lg')}">LG error codes</a> and <a href="${errorCodeUrl('samsung')}">Samsung error codes</a> explain what it means.</p>
@@ -55,7 +55,7 @@ export const services: Service[] = [
     serviceType: 'Top loader washing machine repair',
     title: 'Top Loader Repairs in Gauteng | ProServ',
     description:
-      'Top loader repairs for Defy, Samsung, LG, Hisense, Whirlpool and Speed Queen. Clear quote before work starts. Call or WhatsApp 079 895 0496.',
+      `Top loader repairs for Defy, Samsung, LG, Hisense, Whirlpool and Speed Queen. Clear quote before work starts. Call or WhatsApp ${site.phone.display}.`,
     h1: 'Top loader repairs, done at your home',
     primaryKeyword: 'top loader repairs',
     summary: 'Agitators, gearboxes, lid switches, pumps and motors on all top loading machines.',
@@ -97,7 +97,7 @@ export const services: Service[] = [
     serviceType: 'Washer dryer repair',
     title: 'Washer Dryer Repairs at Home | ProServ',
     description:
-      'Washer dryer repairs for machines that won\'t dry, heat or spin. We diagnose and quote on site. Call or WhatsApp ProServ on 079 895 0496.',
+      `Washer dryer repairs for machines that won't dry, heat or spin. We diagnose and quote on site. Call or WhatsApp ProServ on ${site.phone.display}.`,
     h1: 'Washer dryer repairs for combo machines',
     primaryKeyword: 'washer dryer repairs',
     summary: 'Drying faults, heaters, fans, thermostats and all the usual washing faults on combo machines.',
@@ -137,7 +137,7 @@ export const services: Service[] = [
     serviceType: 'Washing machine installation',
     title: 'Washing Machine Installation & Plumbing | ProServ',
     description:
-      'Washing machine installation and plumbing-in: taps, drain hoses, levelling and test run. New or moved machines. Call 079 895 0496.',
+      `Washing machine installation and plumbing-in: taps, drain hoses, levelling and test run. New or moved machines. Call ${site.phone.display}.`,
     h1: 'Washing machine installation and plumbing-in',
     primaryKeyword: 'washing machine installation',
     summary: 'New or moved machines connected, levelled, transit bolts removed and tested.',
@@ -176,7 +176,7 @@ export const services: Service[] = [
     serviceType: 'Washing machine servicing',
     title: 'Washing Machine Servicing & Maintenance | ProServ',
     description:
-      'Washing machine servicing to catch worn parts early: filters, hoses, seals, brushes and drum checks. Book on 079 895 0496 or WhatsApp.',
+      `Washing machine servicing to catch worn parts early: filters, hoses, seals, brushes and drum checks. Book on ${site.phone.display} or WhatsApp.`,
     h1: 'Washing machine servicing and maintenance',
     primaryKeyword: 'washing machine servicing',
     summary: 'A full check of filters, hoses, seals, bearings and brushes to catch problems early.',
@@ -225,7 +225,7 @@ export const services: Service[] = [
     serviceType: 'Washing machine parts replacement',
     title: 'Washing Machine Parts Replacement | ProServ',
     description:
-      'Washing machine parts replacement: pumps, motors, bearings, door seals, PCBs and heating elements, fitted at home. Call 079 895 0496.',
+      `Washing machine parts replacement: pumps, motors, bearings, door seals, PCBs and heating elements, fitted at home. Call ${site.phone.display}.`,
     h1: 'Washing machine parts replacement',
     primaryKeyword: 'washing machine parts replacement',
     summary: 'Pumps, motors, bearings, door seals, PCBs and heating elements supplied and fitted.',

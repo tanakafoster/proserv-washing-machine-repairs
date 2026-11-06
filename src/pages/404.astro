@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
+import { site } from '../data/site';
 ---
-<BaseLayout title="Page Not Found | ProServ" description="Sorry, that page doesn't exist. Find washing machine repair help or call ProServ on 079 895 0496." noindex>
+<BaseLayout title="Page Not Found | ProServ" description={`Sorry, that page doesn't exist. Find washing machine repair help or call ProServ on ${site.phone.display}.`} noindex notFound>
   <section class="section">
     <div class="container-site max-w-2xl text-center">
       <p class="eyebrow">Error 404</p>

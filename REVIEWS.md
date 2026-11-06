@@ -1,10 +1,10 @@
 # Asking for Google reviews
 
-Reviews are one of the biggest factors in local rankings and in whether people call you. Ask every happy customer, ideally the same day, while the repair is fresh.
+Reviews are one of the biggest factors in local rankings and in whether people call you. Ask every customer, ideally the same day, while the repair is fresh. Send one review request per job: the privacy policy promises customers you'll ask once.
 
 **Rules (Google's and ours):**
 - Never offer discounts, gifts or anything else in exchange for a review.
-- Don't ask only happy customers to review on Google while sending unhappy ones elsewhere ("review gating").
+- Don't ask only happy customers to review on Google while sending unhappy ones elsewhere ("review gating"). Use the same neutral wording for everyone, and never make the link depend on how the job went ("if you're happy…").
 - Don't write reviews for yourself, or ask family and friends to.
 - Reply to every review, positive or negative, politely and without sharing personal details.
 
@@ -12,19 +12,19 @@ Replace `[GBP REVIEW LINK]` with your short review link from Google Business Pro
 
 ## WhatsApp messages
 
-**Straight after the repair**
-> Hi [Name], thanks for choosing ProServ today. I hope your washing machine is running well! If you have a minute, a quick Google review really helps a small local business like ours: [GBP REVIEW LINK]
+**Straight after the repair (the review request, sent to every customer)**
+> Hi [Name], thanks for choosing ProServ today. If you have a minute, we'd really value your honest feedback on Google. It helps a small local business like ours: [GBP REVIEW LINK]
 > Thanks, [Your name], ProServ
 
-**Next day follow-up**
-> Hi [Name], just checking your [brand] is behaving after yesterday's repair. If anything isn't right, reply here and we'll sort it out. If all's good, we'd really appreciate a short Google review: [GBP REVIEW LINK] 🙏
+**Next day check-in (no review link: they've already had one)**
+> Hi [Name], just checking your [brand] is behaving after yesterday's repair. If anything isn't right, reply here and we'll sort it out.
 
 **For a regular or business customer**
-> Hi [Name], thanks again for trusting us with your machines. If you're happy with our service, would you mind sharing a few words on Google? It helps other people in [area] find us: [GBP REVIEW LINK]
+> Hi [Name], thanks again for trusting us with your machines. Would you mind sharing your honest feedback on Google? It helps other people in [area] find us: [GBP REVIEW LINK]
 
 ## SMS messages (under 160 characters)
 
-> Hi [Name], thanks for choosing ProServ! If you're happy with the repair, a quick Google review would help us a lot: [GBP REVIEW LINK]
+> Hi [Name], thanks for choosing ProServ! We'd value your honest feedback in a quick Google review: [GBP REVIEW LINK]
 
 > ProServ here. Hope your washing machine is working well. Got a minute for a Google review? [GBP REVIEW LINK] Thank you!
 

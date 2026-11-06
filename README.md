@@ -12,29 +12,31 @@ npm run dev        # local site at http://localhost:4321 (live reload)
 npm run build      # production build into dist/
 npm run preview    # serve the production build locally
 npm run audit      # SEO audit of dist/ → PAGE-AUDIT.md (run after build)
-npm run images     # regenerate placeholder images, logo PNG and favicons
+npm run images     # create any missing placeholder images, logo files and favicons (never overwrites)
 ```
 
-Always run `npm run build && npm run audit` before deploying. The audit fails on broken links, missing alt text, invalid schema, duplicate titles/metas, orphan pages or missing H1s.
+Always run `npm run build && npm run audit` before deploying. The audit fails on broken links or `#anchors`, missing images, missing alt text, invalid schema, duplicate titles/metas, orphan pages or missing H1s.
+
+**`npm run images` and your real photos:** with no options it only creates files that don't exist yet, so it never touches photos or a logo you've added. Naming a group rebuilds (overwrites) it: `npm run images -- icons` (favicons and app icons), `logo` (`public/logo.svg` and `logo.png`), `og` (`public/images/og-default.jpg`), `photos` (every photo in `public/images/`). `npm run images -- --force` rebuilds all of them. Don't use `photos` or `--force` once real photos are in.
 
 ## Where to change things
 
 | What | Where |
 |---|---|
-| **Phone, WhatsApp number and message, email** | `src/data/site.ts` → `phone`, `whatsapp`, `email` |
-| **Service areas** | `src/data/site.ts` → `areas`. Each area also needs unique content in `src/data/areas.ts` (the build stops if it's missing, to avoid thin "doorway" pages) |
+| **Phone, WhatsApp number and message, email** | `src/data/site.ts` → `phone`, `whatsapp`, `email`. Every page, meta description, FAQ and schema reads them from there, and blog posts use `{{PHONE}}` / `{{TEL}}` tokens that are filled in from it. After a change, run `npm run images -- og` (the share image shows the number) and update the docs that quote it: `grep -rn "079 895 0496" --include=*.md .` (GBP-SETUP, CITATIONS, REVIEWS) |
+| **Service areas** | `src/data/site.ts` → `areas` (`inName` and `label` say how the place reads in a sentence, e.g. "on the East Rand"). Each area also needs unique content in `src/data/areas.ts` (the build stops if it's missing, to avoid thin "doorway" pages) |
 | **Opening hours** | `src/data/site.ts` → `hours`, then set `hoursConfirmed: true` |
-| **Business facts** (years, repairs, reviews, arrival time, call-out fee, warranty) | `src/data/site.ts` → `facts`. Replace the whole string, e.g. `'[PLACEHOLDER: 20]'` → `'20'` |
+| **Business facts** (years, repairs, reviews, arrival time, call-out fee and when it's charged, warranty) | `src/data/site.ts` → `facts`. Replace the whole string, e.g. `'[PLACEHOLDER: 20]'` → `'20'`. The call-out wording (`calloutCondition`, `calloutConditionShort`) is used on every page that mentions the call-out, so change it there if your policy differs |
 | **Contact form key** | `src/data/site.ts` → `web3formsKey` (see "Contact form" below) |
 | **Google Tag Manager ID** | `src/data/site.ts` → `gtmId` (GTM only loads once this is a real `GTM-…` ID) |
 | **Google review link** | `src/data/site.ts` → `googleReviewUrl` (footer link) |
 | **Social / GBP profile links for schema** | `src/data/site.ts` → `sameAs` |
 | **Price range for schema** | `src/data/site.ts` → `priceRange` |
-| **Brand colours** | `src/styles/global.css` → the `@theme` block at the top (`--color-brand`, `--color-brand-dark`, etc.) |
+| **Brand colours** | `src/styles/global.css` → the `@theme` block at the top (`--color-brand`, `--color-brand-dark`, etc.). Pages, the header logo and the `theme-color` meta tag follow automatically. The image files don't: run `npm run images -- icons logo og` to rebuild the favicons, app icons (plus `theme_color` in `public/site.webmanifest`), `public/logo.svg`/`logo.png` and the share image in the new colours. Skip `logo` and `og` if you've replaced them with your own |
 | **Logo** | `src/components/Logo.astro` (header/footer), plus `public/logo.svg` and `public/logo.png` (schema). Favicons: `public/favicon.*`, `public/apple-touch-icon.png`, `public/icon-*.png` |
 | **Repair prices** | `src/pages/washing-machine-repair-cost.astro` → `prices`; installation and service prices in `src/data/services.ts` |
 | **Page copy** | Services `src/data/services.ts` · Problems `src/data/problems.ts` · Brands `src/data/brands.ts` · Error codes `src/data/errorCodes.ts` · Areas `src/data/areas.ts` · Other pages in `src/pages/` |
-| **Blog posts** | Markdown files in `src/content/blog/` (see `CONTENT-PLAN.md`) |
+| **Blog posts** | Markdown files in `src/content/blog/` (see `CONTENT-PLAN.md`). Write `{{PHONE}}` for the phone number and `[{{PHONE}}]({{TEL}})` for a call link |
 | **Navigation** | `src/data/site.ts` → `mainNav` |
 
 ### Colour rules (WCAG AA)
@@ -98,7 +100,7 @@ Every image in `public/images/` is a labelled placeholder. Replace each with a r
 | `blog-worn-bearings.webp` | 960 × 540 | An old rusted bearing next to a new one |
 | `blog-load-shedding.webp` | 960 × 540 | Washing machine plugged into a surge protector |
 | `blog-front-vs-top-loader.webp` | 960 × 540 | A front loader next to a top loader |
-| `og-default.jpg` | 1200 × 630 | Social share image (generated: logo and phone). Optional: replace with a branded photo |
+| `og-default.jpg` | 1200 × 630 | Social share image (generated: logo and phone; rebuild with `npm run images -- og` after changing the number). Optional: replace with a branded photo |
 
 Photo tips: natural light, no brand logos as the focus, no customers' faces or house numbers without permission, landscape orientation. Don't use stock photos of foreign kitchens; local, real photos build trust.
 
@@ -113,7 +115,7 @@ src/
   pages/         routes (dynamic routes for services, problems, brands, error codes, areas, blog)
   content/blog/  blog articles (Markdown)
   styles/        global.css (theme tokens)
-integrations/    sitemap generator
+integrations/    sitemap generator, {{PHONE}} token plugin for blog posts
 scripts/         audit.mjs, generate-placeholders.mjs
 extras/cpanel/   optional PHP form handler
 public/          static files (.htaccess, _redirects, robots.txt, images, favicons)

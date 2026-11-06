@@ -10,7 +10,7 @@ const path = '/washing-machine-repair-cost/';
 
 // [PLACEHOLDER] Replace each price with your real "from" price in Rands, e.g. 'From R650'.
 const prices = [
-  { job: 'Call-out and diagnosis', price: `${f.calloutFee} (only payable if you decline the quote)`, note: 'Covers travel and finding the fault' },
+  { job: 'Call-out and diagnosis', price: `${f.calloutFee} (${f.calloutConditionShort})`, note: 'Covers travel and finding the fault' },
   { job: 'Pump filter or drain blockage cleared', price: '[PLACEHOLDER]', note: 'No parts needed in most cases' },
   { job: 'Drain pump replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
   { job: 'Carbon brushes replacement', price: '[PLACEHOLDER]', note: 'Brushed motors only' },
@@ -25,15 +25,15 @@ const prices = [
   { job: 'Full service', price: '[PLACEHOLDER]', note: 'Parts extra if needed' },
 ];
 const faqs = [
-  { q: 'How much does it cost to repair a washing machine?', a: 'It depends on the fault, the part and the brand. Simple blockages cost little more than the call-out. Bearings and control boards are at the higher end. You always get a quote before we start.' },
+  { q: 'How much does it cost to repair a washing machine?', a: 'It depends on the fault, the part and the brand. Simple blockages are at the lower end, because clearing them is mostly labour. Bearings and control boards are at the higher end. You always get a quote before we start.' },
   { q: 'How much is bearing replacement?', a: 'Bearing replacement is one of the bigger repairs because the machine has to be stripped down. On machines with a sealed tub, the whole tub assembly is needed, which costs more. We confirm which type you have before quoting.' },
-  { q: 'Do I pay the call-out fee if I go ahead with the repair?', a: `No. The ${f.calloutFee} call-out fee is ${f.calloutCondition}.` },
+  { q: 'When do I pay the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. It covers the technician's travel and finding the fault.` },
   { q: 'Do you charge more on Saturdays?', a: '[CONFIRM: weekend or after-hours rates]' },
 ];
 ---
 <BaseLayout
   title="Washing Machine Repair Cost in South Africa | ProServ"
-  description="Washing machine repair cost explained: parts, brand, labour and call-out fee. Get an exact quote before work starts. Call 079 895 0496."
+  description={`Washing machine repair cost explained: parts, brand, labour and call-out fee. Get an exact quote before work starts. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Repair cost', href: path }]}
   schema={[faqSchema(faqs)]}
 >
@@ -53,7 +53,7 @@ const faqs = [
         <h3>3. Labour</h3>
         <p>Labour depends on how long the job takes. Replacing a pump on a front loader is quick. Replacing bearings means stripping the whole machine down to the tub. Integrated machines also take extra time to remove from and refit into the kitchen cabinets.</p>
         <h3>4. The call-out</h3>
-        <p>Our call-out fee is {f.calloutFee}. It covers the technician's travel and the diagnosis, and it's {f.calloutCondition}. If you go ahead with the repair, you only pay for the repair.</p>
+        <p>Our call-out fee is {f.calloutFee}. It covers the technician's travel and the diagnosis, and it's {f.calloutCondition}.</p>
       </div>
 
       <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Typical repair prices</h2>

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { site } from '../data/site';
+import { site, areaList } from '../data/site';
 import { faqSchema } from '../lib/schema';
 const f = site.facts;
 const groups = [
@@ -11,10 +11,10 @@ const groups = [
     heading: 'Booking and call-outs',
     id: 'faq-booking',
     items: [
-      { q: 'How do I book a washing machine repair?', a: 'Call or WhatsApp us on 079 895 0496, or use the form on our <a href="/contact/">contact page</a>. Tell us the brand, model and what the machine is doing.' },
-      { q: 'Which areas do you cover?', a: `We cover ${site.areas.map((a) => a.name).join(', ')} and surrounding suburbs. See <a href="/areas/">areas we cover</a>.` },
+      { q: 'How do I book a washing machine repair?', a: `Call or WhatsApp us on ${site.phone.display}, or use the form on our <a href="/contact/">contact page</a>. Tell us the brand, model and what the machine is doing.` },
+      { q: 'Which areas do you cover?', a: `We cover ${areaList()}, plus the surrounding suburbs. See <a href="/areas/">areas we cover</a>.` },
       { q: 'How quickly can a technician come out?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. Otherwise we book a time that suits you.` },
-      { q: 'What are your hours?', a: `${site.hours.map((h) => `${h.label} ${h.opens}–${h.closes}`).join(', ')}. ${site.hoursNote}. [CONFIRM]` },
+      { q: 'What are your hours?', a: `${site.hours.map((h) => `${h.label} ${h.opens}–${h.closes}`).join(', ')}. ${site.hoursNote}.${site.hoursConfirmed ? '' : ' [CONFIRM]'}` },
       { q: 'Do I need to be home?', a: 'Someone over 18 needs to be home to let the technician in and approve the quote.' },
     ],
   },
@@ -22,7 +22,7 @@ const groups = [
     heading: 'Prices and payment',
     id: 'faq-prices',
     items: [
-      { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. If you go ahead, you only pay for the repair.` },
+      { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. It covers the technician's travel and finding the fault.` },
       { q: 'Will I get a quote before work starts?', a: 'Yes, always. The technician diagnoses the fault and gives you a price before starting.' },
       { q: 'How much does a repair usually cost?', a: 'It depends on the fault, the part and the brand. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what affects the price.' },
       { q: 'How can I pay?', a: '[CONFIRM: payment methods]' },
@@ -44,7 +44,7 @@ const all = groups.flatMap((g) => g.items);
 ---
 <BaseLayout
   title="Washing Machine Repair Questions (FAQ) | ProServ"
-  description="Answers to common washing machine repair questions: call-out fee, quotes, warranty, areas and brands. Still unsure? Call 079 895 0496."
+  description={`Answers to common washing machine repair questions: call-out fee, quotes, warranty, areas and brands. Still unsure? Call ${site.phone.display}.`}
   crumbs={[{ name: 'FAQ', href: '/faq/' }]}
   schema={[faqSchema(all)]}
 >

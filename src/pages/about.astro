@@ -4,19 +4,21 @@ import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { site } from '../data/site';
+import { site, areaList } from '../data/site';
 const f = site.facts;
+const hero = { src: '/images/about-technician-van.webp', alt: 'ProServ washing machine technician standing next to the service van', width: 960, height: 640 };
 ---
 <BaseLayout
   title="ProServ Washing Machine Repairs: About Us"
-  description="About ProServ Washing Machine Repairs: local, mobile technicians across Gauteng. Honest quotes and warranty on repairs. Call 079 895 0496."
+  description={`About ProServ Washing Machine Repairs: local, mobile technicians across Gauteng. Honest quotes and warranty on repairs. Call ${site.phone.display}.`}
   crumbs={[{ name: 'About us', href: '/about/' }]}
+  preloadImage={{ src: hero.src }}
 >
   <PageHero
     h1="About ProServ Washing Machine Repairs"
     eyebrow="Who we are"
-    image={{ src: '/images/about-technician-van.webp', alt: 'ProServ washing machine technician standing next to the service van', width: 960, height: 640 }}
-    intro={`<p>ProServ Washing Machine Repairs is a local, mobile repair service for Gauteng homes. We do one thing and do it well: we fix washing machines at your door. Our technicians have been repairing washing machines for ${f.yearsInBusiness} years, and we've completed ${f.repairsCompleted} repairs in homes across ${site.areas.map((a) => a.name).join(', ')}.</p>`}
+    image={hero}
+    intro={`<p>ProServ Washing Machine Repairs is a local, mobile repair service for Gauteng homes. We do one thing and do it well: we fix washing machines at your door. Our technicians have been repairing washing machines for ${f.yearsInBusiness} years, and we've completed ${f.repairsCompleted} repairs in homes across ${areaList()}.</p>`}
   />
   <TrustBar />
   <section class="section">

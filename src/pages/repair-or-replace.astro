@@ -4,16 +4,18 @@ import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { faqSchema } from '../lib/schema';
+import { site } from '../data/site';
+const f = site.facts;
 const path = '/repair-or-replace/';
 const faqs = [
   { q: 'How long should a washing machine last?', a: 'With reasonable care, many washing machines last around 8 to 12 years, and some well-built machines last much longer. Heavy use, surges and poor maintenance shorten that.' },
   { q: 'Is it worth fixing a 10-year-old washing machine?', a: 'Often, yes, for common faults like pumps, door locks, brushes and inlet valves. For major repairs like bearings on a sealed tub, or a control board on an older machine, replacement may make more sense.' },
-  { q: 'Will you tell me if it is not worth repairing?', a: 'Yes. If the repair does not make financial sense, we will tell you before any work starts. You only pay the call-out fee if you decide not to go ahead.' },
+  { q: 'Will you tell me if it is not worth repairing?', a: `Yes. If the repair does not make financial sense, we will tell you before any work starts. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}.` },
 ];
 ---
 <BaseLayout
   title="Repair or Replace Your Washing Machine? | ProServ"
-  description="Repair or replace your washing machine? Weigh up age, fault, repair cost and condition with our honest guide. Advice on 079 895 0496."
+  description={`Repair or replace your washing machine? Weigh up age, fault, repair cost and condition with our honest guide. Advice on ${site.phone.display}.`}
   crumbs={[{ name: 'Repair or replace', href: path }]}
   schema={[faqSchema(faqs)]}
 >

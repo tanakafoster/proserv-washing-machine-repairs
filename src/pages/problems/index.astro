@@ -4,10 +4,11 @@ import PageHero from '../../components/PageHero.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { problems, problemUrl } from '../../data/problems';
+import { site } from '../../data/site';
 ---
 <BaseLayout
   title="Washing Machine Problems & What They Mean | ProServ"
-  description="Common washing machine problems explained in plain language: drainage, spin, leaks, power, doors, noise and codes. Call 079 895 0496."
+  description={`Common washing machine problems explained in plain language: drainage, spin, leaks, power, doors, noise and codes. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Problems', href: '/problems/' }]}
 >
   <PageHero

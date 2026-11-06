@@ -2,13 +2,15 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <BaseLayout
   title="Washing Machine Tips & Advice Blog | ProServ"
-  description="Washing machine tips from Gauteng technicians: smells, bearings, load shedding, buying advice and more. Need a repair? Call 079 895 0496."
+  description={`Washing machine tips from Gauteng technicians: smells, bearings, load shedding, buying advice and more. Need a repair? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Blog', href: '/blog/' }]}
+  preloadImage={posts[0] && { src: posts[0].data.image }}
 >
   <section class="pt-6 pb-10">
     <div class="container-site">
@@ -24,7 +26,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 
       {posts.map((p, i) => (
         <li>
           <a href={`/blog/${p.id}/`} class="card-link h-full overflow-hidden p-0">
-            <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" class="h-auto w-full" />
+            <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" class="h-auto w-full" />
             <span class="block p-5">
               <span class="block text-sm text-ink-soft"><time datetime={p.data.pubDate.toISOString().slice(0, 10)}>{fmt(p.data.pubDate)}</time></span>
               <span class="mt-1 block text-xl font-semibold text-ink">{p.data.title}</span>

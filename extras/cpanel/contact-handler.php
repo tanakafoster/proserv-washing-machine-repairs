@@ -53,7 +53,9 @@ $problem   = isset($_POST['problem']) ? mb_substr(strip_tags(trim((string) $_POS
 if ($name === '' || $phone === '' || $area === '' || $brand === '' || $problem === '') {
     respond(false, 'Please fill in all required fields.', $wantsJson, $CONTACT);
 }
-if (!preg_match('/^[0-9 +()\-]{9,}$/', $phone)) {
+// Same rule as the form's pattern attribute: 9 to 15 digits, optionally separated by
+// spaces, dots, brackets, + or -.
+if (!preg_match('/^[\s.()+\-]*(?:\d[\s.()+\-]*){9,15}$/u', $phone)) {
     respond(false, 'Please enter a valid phone number.', $wantsJson, $CONTACT);
 }
 

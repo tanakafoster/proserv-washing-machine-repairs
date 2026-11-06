@@ -85,6 +85,6 @@ Don't use stock photos or brand logos. Photos taken on site in Gauteng help most
 ## Verification and ongoing
 - Verify by the method Google offers (video verification is common for service-area businesses: show your van, tools, branded items and proof of business).
 - Reply to every review within a couple of days, good or bad.
-- Use `REVIEWS.md` to ask happy customers for reviews. Never offer rewards for reviews.
+- Use `REVIEWS.md` to ask every customer for a review, with the same neutral wording for everyone. Never offer rewards for reviews.
 - Add Q&A: post and answer the most common questions from the website FAQ.
 - Once live, add the profile and review links to `src/data/site.ts` (`sameAs` and `googleReviewUrl`).

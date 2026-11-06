@@ -1,7 +1,7 @@
 ---
 title: "Why does my washing machine smell? Causes and how to fix it"
 metaTitle: "Washing Machine Smell: Causes & How to Fix It | ProServ"
-description: "Washing machine smells musty or like rotten eggs? The real causes, how to get rid of it, and how to stop it coming back. Help: 079 895 0496."
+description: "Washing machine smells musty or like rotten eggs? The real causes, how to get rid of it, and how to stop it coming back. Help: {{PHONE}}."
 primaryKeyword: "washing machine smell"
 pubDate: 2026-11-06
 image: "/images/blog-smelly-washing-machine.webp"
@@ -85,4 +85,4 @@ A regular [washing machine service](/services/washing-machine-servicing/) includ
 
 A smelly washing machine is usually telling you it needs a clean, not a repair. Clean the door seal, the drawer and the filter, run a hot empty wash, and then change a couple of habits: less detergent, a few hotter washes, and leaving the door open. If the smell persists, or there's burning, leaking or poor draining as well, we're happy to help.
 
-**Washing machine still smells, won't drain or is leaking?** Call or WhatsApp ProServ on [079 895 0496](tel:+27798950496) or [book a technician online](/contact/). We'll come to you, find the cause and quote before any work starts.
+**Washing machine still smells, won't drain or is leaking?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll come to you, find the cause and quote before any work starts.

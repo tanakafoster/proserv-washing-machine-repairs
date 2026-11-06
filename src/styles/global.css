@@ -2,7 +2,10 @@
 @import '@fontsource-variable/inter/wght.css';
 
 /*
- * BRAND COLOURS — change them here and the whole site follows.
+ * BRAND COLOURS — change them here and every page follows.
+ * The header logo and the theme-color meta tag read these values too. The image files can't, so
+ * after a colour change run `npm run images -- icons logo og` to rebuild the favicons, app icons
+ * (and the manifest's theme_color), the logo files and the share image from the values below.
  * Contrast rules (WCAG AA):
  *   - Orange text on white: use --color-brand-dark (#C2410C), never --color-brand.
  *   - Buttons: white text on --color-brand-dark, or --color-ink text on --color-brand.
@@ -28,6 +31,13 @@
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 5rem;
   }
+  /* Below md the fixed Call/WhatsApp bar covers the bottom of the screen: keep focused
+     elements and #anchors clear of it. */
+  @media (max-width: 767.98px) {
+    html {
+      scroll-padding-bottom: 4.5rem;
+    }
+  }
   body {
     @apply bg-white font-sans text-ink antialiased;
   }
@@ -37,9 +47,24 @@
   a:hover {
     @apply decoration-2;
   }
+  /* Focus ring: #C2410C is 5.2:1 on white and 4.7:1 on --color-surface (WCAG 1.4.11 needs 3:1).
+     On the dark call-to-action band the brighter orange is used instead (5.2:1 on --color-ink). */
   :focus-visible {
-    outline: 3px solid var(--color-brand);
+    outline: 3px solid var(--color-brand-dark);
     outline-offset: 2px;
+  }
+  .bg-ink :focus-visible {
+    outline-color: var(--color-brand);
+  }
+  /* Form hints: #6B7280 is 4.8:1 on white (the browser default is about 3:1). */
+  input::placeholder,
+  textarea::placeholder {
+    color: #6b7280;
+    opacity: 1;
+  }
+  /* Long email addresses must wrap on narrow phones instead of pushing the page sideways. */
+  a[href^='mailto:'] {
+    overflow-wrap: anywhere;
   }
   summary {
     cursor: pointer;
@@ -99,6 +124,13 @@
   }
   .card-link:hover {
     @apply no-underline;
+  }
+  /* Mobile menu panel: scrolls inside itself when the screen is short (phone landscape, zoom). */
+  .menu-panel {
+    max-height: calc(100vh - 6rem);
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .placeholder-note {
     @apply rounded bg-brand-tint px-1 text-brand-dark;

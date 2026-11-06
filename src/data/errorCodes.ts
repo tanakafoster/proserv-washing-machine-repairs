@@ -1,5 +1,5 @@
 import type { ContentPage } from './types';
-import { brandUrl } from './site';
+import { site, brandUrl } from './site';
 
 export interface ErrorCode {
   code: string;
@@ -27,7 +27,7 @@ export const errorGuides: ErrorGuide[] = [
     brandSlug: 'lg',
     name: 'LG error codes',
     title: 'LG Washing Machine Error Codes: OE, IE, UE | ProServ',
-    description: 'LG washing machine error codes explained: OE, IE, UE, dE, LE and more, with safe first checks. Need a technician? Call 079 895 0496.',
+    description: `LG washing machine error codes explained: OE, IE, UE, dE, LE and more, with safe first checks. Need a technician? Call ${site.phone.display}.`,
     h1: 'LG washing machine error codes',
     primaryKeyword: 'LG washing machine error codes',
     summary: 'OE, IE, UE, dE, LE, PE, FE, tE and more.',
@@ -61,7 +61,7 @@ export const errorGuides: ErrorGuide[] = [
     brandSlug: 'samsung',
     name: 'Samsung error codes',
     title: 'Samsung Washing Machine Error Codes: 4C, 5C | ProServ',
-    description: 'Samsung washing machine error codes explained: 4C, 5C, UB, DC, HC and more, with safe first checks. Technician help on 079 895 0496.',
+    description: `Samsung washing machine error codes explained: 4C, 5C, UB, DC, HC and more, with safe first checks. Technician help on ${site.phone.display}.`,
     h1: 'Samsung washing machine error codes',
     primaryKeyword: 'Samsung washing machine error codes',
     summary: '4C, 5C, UB, DC, HC, LC, 3C, Sud and more.',
@@ -94,7 +94,7 @@ export const errorGuides: ErrorGuide[] = [
     brandSlug: 'bosch',
     name: 'Bosch error codes',
     title: 'Bosch Washing Machine Error Codes: E18, E17 | ProServ',
-    description: 'Bosch washing machine error codes explained: E18, E17, E23, E21 and more, with safe first checks. Technician help on 079 895 0496.',
+    description: `Bosch washing machine error codes explained: E18, E17, E23, E21 and more, with safe first checks. Technician help on ${site.phone.display}.`,
     h1: 'Bosch washing machine error codes',
     primaryKeyword: 'Bosch washing machine error codes',
     summary: 'E17, E18, E21, E23 and the older F versions.',
@@ -121,7 +121,7 @@ export const errorGuides: ErrorGuide[] = [
     brandSlug: 'defy',
     name: 'Defy error codes',
     title: 'Defy Washing Machine Error Codes Explained | ProServ',
-    description: 'Defy washing machine error codes explained for front loaders: door, water, drain and heating faults, plus safe checks. Call 079 895 0496.',
+    description: `Defy washing machine error codes explained for front loaders: door, water, drain and heating faults, plus safe checks. Call ${site.phone.display}.`,
     h1: 'Defy washing machine error codes',
     primaryKeyword: 'Defy washing machine error codes',
     summary: 'Common front loader codes for door, water, drain and heating faults.',

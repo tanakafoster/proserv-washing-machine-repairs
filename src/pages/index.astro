@@ -7,7 +7,7 @@ import LinkCards from '../components/LinkCards.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
-import { site, areaUrl, brandUrl, hoursText } from '../data/site';
+import { site, areaUrl, brandUrl, hoursText, areaList } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { problems, problemUrl } from '../data/problems';
 import { brands, otherBrands, trademarkNote } from '../data/brands';
@@ -20,7 +20,7 @@ const hero = {
   sizes: '(min-width: 1024px) 540px, 100vw',
 };
 const faqs = [
-  { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}. It is ${f.calloutCondition}. If you go ahead, you only pay for the repair.` },
+  { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. The technician diagnoses the fault and gives you a quote before any work starts.` },
   { q: 'How quickly can you get here?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. Otherwise we book a time that suits you.` },
   { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele, Smeg, Electrolux and Speed Queen. We are an independent repairer, not an agent for any brand.' },
   { q: 'Are your repairs guaranteed?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour.` },
@@ -30,7 +30,7 @@ const faqs = [
 ---
 <BaseLayout
   title="Washing Machine Repairs at Your Door | ProServ"
-  description="Washing machine repairs at your door across Gauteng. All major brands, quote before work starts. Call or WhatsApp ProServ on 079 895 0496."
+  description={`Washing machine repairs at your door across Gauteng. All major brands, quote before work starts. Call or WhatsApp ProServ on ${site.phone.display}.`}
   schema={[faqSchema(faqs)]}
   preloadImage={hero}
 >
@@ -41,12 +41,12 @@ const faqs = [
         <p class="eyebrow">Gauteng's mobile washing machine technicians</p>
         <h1 class="mt-2 text-4xl leading-tight font-extrabold sm:text-5xl">Washing machine repairs at your door</h1>
         <p class="mt-4 max-w-xl text-lg text-ink-soft">
-          Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work, and fix most faults on the spot. We repair all major washing machine brands across {site.areas.map((a) => a.name).join(', ')}.
+          Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work, and fix most faults on the spot. We repair all major washing machine brands across {areaList()}.
         </p>
         <ContactButtons class="mt-6" size="lg" />
         <ul class="mt-6 grid gap-2 text-ink-soft sm:grid-cols-2">
           <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Quote before we start</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out, only if you decline</li>
+          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out, {f.calloutConditionShort}</li>
           <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} repair warranty</li>
           <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Front, top and washer-dryers</li>
         </ul>

@@ -1,7 +1,7 @@
 ---
 title: "How to protect your washing machine from load shedding and power surges"
 metaTitle: "Protect Your Washing Machine From Load Shedding | ProServ"
-description: "Load shedding can damage a washing machine's electronics. How to protect it from surges and outages, and what to do after. Help: 079 895 0496."
+description: "How to protect your washing machine from load shedding and surges, and what to check after an outage. Need a technician? Call {{PHONE}}."
 primaryKeyword: "protect washing machine from load shedding"
 pubDate: 2026-11-06
 image: "/images/blog-load-shedding.webp"
@@ -86,4 +86,4 @@ Our [parts replacement](/services/washing-machine-parts-replacement/) service co
 
 The cheapest protection is a habit: switch off at the wall during load shedding and wait a few minutes after the power returns before switching on. Add a quality surge protector, avoid starting long washes close to a power cut, and be careful running the machine on backup power. If your machine has stopped working after an outage, it can usually be fixed.
 
-**Machine dead after load shedding?** Call or WhatsApp ProServ on [079 895 0496](tel:+27798950496) or [book online](/contact/). We'll test it properly and quote before any work.
+**Machine dead after load shedding?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book online](/contact/). We'll test it properly and quote before any work.

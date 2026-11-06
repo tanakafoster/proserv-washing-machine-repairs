@@ -8,7 +8,7 @@
       "source": "/:path(.*)",
       "has": [{ "type": "host", "value": "www.proservwashingmachinerepairs.co.za" }],
       "destination": "https://proservwashingmachinerepairs.co.za/:path",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "headers": [

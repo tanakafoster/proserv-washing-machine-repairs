@@ -26,7 +26,8 @@ DirectoryIndex index.html
 # Real 404 status with the custom page
 ErrorDocument 404 /404.html
 
-# Keep /thank-you/ out of search results (also set via meta robots)
+# Keep /thank-you/ out of search results (also set via meta robots).
+# Don't block it in robots.txt: Google has to be able to crawl the page to see the noindex.
 <IfModule mod_headers.c>
   <If "%{REQUEST_URI} =~ m#^/thank-you/#">
     Header set X-Robots-Tag "noindex, follow"
@@ -37,6 +38,8 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # Caching: hashed build assets forever, images a month, HTML always revalidated
+# Some hosts don't map .woff2 to a type, which would skip the font rule below.
+AddType font/woff2 .woff2
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html "access plus 0 seconds"
@@ -48,10 +51,12 @@ ErrorDocument 404 /404.html
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
 </IfModule>
+# Files in /_astro/ have a content hash in their name, so they can be cached for good.
+# (<FilesMatch> only sees the file name, not the folder, so the path is tested with <If>.)
 <IfModule mod_headers.c>
-  <FilesMatch "^_astro/">
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
     Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
+  </If>
 </IfModule>
 
 # Compression

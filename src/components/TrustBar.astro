@@ -14,7 +14,7 @@ const items = [
     {items.map((i) => (
       <li class="flex items-start gap-3">
         <span class="mt-0.5 text-brand-dark"><Icon name={i.icon} class="h-6 w-6" /></span>
-        <span><strong class="block text-ink">{i.t}</strong><span class="text-sm text-ink-soft">{i.d}</span></span>
+        <span class="min-w-0 [overflow-wrap:anywhere]"><strong class="block text-ink">{i.t}</strong><span class="text-sm text-ink-soft">{i.d}</span></span>
       </li>
     ))}
   </ul>
