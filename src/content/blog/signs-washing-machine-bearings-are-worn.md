@@ -1,6 +1,6 @@
 ---
 title: "6 signs of worn washing machine bearings"
-metaTitle: "Signs of Worn Washing Machine Bearings | ProServ"
+metaTitle: "Worn Washing Machine Bearings: 6 Signs | ProServ"
 description: "Worn washing machine bearings cause rumbling, drum play and leaks. Learn the signs, why it matters and what a repair involves. Call 079 895 0496."
 primaryKeyword: "worn washing machine bearings"
 pubDate: 2026-11-06

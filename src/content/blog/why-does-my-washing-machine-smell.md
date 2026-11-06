@@ -1,6 +1,6 @@
 ---
 title: "Why does my washing machine smell? Causes and how to fix it"
-metaTitle: "Why Does My Washing Machine Smell? | ProServ"
+metaTitle: "Washing Machine Smell: Causes & How to Fix It | ProServ"
 description: "Washing machine smells musty or like rotten eggs? The real causes, how to get rid of it, and how to stop it coming back. Help: 079 895 0496."
 primaryKeyword: "washing machine smell"
 pubDate: 2026-11-06
