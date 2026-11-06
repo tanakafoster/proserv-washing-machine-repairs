@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter/wght.css';
+
+/*
+ * BRAND COLOURS — change them here and the whole site follows.
+ * Contrast rules (WCAG AA):
+ *   - Orange text on white: use --color-brand-dark (#C2410C), never --color-brand.
+ *   - Buttons: white text on --color-brand-dark, or --color-ink text on --color-brand.
+ *   - Never white text on --color-brand (#F97316).
+ */
+@theme {
+  --color-brand: #f97316; /* bright orange: accents, icons, borders, highlights */
+  --color-brand-dark: #c2410c; /* darker orange: orange text on white, primary buttons */
+  --color-brand-darker: #9a3412; /* hover state for dark buttons */
+  --color-brand-tint: #fff7ed; /* very light orange panels */
+  --color-ink: #1f2937; /* body text */
+  --color-ink-soft: #4b5563; /* secondary text (AA on white and on --color-surface) */
+  --color-surface: #f3f4f6; /* alternating sections */
+  --color-line: #e5e7eb; /* borders */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #075e54;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  a {
+    @apply text-brand-dark underline-offset-2;
+  }
+  a:hover {
+    @apply underline;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  summary {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-semibold no-underline transition-colors;
+  }
+  .btn:hover {
+    @apply no-underline;
+  }
+  /* white on #C2410C passes AA (5.2:1) */
+  .btn-primary {
+    @apply bg-brand-dark text-white;
+  }
+  .btn-primary:hover {
+    @apply bg-brand-darker;
+  }
+  /* #1F2937 on #F97316 passes AA (5.6:1) */
+  .btn-accent {
+    @apply bg-brand text-ink;
+  }
+  .btn-accent:hover {
+    @apply bg-[#fb923c];
+  }
+  .btn-whatsapp {
+    @apply bg-whatsapp-dark text-white;
+  }
+  .btn-whatsapp:hover {
+    @apply bg-[#054d45];
+  }
+  .btn-outline {
+    @apply border-2 border-brand-dark bg-white text-brand-dark;
+  }
+  .btn-outline:hover {
+    @apply bg-brand-tint;
+  }
+  .section {
+    @apply py-12 sm:py-16;
+  }
+  .section-alt {
+    @apply bg-surface;
+  }
+  .eyebrow {
+    @apply text-sm font-semibold tracking-wide text-brand-dark uppercase;
+  }
+  .card {
+    @apply rounded-xl border border-line bg-white p-5 shadow-sm;
+  }
+  .card-link {
+    @apply block rounded-xl border border-line bg-white p-5 text-ink no-underline shadow-sm transition hover:border-brand hover:shadow-md;
+  }
+  .card-link:hover {
+    @apply no-underline;
+  }
+  .placeholder-note {
+    @apply rounded bg-brand-tint px-1 text-brand-dark;
+  }
+
+  /* Long-form copy (pages built from data + blog posts) */
+  .prose-site {
+    @apply max-w-none text-[1.0625rem] leading-relaxed text-ink;
+  }
+  .prose-site > * + * {
+    @apply mt-4;
+  }
+  .prose-site h2 {
+    @apply mt-10 text-2xl font-bold text-ink sm:text-3xl;
+  }
+  .prose-site h3 {
+    @apply mt-8 text-xl font-semibold text-ink;
+  }
+  .prose-site ul {
+    @apply list-disc space-y-2 pl-6;
+  }
+  .prose-site ol {
+    @apply list-decimal space-y-2 pl-6;
+  }
+  .prose-site li::marker {
+    color: var(--color-brand-dark);
+  }
+  .prose-site a {
+    @apply font-medium underline;
+  }
+  .prose-site strong {
+    @apply font-semibold;
+  }
+  .prose-site table {
+    @apply w-full border-collapse text-left text-base;
+  }
+  .prose-site th {
+    @apply border-b-2 border-brand bg-surface px-3 py-2 font-semibold;
+  }
+  .prose-site td {
+    @apply border-b border-line px-3 py-2 align-top;
+  }
+  .prose-site blockquote,
+  .prose-site .callout {
+    @apply rounded-r-lg border-l-4 border-brand bg-brand-tint px-4 py-3;
+  }
+}
