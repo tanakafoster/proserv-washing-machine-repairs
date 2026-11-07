@@ -39,7 +39,7 @@ export const services: Service[] = [
 <h3>Leaks at the front or underneath</h3>
 <p>Water at the front usually comes from a split door seal, or a sock caught between the seal and the glass. Underneath, look to a pump filter that wasn't screwed in fully, a leaking pump or sump hose, or a failed shaft seal at the back of the tub. See <a href="/problems/washing-machine-leaking/">washing machine leaking</a>.</p>
 <h3>Detergent left in the drawer</h3>
-<p>Powder or liquid left in the drawer after the wash means the water isn't flushing it through. Caked powder, residue blocking the jets above the drawer, low water pressure or detergent in the wrong compartment is the usual reason, and failing those, an outlet on the inlet valve.</p>
+<p>Powder or liquid left in the drawer after the wash means the water isn't flushing it through. Caked powder, residue blocking the jets above the drawer, low water pressure or detergent in the wrong compartment is the usual reason. Failing those, the section of the inlet valve that feeds that compartment may have failed.</p>
 <h3>A knock, wobble or rattle from the drum</h3>
 <p>The drum's plastic paddles can crack or work loose and rattle with every turn. On many front loaders, the metal bracket on the back of the drum that carries the shaft, called the drum spider, can also corrode and crack, letting the drum wobble and knock much like worn bearings.</p>
 <h3>Cold washes, or the power trips when it heats</h3>
@@ -53,7 +53,7 @@ export const services: Service[] = [
   <li>The plug is in and switched on at the wall, and the house has power (try a lamp in the socket if you're unsure).</li>
   <li>No delay timer or child lock is set (look for a clock or key symbol on the display).</li>
   <li>The door is shut firmly with nothing caught in the seal, and the tap is fully open with no kinks in the hoses.</li>
-  <li>If water is left inside, clean the pump filter as your manual describes, after switching off at the wall and unplugging. Expect a lot of water, so lay down towels and a shallow tray first.</li>
+  <li>If water is left inside, clean the pump filter as your manual describes, after switching off at the wall and unplugging. Expect a lot of water, so lay down towels and a shallow tray first, and give the water time to cool if the machine stopped partway through a hot wash.</li>
 </ul>
 
 <h2>What the technician checks</h2>
@@ -71,13 +71,13 @@ export const services: Service[] = [
 
 <h2>What affects the cost</h2>
 <p>The part, and the time it takes to reach it, decide most of the price. A cleared blockage may need no part at all, while bearings mean stripping the machine down to the tub, and a built-in machine has to come out of its cabinet first.</p>
-<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Every repair carries a ${f.warranty} warranty on parts and labour, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains how repairs are priced.</p>
+<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Every repair carries a ${f.warranty} warranty on parts and labour, and our <a href="/washing-machine-repair-cost/">repair cost page</a> explains how repairs are priced.</p>
 
 <h2>Looking after a front loader</h2>
 <ul class="checklist">
   <li>Use a low-suds detergent made for automatic or front loading machines, at the dose on the pack.</li>
   <li>Empty pockets, and wash underwired bras in a mesh bag: coins, hair clips and underwires cause many pump blockages and drum noises.</li>
-  <li>Wipe the folds of the door seal after the day's last wash, and leave the door ajar so the drum can dry.</li>
+  <li>Wipe the folds of the door seal after the day's last wash, and leave the door ajar so the drum can dry, unless small children or pets can reach the machine.</li>
   <li>Mix big and small items so the drum can balance, and keep within the load your manual gives.</li>
   <li>Run an empty hot maintenance wash about once a month, especially if you mostly wash cold.</li>
   <li>Switch off at the wall during load shedding, as our guide to <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your washing machine from load shedding</a> explains.</li>
@@ -149,7 +149,7 @@ export const services: Service[] = [
 
 <h2>What affects the price</h2>
 <p>The part is the main factor: a lid switch, belt or coupling is a small item, while a clutch, gearbox or motor is a bigger one. Labour depends on whether the repair can be done from the top or underneath, or whether the basket has to come out.</p>
-<p>If a part isn't available on the day, you'll know before you approve the repair. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and repairs carry a ${f.warranty} warranty on parts and labour. The <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains pricing in more detail.</p>
+<p>If a part isn't available on the day, you'll know before you approve the repair. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and repairs carry a ${f.warranty} warranty on parts and labour. Our page on <a href="/washing-machine-repair-cost/">how repairs are priced</a> goes into more detail.</p>
 
 <h2>Keeping a top loader running well</h2>
 <ul class="checklist">
@@ -164,7 +164,7 @@ export const services: Service[] = [
 <h2>Top loader brands we repair</h2>
 <p>We repair top loaders from all major brands, including <a href="${brandUrl('defy')}">Defy</a>, <a href="${brandUrl('hisense')}">Hisense</a>, <a href="${brandUrl('lg')}">LG</a>, <a href="${brandUrl('samsung')}">Samsung</a>, <a href="${brandUrl('whirlpool')}">Whirlpool</a> and the heavy-duty <a href="${brandUrl('speed-queen')}">Speed Queen</a>. Drive systems vary between brands and models, from belts and gearboxes to direct drive motors, so the model number helps the technician prepare. You'll usually find it on a sticker under the lid or on the back of the machine, and you can send a photo of it when you <a href="/contact/">book a top loader repair</a>.</p>`,
     faqs: [
-      { q: `Why does my top loader fill but not wash?`, a: `The motor is probably running without its drive reaching the agitator or pulsator. A worn coupling, a slipping belt or a worn clutch is the usual cause, and on some machines a failed motor capacitor. The technician can test the drive and quote for whichever part has worn.` },
+      { q: `Why does my top loader fill but not wash?`, a: `The drive usually isn't reaching the agitator or pulsator: a worn coupling, a slipping belt or a worn clutch is the usual cause. If the motor only hums without turning, a failed motor capacitor or a jam is more likely, and a lid switch or water level sensor fault can stop the wash before it starts. The technician tests each of these and quotes for whichever part has failed.` },
       { q: `Why won't my top loader spin when the lid is closed?`, a: `The lid switch or lid lock may not be telling the control board that the lid is shut, so the machine won't risk a spin. Water left in the tub or an unbalanced load will also stop it. If the tub has drained and the load is even, the switch or lock needs testing.` },
       { q: `Why does my top loader stop and beep during the spin?`, a: `Most top loaders stop the spin when the load is out of balance, often because a duvet or a pair of jeans has bunched to one side. Spread the load evenly around the basket and restart the spin. If it happens with every load, worn suspension rods or a machine that isn't level could be the cause.` },
       { q: `Why won't the lid of my top loader open after the spin?`, a: `Many modern top loaders lock the lid during the spin and keep it locked until the basket has stopped completely, which can take a minute. If it stays locked long after the basket has stopped, or there's still water in the tub, the lid lock or the drain needs checking. Don't force the lid, because that can break the lock or its catch.` },
@@ -228,12 +228,12 @@ export const services: Service[] = [
   <li>Dry heavy cottons and towels separately from light synthetics, which dry much faster.</li>
   <li>If your model has a lint filter, clean it after every drying programme as the manual describes.</li>
   <li>Follow the care labels, and never dry rubber-backed mats, foam items or anything stained with oil, petrol or solvents, which can be a fire risk.</li>
-  <li>Keep the tap open during drying as well as washing, and leave the door open afterwards so the drum and seal can air.</li>
+  <li>Keep the tap open during drying as well as washing, and leave the door open afterwards so the drum and seal can air, as long as no young child or pet can get to it.</li>
 </ul>
 
 <h2>Is a washer-dryer worth repairing?</h2>
 <p>Usually, when the fault is a heater, thermostat, fan or sensor, because those are replaceable parts and the machine does two jobs. If the drying side fails on an older machine that also needs bearings or a control board, compare the total with the price of a new washer-dryer, or of a separate washing machine and tumble dryer if you have the space. Our <a href="/repair-or-replace/">repair or replace guide</a> can help you decide.</p>
-<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Repairs carry a ${f.warranty} warranty on parts and labour, and our guide to <a href="/washing-machine-repair-cost/">washing machine repair cost</a> explains how a price is put together.</p>
+<p>The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Repairs carry a ${f.warranty} warranty on parts and labour, and our guide to <a href="/washing-machine-repair-cost/">repair costs</a> explains how a price is put together.</p>
 
 <h2>Washer-dryer brands we repair</h2>
 <p>We repair washer-dryers from all major brands, including <a href="${brandUrl('lg')}">LG</a>, <a href="${brandUrl('samsung')}">Samsung</a>, <a href="${brandUrl('bosch')}">Bosch</a>, <a href="${brandUrl('siemens')}">Siemens</a>, <a href="${brandUrl('aeg')}">AEG</a> and <a href="${brandUrl('hisense')}">Hisense</a>, both freestanding and built in. Have the model number ready when you <a href="/contact/">book a washer dryer repair</a>: it's on a sticker around the door opening or on the back of the machine, and it tells the technician which drying parts your machine uses.</p>`,
@@ -305,13 +305,13 @@ export const services: Service[] = [
   <li>Let out the last of the water through the pump filter as your manual describes, with towels and a shallow tray ready.</li>
   <li>Disconnect the inlet hose from the tap and unhook the drain hose, let both empty into a bucket, then secure them for the move.</li>
   <li>Refit the transit bolts on a front loader, following the manual. If you've lost them, replacements can be ordered using the model number.</li>
-  <li>Move the machine upright and strap it in so it can't tip over, rather than laying it on its back or front.</li>
+  <li>Move the machine upright and strap it in so it can't tip over, rather than laying it on its back or front. It's too heavy to lift safely on your own, so use two people or an appliance trolley.</li>
 </ol>
 <p>At the new home, the machine needs the same care as a new installation: transit bolts out, connected to the tap and drain, levelled and tested. The drain set-up in particular is often different from the old house, so it's worth checking rather than assuming.</p>
 
 <h2>Problems after an installation</h2>
 <p>If a newly installed or moved machine starts <a href="/problems/washing-machine-leaking/">leaking</a>, <a href="/problems/washing-machine-noisy-when-spinning/">shaking on the spin</a> or <a href="/problems/washing-machine-not-draining/">not draining</a>, check the installation first. Transit bolts, hose washers, the drain hose height and the levelling feet are the first things to look at.</p>
-<p>Installation is quoted before any work starts, like every job, and you can <a href="/contact/">book a washing machine installation</a> by phone, WhatsApp or the contact form. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. If you're still choosing a machine, our <a href="/blog/front-loader-vs-top-loader/">front loader vs top loader guide</a> may help, while the <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page covers what goes into a price.</p>`,
+<p>Installation is quoted before any work starts, like every job, and you can <a href="/contact/">book a washing machine installation</a> by phone, WhatsApp or the contact form. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. If you're still choosing a machine, our <a href="/blog/front-loader-vs-top-loader/">front loader vs top loader guide</a> may help, while our <a href="/washing-machine-repair-cost/">cost guide</a> covers what goes into a price.</p>`,
     faqs: [
       { q: `Do I need a plumber to install a washing machine?`, a: `Not if there's already a washing machine tap and a drain point within reach of the hoses: connecting, levelling and testing the machine is the installation itself. Adding or moving a tap or drain is plumbing work, so describe the space when you book. A new plug point is a job for a registered electrician.` },
       { q: `What are transit bolts and do I have to remove them?`, a: `They're bolts through the back of a front loader that lock the tub in place for delivery. They must come out before the first wash, because running the machine with them fitted can badly damage it. Keep them somewhere safe for the next time the machine is moved.` },
@@ -319,7 +319,7 @@ export const services: Service[] = [
       { q: `Can I reuse the hoses from my old machine?`, a: `It's better not to. Rubber hoses and their washers harden and crack with age, and a burst inlet hose can flood a room quickly. Use the new hoses supplied with the machine, which are made to fit it.` },
       { q: `Why does my new machine keep filling and draining at the same time?`, a: `That's usually siphoning: the drain hose is too low or pushed too far down the standpipe, so water runs out as it comes in. Check the hose against the height range in your manual and make sure it isn't sealed tightly into the pipe. If that doesn't cure it, the inlet valve or the pressure sensor may be at fault.` },
       { q: `Can a tumble dryer go on top of my washing machine?`, a: `On most front loaders, yes, using the stacking kit made for that washer and dryer pair. The kit holds the dryer in place during the spin. Never stack a dryer on a top loader, and always keep the washing machine at the bottom.` },
-      { q: `Should I run an empty wash before the first load?`, a: `Many manuals recommend it. A short empty programme rinses out any residue from manufacturing, and new machines often have a little water inside from factory testing. It's also a good chance to check the tap and drain connections for drips.` },
+      { q: `Should I run an empty wash before the first load?`, a: `Many manuals recommend it, often on a hot cotton programme with the drum empty, and some say to add a little detergent. It clears out residue from manufacturing and any water left in the machine from factory testing. Follow your manual, and use the run to check the tap and drain connections for drips.` },
       { q: `Can my washing machine stand outside or in a garage?`, a: `In a garage or an enclosed outside laundry, usually yes, provided there's a level floor, a tap, a drain and a proper socket. Most manuals say the machine mustn't stand out in the weather or anywhere it could freeze, and a Highveld winter frost can freeze water left in the pump and hoses. Keep the plug and socket dry and out of the rain.` },
     ],
   },
@@ -376,7 +376,7 @@ export const services: Service[] = [
   <li>There are drips or damp patches under or behind the machine.</li>
   <li>It fills slowly even though your water pressure is normal.</li>
 </ul>
-<p>If the machine has stopped working, shows a code or leaks steadily, it needs a repair rather than a service, so start with our list of <a href="/problems/">common washing machine problems</a>. If it trips the power, switch it off at the wall and leave it off until a technician has checked it.</p>
+<p>If the machine has stopped working, <a href="/problems/washing-machine-showing-error-code/">shows an error code</a> or <a href="/problems/washing-machine-leaking/">leaks steadily</a>, it needs a repair rather than a service, so start with our list of <a href="/problems/">common washing machine problems</a>. If it trips the power, switch it off at the wall and leave it off until a technician has checked it.</p>
 
 <h2>Hoses: small parts, big floods</h2>
 <p>The inlet hose holds water at mains pressure all day, every day, even when the machine is switched off. Rubber hoses stiffen and split as they age, and a hose that bursts while nobody is home can flood a kitchen or laundry and the rooms next to it.</p>
@@ -386,7 +386,7 @@ export const services: Service[] = [
 <table>
   <thead><tr><th>How often</th><th>What to do</th></tr></thead>
   <tbody>
-    <tr><td>Every wash</td><td>Check pockets before loading, take the washing out promptly, and leave the door and detergent drawer slightly open so the inside can dry.</td></tr>
+    <tr><td>Every wash</td><td>Check pockets before loading, take the washing out promptly, and leave the door and detergent drawer slightly open so the inside can dry (close the laundry door if small children or pets are about).</td></tr>
     <tr><td>Weekly</td><td>Wipe out the door seal folds and the inside of the glass.</td></tr>
     <tr><td>Monthly</td><td>Run an empty hot maintenance or drum-clean programme, and rinse out the detergent drawer.</td></tr>
     <tr><td>Every few months</td><td>Clean the pump filter as the manual describes. Switch off at the wall and unplug first, and have towels and a tray ready for the water.</td></tr>
@@ -426,12 +426,13 @@ export const services: Service[] = [
     body: `
 <h2>Diagnosis comes first</h2>
 <p>Many faults look alike from the outside: a machine that won't spin could have worn brushes, a broken belt, a faulty speed sensor or a motor fault. Fitting the wrong part costs money without fixing anything, so parts are tested first and matched to the exact model number, because parts that look the same can differ between models of one brand. Have that number ready when you <a href="/contact/">book a parts replacement</a>.</p>
+<div class="callout callout-safety"><p><strong>Safety first:</strong> most of these parts sit inside the cabinet, next to mains wiring and water, so please don't try to fit them yourself. Switch off at the wall and leave the work to a technician.</p></div>
 
 <h2>Drainage and water parts</h2>
 <h3>Drain pump and filter</h3>
 <p><strong>What it does:</strong> pumps the water out before each spin, through a filter (sometimes called the coin trap) that catches coins, buttons and hair clips. On most front loaders the filter sits behind a flap at the bottom front, with the pump right behind it.</p>
 <p><strong>Signs it has failed:</strong> water left in the drum, a drain error, or a hum or grinding with no water moving.</p>
-<p><strong>What replacing it involves:</strong> the machine is drained, the pump is reached from the front, base or back, and the hoses and wiring are moved across. Sometimes a coin or an underwire is jamming it, and clearing it is enough. Related: <a href="/problems/washing-machine-not-draining/">washing machine not draining</a>.</p>
+<p><strong>What replacing it involves:</strong> the machine is drained, the pump is reached from the front, base or back, and the hoses and wiring are moved across. Sometimes a coin or an underwire is jamming it, and clearing it is enough. Related: <a href="/problems/washing-machine-not-draining/">a machine that won't drain</a>.</p>
 <h3>Inlet valve</h3>
 <p><strong>What it does:</strong> an electric valve where the hose meets the machine, opening to let water in when the control board calls for it. Many have two or three outlets feeding different parts of the detergent drawer.</p>
 <p><strong>Signs it has failed:</strong> no fill or a slow fill, a water supply error, detergent left in one compartment, or water trickling in with the machine off. If that happens, close the tap.</p>
@@ -480,27 +481,27 @@ export const services: Service[] = [
   <li><strong>Lid switches and lid locks</strong> on <a href="/services/top-loader-repairs/">top loaders</a>, when the machine won't spin with the lid shut and the tub empty.</li>
   <li><strong>Detergent drawers</strong> and softener siphon caps, when powder or softener is left behind.</li>
   <li><strong>Pressure, temperature and speed sensors</strong>, whose faults can look like a board or motor problem and often show as an <a href="/problems/washing-machine-showing-error-code/">error code</a>.</li>
-  <li>Couplings, clutches and gearboxes on top loaders</li>
-  <li>Inlet, drain and internal sump hoses</li>
-  <li>Door handles, hinges, catches and door glass</li>
-  <li>Drum paddles and drum spiders</li>
-  <li>Mains filters, where the power cable enters the machine</li>
-  <li>Drying heaters, fans and thermostats on <a href="/services/washer-dryer-repairs/">washer-dryers</a></li>
+  <li><strong>Couplings, clutches and gearboxes</strong> on top loaders, when the motor runs but the agitator or drum doesn't turn.</li>
+  <li><strong>Inlet, drain and internal sump hoses</strong>, when one has split, perished or blocked.</li>
+  <li><strong>Door handles, hinges, catches and door glass</strong>, when the door won't close or latch properly, or the glass is cracked.</li>
+  <li><strong>Drum paddles and drum spiders</strong>, when a paddle has come loose or the spider that carries the drum has cracked or corroded.</li>
+  <li><strong>Mains filters</strong>, where the power cable enters the machine, when a surge has left the machine dead.</li>
+  <li><strong>Drying heaters, fans and thermostats</strong> on <a href="/services/washer-dryer-repairs/">washer-dryers</a>, when the machine washes but won't dry.</li>
 </ul>
 
 <h2>Original and compatible parts</h2>
 <p>Original parts, also called genuine or OEM parts, are made by or for the manufacturer and carry its part number. Compatible parts, also called pattern parts, are made by other companies to fit the same machines, and their quality varies: some match the original and some don't.</p>
-<p>For simple mechanical parts such as pumps, belts, brushes and shock absorbers, a good compatible part is often a sensible choice. For control boards, and for safety parts like door locks, an exact match matters more, and the original is often the safer option. Either way, the part has to match the model number, not just the brand.</p>
-<p>When you get a quote, it's fair to ask which kind of part is quoted, whether the other kind is available, and how the two compare.</p>
+<p>For simple wear parts such as drain pumps, belts, carbon brushes and shock absorbers, a good compatible part is often a sensible choice. For control boards, and for safety parts like door locks, an exact match matters more, and the original is often the safer option. Either way, the part has to match the model number, not just the brand.</p>
+<p>If your machine is still under the manufacturer's warranty, contact the manufacturer first, because an outside repair or a non-original part may affect that cover. When you get a quote, it's fair to ask which kind of part is quoted, whether the other kind is available, and how the two compare.</p>
 
 <h2>Availability, cost and warranty</h2>
 <p>If the part is available, most repairs are finished on the same visit. If it has to be ordered, the technician tells you before you agree to the repair, and it's fitted and tested on a second visit.</p>
-<p>The price depends mostly on the part, from a pair of brushes to a control board or a tub assembly, and on the labour needed to reach it. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Every repair carries a ${f.warranty} warranty on parts and labour. The <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains pricing, and our <a href="/repair-or-replace/">repair or replace guide</a> helps when a major part fails on an older machine.</p>`,
+<p>The price depends mostly on the part, from a pair of brushes to a control board or a tub assembly, and on the labour needed to reach it. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Every repair carries a ${f.warranty} warranty on parts and labour. The <a href="/washing-machine-repair-cost/">page on repair costs</a> explains pricing, and our <a href="/repair-or-replace/">repair or replace guide</a> helps when a major part fails on an older machine.</p>`,
     faqs: [
       { q: `Should I buy the part myself before the technician comes?`, a: `It's usually better not to. The same symptom can have several causes, and parts that look identical often differ between models, so a part bought before diagnosis may not be the one the machine needs. Let the fault be confirmed first.` },
       { q: `Which washing machine parts wear out with normal use?`, a: `Parts that move, rub or flex wear gradually: carbon brushes, belts, shock absorbers, door seals, hoses and drum bearings all wear with use. Pumps more often fail because something gets into them, while electronic parts tend to fail suddenly, often after a surge.` },
       { q: `How do I find my washing machine's model number?`, a: `Look for a sticker or plate around the door opening on a front loader, under the lid on a top loader, or on the back of the machine. The model number is usually labelled separately from the serial number. Sending a photo of the whole sticker when you book is the easiest way to share it.` },
-      { q: `Why are shock absorbers replaced in pairs?`, a: `The two shock absorbers share the work of steadying the tub, so if only one is new, the worn one does less than its share and the tub can still move too much. Replacing the pair keeps the damping even and the spin steady.` },
+      { q: `Why are shock absorbers replaced in pairs?`, a: `Shock absorbers share the work of steadying the tub, so if only one is new, the old ones do less than their share and the tub can still move too much. Replacing them together, as a pair or as a full set on machines that have three or four, keeps the damping even and the spin steady.` },
       { q: `Is it worth replacing a control board on an older machine?`, a: `It depends on the price of the board and the overall condition of the machine. Boards for some models cost a large share of a new machine, so on an older machine that's also showing other wear, replacing the machine may make more sense. The technician confirms the board really is at fault and gives you a price before you decide.` },
       { q: `Why replace a door seal that only has a small hole?`, a: `Even a small hole lets water out every time the drum turns and the tub moves, and the leak runs into the base of the machine, towards the pump, the wiring and your floor. Holes also tend to grow as the rubber flexes.` },
     ],
