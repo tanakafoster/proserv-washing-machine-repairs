@@ -2,9 +2,10 @@
  * SINGLE SOURCE OF TRUTH for business details.
  * Every page, the header, the footer, the contact form and the JSON-LD schema read from here.
  *
- * Before launch, fill in the settings marked "Before launch" below: opening hours, the Google
- * review link, social profiles, the GTM ID and the Web3Forms key. Anything left empty is simply
- * not shown on the site, so nothing half-finished ever appears to visitors.
+ * Before launch, fill in the settings marked "Before launch" below: the postal address for the
+ * privacy policy, opening hours, the Google review link, social profiles, the GTM ID and the
+ * Web3Forms key. Anything left empty is simply not shown on the site, so nothing half-finished
+ * ever appears to visitors.
  */
 
 export const site = {
@@ -25,6 +26,11 @@ export const site = {
     message: 'Hi ProServ, my washing machine needs repairing.',
   },
   email: 'info@proservwashingmachinerepairs.co.za',
+  /**
+   * Before launch: a postal address for the privacy policy (a PO Box is fine), because POPIA asks
+   * for the responsible party's name and address. Shown only when filled in.
+   */
+  postalAddress: '' as string,
 
   /**
    * Service-area business: no public street address.

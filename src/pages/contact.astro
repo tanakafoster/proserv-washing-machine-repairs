@@ -18,10 +18,6 @@ const listOf = (items: string[]) => (items.length > 1 ? `${items.slice(0, -1).jo
 const areaLinks = listOf(site.areas.map((a) => a.label.replace(a.name, `<a href="${areaUrl(a.slug)}">${a.name}</a>`)));
 const faqs = [
   {
-    q: 'Can you give me a quote over the phone?',
-    a: 'Not an exact one, because the same symptom can have several causes with very different prices. A machine that won\'t drain might only need its pump filter cleared, or it might need a new pump. What we can explain on the phone is how the call-out fee works, and the technician gives you a full quote at your home before any work starts.',
-  },
-  {
     q: 'How soon will you reply to a booking request?',
     a: 'We\'ll call or WhatsApp you back as soon as we can to confirm a time. If the job is urgent, for example the machine is leaking or stuck full of water, call or WhatsApp us rather than using the form, because that\'s the quickest way to reach us.',
   },
@@ -43,7 +39,7 @@ const faqs = [
   },
   {
     q: 'What do you do with the details I send?',
-    a: 'We use them only to respond to your request and arrange the visit. Our <a href="/privacy-policy/">privacy policy</a> explains what we collect, why we collect it and your rights under POPIA.',
+    a: 'We use them to respond to your request and arrange the visit and, if you go ahead, to keep the job records we need for the warranty and our accounts. Our <a href="/privacy-policy/">privacy policy</a> explains what we collect, why we collect it and your rights under POPIA.',
   },
 ];
 const brandOptions = [...brands.map((b) => b.brand), ...otherBrands, 'Other / not sure'];
@@ -77,12 +73,12 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
         <div class="p-5 sm:p-8">
         <h2 class="type-h3 text-2xl">Request a technician</h2>
         <p class="mt-1.5 text-sm text-ink-soft">Fields marked * are required.</p>
-        <!--
+        {/*
           FORM DELIVERY: Web3Forms (https://web3forms.com).
           Set your access key in src/data/site.ts → web3formsKey. Create the key with
           info@proservwashingmachinerepairs.co.za so submissions are delivered there.
           For a cPanel PHP alternative, see extras/cpanel/contact-handler.php.
-        -->
+        */}
         <form id="booking-form" action="https://api.web3forms.com/submit" method="POST" class="mt-6 space-y-5">
           <input type="hidden" name="access_key" value={site.web3formsKey} />
           <input type="hidden" name="subject" value="New washing machine repair request (website)" />
@@ -124,7 +120,7 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
             <label for="preferred" class={labelCls}>Preferred day and time</label>
             <input id="preferred" name="preferred_day_time" type="text" placeholder="e.g. Tuesday morning" class={fieldCls} />
           </div>
-          <p class="text-sm text-ink-soft">We use your details only to respond to your request and arrange the repair. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+          <p class="text-sm text-ink-soft">We use your details to respond to your request and arrange the repair, as our <a href="/privacy-policy/">privacy policy</a> explains.</p>
           <div id="form-error" class="hidden rounded-xl border border-warn-line bg-warn-tint p-4 text-sm leading-relaxed text-ink" role="alert" tabindex="-1">
             <p id="form-error-detail" class="font-semibold" hidden></p>
             <p>Sorry, that didn't send. Please check the form and try again, or call or WhatsApp us on <a href={telHref} data-track="call">{site.phone.display}</a>.</p>
@@ -146,7 +142,7 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
             <span class="min-w-0 leading-snug"><strong class="block text-sm font-bold text-ink-strong">WhatsApp</strong><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp" class="-my-1 inline-block py-1 text-[15px] font-semibold">{site.phone.display}<span class="sr-only"> (opens in a new tab)</span></a></span>
           </li>
           <li class="card-surface flex items-start gap-3.5 p-4 sm:col-span-2">
-            <span class="icon-tile h-10 w-10 rounded-lg"><Icon name="mail" /></span>
+            <span class="icon-tile h-10 w-10 rounded-lg max-[359px]:hidden"><Icon name="mail" /></span>
             <span class="min-w-0 leading-snug"><strong class="block text-sm font-bold text-ink-strong">Email</strong><a href={mailHref} class="-my-1 inline-block py-1 text-[15px] font-semibold"><EmailText /></a></span>
           </li>
           {hasHours && (
