@@ -121,6 +121,6 @@ A [washing machine service](/services/washing-machine-servicing/) includes clean
 
 ## The bottom line
 
-A smelly washing machine usually needs a clean, not a repair. Clear the seal, the drawer and the filter, run a hot empty wash, then keep it fresh with measured detergent, the odd hot wash and time to dry. If there's burning, leaking or poor draining too, switch off at the wall and have it checked.
+A smelly washing machine usually needs a clean, not a repair. Clear the seal, the drawer and the filter, run a hot empty wash, then keep it fresh with measured detergent, the odd hot wash and time to dry. If there's burning, leaking or poor draining too, switch off at the wall (at the DB board if the plug or socket is wet) and have it checked.
 
 **Washing machine still smells, won't drain or is leaking?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll come to you, track down the cause and give you a quote before any work starts.

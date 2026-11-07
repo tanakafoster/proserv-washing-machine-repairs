@@ -79,7 +79,7 @@ Several other faults sound similar, and some are simple to rule out:
 - **An unbalanced load.** One heavy item, such as a bath mat or a pair of jeans, can make the machine bang and roar on spin. Rearrange the load and try again.
 - **The machine isn't level.** If it rocks, adjust the feet until all four stand firmly on the floor.
 - **Transit bolts still fitted.** A newly installed front loader that shakes violently may still have the bolts that lock the drum in place for transport.
-- **Objects between the drum and tub.** Coins, bra underwires and hair clips cause rattling and scraping. Empty pockets, and check the pump filter as your manual describes.
+- **Objects between the drum and tub.** Coins, bra underwires and hair clips cause rattling and scraping. Empty pockets, and check the pump filter as your manual describes, with the machine switched off at the wall and unplugged and towels and a tray ready for the water.
 - **Worn shock absorbers or springs.** These cause banging and thumping rather than a steady roar.
 - **A noisy drain pump.** If the noise only happens while water is pumping out, the pump is the more likely culprit.
 - **A cracked or corroded spider.** This also causes play and noise, and a technician can tell it apart from worn bearings once the machine is open.
@@ -119,7 +119,7 @@ Timing matters as much as the tub type. Caught when it first starts to rumble, a
 
 ## Can you keep using it?
 
-For a short while, but not for long. Every wash adds wear, and a bearing that collapses can damage the shaft, the spider and the tub. Until it's repaired, wash smaller loads on a lower spin speed. If water is leaking onto the floor, stop using the machine, switch off at the wall and keep the area dry.
+For a short while, but not for long. Every wash adds wear, and a bearing that collapses can damage the shaft, the spider and the tub. Until it's repaired, wash smaller loads on a lower spin speed. If water is leaking onto the floor, stop using the machine and switch it off: at the wall if the plug and socket are dry, or at the DB board if they're wet. Then close the tap and keep the area dry.
 
 ## The bottom line
 

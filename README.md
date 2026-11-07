@@ -38,7 +38,7 @@ Always run `npm run build && npm run audit` before deploying. The audit fails on
 | **Repair prices** | None are published apart from the call-out fee: the cost page explains what drives the price instead. To publish guide prices, add them to `src/pages/washing-machine-repair-cost.astro` and the installation and servicing pages in `src/data/services.ts` |
 | **Page copy** | Services `src/data/services.ts` · Problems `src/data/problems.ts` · Brands `src/data/brands.ts` (11 brand pages, plus the "other brands" list) · Error codes `src/data/errorCodes.ts` · Areas `src/data/areas.ts` · Other pages in `src/pages/`. Long copy can use these styled patterns: `h2`, `h3`, `p`, lists, tables, `<div class="callout">` (also `callout-safety`, `callout-tip`), `<ul class="checklist">` and `<ol class="steps">`. Every `h2` becomes an entry in the page's "On this page" list |
 | **Error codes** | `src/data/errorCodes.ts`. Publish a code only once you've checked it in the manufacturer's own manual or support page, and add that document to the guide's `sources` (shown on the page as "Where these codes come from") |
-| **Blog posts** | Markdown files in `src/content/blog/` (see `CONTENT-PLAN.md`). Write `{{PHONE}}` for the phone number and `[{{PHONE}}]({{TEL}})` for a call link |
+| **Blog posts** | Markdown files in `src/content/blog/` (see `CONTENT-PLAN.md`). Write `{{PHONE}}` for the phone number and `[{{PHONE}}]({{TEL}})` for a call link. Each post can carry 6 to 10 FAQs in its front matter under `faqs:` (a list of `q:` and `a:` pairs, as in the existing posts); they show under the article with FAQ schema. The build stops if a post has fewer than 6 or more than 10 |
 | **Navigation** | `src/data/site.ts` → `mainNav` |
 
 ### Design and colour rules (WCAG AA)

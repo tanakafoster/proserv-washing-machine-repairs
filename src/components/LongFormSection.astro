@@ -89,9 +89,10 @@ const prepare = (raw: string) => {
 const body = prepare(Astro.slots.has('default') ? await Astro.slots.render('default') : '');
 const after = Astro.slots.has('after') ? prepare(await Astro.slots.render('after')) : '';
 const showToc = toc ?? headings.length >= 3;
-const hasAsideSlot = Astro.slots.has('aside');
-// The extra sidebar cards, rendered here so the sidebar can be named by what they hold.
-const asideCards = hasAsideSlot ? await Astro.slots.render('aside') : '';
+// The extra sidebar cards, rendered here so the sidebar can be named by what they hold. A slot can be
+// declared but render nothing (brand pages without an error code guide), so it only counts if it has content.
+const asideCards = Astro.slots.has('aside') ? await Astro.slots.render('aside') : '';
+const hasAsideSlot = asideCards.trim() !== '';
 // Without the booking card or extra cards the sidebar only holds the desktop contents list.
 const asideCls = booking || hasAsideSlot ? 'min-w-0' : 'hidden min-w-0 lg:block';
 const hasAside = booking || hasAsideSlot || showToc;

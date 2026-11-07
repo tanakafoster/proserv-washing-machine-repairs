@@ -33,7 +33,7 @@ const longCodes = codes.some((c) => c.code.length > 9);
       {codes.map((c) => (
         <tr role="row" class="align-top">
           <th scope="row" role="rowheader" class="sm:px-4 sm:py-3.5">
-            <span class="inline-flex rounded-lg bg-brand-tint px-2.5 py-1 font-mono text-[0.9375rem] font-bold text-ink-strong ring-1 ring-brand/30">{c.code}</span>
+            <span class="inline-flex rounded-lg bg-brand-tint px-2.5 py-1 font-mono text-[0.9375rem] font-bold text-ink-strong ring-1 ring-brand/30">{c.code.replace(/ \//g, '\u00a0/')}</span>
           </th>
           <td role="cell" class="leading-snug font-semibold text-ink-strong sm:px-4 sm:py-3.5 sm:leading-relaxed">
             <span class="code-label" aria-hidden="true">{cols[0]}</span>{c.meaning}
