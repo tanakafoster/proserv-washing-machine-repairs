@@ -122,7 +122,7 @@ const hasAside = booking || hasAsideSlot || showToc;
             <p id="toc-h" class="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-ink-strong uppercase">
               <Icon name="list" class="h-4 w-4 text-brand" /> On this page
             </p>
-            <ol class="toc-list mt-3 lg:tall:max-h-[max(6rem,calc(100dvh-42rem))] lg:tall:overflow-y-auto">
+            <ol class:list={['toc-list mt-3 lg:tall:overflow-y-auto', booking || hasAsideSlot ? 'lg:tall:max-h-[max(6rem,calc(100dvh-42rem))]' : 'lg:tall:max-h-[calc(100dvh-12rem)]']}>
               {headings.map((h) => <li><a href={`#${h.id}`} class="toc-link">{h.text}</a></li>)}
             </ol>
           </nav>
