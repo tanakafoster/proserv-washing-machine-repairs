@@ -3,39 +3,92 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { site, areaList, hoursText, hasHours } from '../data/site';
+import { site, areaUrl, brandUrl, hoursText, hasHours } from '../data/site';
+import { brands } from '../data/brands';
 import { faqSchema } from '../lib/schema';
 const f = site.facts;
+
+/** "A, B and C" */
+const sentenceList = (items: string[]) => (items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}` : items.join(''));
+// Built from the data, so every area page and brand page is linked here automatically.
+const areaLinks = sentenceList(site.areas.map((a) => `${a.label.startsWith('the ') ? 'the ' : ''}<a href="${areaUrl(a.slug)}">${a.name}</a>`));
+const brandLinks = sentenceList(brands.map((b) => `<a href="${brandUrl(b.slug)}">${b.brand}</a>`));
+
 const groups = [
   {
     heading: 'Booking and call-outs',
     id: 'faq-booking',
+    intro: 'Getting a technician to your door, and what helps the visit go smoothly.',
     items: [
-      { q: 'How do I book a washing machine repair?', a: `Call or WhatsApp us on ${site.phone.display}, or use the form on our <a href="/contact/">contact page</a>. Tell us the brand, model and what the machine is doing.` },
-      { q: 'Which areas do you cover?', a: `We cover ${areaList()}, plus the surrounding suburbs. See <a href="/areas/">areas we cover</a>.` },
-      { q: 'How quickly can a technician come out?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. Otherwise we book a time that suits you.` },
+      { q: 'What\'s the quickest way to book a technician?', a: `Call or WhatsApp us on ${site.phone.display}, so we can ask a few quick questions about the machine and arrange a time that suits you. If you'd rather write, send a booking request through our <a href="/contact/">contact page</a> and we'll get back to you.` },
+      { q: 'What should I tell you when I get in touch?', a: 'The brand, the model number if you can find it (usually on a sticker inside the door opening, under the lid or on the back), and what the machine is doing. A photo of the display or a video of the noise on WhatsApp helps too, and our <a href="/error-codes/">washing machine error code guides</a> explain common codes.' },
+      { q: 'My machine has stopped full of water. How soon can someone come out?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working, so tell us it's urgent when you call. Meanwhile, switch the machine off at the wall, don't force the door and put towels down in case water escapes.` },
       ...(hasHours ? [{ q: 'What are your hours?', a: `${hoursText()}.${site.hoursNote ? ` ${site.hoursNote}.` : ''}` }] : []),
-      { q: 'Do I need to be home?', a: 'Someone over 18 needs to be home to let the technician in and approve the quote.' },
+      { q: 'Does someone need to be home during the visit?', a: 'Yes. Someone over 18 needs to be there to let the technician in, show them the machine and agree to the quote before any work starts. If you can\'t be there yourself, tell us when you book who will be.' },
+      { q: 'Do you come out to my suburb?', a: `We cover ${areaLinks}, along with the suburbs around them, and each area page lists suburbs we cover there. If yours isn't listed, call us anyway and we'll tell you straight away whether we can get to you.` },
+      { q: 'I live in a complex or security estate. What do you need from me?', a: 'The full address with the unit or house number, and how the technician gets in: register them at the gate or send the access instructions when you book. Mention stairs, lifts and parking too, so the technician isn\'t held up on the way to your machine.' },
     ],
   },
   {
-    heading: 'Prices and payment',
+    heading: 'Prices, quotes and the call-out fee',
     id: 'faq-prices',
+    intro: 'How the call-out fee and the quote work.',
     items: [
-      { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. It covers the technician's travel and finding the fault.` },
-      { q: 'Will I get a quote before work starts?', a: 'Yes, always. The technician diagnoses the fault and gives you a price before starting.' },
-      { q: 'How much does a repair usually cost?', a: 'It depends on the fault, the part and the brand. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what affects the price.' },
+      { q: `What does the ${f.calloutFee} call-out fee pay for?`, a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. It pays for the technician's trip to your home and the time spent finding the fault, which has to happen before anyone can tell you what the repair will cost.` },
+      { q: 'Can you give me a price over the phone?', a: 'Not an exact one, because the same symptom can have very different causes: a machine that won\'t drain might have a sock in the pump filter or a failed pump. On the phone we can explain the likely causes, and our guide to <a href="/washing-machine-repair-cost/">washing machine repair cost</a> shows what drives the price.' },
+      { q: 'What if the technician finds another fault during the repair?', a: 'Nothing extra is done without your say-so. The technician will stop, show you what they\'ve found, explain what it would cost to fix and leave the decision to you.' },
+      { q: 'How do I decide whether a repair quote is worth accepting?', a: 'Weigh it against the machine\'s age and condition and the price of a similar new machine. A new pump or door lock on an otherwise sound machine is usually worth it; a big repair on an old, worn machine may not be. Our <a href="/repair-or-replace/">repair or replace guide</a> walks you through the decision.' },
     ],
   },
   {
-    heading: 'Repairs and warranty',
+    heading: 'Repairs, parts and the warranty',
     id: 'faq-repairs',
+    intro: 'What happens on the day, and what the warranty covers afterwards.',
     items: [
-      { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands. See <a href="/brands/">brands we repair</a>. We are an independent repairer and not an agent of any manufacturer.' },
-      { q: 'Is the repair guaranteed?', a: `Yes. Repairs carry our ${f.warranty} warranty on parts and labour. If the same fault returns within that time, we will come back and fix it.` },
-      { q: 'Can you fix it on the first visit?', a: 'Most repairs are completed on the first visit because we carry common parts. Model-specific parts may need to be ordered in.' },
-      { q: 'My machine is under the manufacturer\'s warranty. Should I call you?', a: 'Contact the manufacturer first, as an outside repair may affect their warranty.' },
-      { q: 'Should I repair or replace my old machine?', a: 'See our <a href="/repair-or-replace/">repair or replace guide</a>. We will give you honest advice on the day.' },
+      { q: 'Will my machine be fixed on the same visit?', a: 'If the part is available, most repairs are finished on the same visit. Parts for some premium or less common models have to be ordered in: the technician will tell you before you agree to the repair, and we\'ll book a second visit to fit the part when it arrives.' },
+      { q: 'How long will the technician be at my house?', a: 'For a straightforward repair, such as a new drain pump, door lock or inlet valve, usually an hour or two, including finding the fault. Drum bearings and built-in machines take longer. Every repair ends with a test run, so you can see the fault has gone before the technician leaves.' },
+      { q: `What does the ${f.warranty} warranty cover?`, a: `Every repair carries our ${f.warranty} warranty on parts and labour: if the same fault comes back within that time, we come back and put it right. It covers the repair we carried out, so a different fault that develops later is a new repair, quoted in the usual way.` },
+      { q: 'What should I do if the same problem comes back after a repair?', a: 'Call or WhatsApp us with the date of the repair and what the machine is doing, and we\'ll arrange for a technician to come back and check it. If it\'s leaking or tripping the power, switch it off at the wall until then.' },
+      { q: 'My machine is still under the manufacturer\'s warranty. Can you repair it?', a: 'Contact the manufacturer or the shop you bought it from first: while it\'s under their warranty they should arrange the repair, and an outside repair could affect that cover. Once it\'s out of warranty, or if they won\'t cover the fault, we\'re happy to help.' },
+    ],
+  },
+  {
+    heading: 'Machines and brands',
+    id: 'faq-brands',
+    intro: 'The machines and brands we work on.',
+    items: [
+      { q: 'Do you work on my brand of washing machine?', a: `We repair all major brands, including ${brandLinks}. For an older model or a less common make, send us the brand and model number and we'll check that parts are still available. We're an independent repairer, not an agent for any manufacturer.` },
+      { q: 'Do you repair top loaders and washer-dryers as well as front loaders?', a: 'Yes, we work on all three, whether the drum is driven by a belt or by a direct drive motor. Each type has its own typical faults, which our pages on <a href="/services/front-loader-repairs/">front loader repairs</a>, <a href="/services/top-loader-repairs/">top loader repairs</a> and <a href="/services/washer-dryer-repairs/">washer-dryer repairs</a> explain.' },
+      { q: 'My machine is built into the kitchen cupboards. Can you still fix it?', a: 'Yes, as long as it can be slid out of its cabinet. Mention it when you book, and tell us if the floor has been retiled or the cupboards changed since it went in, because that can make it a tight fit.' },
+      { q: 'Should my next machine be a front loader or a top loader?', a: 'It depends on your space and how you like to load. Front loaders generally use less water, spin clothes drier and fit under a counter, while top loaders save you bending down but need room above for the lid. Our <a href="/blog/front-loader-vs-top-loader/">front loader vs top loader comparison</a> covers the rest.' },
+      { q: 'Can you install a new machine if I decide to replace mine?', a: 'Yes. Our <a href="/services/washing-machine-installation/">washing machine installation</a> page explains what\'s involved in connecting, levelling and testing a new machine. A badly installed machine can leak, shake or move about, so it\'s worth getting right.' },
+    ],
+  },
+  {
+    heading: 'Problems and maintenance',
+    id: 'faq-problems',
+    intro: 'Safe checks you can do yourself, and habits that help a machine last.',
+    items: [
+      { q: 'What can I check before I call a technician?', a: 'Make sure the machine is plugged in and switched on at the wall, the house has power and isn\'t in a load shedding slot, and a lamp works in the same socket. Then check the tap is fully open, the hoses aren\'t kinked and the door is properly shut, and look for a paused programme, a delay timer or a child lock. Our <a href="/problems/">washing machine problems</a> guides cover each fault.' },
+      { q: 'The machine stopped mid-wash with water inside. What should I do?', a: 'If the power or water went off, switch the machine off at the wall until it\'s back, then run a drain or spin programme. If it still won\'t drain, you can empty it through the drain pump filter as your manual describes: switch off at the wall and unplug first, expect a lot of water and have towels and a shallow tray ready. Don\'t force the door; our guide to a <a href="/problems/washing-machine-not-draining/">washing machine not draining</a> explains the likely causes.' },
+      { q: 'Why are my clothes coming out dirty?', a: 'Overloading is a common cause, because clothes need room to move through the water. A quick programme on a heavily soiled load, the wrong detergent or dose, or a dirty drum and door seal can also leave washing grubby. If the water isn\'t draining properly or the machine no longer heats on hot programmes, that\'s a fault, so <a href="/contact/">book a technician</a>.' },
+      { q: 'Why is powder or fabric softener left behind in the drawer?', a: 'Usually not enough water is flushing through it. Check that the tap is fully open, clean the drawer and its housing as your manual describes (damp powder blocks the water jets), and don\'t fill softener past the MAX line. If it keeps happening, the water pressure or the inlet valve may be at fault: see <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.' },
+      { q: 'Why does my machine move across the floor when it spins?', a: 'Usually it\'s an unbalanced load, levelling feet that aren\'t set and locked, or a floor that flexes. On a newly installed machine the transit bolts may still be in, so stop using it and call the installer or us. If it still moves with a balanced load and level feet, the shock absorbers or springs may be worn: see <a href="/problems/washing-machine-noisy-when-spinning/">washing machine noisy when spinning</a>.' },
+      { q: 'How can I make my washing machine last longer?', a: 'Don\'t overload it, empty pockets before every wash (coins and hair clips can damage the pump and drum), and use the right detergent in the right amount. Clean the pump filter, door seal and drawer as your manual suggests, run a hot maintenance wash now and then and leave the door ajar between washes. A <a href="/services/washing-machine-servicing/">washing machine service</a> can also catch worn parts early.' },
+    ],
+  },
+  {
+    heading: 'Safety',
+    id: 'faq-safety',
+    intro: 'Water and electricity don\'t mix. If in doubt, switch off at the wall and call a technician.',
+    items: [
+      { q: 'The earth leakage trips whenever the machine runs. Can I keep resetting it?', a: 'No. Switch the machine off at the wall, unplug it and leave it off until a technician has tested it: a machine that trips the earth leakage can have a dangerous fault, such as water reaching an electrical part or a failing heating element. Our guide to a <a href="/problems/washing-machine-wont-turn-on/">washing machine that won\'t turn on</a> covers faults like this.' },
+      { q: 'There\'s water on the floor around the machine. What should I do first?', a: 'If the water has reached the plug or socket, don\'t touch them: switch off the power at the DB board first. Otherwise switch off at the wall, unplug the machine, close the tap and mop up, keeping children and pets away. Once it\'s safe, our guide to a <a href="/problems/washing-machine-leaking/">leaking washing machine</a> explains the likely causes.' },
+      { q: 'Can I plug my washing machine into an extension cord or a multi-plug?', a: 'It\'s safer not to. Most manufacturers\' manuals say to plug the machine straight into an earthed wall socket, because it draws a lot of current while heating water and an extension lead or adapter can overheat. If the socket is in the wrong place, ask a registered electrician to fit a new one.' },
+      { q: 'Can I take a panel off to look for the fault myself?', a: 'Please don\'t. Inside the casing there are mains-voltage parts, sharp metal edges and heavy components, and many faults can only be found with test equipment anyway. Stick to the checks in your user manual, such as cleaning the pump filter, and leave anything inside the casing to a technician.' },
+      { q: 'What should I do if the machine smells of burning?', a: 'Switch it off at the wall, unplug it and don\'t use it again until a technician has checked it: a burning smell can mean an electrical fault, an overheating motor or a slipping belt. If you see smoke or flames, switch off the power at the DB board if it\'s safe to, get everyone away and call the emergency services.' },
+      { q: 'How do I make the machine safer around young children?', a: 'Use the child lock if your machine has one, keep the door or lid closed when it isn\'t in use, and check the drum before every wash, because children and pets can climb inside. Keep detergent, especially liquid capsules, out of reach, and remember the door glass can get very hot on hot washes.' },
+      { q: 'Should I switch my washing machine off during load shedding?', a: 'Yes. Switch it off at the wall before load shedding starts, or as soon as the power goes, and wait a few minutes after it returns before switching on: the surge as the power comes back can damage the electronics. Our guide to <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your washing machine from load shedding</a> covers surge protectors too.' },
     ],
   },
 ];
@@ -43,14 +96,14 @@ const all = groups.flatMap((g) => g.items);
 ---
 <BaseLayout
   title="Washing Machine Repair Questions (FAQ) | ProServ"
-  description={`Answers to common washing machine repair questions: call-out fee, quotes, warranty, areas and brands. Still unsure? Call ${site.phone.display}.`}
+  description={`Answers to washing machine repair questions: booking, the call-out fee, quotes, warranty, brands, problems and safety. Call ${site.phone.display}.`}
   crumbs={[{ name: 'FAQ', href: '/faq/' }]}
   schema={[faqSchema(all)]}
 >
   <PageHero
     h1="Washing machine repair questions"
     eyebrow="FAQ"
-    intro={`<p>Here are the washing machine repair questions we get asked most, from booking and call-out fees to warranties and brands. If your question isn't here, call or WhatsApp us and we'll happily help.</p>`}
+    intro={`<p>Straight answers to the washing machine repair questions people ask before, during and after a repair: booking, the call-out fee and quotes, the warranty, the machines and brands we work on, common problems and safety. Can't find yours? Call or WhatsApp us and we'll help.</p>`}
   >
     <nav slot="after" aria-label="FAQ topics" class="mt-7 border-t border-line pt-6">
       <ul class="flex flex-wrap gap-2.5">
@@ -58,6 +111,6 @@ const all = groups.flatMap((g) => g.items);
       </ul>
     </nav>
   </PageHero>
-  {groups.map((g, i) => <Faq items={g.items} heading={g.heading} id={g.id} tone={i % 2 === 0 ? 'surface' : 'white'} eyebrow={false} />)}
+  {groups.map((g, i) => <Faq items={g.items} heading={g.heading} id={g.id} intro={g.intro} tone={i % 2 === 0 ? 'surface' : 'white'} eyebrow={false} />)}
   <CtaBand />
 </BaseLayout>
