@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { errorGuides } from '../../data/errorCodes';
+import { site, errorCodeUrl } from '../../data/site';
+---
+<BaseLayout
+  title="Washing Machine Error Codes by Brand | ProServ"
+  description={`Washing machine error codes explained for LG, Samsung, Bosch and Defy, with safe first checks. Code won't clear? Call ${site.phone.display}.`}
+  crumbs={[{ name: 'Error codes', href: '/error-codes/' }]}
+>
+  <PageHero
+    h1="Washing machine error codes"
+    eyebrow="Error code guides"
+    intro={`<p>Washing machine error codes are your machine's way of saying where the problem is. Pick your brand below to see what the common codes usually mean, the likely causes, and the checks you can safely do yourself. If the code keeps coming back, we're a call or WhatsApp away.</p>`}
+  />
+  <LinkCards alt heading="Choose your brand" headingId="guide-list" cols={2} items={errorGuides.map((g) => ({ href: errorCodeUrl(g.slug), title: `${g.brand} washing machine error codes`, text: g.summary }))} />
+  <section class="section">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>How to read an error code</h2>
+      <p>Most codes fall into a few groups: water supply, drainage, door lock, balance, motor, heating, leaks and electronics. The same problem can have different codes on different brands. For example, a drain fault might be OE on an LG, 5C on a Samsung, and E18 on a Bosch. The code tells you which system to look at, not always which part has failed.</p>
+      <h2>Codes can differ between models</h2>
+      <p>Manufacturers change their codes between ranges and generations. Always check the code against the manual for your exact model number, which is on a sticker inside the door rim or on the back of the machine. Codes we haven't yet confirmed against the manufacturer's documentation are marked [VERIFY] in our guides. If your manual says something different, the manual is right.</p>
+      <h2>First steps for any code</h2>
+      <ol>
+        <li>Photograph the code and note the model number.</li>
+        <li>Switch off at the wall for a few minutes, then switch on and try again.</li>
+        <li>Do the simple checks: tap open, hose not kinked, door closed, load balanced, pump filter clear.</li>
+        <li>If the code comes back, stop using the machine and call us.</li>
+      </ol>
+      <p>Our general guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> goes into more detail. Don't see your brand? We repair all major washing machine brands. See <a href="/brands/">brands we repair</a> and send us your code on WhatsApp.</p>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>

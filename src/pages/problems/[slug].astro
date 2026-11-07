@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import { problems, problemUrl, type Problem } from '../../data/problems';
+import { serviceBySlug, serviceUrl } from '../../data/services';
+import { faqSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return problems.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props as { p: Problem };
+const path = problemUrl(p.slug);
+const service = serviceBySlug(p.serviceSlug)!;
+const others = problems.filter((o) => o.slug !== p.slug);
+---
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  crumbs={[{ name: 'Problems', href: '/problems/' }, { name: p.name, href: path }]}
+  schema={[faqSchema(p.faqs)]}
+>
+  <PageHero h1={p.h1} intro={p.intro} eyebrow="Common washing machine problems" />
+  <section class="section section-alt pt-10">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_320px]">
+      <article class="prose-site max-w-3xl" set:html={p.body} />
+      <aside class="space-y-4 lg:sticky lg:top-28 lg:self-start">
+        <div class="card">
+          <h2 class="text-lg font-semibold">Get it fixed</h2>
+          <p class="mt-2 text-sm text-ink-soft">This fault is usually handled by our <a href={serviceUrl(service.slug)}>{service.name.toLowerCase()}</a> service.</p>
+          <a href="/contact/" class="btn btn-primary mt-4 w-full">Book a technician</a>
+        </div>
+        <div class="card">
+          <h2 class="text-lg font-semibold">Error code on the display?</h2>
+          <p class="mt-2 text-sm text-ink-soft">See our <a href="/error-codes/">washing machine error code guides</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <LinkCards heading="Other washing machine problems" headingId="other-problems" cols={4} items={others.map((o) => ({ href: problemUrl(o.slug), title: o.name, text: o.summary }))} />
+  <Faq items={p.faqs} />
+  <CtaBand heading="Still not working? We'll come to you." />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+interface Props { heading?: string }
+const { heading = 'How it works' } = Astro.props;
+const f = site.facts;
+const steps = [
+  { t: 'Contact us', d: 'Call or WhatsApp with your machine brand and what it is doing. A photo of the error code helps.' },
+  { t: 'A technician comes out', d: `We book a time that suits you and aim to arrive ${f.arrivalTime} on urgent jobs.` },
+  { t: 'Diagnose and quote', d: `We find the fault and give you a clear price before any work. The ${f.calloutFee} call-out fee is ${f.calloutCondition}.` },
+  { t: 'Repair', d: `Most repairs are done on the spot, and every repair carries our ${f.warranty} warranty.` },
+];
+---
+<section class="section" aria-labelledby="how-h">
+  <div class="container-site">
+    <h2 id="how-h" class="text-2xl font-bold sm:text-3xl">{heading}</h2>
+    <ol class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <li class="card">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-lg font-bold text-ink" aria-hidden="true">{i + 1}</span>
+          <h3 class="mt-4 text-lg font-semibold">{s.t}</h3>
+          <p class="mt-2 text-ink-soft">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

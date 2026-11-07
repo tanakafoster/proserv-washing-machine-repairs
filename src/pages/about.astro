@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site, areaList } from '../data/site';
+const f = site.facts;
+const hero = { src: '/images/about-technician-van.webp', alt: 'ProServ washing machine technician standing next to the service van', width: 960, height: 640 };
+---
+<BaseLayout
+  title="ProServ Washing Machine Repairs: About Us"
+  description={`About ProServ Washing Machine Repairs: local, mobile technicians across Gauteng. Honest quotes and warranty on repairs. Call ${site.phone.display}.`}
+  crumbs={[{ name: 'About us', href: '/about/' }]}
+  preloadImage={{ src: hero.src }}
+>
+  <PageHero
+    h1="About ProServ Washing Machine Repairs"
+    eyebrow="Who we are"
+    image={hero}
+    intro={`<p>ProServ Washing Machine Repairs is a local, mobile repair service for Gauteng homes. We do one thing and do it well: we fix washing machines at your door. Our technicians have been repairing washing machines for ${f.yearsInBusiness} years, and we've completed ${f.repairsCompleted} repairs in homes across ${areaList()}.</p>`}
+  />
+  <TrustBar />
+  <section class="section">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>Why we do things the way we do</h2>
+      <p>Most people call us on a bad day. The machine has stopped mid-wash, there's water in the drum, and there's a pile of laundry waiting. So we keep it simple: answer the phone, turn up when we said we would, find the actual fault, and tell you the price before we touch anything.</p>
+      <p>[PLACEHOLDER: a few sentences about the owner, how the business started, and the team. Real detail here builds trust and helps Google understand who you are.]</p>
+
+      <h2>Our promises</h2>
+      <ul>
+        <li><strong>Quote first.</strong> You'll know the price before any work starts.</li>
+        <li><strong>Fair call-out.</strong> The call-out fee is {f.calloutFee}, {f.calloutCondition}.</li>
+        <li><strong>Warranty.</strong> Every repair carries our {f.warranty} warranty on parts and labour.</li>
+        <li><strong>Honest advice.</strong> If a machine isn't worth repairing, we'll tell you. See <a href="/repair-or-replace/">repair or replace</a>.</li>
+        <li><strong>Respect for your home.</strong> We protect your floors and clean up after ourselves.</li>
+        <li><strong>Plain language.</strong> We explain what's wrong and show you the old part.</li>
+      </ul>
+
+      <h2>What we repair</h2>
+      <p>We repair all major washing machine brands: front loaders, top loaders and washer-dryers. Have a look at our <a href="/services/">washing machine repair services</a>, the <a href="/brands/">brands we repair</a> and the <a href="/areas/">areas we cover</a>.</p>
+      <p>ProServ is an independent repairer. We aren't affiliated with, or authorised by, any washing machine manufacturer. Brand names on this site are trademarks of their owners.</p>
+
+      <h2>Get in touch</h2>
+      <p>Call or WhatsApp us on <a href={`tel:${site.phone.e164}`} data-track="call">{site.phone.display}</a>, email <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href="/contact/">send us a booking request</a>.</p>
+    </div>
+  </section>
+  <HowItWorks />
+  <CtaBand />
+</BaseLayout>

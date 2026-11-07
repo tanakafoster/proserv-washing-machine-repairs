@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import LinkCards from '../../components/LinkCards.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { brands, otherBrands, trademarkNote } from '../../data/brands';
+import { site, brandUrl } from '../../data/site';
+import { faqSchema } from '../../lib/schema';
+const faqs = [
+  { q: 'Are you an authorised agent for any brand?', a: 'No. ProServ is an independent repairer. We repair all major washing machine brands, but we are not affiliated with or authorised by any manufacturer. If your machine is under the manufacturer\'s warranty, contact the manufacturer first.' },
+  { q: 'Do you repair brands not listed here?', a: 'Very likely. Send us the brand and model number and we will confirm whether we can get parts.' },
+  { q: 'Do you use original parts?', a: 'We use original manufacturer parts where they are available and reasonably priced, and good-quality equivalents where they are not. We will tell you which before fitting.' },
+];
+---
+<BaseLayout
+  title="Washing Machine Repairs for All Major Brands | ProServ"
+  description={`Washing machine repairs for all major brands: Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele and more. Call ${site.phone.display}.`}
+  crumbs={[{ name: 'Brands', href: '/brands/' }]}
+  schema={[faqSchema(faqs)]}
+>
+  <PageHero
+    h1="Washing machine repairs for all major brands"
+    eyebrow="Brands we repair"
+    intro={`<p>We repair all major washing machine brands sold in South Africa, from everyday family machines to premium European models: front loaders, top loaders and washer-dryers. If your brand isn't listed, ask us: we'll check whether parts are available before booking. Choose your brand below to see the faults we fix most often and what to tell us when you book.</p>`}
+  />
+  <LinkCards alt heading="Choose your brand" headingId="brand-list" cols={4} items={brands.map((b) => ({ href: brandUrl(b.slug), title: `${b.brand} washing machine repairs`, text: b.summary }))} />
+  <section class="section">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>Other brands we repair</h2>
+      <p>We also repair {otherBrands.join(', ')} washing machines. Miele and Smeg machines are premium European appliances and parts sometimes need to be ordered in, so we may need a second visit. Electrolux machines share a lot of engineering with AEG. Speed Queen top loaders are heavy-duty machines built for long service lives and are usually well worth repairing.</p>
+      <h2>What brand information helps us</h2>
+      <p>When you book, the brand and the full model number make the biggest difference. The model number is on a sticker inside the door rim on front loaders, under the lid on top loaders, or on the back panel. With it, we can check common faults for that model and whether parts are on hand before we arrive.</p>
+      <h2>Error code guides by brand</h2>
+      <p>Many machines show a code when something goes wrong. We have guides for <a href="/error-codes/lg-washing-machine-error-codes/">LG</a>, <a href="/error-codes/samsung-washing-machine-error-codes/">Samsung</a>, <a href="/error-codes/bosch-washing-machine-error-codes/">Bosch</a> and <a href="/error-codes/defy-washing-machine-error-codes/">Defy</a>. See all <a href="/error-codes/">washing machine error codes</a>.</p>
+      <h2>Independent repairs</h2>
+      <p class="callout">{trademarkNote} If your machine is still under the manufacturer's warranty, contact the manufacturer first, because an outside repair may affect that warranty.</p>
+    </div>
+  </section>
+  <Faq items={faqs} />
+  <CtaBand />
+</BaseLayout>

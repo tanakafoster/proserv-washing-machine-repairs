@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactButtons from '../components/ContactButtons.astro';
+import Icon from '../components/Icon.astro';
+import { site, telHref, whatsappHref, mailHref, hoursText, areaList } from '../data/site';
+import { brands, otherBrands } from '../data/brands';
+const path = '/contact/';
+const f = site.facts;
+const thankYou = `${site.url}/thank-you/`;
+const brandOptions = [...brands.map((b) => b.brand), ...otherBrands, 'Other / not sure'];
+// 9 to 15 digits, optionally separated by spaces, dots, brackets, + or -. Browsers compile `pattern`
+// with the regex `v` flag, so the class characters must be escaped. String.raw keeps the backslashes
+// (a plain quoted attribute would lose them). extras/cpanel/contact-handler.php applies the same rule.
+const phonePattern = String.raw`[\s.\(\)\+\-]*(?:\d[\s.\(\)\+\-]*){9,15}`;
+---
+<BaseLayout
+  title="Book a Washing Machine Repair | ProServ"
+  description={`Book a washing machine repair: call, WhatsApp or send the form and we'll arrange a technician at your door. Call ${site.phone.display}.`}
+  crumbs={[{ name: 'Contact', href: path }]}
+>
+  <section class="pt-6 pb-12">
+    <div class="container-site grid gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div>
+        <p class="eyebrow">Contact and bookings</p>
+        <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl">Book a washing machine repair</h1>
+        <p class="mt-4 text-lg text-ink-soft">The quickest way to book a washing machine repair is to call or WhatsApp us. Tell us the brand, the model if you have it, and what the machine is doing. A photo of the error code or a short video helps. Prefer to write? Use the form and we'll get back to you during business hours.</p>
+        <ContactButtons class="mt-6" size="lg" />
+        <ul class="mt-8 space-y-4">
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="phone" /></span><span><strong class="block">Phone</strong><a href={telHref} data-track="call">{site.phone.display}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="whatsapp" /></span><span><strong class="block">WhatsApp</strong><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">{site.phone.display}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="mail" /></span><span><strong class="block">Email</strong><a href={mailHref} class="break-all">{site.email}</a></span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="clock" /></span><span><strong class="block">Hours</strong>{hoursText()}<br />{site.hoursNote}</span></li>
+          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="map" /></span><span><strong class="block">Areas</strong>{areaList()}. <a href="/areas/">See all areas</a>.</span></li>
+        </ul>
+        <div class="card mt-8 bg-brand-tint">
+          <h2 class="font-semibold">Good to know</h2>
+          <p class="mt-2 text-sm text-ink-soft">The call-out fee is {f.calloutFee}, {f.calloutCondition}. Every repair carries our {f.warranty} warranty. We're a mobile service, so there's no walk-in workshop.</p>
+        </div>
+      </div>
+
+      <div class="card p-6 sm:p-8">
+        <h2 class="text-2xl font-bold">Request a technician</h2>
+        <p class="mt-1 text-sm text-ink-soft">Fields marked * are required.</p>
+        <!--
+          FORM DELIVERY: Web3Forms (https://web3forms.com).
+          Set your access key in src/data/site.ts → web3formsKey. Create the key with
+          info@proservwashingmachinerepairs.co.za so submissions are delivered there.
+          For a cPanel PHP alternative, see extras/cpanel/contact-handler.php.
+        -->
+        <form id="booking-form" action="https://api.web3forms.com/submit" method="POST" class="mt-6 space-y-4">
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input type="hidden" name="subject" value="New washing machine repair request (website)" />
+          <input type="hidden" name="from_name" value="ProServ website" />
+          <input type="hidden" name="redirect" value={thankYou} />
+          <!-- Honeypot spam trap: real people never see or tick this. -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div>
+            <label for="name" class="block font-medium">Your name *</label>
+            <input id="name" name="name" type="text" required autocomplete="name" class="mt-1 w-full rounded-lg border border-gray-500 px-3 py-3" />
+          </div>
+          <div>
+            <label for="phone" class="block font-medium">Phone number *</label>
+            <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" pattern={phonePattern} title="A phone number with at least 9 digits, e.g. 082 123 4567" class="mt-1 w-full rounded-lg border border-gray-500 px-3 py-3" />
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="area" class="block font-medium">Area *</label>
+              <select id="area" name="area" required class="mt-1 w-full rounded-lg border border-gray-500 bg-white px-3 py-3">
+                <option value="">Choose your area</option>
+                {site.areas.map((a) => <option>{a.name}</option>)}
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="brand" class="block font-medium">Machine brand *</label>
+              <select id="brand" name="brand" required class="mt-1 w-full rounded-lg border border-gray-500 bg-white px-3 py-3">
+                <option value="">Choose a brand</option>
+                {brandOptions.map((b) => <option>{b}</option>)}
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="problem" class="block font-medium">What's the problem? *</label>
+            <textarea id="problem" name="problem" rows="4" required placeholder="e.g. Front loader, won't drain, showing OE" class="mt-1 w-full rounded-lg border border-gray-500 px-3 py-3"></textarea>
+          </div>
+          <div>
+            <label for="preferred" class="block font-medium">Preferred day and time</label>
+            <input id="preferred" name="preferred_day_time" type="text" placeholder="e.g. Tuesday morning" class="mt-1 w-full rounded-lg border border-gray-500 px-3 py-3" />
+          </div>
+          <p class="text-sm text-ink-soft">We use your details only to respond to your request. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+          <div id="form-error" class="hidden rounded-lg bg-brand-tint p-3 text-sm" role="alert" tabindex="-1">
+            <p id="form-error-detail" class="font-semibold" hidden></p>
+            <p>Sorry, that didn't send. Please check the form and try again, or call or WhatsApp us on <a href={telHref} data-track="call">{site.phone.display}</a>.</p>
+          </div>
+          <button type="submit" class="btn btn-primary w-full">Send request</button>
+          <p id="form-status" class="sr-only" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-site prose-site max-w-3xl">
+      <h2>What happens after you get in touch</h2>
+      <ol>
+        <li><strong>We confirm a time.</strong> We'll call or WhatsApp you back to confirm the booking and any access details, like gate codes or parking.</li>
+        <li><strong>The technician arrives</strong> with the common parts on board and diagnoses the fault.</li>
+        <li><strong>You get a quote</strong> before any work starts. You decide whether to go ahead.</li>
+        <li><strong>We repair and test</strong> the machine, and explain what was done.</li>
+      </ol>
+      <p>Before the visit, please make sure the machine can be reached and there's space to pull it out a little. If it's full of water, put a few towels down. Not sure what's wrong yet? Our <a href="/problems/">common washing machine problems</a> guides may help.</p>
+    </div>
+  </section>
+
+  <script>
+    // Progressive enhancement: submit with fetch, fire form_submit, then go to /thank-you/.
+    // Without JS the form still posts to Web3Forms, which redirects to /thank-you/.
+    // The browser checks required fields and the phone pattern before this handler runs.
+    const form = document.getElementById('booking-form') as HTMLFormElement | null;
+    const btn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const status = document.getElementById('form-status');
+    const errBox = document.getElementById('form-error');
+    const errDetail = document.getElementById('form-error-detail');
+    const label = btn?.textContent ?? 'Send request';
+
+    const reset = () => {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
+      if (status) status.textContent = '';
+    };
+    // Coming back with the Back button can restore the page from the back/forward cache
+    // exactly as it was left (button disabled, "Sending…"). Put it back to normal.
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) reset();
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity() || !btn) return;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      if (status) status.textContent = 'Sending your request…';
+      errBox?.classList.add('hidden');
+      let serverMsg = '';
+      try {
+        const data = new FormData(form);
+        data.delete('redirect'); // only needed for the no-JS post
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || json.success === false) {
+          serverMsg = typeof json.message === 'string' ? json.message : '';
+          throw new Error('Not sent');
+        }
+        const w = window as unknown as { dataLayer: object[] };
+        w.dataLayer = w.dataLayer || [];
+        let done = false;
+        const go = () => { if (!done) { done = true; window.location.href = '/thank-you/'; } };
+        w.dataLayer.push({ event: 'form_submit', form_id: 'booking-form', area: (form.elements.namedItem('area') as HTMLSelectElement).value, eventCallback: go, eventTimeout: 1500 });
+        setTimeout(go, 1600);
+      } catch {
+        reset();
+        // Show the server's reason when it gives one (e.g. "Please enter a valid phone number.").
+        if (errDetail) {
+          errDetail.textContent = serverMsg;
+          errDetail.hidden = !serverMsg;
+        }
+        if (errBox) {
+          errBox.classList.remove('hidden');
+          // Bring the message into view (it can sit under the mobile call bar) and move focus to it.
+          errBox.scrollIntoView({ block: 'center' });
+          errBox.focus({ preventScroll: true });
+        }
+      }
+    });
+  </script>
+</BaseLayout>
