@@ -12,10 +12,10 @@ npm run dev        # local site at http://localhost:4321 (live reload)
 npm run build      # production build into dist/
 npm run preview    # serve the production build locally
 npm run audit      # SEO audit of dist/ → PAGE-AUDIT.md (run after build)
-npm run images     # create any missing placeholder images, logo files and favicons (never overwrites)
+npm run images     # create any missing illustrations, logo files and favicons (never overwrites)
 ```
 
-Always run `npm run build && npm run audit` before deploying. The audit fails on broken links or `#anchors`, missing images, missing alt text, invalid schema, duplicate titles/metas, orphan pages or missing H1s.
+Always run `npm run build && npm run audit` before deploying. The audit fails on broken links or `#anchors`, missing images, missing alt text, invalid schema, duplicate titles/metas, orphan pages, missing H1s, or any placeholder text left on a page (`[PLACEHOLDER]`, `[CONFIRM]`, `[VERIFY]`, "coming soon"). It also lists pages with fewer than 1,500 words.
 
 **`npm run images` and your real photos:** with no options it only creates files that don't exist yet, so it never touches photos or a logo you've added. Naming a group rebuilds (overwrites) it: `npm run images -- icons` (favicons and app icons), `logo` (`public/logo.svg` and `logo.png`), `og` (`public/images/og-default.jpg`), `photos` (every photo in `public/images/`). `npm run images -- --force` rebuilds all of them. Don't use `photos` or `--force` once real photos are in.
 
@@ -25,8 +25,8 @@ Always run `npm run build && npm run audit` before deploying. The audit fails on
 |---|---|
 | **Phone, WhatsApp number and message, email** | `src/data/site.ts` → `phone`, `whatsapp`, `email`. Every page, meta description, FAQ and schema reads them from there, and blog posts use `{{PHONE}}` / `{{TEL}}` tokens that are filled in from it. After a change, run `npm run images -- og` (the share image shows the number) and update the docs that quote it: `grep -rn "079 895 0496" --include=*.md .` (GBP-SETUP, CITATIONS, REVIEWS) |
 | **Service areas** | `src/data/site.ts` → `areas` (`inName` and `label` say how the place reads in a sentence, e.g. "on the East Rand"). Each area also needs unique content in `src/data/areas.ts` (the build stops if it's missing, to avoid thin "doorway" pages) |
-| **Opening hours** | `src/data/site.ts` → `hours`, then set `hoursConfirmed: true` |
-| **Business facts** (years, repairs, reviews, arrival time, call-out fee and when it's charged, warranty) | `src/data/site.ts` → `facts`. Replace the whole string, e.g. `'[PLACEHOLDER: 20]'` → `'20'`. The call-out wording (`calloutCondition`, `calloutConditionShort`) is used on every page that mentions the call-out, so change it there if your policy differs |
+| **Opening hours** | `src/data/site.ts` → `hours`. While it's empty the site shows no hours anywhere; once you add them they appear in the footer, the contact page, the FAQ and the schema |
+| **Business facts** (years, repairs, reviews, arrival time, call-out fee and when it's charged, warranty) | `src/data/site.ts` → `facts`. Every page reads them from there, so a change shows everywhere after a rebuild. The call-out wording (`calloutCondition`, `calloutConditionShort`) is used on every page that mentions the call-out, so change it there if your policy differs |
 | **Contact form key** | `src/data/site.ts` → `web3formsKey` (see "Contact form" below) |
 | **Google Tag Manager ID** | `src/data/site.ts` → `gtmId` (GTM only loads once this is a real `GTM-…` ID) |
 | **Google review link** | `src/data/site.ts` → `googleReviewUrl` (footer link) |
@@ -34,15 +34,18 @@ Always run `npm run build && npm run audit` before deploying. The audit fails on
 | **Price range for schema** | `src/data/site.ts` → `priceRange` |
 | **Brand colours** | `src/styles/global.css` → the `@theme` block at the top (`--color-brand`, `--color-brand-dark`, etc.). Pages, the header logo and the `theme-color` meta tag follow automatically. The image files don't: run `npm run images -- icons logo og` to rebuild the favicons, app icons (plus `theme_color` in `public/site.webmanifest`), `public/logo.svg`/`logo.png` and the share image in the new colours. Skip `logo` and `og` if you've replaced them with your own |
 | **Logo** | `src/components/Logo.astro` (header/footer), plus `public/logo.svg` and `public/logo.png` (schema). Favicons: `public/favicon.*`, `public/apple-touch-icon.png`, `public/icon-*.png` |
-| **Repair prices** | `src/pages/washing-machine-repair-cost.astro` → `prices`; installation and service prices in `src/data/services.ts` |
-| **Page copy** | Services `src/data/services.ts` · Problems `src/data/problems.ts` · Brands `src/data/brands.ts` · Error codes `src/data/errorCodes.ts` · Areas `src/data/areas.ts` · Other pages in `src/pages/` |
+| **Repair prices** | None are published apart from the call-out fee: the cost page explains what drives the price instead. To publish guide prices, add them to `src/pages/washing-machine-repair-cost.astro` and the installation and servicing pages in `src/data/services.ts` |
+| **Page copy** | Services `src/data/services.ts` · Problems `src/data/problems.ts` · Brands `src/data/brands.ts` (11 brand pages, plus the "other brands" list) · Error codes `src/data/errorCodes.ts` · Areas `src/data/areas.ts` · Other pages in `src/pages/`. Long copy can use these styled patterns: `h2`, `h3`, `p`, lists, tables, `<div class="callout">` (also `callout-safety`, `callout-tip`), `<ul class="checklist">` and `<ol class="steps">`. Every `h2` becomes an entry in the page's "On this page" list |
+| **Error codes** | `src/data/errorCodes.ts`. Publish a code only once you've checked it in the manufacturer's own manual or support page, and add that document to the guide's `sources` (shown on the page as "Where these codes come from") |
 | **Blog posts** | Markdown files in `src/content/blog/` (see `CONTENT-PLAN.md`). Write `{{PHONE}}` for the phone number and `[{{PHONE}}]({{TEL}})` for a call link |
 | **Navigation** | `src/data/site.ts` → `mainNav` |
 
-### Colour rules (WCAG AA)
-- Bright orange `#F97316` for accents, icons, borders and highlights.
-- Darker orange `#C2410C` for any orange text on white.
-- Buttons: white text on `#C2410C` (`.btn-primary`) or `#1F2937` text on `#F97316` (`.btn-accent`). **Never** white text on `#F97316`.
+### Design and colour rules (WCAG AA)
+The look follows the Electro Appliance Repairs design system (the Geist font, heavy display headings, orange eyebrows, card surfaces, the orange call-to-action band), with ProServ's colours. All colours are `@theme` tokens at the top of `src/styles/global.css`.
+- Bright orange `#F97316` for accents, icons, borders, highlights and button backgrounds.
+- Darker orange `#C2410C` for any orange text on white or light backgrounds, and for focus rings.
+- Buttons: near-black `#111827` text on `#F97316` (`.btn-primary`, hover `#FB923C`), white on near-black (`.btn-dark`), or the green WhatsApp button with dark text. **Never** white text on `#F97316`.
+- Body text `#1F2937`, alternating sections `#F3F4F6`, soft orange panels `#FFF7ED`.
 
 ## Contact form
 
@@ -79,7 +82,7 @@ Import the repo. `vercel.json` sets the build, trailing slashes, and the www →
 - JSON-LD: `HomeAndConstructionBusiness`/`LocalBusiness` on every page (stable `@id`), `Service` on service, brand and area pages, `FAQPage` where FAQs are visible, `BreadcrumbList` on inner pages, `BlogPosting` on articles. **No Review or AggregateRating markup** (add only once real reviews exist and are shown on the page).
 - `sitemap.xml` (with `lastmod`) generated on build by `integrations/sitemap.mjs`; `/thank-you/` and the 404 page are excluded. `robots.txt` points to it.
 - Visible breadcrumbs on inner pages; no orphan pages; descriptive anchor text.
-- Performance: static HTML, CSS inlined, self-hosted Inter font with `font-display: swap` and preload, preloaded hero image, WebP images with width/height, below-the-fold images lazy-loaded, no sliders or heavy JavaScript.
+- Performance: static HTML, CSS inlined, self-hosted Geist font with `font-display: swap` and preload, preloaded hero image, WebP images with width/height, below-the-fold images lazy-loaded, no sliders or heavy JavaScript.
 
 ## Images and photos to take
 

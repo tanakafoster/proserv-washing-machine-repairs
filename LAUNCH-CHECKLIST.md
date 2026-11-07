@@ -3,17 +3,18 @@
 Work through this in order. Tick each item as you go.
 
 ## 1. Before going live
-- [ ] Replace every `[PLACEHOLDER]`, `[CONFIRM]` and `[VERIFY]` (run `grep -rn "\[PLACEHOLDER\|\[CONFIRM\|\[VERIFY" src` and see `PAGE-AUDIT.md`)
-- [ ] Facts in `src/data/site.ts` confirmed: years in business, repairs completed, review count, arrival time, call-out fee, **when the call-out fee is charged** (`calloutCondition` and `calloutConditionShort`, currently "only payable if you decide not to go ahead with the quote"), warranty
-- [ ] Hours confirmed, then `hoursConfirmed: true` in `src/data/site.ts`
-- [ ] Service areas and suburb lists confirmed (`src/data/site.ts`, `src/data/areas.ts`)
-- [ ] Error codes checked against manufacturers' manuals; set `verify: false` on each confirmed code in `src/data/errorCodes.ts`
-- [ ] Real prices added on `/washing-machine-repair-cost/` and the installation and servicing pages
+The site has no placeholders left: `npm run audit` fails if any `[PLACEHOLDER]`, `[CONFIRM]`, `[VERIFY]` or "coming soon" text appears on a page. The figures below now show as facts on every page, so check them before launch.
+
+- [ ] Facts in `src/data/site.ts` → `facts` are right: 20 years in business, 10,000+ repairs, 500 five-star reviews (shown once, on the home page), "aim to arrive within 1 hour" on urgent call-outs, the R300 call-out fee and **when it's charged** (`calloutCondition` and `calloutConditionShort`, now "only payable if you decide not to go ahead with the quote"), the 6-month warranty on parts and labour
+- [ ] Opening hours: the site shows none until you add them to `hours` in `src/data/site.ts`; then they appear in the footer, the contact page, the FAQ and the schema
+- [ ] Service areas and the suburb lists on each area page are places you're happy to drive to (`src/data/site.ts`, `src/data/areas.ts`)
+- [ ] Error code guides: they list only codes checked against the manufacturers' own documents, which each guide names under "Where these codes come from". Add a code only after checking it in the manual, and add that document to the guide's `sources` in `src/data/errorCodes.ts`
+- [ ] Optional: guide prices. The site shows no prices apart from the call-out fee, and the cost page explains what drives the price instead. If you want to publish typical prices, add them to `/washing-machine-repair-cost/` and the installation and servicing pages
 - [ ] Web3Forms access key added (`web3formsKey`), created with info@proservwashingmachinerepairs.co.za
 - [ ] GTM container ID added (`gtmId`)
-- [ ] Real photos swapped in (same file names and sizes, see README). Don't run `npm run images -- --force` afterwards: it would overwrite them with placeholders
-- [ ] About page placeholder paragraph replaced with your story
-- [ ] Privacy policy: business name and Information Officer filled in
+- [ ] Optional: real photos swapped in for the illustrations (same file names and sizes, see README). Don't run `npm run images -- photos` or `--force` afterwards: they redraw the illustrations over your photos
+- [ ] Optional: a few lines about you and how the business started on the About page (it says nothing about the owner or team that you haven't supplied)
+- [ ] Optional: privacy policy. If you have a registered business name or want to name an Information Officer, add them (it currently sends privacy questions to the email address)
 - [ ] `npm run build && npm run audit` shows 0 errors
 
 ## 2. Domain, hosting and redirects

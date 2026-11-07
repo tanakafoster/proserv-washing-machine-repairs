@@ -9,10 +9,10 @@ Business name:  ProServ Washing Machine Repairs
 Phone:          079 895 0496
 Website:        https://proservwashingmachinerepairs.co.za/
 Email:          info@proservwashingmachinerepairs.co.za
-Address:        Service-area business, no public address. Area: Gauteng (Johannesburg) [CONFIRM]
-Hours:          Mon–Fri 08:00–17:00, Sat 08:00–13:00 [CONFIRM]
+Address:        Service-area business, no public address. Area: Gauteng
+Hours:          Your real hours, the same everywhere (add them to src/data/site.ts too)
 Category:       Washing machine repair / Appliance repair
-Areas served:   Johannesburg, Pretoria, Centurion, Sandton, Midrand, East Rand [CONFIRM]
+Areas served:   Johannesburg, Pretoria, Centurion, Sandton, Midrand, East Rand
 ```
 
 Where a directory asks for an international number, use **+27 79 895 0496**.

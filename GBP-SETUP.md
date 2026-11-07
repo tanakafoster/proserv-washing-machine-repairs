@@ -19,7 +19,7 @@ If "Washer & dryer repair service" isn't available, use **Appliance repair servi
 
 ## Description (679 characters)
 
-> ProServ Washing Machine Repairs is a mobile repair service for homes across Gauteng. Our technicians come to your door to repair front loaders, top loaders and washer-dryers from all major brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG and Siemens. We diagnose the fault on site and give you a clear quote before any work starts, and most repairs are done on the first visit because we carry common parts. We fix drainage and spin problems, leaks, error codes, door locks, bearings, pumps, motors, heating elements and control boards, and we also install and service washing machines. Every repair carries our warranty. Call or WhatsApp 079 895 0496 to book.
+> ProServ Washing Machine Repairs is a mobile repair service for homes across Gauteng. Our technicians come to your door to repair front loaders, top loaders and washer-dryers from all major brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG and Siemens. We diagnose the fault on site and give you a clear quote before any work starts, and most repairs are done on the spot when the part is available. We fix drainage and spin problems, leaks, error codes, door locks, bearings, pumps, motors, heating elements and control boards, and we also install and service washing machines. Every repair carries our warranty. Call or WhatsApp 079 895 0496 to book.
 
 (Check: under 750 characters. It names no brand affiliation and makes no "cheapest" or "best" claims.)
 
@@ -37,7 +37,7 @@ If "Washer & dryer repair service" isn't available, use **Appliance repair servi
 | Error code diagnosis | We find out what the code on your display means and fix the cause. |
 
 ## Service areas
-Add each as a service area (Google allows up to 20). [CONFIRM] these match `src/data/site.ts`.
+Add each as a service area (Google allows up to 20). These are the six areas in `src/data/site.ts` plus some of their biggest suburbs: keep the two in step if your areas change.
 
 Johannesburg · Pretoria · Centurion · Sandton · Midrand · Benoni · Boksburg · Kempton Park · Germiston · Edenvale · Randburg · Roodepoort · Fourways · Bryanston
 
@@ -45,10 +45,10 @@ Johannesburg · Pretoria · Centurion · Sandton · Midrand · Benoni · Boksbur
 - **Phone:** 079 895 0496
 - **Website:** https://proservwashingmachinerepairs.co.za/
 - **Appointment link:** https://proservwashingmachinerepairs.co.za/contact/
-- **Hours:** [CONFIRM] use the same hours as `src/data/site.ts`
+- **Hours:** your real hours. Add the same hours to `src/data/site.ts` → `hours` (the website shows no hours until they're set there)
 - **Messaging / WhatsApp:** add the WhatsApp link https://wa.me/27798950496 if your profile offers a WhatsApp/chat field
 - **Attributes:** "Onsite services", "Online appointments" where available
-- **Opening date:** [CONFIRM] the real year you started trading
+- **Opening date:** the year you started trading (the website says 20 years in business, so keep the two consistent)
 
 ## First 4 GBP posts
 
@@ -59,7 +59,7 @@ Johannesburg · Pretoria · Centurion · Sandton · Midrand · Benoni · Boksbur
 > Load shedding tip: switch your washing machine off at the wall when the power goes, and wait a few minutes after it comes back before switching on. Surges when power returns are a common cause of dead control boards. Machine not switching on after an outage? We can help: 079 895 0496.
 
 **Post 3: Not draining** (button: Learn more → /problems/washing-machine-not-draining/)
-> Water stuck in the drum? Before you call, check the drain hose isn't kinked and clean the pump filter behind the little flap at the bottom front. Still not draining? It may be the pump. We carry pumps on the van, so it's usually a one-visit fix. WhatsApp us on 079 895 0496.
+> Water stuck in the drum? Before you call, check the drain hose isn't kinked and clean the pump filter behind the little flap at the bottom front. Still not draining? It may be the pump. We'll diagnose it at your home and quote before any work starts. WhatsApp us on 079 895 0496.
 
 **Post 4: Rumbling on spin** (button: Learn more → /blog/signs-washing-machine-bearings-are-worn/)
 > Does your washing machine sound like a jet engine on spin? That rumble is often worn drum bearings. Catching it early keeps the repair simpler and cheaper. Book an inspection: 079 895 0496.
