@@ -151,7 +151,7 @@ export const mainNav = [
   { label: 'Problems', href: '/problems/' },
   { label: 'Brands', href: '/brands/' },
   { label: 'Areas', href: '/areas/' },
-  { label: 'Prices', href: '/washing-machine-repair-cost/' },
+  { label: 'Costs', href: '/washing-machine-repair-cost/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contact', href: '/contact/' },
 ];
