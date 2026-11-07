@@ -3,11 +3,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
 import Icon from '../components/Icon.astro';
 import EmailText from '../components/EmailText.astro';
-import { site, telHref, whatsappHref, mailHref, hoursText, hasHours, areaList } from '../data/site';
+import LongFormSection from '../components/LongFormSection.astro';
+import AsideLinks from '../components/AsideLinks.astro';
+import Faq from '../components/Faq.astro';
+import { site, telHref, whatsappHref, mailHref, hoursText, hasHours, areaList, areaUrl } from '../data/site';
 import { brands, otherBrands } from '../data/brands';
+import { faqSchema } from '../lib/schema';
 const path = '/contact/';
 const f = site.facts;
 const thankYou = `${site.url}/thank-you/`;
+/** "A, B and C" */
+const listOf = (items: string[]) => (items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}` : items.join(''));
+// Each area links to its page; the list comes from site.ts.
+const areaLinks = listOf(site.areas.map((a) => a.label.replace(a.name, `<a href="${areaUrl(a.slug)}">${a.name}</a>`)));
+const faqs = [
+  {
+    q: 'Can you give me a quote over the phone?',
+    a: 'Not an exact one, because the same symptom can have several causes with very different prices. A machine that won\'t drain might only need its pump filter cleared, or it might need a new pump. What we can explain on the phone is how the call-out fee works, and the technician gives you a full quote at your home before any work starts.',
+  },
+  {
+    q: 'How soon will you reply to a booking request?',
+    a: 'We\'ll call or WhatsApp you back as soon as we can to confirm a time. If the job is urgent, for example the machine is leaking or stuck full of water, call or WhatsApp us rather than using the form, because that\'s the quickest way to reach us.',
+  },
+  {
+    q: 'Can someone else be at home for the visit?',
+    a: 'Yes, as long as they can let the technician in and show them the machine. Because the quote comes before any work starts, make sure you can be reached by phone to approve it, or tell us beforehand who can decide on your behalf.',
+  },
+  {
+    q: 'Do you need my full address when I book?',
+    a: 'Your suburb is enough to start with. We\'ll take the full address, along with any gate codes or estate access details, when we call or WhatsApp you to confirm the booking.',
+  },
+  {
+    q: 'Can I book a service or an installation here too?',
+    a: 'Yes. Book it the same way and say what you need in your message, whether that\'s <a href="/services/washing-machine-servicing/">washing machine servicing</a> or <a href="/services/washing-machine-installation/">installing a new machine</a>. Each service page explains what the job involves.',
+  },
+  {
+    q: 'What if I need to change or cancel the booking?',
+    a: 'Call or WhatsApp us as soon as you know, and we\'ll find another time. If you\'re cancelling because the problem seems to have gone away, keep an eye on the machine, because a fault that comes and goes can be an early sign of a part starting to fail.',
+  },
+  {
+    q: 'What do you do with the details I send?',
+    a: 'We use them only to respond to your request and arrange the visit. Our <a href="/privacy-policy/">privacy policy</a> explains what we collect, why we collect it and your rights under POPIA.',
+  },
+];
 const brandOptions = [...brands.map((b) => b.brand), ...otherBrands, 'Other / not sure'];
 // 9 to 15 digits, optionally separated by spaces, dots, brackets, + or -. Browsers compile `pattern`
 // with the regex `v` flag, so the class characters must be escaped. String.raw keeps the backslashes
@@ -22,6 +60,7 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
   title="Book a Washing Machine Repair | ProServ"
   description={`Book a washing machine repair: call, WhatsApp or send the form and we'll arrange a technician at your door. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Contact', href: path }]}
+  schema={[faqSchema(faqs)]}
 >
   <section class="pt-5 pb-12 md:pb-16 lg:pt-8 lg:pb-20">
     {/* Phones: intro, form, then the contact details. Desktop: intro and details left, form right. */}
@@ -29,7 +68,7 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
       <div class="min-w-0 lg:col-start-1 lg:row-start-1">
         <p class="type-eyebrow mb-3">Contact and bookings</p>
         <h1 class="type-page-h1">Book a washing machine repair</h1>
-        <p class="type-lead mt-5 max-w-[62ch]">The quickest way to book a washing machine repair is to call or WhatsApp us. Tell us the brand, the model if you have it, and what the machine is doing. A photo of the error code or a short video helps. Prefer to write? Use the form and we'll get back to you during business hours.</p>
+        <p class="type-lead mt-5 max-w-[62ch]">The quickest way to book a washing machine repair is to call or WhatsApp us. Tell us the brand, the model number if you have it, and what the machine is doing: a photo of the error code or a short video helps. Prefer to write? Send the form and we'll call or WhatsApp you back to arrange a time.</p>
         <ContactButtons class="mt-8" size="lg" />
       </div>
 
@@ -123,7 +162,7 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
         </ul>
         <div class="mt-5 rounded-2xl border border-brand/30 bg-brand-tint p-5">
           <h2 class="type-h3 flex items-center gap-2 text-base"><Icon name="badge" class="h-5 w-5 shrink-0 text-brand-dark" /> Good to know</h2>
-          <p class="mt-2 text-[15px] leading-relaxed text-ink">The call-out fee is {f.calloutFee}, {f.calloutCondition}. Every repair carries our {f.warranty} warranty. We're a mobile service, so there's no walk-in workshop.</p>
+          <p class="mt-2 text-[15px] leading-relaxed text-ink">The call-out fee is {f.calloutFee}, {f.calloutCondition}. Every repair carries our {f.warranty} warranty on parts and labour. We're a mobile service, so the technician comes to your home and repairs the machine there.</p>
         </div>
       </div>
 
@@ -136,14 +175,102 @@ const selectCls = `${fieldCls} appearance-none bg-[url("data:image/svg+xml,%3Csv
         <h2 id="after-h">What happens after you get in touch</h2>
         <ol class="steps" role="list">
           <li><strong>We confirm a time.</strong> We'll call or WhatsApp you back to confirm the booking and any access details, like gate codes or parking.</li>
-          <li><strong>The technician arrives</strong> with the common parts on board and diagnoses the fault.</li>
+          <li><strong>The technician arrives</strong>, asks what you've noticed and diagnoses the fault.</li>
           <li><strong>You get a quote</strong> before any work starts. You decide whether to go ahead.</li>
           <li><strong>We repair and test</strong> the machine, and explain what was done.</li>
         </ol>
-        <p>Before the visit, please make sure the machine can be reached and there's space to pull it out a little. If it's full of water, put a few towels down. Not sure what's wrong yet? Our <a href="/problems/">common washing machine problems</a> guides may help.</p>
+        <p>When the part is available, most repairs are done there and then. If one has to be ordered, you'll know before you agree to anything, and we'll book a time to come back and fit it.</p>
       </div>
     </div>
   </section>
+
+  <LongFormSection booking={false} reservedIds={['after-h', 'name', 'phone', 'area', 'brand', 'problem', 'preferred', 'form-error', 'form-error-detail', 'form-status']}>
+      <h2>Call, WhatsApp or the form</h2>
+      <p>Use whichever suits you. You don't need to know what's wrong with the machine to book: telling us what it's doing is enough.</p>
+      <h3>Call us</h3>
+      <p>Calling is the quickest way to book and the right choice for anything urgent: a machine that's leaking, one that won't drain, or a door locked shut with your washing inside. You can describe the problem, ask questions and agree a time in one conversation. Our number is <a href={telHref} data-track="call">{site.phone.display}</a>.</p>
+      <h3>WhatsApp us</h3>
+      <p>WhatsApp suits you if you're at work, or if the problem is easier to show than to describe, because you can send photos and a short video. Use the WhatsApp button on this page, or message <a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">{site.phone.display}<span class="sr-only"> on WhatsApp (opens in a new tab)</span></a> from your phone, and we'll reply to arrange a time.</p>
+      <h3>Use the booking form</h3>
+      <p>The form is handy when the job isn't urgent or you'd like to book ahead. Choose your area and brand, describe the problem in a sentence or two and tell us when suits you, and we'll call or WhatsApp you back to confirm.</p>
+      <h3>Email</h3>
+      <p>You can also email <a href={mailHref}><EmailText /></a>, which works well if you're arranging a repair on someone else's behalf or sending several photos at once.</p>
+
+      <h2>What to tell us</h2>
+      <p>A few details help the technician arrive prepared and keep the visit short.</p>
+      <ul class="checklist">
+        <li><strong>The brand and model number.</strong> Two machines that look the same can use different parts, and the model number shows exactly which version you have.</li>
+        <li><strong>The type of machine:</strong> front loader, top loader or washer-dryer, and whether it's freestanding or built in under a counter.</li>
+        <li><strong>What it's doing.</strong> When the problem happens (filling, washing, draining or spinning), any unusual noises, and where any water appears.</li>
+        <li><strong>Any error code or flashing lights</strong>, exactly as shown. Our <a href="/error-codes/">washing machine error code guides</a> explain what many codes mean.</li>
+        <li><strong>Anything that happened first</strong>, such as load shedding, a move, an unusually heavy load, or something that may have gone in with the washing.</li>
+        <li><strong>Roughly how old the machine is</strong>, which helps when weighing up whether a repair is worth it.</li>
+        <li><strong>Your suburb</strong>, and whether the machine is upstairs or in a complex or estate.</li>
+      </ul>
+
+      <h2>Finding the model number</h2>
+      <p>The model number is printed on a sticker or small plate on the machine, usually next to the serial number.</p>
+      <ul>
+        <li><strong>Front loaders and washer-dryers:</strong> open the door and check the rim around the opening and the inside edge of the door. If it isn't there, look behind the small filter flap at the bottom of the front panel, then on the back of the machine.</li>
+        <li><strong>Top loaders:</strong> lift the lid and check the rim of the tub and the area near the hinges, then the back of the machine and the back of the control panel.</li>
+      </ul>
+      <p>Only check the back if you can see it without moving the machine. Take a clear photo of the sticker rather than copying it out, because characters such as O and 0 are easy to mix up. If the sticker has worn away or you can't find it, send the brand and a photo of the control panel, and the technician will find the details on the visit.</p>
+
+      <h2>Photos and videos that help</h2>
+      <p>If you're booking on WhatsApp, a few pictures tell the technician a lot before they arrive:</p>
+      <ul>
+        <li>The display, showing the error code or the lights that are on or flashing.</li>
+        <li>Where the water is, if it's leaking: under the front, around the door or at the back.</li>
+        <li>A short video of the noise, filmed during the part of the cycle when it happens.</li>
+        <li>The tap and hoses behind the machine, if you can see them without moving it.</li>
+      </ul>
+      <p>Never open the machine or take a panel off for a photo. What you can see from the outside is plenty.</p>
+
+      <h2>The call-out fee and your quote</h2>
+      <p>The call-out fee is {f.calloutFee}, {f.calloutCondition}. The technician diagnoses the fault at your home and gives you a quote before any work starts, so you can decide with the full picture: what's wrong, what the repair involves and what it will cost.</p>
+      <p>Our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> guide explains what affects the price. If your machine is getting on in years, our <a href="/repair-or-replace/">repair or replace</a> guide can help you think it through.</p>
+
+      <h2>If you've had a repair from us</h2>
+      <p>Every repair carries our {f.warranty} warranty on parts and labour. If something isn't right with a repair we did, call or WhatsApp us on the same number and tell us it's about an earlier repair. Have the date of the repair handy and describe what the machine is doing now, and we'll arrange for a technician to come back and look at it.</p>
+
+      <h2>Areas we cover</h2>
+      <p>We repair washing machines across <Fragment set:html={areaLinks} />. The area pages list suburbs we cover, and if yours isn't there, ask us anyway.</p>
+      <p>For urgent call-outs we aim to arrive {f.arrivalTime}, depending on where the technician is working. If the job can wait, we'll book a time that suits you.</p>
+
+      <h2>While you wait</h2>
+      <div class="callout callout-safety"><p><strong>Safety first:</strong> water and electricity are a dangerous mix. If water has reached the plug or the wall socket, don't touch either of them. Switch the power off at the DB board instead, if you can reach it without standing in water, and leave it off.</p></div>
+      <ol class="steps">
+        <li><strong>Switch off at the wall and unplug</strong>, as long as the plug and socket are dry. Do this even if the machine has stopped by itself, so it can't start up again partway through a fault.</li>
+        <li><strong>Turn off the tap</strong> that feeds the machine if it's leaking or won't stop filling. It's normally on the wall behind or beside the machine.</li>
+        <li><strong>Don't keep using it.</strong> Running a machine that's leaking, banging or not draining can turn a small repair into a bigger one.</li>
+        <li><strong>Leave it off if the power tripped.</strong> If the earth leakage or a breaker tripped while the machine was running, keep the machine switched off and unplugged and don't try it again. Tripping can point to a dangerous fault, so it needs a technician.</li>
+        <li><strong>Mop up and keep the area clear.</strong> Put towels around the base, and keep children and pets away from the machine until it has been looked at.</li>
+      </ol>
+      <p>The same goes for a machine that smells of burning or gives off smoke or sparks: switch it off at the wall straight away, if it's safe to reach the plug, and don't use it again until it has been checked. For more on what may be behind the problem, see our guides to a <a href="/problems/washing-machine-leaking/">washing machine leaking</a> and a <a href="/problems/washing-machine-wont-turn-on/">washing machine that won't turn on</a>.</p>
+
+      <h2>Getting ready for the visit</h2>
+      <ul class="checklist">
+        <li><strong>Clear the way.</strong> The technician needs a clear path to the machine and room to pull it out from the wall or counter.</li>
+        <li><strong>Take the washing out</strong> if the door opens normally, so the drum is empty when the technician arrives.</li>
+        <li><strong>Find the manual</strong> if you still have it, along with any paperwork from earlier repairs.</li>
+        <li><strong>Keep dogs secured</strong> while the technician comes in and works.</li>
+      </ul>
+      <p>If the door is locked with water inside, leave it closed. Many front loaders won't release the door while there's water in the drum, and forcing the handle can break the lock. If you need the washing out sooner, drain the machine through the pump filter as your manual describes: switch off at the wall and unplug first, expect a lot of water, use towels and a shallow tray, and let hot water cool first. Our guide to a <a href="/problems/washing-machine-door-wont-open/">washing machine door that won't open</a> explains more.</p>
+    <Fragment slot="aside">
+      <AsideLinks
+        heading="Not sure what's wrong?"
+        intro="Our fault guides explain the likely causes and the checks that are safe to do yourself."
+        items={[
+          { href: '/problems/washing-machine-not-draining/', title: 'Washing machine not draining', icon: 'drain' },
+          { href: '/problems/washing-machine-leaking/', title: 'Washing machine leaking', icon: 'droplet' },
+          { href: '/problems/washing-machine-wont-turn-on/', title: "Washing machine won't turn on", icon: 'power' },
+          { href: '/problems/washing-machine-showing-error-code/', title: 'Showing an error code', icon: 'alert' },
+          { href: '/problems/', title: 'All washing machine problems', icon: 'list' },
+        ]}
+      />
+    </Fragment>
+  </LongFormSection>
+  <Faq items={faqs} heading="Questions about booking" />
 
   <script>
     // Progressive enhancement: submit with fetch, fire form_submit, then go to /thank-you/.
