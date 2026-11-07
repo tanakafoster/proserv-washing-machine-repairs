@@ -1,15 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
-import { hoursText } from '../data/site';
+import Icon from '../components/Icon.astro';
+import { hoursText, hasHours } from '../data/site';
 ---
 <BaseLayout title="Thank You | ProServ" description="Thanks for your washing machine repair request. We'll be in touch soon." noindex crumbs={[{ name: 'Thank you', href: '/thank-you/' }]}>
-  <section class="section">
+  <section class="section-y">
     <div class="container-site max-w-2xl text-center">
-      <h1 class="text-3xl font-extrabold sm:text-4xl">Thanks, we've got your request</h1>
-      <p class="mt-4 text-lg text-ink-soft">We'll get back to you as soon as we can during business hours ({hoursText()}). If your machine is leaking or it's urgent, please call or WhatsApp us now.</p>
-      <ContactButtons class="mt-6 justify-center" />
-      <p class="mt-8"><a href="/">Back to the home page</a> · <a href="/problems/">Common washing machine problems</a></p>
+      <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-tint-strong text-brand-dark ring-8 ring-brand-tint" aria-hidden="true">
+        <Icon name="check" class="h-8 w-8" strokeWidth={2.5} />
+      </span>
+      <h1 class="type-page-h1 mt-8">Thanks, we've got your request</h1>
+      <p class="type-lead mx-auto mt-5 max-w-xl">We'll call or WhatsApp you back as soon as we can{hasHours ? ` during business hours (${hoursText()})` : ''} to confirm a time. If you have a photo of the error code or the model sticker, WhatsApp it to us. If it's urgent or the machine is leaking, call us now, and keep the machine switched off with its tap turned off until the technician arrives. If the plug or socket is wet, switch off at the DB board rather than touching them.</p>
+      <ContactButtons class="mt-8 justify-center" size="lg" />
+      <ul class="mt-10 flex flex-wrap justify-center gap-2.5">
+        <li><a href="/problems/" class="chip">Common washing machine problems</a></li>
+        <li><a href="/services/" class="chip">Washing machine repair services</a></li>
+        <li><a href="/error-codes/" class="chip">Error code guides</a></li>
+        <li><a href="/" class="chip">Back to the home page</a></li>
+      </ul>
     </div>
   </section>
 </BaseLayout>

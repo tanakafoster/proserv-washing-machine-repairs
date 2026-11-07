@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <title>Washing machine connected to a wall tap and a standpipe</title>
+  <desc>Flat illustration: a front loader washing machine against a tiled wall, its inlet hose connected to a wall tap and its drain hose hooked into a standpipe, with a spirit level on top.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background: warm wall with a tiled splashback -->
+  <rect width="960" height="640" fill="#FFF7ED"/>
+  <clipPath id="wall-clip">
+    <rect x="130" y="56" width="700" height="510.29999999999995" rx="28"/>
+  </clipPath>
+  <g clip-path="url(#wall-clip)">
+    <rect x="130" y="56" width="700" height="510.29999999999995" fill="#FFEDD5"/>
+    <path d="M194 56V566.3M258 56V566.3M322 56V566.3M386 56V566.3M450 56V566.3M514 56V566.3M578 56V566.3M642 56V566.3M706 56V566.3M770 56V566.3M130 120H830M130 184H830M130 248H830M130 312H830M130 376H830M130 440H830M130 504H830" stroke="#FED7AA" stroke-width="3"/>
+    <!-- skirting -->
+    <rect x="130" y="544.3" width="700" height="22" fill="#FED7AA"/>
+  </g>
+  <!-- floor -->
+  <ellipse cx="480" cy="568.3" rx="420" ry="30" fill="#FED7AA" opacity="0.5"/>
+
+  <!-- cold water tap on the wall, with the inlet hose running down behind the machine -->
+  <path d="M262 290 C262 350 268 392 330 404 L380 404" fill="none" stroke="#9CA3AF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M262 290 C262 350 268 392 330 404 L380 404" fill="none" stroke="#E5E7EB" stroke-width="12" stroke-linecap="round"/>
+  <path d="M256 300 C256 352 262 384 318 396" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <g>
+    <circle cx="262" cy="236" r="22" fill="#D1D5DB"/>
+    <circle cx="262" cy="236" r="16" fill="#E5E7EB"/>
+    <rect x="252" y="236" width="20" height="40" rx="6" fill="#D1D5DB"/>
+    <rect x="249" y="262" width="26" height="22" rx="5" fill="#9CA3AF"/>
+    <rect x="249" y="262" width="26" height="5" rx="2.5" fill="#D1D5DB"/>
+    <path d="M262 236 L214 214" stroke="#60A5FA" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="262" cy="236" r="8" fill="#9CA3AF"/>
+  </g>
+
+  <!-- standpipe (drain) on the right, with the drain hose hooked into it -->
+  <rect x="716" y="300" width="34" height="262.29999999999995" fill="#E5E7EB"/>
+  <rect x="736" y="300" width="14" height="262.29999999999995" fill="#D1D5DB"/>
+  <rect x="710" y="292" width="46" height="18" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="706" y="400" width="54" height="14" rx="4" fill="#9CA3AF"/>
+  <path d="M630 470 C690 470 690 340 704 300 C712 270 742 262 744 300" fill="none" stroke="#6B7280" stroke-width="20" stroke-linecap="round"/>
+  <path d="M630 470 C690 470 690 340 704 300 C712 270 742 262 744 300" fill="none" stroke="#9CA3AF" stroke-width="14" stroke-linecap="round" stroke-dasharray="6 4"/>
+  <rect x="710" y="292" width="46" height="10" rx="5" fill="#F3F4F6"/>
+
+  <!-- floor shadows -->
+  <ellipse cx="500.2" cy="562.3" rx="168" ry="14" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <ellipse cx="214" cy="592.3" rx="84" ry="8" fill="#1F2937" opacity="0.12" filter="url(#soft)"/>
+
+  <!-- new front loader washing machine, connected and levelled -->
+  <g transform="translate(352 150) scale(0.95)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- door (closed) -->
+      <circle cx="154" cy="239" r="95" fill="#1F2937" opacity="0.08"/>
+      <circle cx="150" cy="234" r="93" fill="url(#washer-chrome)" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="150" cy="234" r="79" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+      <circle cx="150" cy="234" r="77" fill="#374151"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-glass)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- empty drum seen through the glass -->
+        <circle cx="150" cy="234" r="40" fill="none" stroke="#93C5FD" stroke-width="5"/>
+        <circle cx="150" cy="234" r="16" fill="#93C5FD"/>
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#60A5FA" stroke-width="3.2" stroke-linecap="round" opacity="0.35"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(270 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(30 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(150 150 234)"/>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="3" opacity="0.12"/>
+      <!-- reflection on the glass -->
+      <path d="M97.69 217 A55 55 0 0 1 127.63 183.75" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <path d="M136.69 180.63 A55 55 0 0 1 146.16 179.13" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <!-- door handle (grip moulded into the right of the door ring) -->
+      <path d="M232.24 208.86 A86 86 0 0 1 232.24 259.14" fill="none" stroke="#6B7280" stroke-width="9" stroke-linecap="round"/>
+      <path d="M233.07 211.74 A86 86 0 0 1 233.07 256.26" fill="none" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- spirit level on top of the machine -->
+  <g transform="translate(494.5 138) scale(0.82)">
+    <g id="level">
+      <rect x="-120" y="-30" width="240" height="30" rx="6" fill="#C2410C"/>
+      <rect x="-120" y="-34" width="240" height="28" rx="6" fill="#F97316"/>
+      <rect x="-114" y="-31" width="228" height="5" rx="2.5" fill="#FDBA74" opacity="0.8"/>
+      <!-- bubble vial in the middle -->
+      <rect x="-30" y="-29" width="60" height="18" rx="9" fill="#1F2937"/>
+      <rect x="-26" y="-26" width="52" height="12" rx="6" fill="#BFDBFE"/>
+      <rect x="-6" y="-24" width="12" height="8" rx="4" fill="#FFFFFF"/>
+      <rect x="-11" y="-28" width="2" height="16" fill="#1F2937" opacity="0.5"/>
+      <rect x="9" y="-28" width="2" height="16" fill="#1F2937" opacity="0.5"/>
+      <!-- end caps -->
+      <rect x="-120" y="-34" width="14" height="34" rx="5" fill="#1F2937"/>
+      <rect x="106" y="-34" width="14" height="34" rx="5" fill="#1F2937"/>
+    </g>
+  </g>
+
+  <!-- spanner on the floor -->
+  <g transform="translate(214 586.3) rotate(-10) scale(0.62)">
+    <g id="spanner">
+      <defs>
+        <mask id="spanner-cut" maskUnits="userSpaceOnUse" x="-140" y="-50" width="280" height="100">
+          <rect x="-140" y="-50" width="280" height="100" fill="#FFFFFF"/>
+          <circle cx="-92" cy="0" r="11" fill="#000000"/>
+          <g transform="rotate(-15 94 0)">
+            <rect x="94" y="-10.5" width="50" height="21" fill="#000000"/>
+            <circle cx="94" cy="0" r="10.5" fill="#000000"/>
+          </g>
+        </mask>
+        <g id="spanner-shape" mask="url(#spanner-cut)">
+          <circle cx="-92" cy="0" r="24"/>
+          <path d="M-82 -10 C-40 -8 40 -8 82 -12 L82 12 C40 8 -40 8 -82 10 Z"/>
+          <circle cx="94" cy="0" r="27"/>
+        </g>
+      </defs>
+      <use href="#spanner-shape" fill="#6B7280" transform="translate(0 5)"/>
+      <use href="#spanner-shape" fill="#9CA3AF"/>
+      <path d="M-70 -3 C-30 -2 30 -2 70 -4" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-109.23 -3.04 A17.5 17.5 0 0 1 -86.01 -16.44" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+      <path d="M75.21 -6.84 A20 20 0 0 1 104 -17.32" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <path d="M800 115 Q802.7 127.3 815 130 Q802.7 132.7 800 145 Q797.3 132.7 785 130 Q797.3 127.3 800 115 Z" fill="#F97316"/>
+  <path d="M836 172 Q837.44 178.56 844 180 Q837.44 181.44 836 188 Q834.56 181.44 828 180 Q834.56 178.56 836 172 Z" fill="#FDBA74"/>
+</svg>

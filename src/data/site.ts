@@ -2,7 +2,10 @@
  * SINGLE SOURCE OF TRUTH for business details.
  * Every page, the header, the footer, the contact form and the JSON-LD schema read from here.
  *
- * Search this file for [CONFIRM] and [PLACEHOLDER] to find what still needs real values.
+ * Before launch, fill in the settings marked "Before launch" below: the postal address for the
+ * privacy policy, opening hours, the Google review link, social profiles, the GTM ID and the
+ * Web3Forms key. Anything left empty is simply not shown on the site, so nothing half-finished
+ * ever appears to visitors.
  */
 
 export const site = {
@@ -23,13 +26,19 @@ export const site = {
     message: 'Hi ProServ, my washing machine needs repairing.',
   },
   email: 'info@proservwashingmachinerepairs.co.za',
+  /**
+   * Before launch: a postal address for the privacy policy (a PO Box is fine), because POPIA asks
+   * for the responsible party's name and address. Shown only when filled in.
+   */
+  postalAddress: '' as string,
 
   /**
    * Service-area business: no public street address.
-   * Schema publishes locality / region / country only. [CONFIRM] the base locality.
+   * The schema publishes region and country, plus the locality if you fill it in
+   * (the town you work from, e.g. 'Johannesburg').
    */
   address: {
-    locality: 'Johannesburg', // [CONFIRM]
+    locality: '',
     region: 'Gauteng',
     country: 'ZA',
     /** Leave empty unless you want a public street address shown. */
@@ -38,61 +47,63 @@ export const site = {
   },
 
   /**
-   * Opening hours. [CONFIRM] — these are placeholders.
-   * `days` uses schema.org day names. Times are 24-hour.
+   * Before launch: your opening hours. While this list is empty the site shows no hours
+   * anywhere (and the schema leaves them out), so add them only when they are real.
+   * `days` uses schema.org day names. Times are 24-hour. Example:
+   *   { label: 'Monday to Friday', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
    */
-  hours: [
-    { label: 'Monday to Friday', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
-    { label: 'Saturday', days: ['Saturday'], opens: '08:00', closes: '13:00' },
-  ],
-  hoursConfirmed: false, // set to true once the hours above are real; removes the [CONFIRM] label on the site
-  hoursNote: 'Sundays and public holidays by arrangement',
+  hours: [] as { label: string; days: string[]; opens: string; closes: string }[],
+  /** Optional line shown under the hours, e.g. 'Sundays and public holidays by arrangement'. Only shown with hours. */
+  hoursNote: '',
 
   /**
-   * Business facts. Shown on the site wrapped in [PLACEHOLDER: …] until confirmed.
-   * When a figure is confirmed, replace the whole string, e.g. yearsInBusiness: '20'.
-   * Never put the review count into testimonials or schema.
+   * Business facts, as supplied by the owner. Every page reads them from here, so a change
+   * here changes the whole site. Never put the review count into testimonials or schema.
    */
   facts: {
-    yearsInBusiness: '[PLACEHOLDER: 20]',
-    repairsCompleted: '[PLACEHOLDER: 10,000+]',
-    fiveStarReviews: '[PLACEHOLDER: 500]',
-    arrivalTime: '[PLACEHOLDER: within 1 hour]',
-    calloutFee: '[PLACEHOLDER: R300]',
+    yearsInBusiness: '20',
+    repairsCompleted: '10,000+',
+    fiveStarReviews: '500',
+    arrivalTime: 'within 1 hour',
+    calloutFee: 'R300',
     /**
      * When the call-out fee is charged. Read as "The call-out fee is R300, <calloutCondition>."
      * If your policy is different (e.g. always charged but deducted from the repair), change both
      * lines: every page that mentions the call-out reads them from here.
      */
-    calloutCondition: '[PLACEHOLDER: only payable if you decide not to go ahead with the quote]',
+    calloutCondition: 'only payable if you decide not to go ahead with the quote',
     /** Short form for tight spaces: the home page hero and the price table. */
-    calloutConditionShort: '[PLACEHOLDER: only if you decline the quote]',
-    warranty: '[PLACEHOLDER: 6-month]',
+    calloutConditionShort: 'only if you decline the quote',
+    warranty: '6-month',
   },
 
-  /** Schema.org priceRange. [PLACEHOLDER] */
-  priceRange: '[PLACEHOLDER]',
+  /** Schema.org priceRange, e.g. 'R300 call-out'. Left out of the schema while empty. */
+  priceRange: '',
 
-  /** Google Business Profile review link, e.g. https://g.page/r/XXXX/review [GBP REVIEW LINK] */
+  /**
+   * Before launch: your Google Business Profile review link, e.g. https://g.page/r/XXXX/review
+   * The footer's "Leave us a Google review" link only appears once this is filled in.
+   */
   googleReviewUrl: '',
 
   /**
-   * Profiles for schema sameAs. [PLACEHOLDER: GBP and social links]
-   * Add full URLs, e.g. 'https://www.facebook.com/proserv…'. Empty entries are ignored.
+   * Before launch: your Google Business Profile and social profile URLs, for the schema's sameAs,
+   * e.g. 'https://www.facebook.com/proserv…'. Empty entries are ignored.
    */
   sameAs: [] as string[],
 
-  /** Google Tag Manager container ID. [PLACEHOLDER] GTM is not loaded until this is a real ID. */
+  /** Before launch: your Google Tag Manager container ID. GTM is not loaded until this is a real ID. */
   gtmId: 'GTM-XXXXXXX',
 
   /**
-   * Web3Forms access key (https://web3forms.com). [PLACEHOLDER]
-   * Create the key using info@proservwashingmachinerepairs.co.za so submissions go there.
+   * Before launch: your Web3Forms access key (https://web3forms.com). The contact form can't
+   * send until it's set. Create the key using info@proservwashingmachinerepairs.co.za so
+   * submissions go there.
    */
   web3formsKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
 
   /**
-   * Service areas. [CONFIRM] Each area needs a matching content entry in src/data/areas.ts,
+   * Service areas. Each area needs a matching content entry in src/data/areas.ts,
    * otherwise the build stops with an error (prevents thin "doorway" pages).
    * `inName` and `label` are how the place reads in a sentence: "repairs on the East Rand",
    * "Midrand and the East Rand". For most places they are simply "in X" and "X".
@@ -128,17 +139,17 @@ export const areaUrl = (slug: string) => `/areas/washing-machine-repairs-${slug}
 export const brandUrl = (slug: string) => `/brands/${slug}-washing-machine-repairs/`;
 export const errorCodeUrl = (slug: string) => `/error-codes/${slug}-washing-machine-error-codes/`;
 
-export const isPlaceholder = (v: string) => /\[(PLACEHOLDER|CONFIRM|VERIFY)/.test(v);
-
 /** The areas as a sentence list: "Johannesburg, Pretoria, Centurion, Sandton, Midrand and the East Rand". */
 export const areaList = () => {
   const l = site.areas.map((a) => a.label as string);
   return l.length > 1 ? `${l.slice(0, -1).join(', ')} and ${l[l.length - 1]}` : l.join('');
 };
 
-export const hoursText = () =>
-  site.hours.map((h) => `${h.label}: ${h.opens}–${h.closes}`).join(' · ') +
-  (site.hoursConfirmed ? '' : ' [CONFIRM]');
+/** True once real opening hours are filled in above. Pages show hours only when this is true. */
+export const hasHours = site.hours.length > 0;
+
+/** "Monday to Friday: 08:00–17:00 · Saturday: 08:00–13:00", or '' while no hours are set. */
+export const hoursText = () => site.hours.map((h) => `${h.label}: ${h.opens}–${h.closes}`).join(' · ');
 
 /** Main navigation (header). */
 export const mainNav = [
@@ -146,7 +157,7 @@ export const mainNav = [
   { label: 'Problems', href: '/problems/' },
   { label: 'Brands', href: '/brands/' },
   { label: 'Areas', href: '/areas/' },
-  { label: 'Prices', href: '/washing-machine-repair-cost/' },
+  { label: 'Costs', href: '/washing-machine-repair-cost/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contact', href: '/contact/' },
 ];

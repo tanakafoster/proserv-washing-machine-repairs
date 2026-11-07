@@ -1,13 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
+import HeroTrustRow from '../components/HeroTrustRow.astro';
 import TrustBar from '../components/TrustBar.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import LinkCards from '../components/LinkCards.astro';
+import LongFormSection from '../components/LongFormSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
-import { site, areaUrl, brandUrl, hoursText, areaList } from '../data/site';
+import { serviceIcon, problemIcon } from '../components/icon-maps';
+import { site, areaUrl, brandUrl, hoursText, hasHours, areaList } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { problems, problemUrl } from '../data/problems';
 import { brands, otherBrands, trademarkNote } from '../data/brands';
@@ -17,16 +21,82 @@ const f = site.facts;
 const hero = {
   src: '/images/hero-technician.webp',
   srcset: '/images/hero-technician-640.webp 640w, /images/hero-technician.webp 1200w',
-  sizes: '(min-width: 1024px) 540px, 100vw',
+  sizes: '(min-width: 1280px) 560px, (min-width: 1024px) 44vw, 100vw',
 };
 const faqs = [
-  { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. The technician diagnoses the fault and gives you a quote before any work starts.` },
-  { q: 'How quickly can you get here?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. Otherwise we book a time that suits you.` },
-  { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele, Smeg, Electrolux and Speed Queen. We are an independent repairer, not an agent for any brand.' },
-  { q: 'Are your repairs guaranteed?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour.` },
-  { q: 'Do I need to take my machine anywhere?', a: 'No. We repair washing machines at your home. In the rare case that a workshop repair is needed, we will discuss it with you first.' },
-  { q: 'How do I pay?', a: '[CONFIRM: payment methods, e.g. EFT, card, cash] Payment is due when the repair is complete.' },
+  {
+    q: 'Why does my washing machine take so long?',
+    a: `Many front loader programmes take two hours or more, and eco programmes often run longer. A heavy or unbalanced load can add more time. If the time left keeps rising or the wash never ends, the machine may be <a href="${problemUrl('washing-machine-not-filling-with-water')}">filling slowly</a>, not heating properly or struggling to drain.`,
+  },
+  {
+    q: 'What should I do while I wait for the technician?',
+    a: `If the machine is leaking, tripping the electricity or smells of burning, switch it off at the wall, then unplug it, provided the plug and socket are dry and you don't have to stand in water. Otherwise, don't touch the plug or socket: switch off at the DB board instead. Then close the tap, and if the door is locked with water inside, leave it closed: the technician can drain the machine safely.`,
+  },
+  {
+    q: 'My washing machine is showing an error code. What should I do?',
+    a: `Write the code down or take a photo, then look it up in your manual or our <a href="/error-codes/">washing machine error code guides</a> for LG, Samsung, Bosch and Defy. Many codes point to something you can check safely, such as a closed tap, a kinked hose or a door that isn't fully shut. If the code comes back, book a technician.`,
+  },
+  {
+    q: 'Does load shedding damage washing machines?',
+    a: 'It can. The surge when the power returns can damage the control board or the mains filter, and a machine cut off mid-cycle can be left with water inside, often with the door still locked. Switch off at the wall when the power goes, and wait a few minutes after it returns. See <a href="/blog/protect-washing-machine-from-load-shedding/">how to protect your washing machine from load shedding</a>.',
+  },
+  {
+    q: 'Do you repair washer-dryers that won\'t dry?',
+    a: `Yes. A washer-dryer can stop drying while it still washes normally, and the fault is then on the drying side: the heater, its thermostats or thermal fuse, the fan, or lint blocking the condenser. See <a href="${serviceUrl('washer-dryer-repairs')}">washer dryer repairs</a>.`,
+  },
+  {
+    q: 'How can I make my washing machine last longer?',
+    a: `Don't overload it, use the right detergent at the right dose, and wipe the door seal and detergent drawer clean regularly. Leave the door ajar after each wash so the drum can dry out, as long as small children and pets can't reach it. A regular <a href="${serviceUrl('washing-machine-servicing')}">washing machine service</a> catches worn hoses, seals and bearings early.`,
+  },
 ];
+const benefits = [
+  'Quote before we start',
+  `${f.calloutFee} call-out, ${f.calloutConditionShort}`,
+  `${f.warranty} repair warranty`,
+  'Front loaders, top loaders and washer-dryers',
+];
+const expectations = [
+  'A technician at your door, with a booked time',
+  'A proper diagnosis, not a guess over the phone',
+  'A clear quote before any work',
+  `${f.calloutFee} call-out fee, ${f.calloutCondition}`,
+  `${f.warranty} warranty on parts and labour`,
+  `${f.fiveStarReviews} five-star reviews from local customers`,
+];
+// "Faults we fix": each fault links to the guide or service page that covers it.
+// `text` follows the link directly, so it starts with its own punctuation.
+const faults = [
+  { href: problemUrl('washing-machine-door-wont-open'), label: 'Door lock faults', text: ': the door won\'t lock, so the wash can\'t start, or won\'t unlock afterwards.' },
+  { href: serviceUrl('top-loader-repairs'), label: 'Faulty lid switches', text: ', which can stop a top loader agitating or spinning.' },
+  { href: problemUrl('washing-machine-not-spinning'), label: 'Worn or broken drive belts', text: ': the motor runs but the drum hardly turns.' },
+  { href: problemUrl('washing-machine-not-draining'), label: 'Blocked pump filters, coin traps and failed drain pumps', text: ', which leave water in the drum.' },
+  { href: problemUrl('washing-machine-leaking'), label: 'Torn door seals and split hoses', text: ' that leak onto the floor.' },
+  { href: problemUrl('washing-machine-not-filling-with-water'), label: 'Detergent left in the drawer', text: ', often from weak water flow or a blocked drawer.' },
+  { href: problemUrl('washing-machine-noisy-when-spinning'), label: 'Shaking, walking and banging', text: ' during the spin.' },
+  { href: '/blog/why-does-my-washing-machine-smell/', label: 'Bad smells', text: ' from the drum, door seal or detergent drawer.' },
+  { href: problemUrl('washing-machine-showing-error-code'), label: 'Machines that stop mid-cycle', text: ', often with an error code on the display.' },
+  { href: '/blog/signs-washing-machine-bearings-are-worn/', label: 'Worn drum bearings', text: ' and other drum and tub problems.' },
+  { href: problemUrl('washing-machine-not-filling-with-water'), label: 'Machines that won\'t fill', text: ', or fill very slowly.' },
+  { href: serviceUrl('washing-machine-parts-replacement'), label: 'Motors, carbon brushes, heating elements and control boards', text: ' that need replacing.' },
+];
+// "Brands we repair": every brand guide, linked. Other makes follow as plain text.
+const brandRows = [
+  { slug: 'defy', name: 'Defy', machines: 'Front loaders, top loaders and twin tubs' },
+  { slug: 'lg', name: 'LG', machines: 'Direct drive front loaders and washer-dryers, plus top loaders' },
+  { slug: 'samsung', name: 'Samsung', machines: 'Top loaders, front loaders and washer-dryers' },
+  { slug: 'bosch', name: 'Bosch', machines: 'Freestanding and built-in front loaders and washer-dryers' },
+  { slug: 'whirlpool', name: 'Whirlpool', machines: 'Front loaders, top loaders and washer-dryers' },
+  { slug: 'hisense', name: 'Hisense', machines: 'Front loaders, top loaders, twin tubs and washer-dryers' },
+  { slug: 'aeg', name: 'AEG', machines: 'Front loaders and washer-dryers' },
+  { slug: 'siemens', name: 'Siemens', machines: 'Front loaders and washer-dryers from the iQ range' },
+  { slug: 'miele', name: 'Miele', machines: 'Front loaders and washer-dryers' },
+  { slug: 'smeg', name: 'Smeg', machines: 'Front loaders and washer-dryers' },
+  { slug: 'speed-queen', name: 'Speed Queen', machines: 'Heavy-duty top loaders and front loaders' },
+];
+// The other makes as a sentence list, read from brands.ts: "A", "A and B" or "A, B and C".
+const otherMakes = otherBrands.length > 1
+  ? `${otherBrands.slice(0, -1).join(', ')} and ${otherBrands[otherBrands.length - 1]}`
+  : otherBrands.join('');
 ---
 <BaseLayout
   title="Washing Machine Repairs at Your Door | ProServ"
@@ -35,34 +105,45 @@ const faqs = [
   preloadImage={hero}
 >
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-brand-tint to-white">
-    <div class="container-site grid items-center gap-8 py-8 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:py-16">
-      <div>
-        <p class="eyebrow">Gauteng's mobile washing machine technicians</p>
-        <h1 class="mt-2 text-4xl leading-tight font-extrabold sm:text-5xl">Washing machine repairs at your door</h1>
-        <p class="mt-4 max-w-xl text-lg text-ink-soft">
-          Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work, and fix most faults on the spot. We repair all major washing machine brands across {areaList()}.
+  <section class="relative overflow-hidden border-b border-line/70">
+    <div class="pointer-events-none absolute -top-48 right-[-12%] -z-10 hidden h-[44rem] w-[44rem] rounded-full bg-[radial-gradient(closest-side,rgb(249_115_22/0.12),transparent)] lg:block" aria-hidden="true"></div>
+    <div class="container-site grid items-center gap-10 pt-8 pb-12 md:pt-12 md:pb-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14 lg:pt-14 lg:pb-20 xl:gap-16">
+      <div class="min-w-0">
+        <p class="type-eyebrow mb-4">Your mobile washing machine technician in Gauteng</p>
+        <h1 class="type-display">
+          <span class="block">Washing machine repairs</span>
+          <span class="block text-brand-dark">at your door</span>
+        </h1>
+        <p class="type-lead mt-5 max-w-xl">
+          Washing machine broken? ProServ's washing machine repairs cover all major brands across {areaList()}. A technician visits your home, diagnoses the problem and quotes before any work starts, and when the part is available, most faults are fixed on the spot.
         </p>
-        <ContactButtons class="mt-6" size="lg" />
-        <ul class="mt-6 grid gap-2 text-ink-soft sm:grid-cols-2">
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Quote before we start</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out, {f.calloutConditionShort}</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} repair warranty</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Front, top and washer-dryers</li>
+        <ul class="mt-6 grid max-w-xl gap-x-6 gap-y-2.5 text-[15px] text-ink sm:grid-cols-2">
+          {benefits.map((b) => (
+            <li class="flex items-start gap-2.5">
+              <span class="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-tint-strong text-brand-dark">
+                <Icon name="check" class="h-3.5 w-3.5" strokeWidth={3} />
+              </span>
+              <span class="leading-snug">{b}</span>
+            </li>
+          ))}
         </ul>
+        <ContactButtons class="mt-8" size="lg" />
+        <div class="hidden sm:block"><HeroTrustRow variant="phone" /></div>
       </div>
-      <img
-        src={hero.src}
-        srcset={hero.srcset}
-        sizes={hero.sizes}
-        width="1200"
-        height="900"
-        alt="ProServ technician repairing a front loader washing machine in a customer's kitchen"
-        fetchpriority="high"
-        loading="eager"
-        decoding="async"
-        class="h-auto w-full rounded-2xl border border-line object-cover shadow-md"
-      />
+      <div class="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--shadow-float)] lg:aspect-[4/3]">
+        <img
+          src={hero.src}
+          srcset={hero.srcset}
+          sizes={hero.sizes}
+          width="1200"
+          height="900"
+          alt="Illustration of a front loader washing machine with a technician's toolbox and spanner"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover object-center"
+        />
+      </div>
     </div>
   </section>
 
@@ -70,25 +151,30 @@ const faqs = [
 
   <!-- Services -->
   <LinkCards
+    eyebrow="What we repair"
     heading="Washing machine repair services"
     headingId="services-h"
-    intro="Whatever kind of machine you have, we'll come to you and fix it properly."
-    items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))}
-  />
+    intro="Front loaders, top loaders and washer-dryers, repaired at your home."
+    items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))}
+  >
+    <p class="mt-8 text-center">
+      <a href="/services/" class="btn btn-outline">All repair services <Icon name="arrow" class="text-brand" /></a>
+    </p>
+  </LinkCards>
 
   <!-- Brands (text only, no logos) -->
-  <section class="section section-alt" aria-labelledby="brands-h">
+  <section class="section-y bg-surface" aria-labelledby="brands-h">
     <div class="container-site">
-      <h2 id="brands-h" class="text-2xl font-bold sm:text-3xl">We repair all major washing machine brands</h2>
-      <ul class="mt-6 flex flex-wrap gap-3">
+      <SectionHeading id="brands-h" eyebrow="Brands" heading="We repair all major washing machine brands" />
+      <ul class="mx-auto flex max-w-6xl flex-wrap justify-center gap-2.5">
         {brands.map((b) => (
-          <li><a href={brandUrl(b.slug)} class="inline-block rounded-full border border-line bg-white px-4 py-2 font-semibold text-ink no-underline hover:border-brand">{b.brand}</a></li>
+          <li><a href={brandUrl(b.slug)} class="chip">{b.brand}</a></li>
         ))}
         {otherBrands.map((b) => (
-          <li><span class="inline-block rounded-full border border-line bg-white px-4 py-2 text-ink-soft">{b}</span></li>
+          <li><span class="chip border-line-strong/70 bg-transparent font-medium text-ink-soft">{b}</span></li>
         ))}
       </ul>
-      <p class="mt-4 text-sm text-ink-soft">{trademarkNote} <a href="/brands/">See all brands</a>.</p>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-ink-soft">{trademarkNote} <a href="/brands/" class="font-semibold whitespace-nowrap">See the brands we repair</a>.</p>
     </div>
   </section>
 
@@ -97,45 +183,116 @@ const faqs = [
   <!-- Problems -->
   <LinkCards
     alt
+    eyebrow="Fault guides"
     heading="Common washing machine problems we fix"
     headingId="problems-h"
+    intro="Pick your symptom for the likely causes, the safe checks and when to call a technician."
     cols={4}
-    items={problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary }))}
+    items={problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary, icon: problemIcon(p.slug) }))}
   />
 
-  <!-- Why us / copy -->
-  <section class="section" aria-labelledby="why-h">
-    <div class="container-site grid gap-10 lg:grid-cols-2">
-      <div class="prose-site">
-        <h2 id="why-h">A local washing machine repair service you can trust</h2>
-        <p>When your washing machine stops, life gets complicated fast. Laundry piles up, school uniforms don't get washed and the laundromat eats your weekend. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
-        <p>Our technicians have been doing washing machine repair work for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. We carry the most common parts on the van, so many machines are fixed on the first visit. We explain what's wrong in plain language, show you the faulty part, and give you a price before we start.</p>
-        <p>If a machine isn't worth repairing, we'll say so. Our <a href="/repair-or-replace/">repair or replace guide</a> explains how we think about it, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains what affects the price.</p>
+  <!-- The full guide: what we repair, warning signs, troubleshooting, faults and brands -->
+  <LongFormSection reservedIds={['services-h', 'brands-h', 'problems-h', 'why-h', 'areas-h']}>
+    <h2>Front loaders, top loaders and washer-dryers</h2>
+    <p>ProServ carries out washing machine repairs across Gauteng on all major brands and every common type of machine: <a href={serviceUrl('front-loader-repairs')}>front loader repairs</a>, <a href={serviceUrl('top-loader-repairs')}>top loader repairs</a> and <a href={serviceUrl('washer-dryer-repairs')}>washer-dryer repairs</a>, freestanding or built in, new or old.</p>
+    <p>We repair belt-driven and direct drive machines. On a belt-driven machine the motor turns the drum through a rubber belt, so the belt and, on many models, the motor's carbon brushes wear with use. A direct drive motor is built onto the back of the tub and turns the drum without a belt, so drive faults come down to the motor, its wiring or the control board.</p>
+
+    <h2>Warning signs your washing machine needs a repair</h2>
+    <p>Each of these signs points to a different fault, and the page it links to explains the likely causes:</p>
+    <ul>
+      <li><strong>Water left in the drum</strong>: a <a href={problemUrl('washing-machine-not-draining')}>washing machine not draining</a>.</li>
+      <li><strong>Clothes still dripping wet</strong>: a <a href={problemUrl('washing-machine-not-spinning')}>washing machine not spinning</a>.</li>
+      <li><strong>Puddles under or behind it</strong>: a <a href={problemUrl('washing-machine-leaking')}>washing machine leaking</a>.</li>
+      <li><strong>No lights, no response</strong>: a <a href={problemUrl('washing-machine-wont-turn-on')}>washing machine that won't turn on</a>.</li>
+    </ul>
+    <p>Water that won't drain is often held back by a sock, coin or hair clip in the pump filter (the coin trap on some machines) or by a kinked drain hose, and you can clean the filter as your manual describes. If it's clear and the water still won't drain, the pump or the controls may have failed, which is a job for a technician.</p>
+    <div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug the machine before you open the pump filter. Expect a lot of water, so put down towels and a shallow tray, and if it stopped during a hot wash, let the water cool first.</p></div>
+
+    <h2>Troubleshooting before you call</h2>
+    <p>The checks you can safely do, and what the technician looks at next.</p>
+    <h3>Washing machine won't agitate</h3>
+    <p>On a top loader, the agitator (the centre post) or the impeller (the low disc in the base) moves the washing through the water. If the tub fills but nothing moves, make sure the lid is fully closed: many top loaders pause when the lid is open. If that isn't it, the technician checks the lid switch, water level sensor, belt or motor coupling, motor, gearbox and control board, plus the drive cogs on dual-action agitators. See <a href={serviceUrl('top-loader-repairs')}>top loader repairs</a>.</p>
+    <h3>Washing machine won't spin</h3>
+    <p>Check that the load isn't a single heavy item the machine can't balance, such as a bath mat or duvet, that the door is properly shut and that the water has drained. Too much detergent can stop the spin on many front loaders, and some wool, delicates and rinse hold settings spin gently or not at all. Otherwise the technician checks the carbon brushes, belt, motor, door lock and control board. See <a href={problemUrl('washing-machine-not-spinning')}>why a washing machine won't spin</a>.</p>
+    <h3>Washing machine won't start</h3>
+    <p>If it's completely dead, check that it's plugged in and switched on at the wall, that the house has power (load shedding catches everyone out) and that the socket works with a lamp. If the display lights up but nothing happens, check that a delay-start time or the child lock isn't set, that the door is firmly shut and that the tap is open. Past that, the fault is inside the machine: see <a href={problemUrl('washing-machine-wont-turn-on')}>washing machine won't turn on</a> and <a href={problemUrl('washing-machine-door-wont-open')}>washing machine door won't open or lock</a>.</p>
+    <div class="callout callout-safety"><p><strong>Safety first:</strong> if the earth leakage or circuit breaker trips when the machine runs, leave the machine switched off at the wall and unplugged, and call a technician. Tripping can point to a dangerous fault.</p></div>
+    <h3>Washing machine making loud noises</h3>
+    <p>Listen for when it starts. A scrape or tick that comes and goes as the drum turns usually means something small, such as an underwire or a coin, is wedged between the drum and the outer tub. A rattle or grind that you only hear while the water drains usually means something is caught in the pump filter or the drain pump. Banging on the spin points to an unbalanced load, a machine that isn't level or worn shock absorbers, while a rumble that grows louder with spin speed is the classic sign of <a href="/blog/signs-washing-machine-bearings-are-worn/">worn washing machine bearings</a>.</p>
+    <p>You can rebalance the load, adjust the levelling feet and clean the pump filter, following the safety steps above. Anything else needs a technician soon, before the damage spreads. See <a href={problemUrl('washing-machine-noisy-when-spinning')}>washing machine noisy when spinning</a>.</p>
+    <h3>Washing machine not cleaning clothes</h3>
+    <p>Grey or stale-smelling washing is often down to loading and dosing. Leave a hand's width of space above the load, choose a programme to suit how dirty it is, use detergent made for your type of machine at the dose on the pack, and run an empty hot maintenance wash every month or so. If that doesn't help, the machine may not be filling, heating or draining properly. See <a href={serviceUrl('washing-machine-servicing')}>washing machine servicing</a> and <a href="/blog/why-does-my-washing-machine-smell/">why a washing machine smells</a>.</p>
+
+    <h2>When to call a technician</h2>
+    <p>If the fault is still there after the safe checks, or you'd rather not do them, it's time to call. If the electricity trips, you smell burning, there's water near the plug or the drum grinds on the spin, switch the machine off and call straight away. Use the wall switch only if the plug and socket are dry and you can reach them without standing in water; otherwise, leave the plug alone and turn the power off at the DB board. When you <a href="/contact/">book a washing machine repair</a>, a photo of the error code or the model label on WhatsApp helps.</p>
+
+    <h2>Faults we repair, from door locks to control boards</h2>
+    <p>The faults we repair include:</p>
+    <ul class="checklist">
+      {faults.map((x) => <li><a href={x.href}>{x.label}</a>{x.text}</li>)}
+    </ul>
+
+    <h2>Machines we repair, brand by brand</h2>
+    <p>We cover all major washing machine brands, and each of these has its own guide:</p>
+    <table>
+      <thead><tr><th>Brand</th><th>Machines we repair</th></tr></thead>
+      <tbody>
+        {brandRows.map((b) => <tr><td><a href={brandUrl(b.slug)}>{b.name}</a></td><td>{b.machines}</td></tr>)}
+      </tbody>
+    </table>
+    <p>We also repair other makes, including {otherMakes}. Not on the list? Send us the make and model number, and we'll let you know whether we can help.</p>
+  </LongFormSection>
+
+  <!-- Why us -->
+  <section class="section-y bg-surface" aria-labelledby="why-h">
+    <div class="container-site grid items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+      <div class="min-w-0">
+        <p class="type-eyebrow mb-3">Why choose ProServ</p>
+        <h2 id="why-h" class="type-h2">A local washing machine repair service you can trust</h2>
+        <div class="rich-text mt-6 max-w-[65ch] space-y-4 text-[1.0625rem] leading-relaxed text-ink">
+          <p>When your washing machine stops, laundry piles up and school uniforms don't get washed. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
+          <p>We've been repairing washing machines for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. The technician explains what's wrong in plain language and quotes before doing any work. The call-out fee is {f.calloutFee}, {f.calloutCondition}, and covers the trip to your home and the diagnosis.</p>
+          <p>Repairs happen at your home. Your machine is diagnosed and fixed where it stands, not taken away, and most repairs are finished on the same visit when the part is available. If a part has to be ordered, you're told before you agree to the repair.</p>
+          <p>Our repairs come with a <span class="whitespace-nowrap">{f.warranty}</span> warranty on parts and labour. If a part we fitted fails, or our work gives trouble, within that time, we come back and put it right, with the part and the work covered. The warranty is for the repair we did, not the whole machine, so if something unrelated goes wrong later, that's a new repair with its own quote.</p>
+          <p>If a machine isn't worth repairing, we'll say so. Our <a href="/repair-or-replace/">repair or replace guide</a> explains how we think about it, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains what affects the price.</p>
+        </div>
       </div>
-      <div class="card self-start">
-        <h3 class="text-xl font-semibold">What you can expect</h3>
-        <ul class="mt-4 space-y-3">
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A technician at your door, with a booked time</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A proper diagnosis, not a guess over the phone</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A clear quote before any work</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out fee, {f.calloutCondition}</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} warranty on parts and labour</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.fiveStarReviews} five-star reviews from local customers</li>
-        </ul>
-        <p class="mt-4 text-sm text-ink-soft">{hoursText()}</p>
+      <div class="card-surface overflow-hidden">
+        <div class="h-1 bg-brand" aria-hidden="true"></div>
+        <div class="p-6 sm:p-7">
+          <h3 class="type-h3 text-xl">What you can expect</h3>
+          <ul class="mt-5 space-y-3.5 text-[15px] leading-snug text-ink">
+            {expectations.map((e) => (
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-tint-strong text-brand-dark">
+                  <Icon name="check" class="h-3.5 w-3.5" strokeWidth={3} />
+                </span>
+                <span class="pt-0.5">{e}</span>
+              </li>
+            ))}
+          </ul>
+          {hasHours && <p class="mt-5 flex items-start gap-2 border-t border-line pt-4 text-sm text-ink-soft"><Icon name="clock" class="mt-0.5 h-4 w-4 shrink-0 text-brand" />{hoursText()}</p>}
+          <ContactButtons class="mt-6 border-t border-line pt-6" block="always" />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Areas -->
   <LinkCards
-    alt
+    variant="compact"
+    eyebrow="Where we work"
     heading="Areas we cover"
     headingId="areas-h"
-    intro="Our mobile technicians cover these areas and the suburbs around them."
-    items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}` }))}
-  />
+    intro="A technician comes to homes across these areas. Not sure whether we reach your suburb? Call or WhatsApp us."
+    icon="map"
+    items={site.areas.map((a) => ({ href: areaUrl(a.slug), kicker: 'Washing machine repairs', title: a.name }))}
+  >
+    <p class="mt-8 text-center">
+      <a href="/areas/" class="btn btn-outline">All service areas <Icon name="arrow" class="text-brand" /></a>
+    </p>
+  </LinkCards>
 
-  <Faq items={faqs} />
+  <Faq items={faqs} tone="surface" />
   <CtaBand />
 </BaseLayout>

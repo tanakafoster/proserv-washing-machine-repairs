@@ -1,34 +1,93 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
+import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { site, areaUrl, areaList } from '../../data/site';
 import { areaContent } from '../../data/areas';
+import { faqSchema } from '../../lib/schema';
 const f = site.facts;
+const faqs = [
+  { q: 'What if I live outside these six areas?', a: `Call or WhatsApp us with your suburb anyway. We cover ${areaList()}, and we'll tell you honestly whether a technician can reach you before anything is booked.` },
+  { q: 'Can I book a repair for someone else, such as an elderly parent?', a: 'Yes. Give us their address and phone number, and tell us who will be there to let the technician in. Because the quote comes before any work, agree beforehand who will approve it.' },
+  { q: 'Do you repair machines in rented homes?', a: 'Yes, whether you\'re the tenant or the landlord. Tell us who will give the technician access and who approves the quote, because the technician quotes before starting any work.' },
+  { q: 'Is the warranty the same wherever I live?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour, whichever area you're in. If a part we fitted fails, or our work gives trouble, within that time, we come back and put it right.` },
+  { q: 'Can the technician work on a machine in a tight space?', a: 'Usually, yes. Machines under counters, in cupboards, on balconies or built into kitchen units can normally be repaired where they stand, as long as the machine can be eased out of its space. A tightly fitted one may take a little extra time to ease out safely, so mention where the machine stands when you book.' },
+  { q: 'Should I take the washing out before the technician arrives?', a: 'If the door opens normally, yes. Take the washing out and set it aside, so the technician can get into the drum and run the machine. If the door is locked with water inside, leave it closed and don\'t force it: the technician deals with the water first.' },
+  { q: 'What if there\'s a power cut or a water outage when my repair is booked?', a: 'Let us know as soon as you see it coming. The technician needs power and water to run the machine, find the fault and test the repair, so it usually makes sense to move the visit to a time when both are on.' },
+];
+/** Card text: the area's first four suburbs as a finished sentence, e.g. "Suburbs include A, B, C and D." */
+const cardText = (slug: string) => {
+  const s = areaContent[slug]?.suburbs.slice(0, 4) ?? [];
+  return s.length > 1 ? `Suburbs include ${s.slice(0, -1).join(', ')} and ${s[s.length - 1]}.` : '';
+};
 ---
 <BaseLayout
   title="Washing Machine Repairs Gauteng: Areas | ProServ"
   description={`Washing machine repairs across Gauteng: ${areaList()}. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Areas', href: '/areas/' }]}
+  schema={[faqSchema(faqs)]}
 >
   <PageHero
     h1="Washing machine repairs across Gauteng"
     eyebrow="Areas we cover"
-    intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. Our technicians drive to you, so there's no need to take your machine anywhere. We cover ${areaList()}, plus many suburbs in between [CONFIRM]. Choose your area below for local details and the suburbs we work in.</p>`}
+    intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. A technician drives to your home, finds the fault and quotes before any work starts, so there's no need to load a heavy machine into a car. Our call-outs cover ${areaList()}. Choose your area below for local details and the suburbs we work in, or call or WhatsApp if you're not sure whether we reach you.</p>`}
   />
-  <LinkCards alt heading="Choose your area" headingId="area-list" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}`, text: areaContent[a.slug]?.suburbs.slice(0, 4).join(', ') + '…' }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
-      <h2>How our mobile service works</h2>
-      <p>You call or WhatsApp us, we book a time, and a technician comes to your home with the most common parts on the van. We aim to arrive {f.arrivalTime} on urgent call-outs, depending on where the technician is working. The technician diagnoses the fault and quotes before starting. The call-out fee is {f.calloutFee}, {f.calloutCondition}.</p>
-      <h2>Not sure if we cover your suburb?</h2>
-      <p>If your suburb isn't listed on an area page, ask us anyway. We often work in neighbouring suburbs, and we'll tell you straight away if you're outside our area.</p>
-      <h2>Access, estates and complexes</h2>
-      <p>Many Gauteng homes are in estates or complexes with access control. When you book, send us your gate instructions or register our technician with security. For flats, tell us about parking, lifts and stairs. It helps us arrive on time and keeps the visit short.</p>
-      <h2>What we repair</h2>
-      <p>We repair all major washing machine brands in every area we cover. See our <a href="/services/">washing machine repair services</a> and the <a href="/brands/">brands we repair</a>.</p>
-    </div>
-  </section>
+  <LinkCards alt eyebrow="Areas we cover" heading="Choose your area" headingId="area-list" icon="map" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.inName}`, text: cardText(a.slug) }))} />
+  <LongFormSection reservedIds={['area-list']}>
+      <h2>How call-outs work</h2>
+      <p>Booking takes a few minutes. Call or WhatsApp us, or send a request through the <a href="/contact/">booking form</a>, with your suburb, the brand of machine and what it's doing. We'll agree a time with you, and on urgent call-outs we aim to arrive {f.arrivalTime}, depending on where the technician is working. If it's urgent, for example the machine is leaking or a load of washing is locked inside, say so when you get in touch.</p>
+      <p>Gauteng is a big province and traffic changes through the day, so the more detail you give when you book, the smoother the visit: the street address, the complex or estate name, and a phone number we can reach you on. When the technician arrives, they diagnose the fault and give you a quote before starting. The call-out fee is {f.calloutFee}, {f.calloutCondition}. If the part is available, most repairs are finished on the same visit, and every repair carries our {f.warranty} warranty on parts and labour.</p>
+
+      <h2>The six areas we cover</h2>
+      <p>Each area has its own page with the suburbs we cover and local details. In short:</p>
+      <h3>Johannesburg</h3>
+      <p>Our Johannesburg area runs from Randburg and Roodepoort in the north-west to Mondeor and Glenvista in the south, with established suburbs such as Parkhurst, Linden and Northcliff in between. Weltevredenpark in the west and Bassonia in the south are part of it too. It's a mix of older freestanding houses, flats and cluster complexes. See <a href={areaUrl('johannesburg')}>washing machine repairs in Johannesburg</a>.</p>
+      <h3>Pretoria</h3>
+      <p>Pretoria stretches from Montana and Sinoville in the north to eastern suburbs such as Lynnwood, Faerie Glen, Garsfontein and Moreleta Park, with Hatfield, Brooklyn and Arcadia closer to the city centre. Homes range from student flats near the university to large family houses in the east. In rented flats around Hatfield and Brooklyn, check whether the landlord or the property manager needs to approve the repair before the visit. See <a href={areaUrl('pretoria')}>washing machine repairs in Pretoria</a>.</p>
+      <h3>Centurion</h3>
+      <p>Centurion sits between Pretoria and Midrand, with the N1 and N14 running through it. Established suburbs such as Lyttelton, Clubview and Eldoraigne sit alongside newer estates and townhouse complexes around Irene and Rooihuiskraal, and the area also takes in suburbs such as Wierdapark, Zwartkop, Highveld and Doringkloof. See <a href={areaUrl('centurion')}>washing machine repairs in Centurion</a>.</p>
+      <h3>Sandton</h3>
+      <p>Our Sandton area takes in suburbs such as Bryanston, Morningside, Rivonia, Sunninghill, Woodmead and Paulshof, with everything from freestanding family homes to apartment blocks and security complexes, so access details make a real difference here. The apartment towers of Sandton Central are included, as are Wendywood, Lonehill and Douglasdale. See <a href={areaUrl('sandton')}>washing machine repairs in Sandton</a>.</p>
+      <h3>Midrand</h3>
+      <p>Midrand lies between Johannesburg and Pretoria along the N1, and includes Halfway House, Vorna Valley, Noordwyk, Carlswald, Kyalami and the Waterfall area. Much of it was built up over the last few decades, so many homes are in complexes and estates with access control. Blue Hills, Glen Austin and President Park are part of our Midrand area as well. See <a href={areaUrl('midrand')}>washing machine repairs in Midrand</a>.</p>
+      <h3>East Rand</h3>
+      <p>The East Rand is largely the City of Ekurhuleni, from Edenvale and Bedfordview on Johannesburg's eastern edge to Kempton Park, Germiston, Boksburg, Benoni, Brakpan and Springs. Kempton Park, home to OR Tambo International Airport, includes suburbs such as Birchleigh and Bonaero Park. It's a wide area, so your suburb helps us plan the visit. See <a href={areaUrl('east-rand')}>washing machine repairs on the East Rand</a>.</p>
+
+      <h2>Is your suburb covered?</h2>
+      <p>The suburb lists on each area page show where we work, but they can't name every street, estate and complex. If yours isn't listed, or you live where two areas meet, such as between Midrand and Centurion, call or WhatsApp us with your suburb. We'll tell you straight away whether a technician can get to you, rather than book a visit we can't keep.</p>
+
+      <h2>Estates, complexes and flats</h2>
+      <p>Many Gauteng homes are behind a boom, a gate or a guardhouse, and in some complexes the machine stands on a balcony or in a shared laundry that needs a key. A few details when you book save time on the day:</p>
+      <ul class="checklist">
+        <li>Send the complex or estate name, your unit number and any gate instructions.</li>
+        <li>If security registers visitors in advance or through an app, register the technician or let the guard know to expect them.</li>
+        <li>Tell us where to park, especially if visitor parking is limited or far from your unit.</li>
+        <li>For flats, mention the floor and whether there's a lift. Most repairs are done where the machine stands, so it only has to come out of its space.</li>
+        <li>If your body corporate limits the hours when contractors may work, let us know when you book.</li>
+        <li>In a shared laundry, tell us which machine is yours and whether it shares a drain with other machines, because a blockage further down a shared drain can look like a fault in your machine.</li>
+      </ul>
+
+      <h2>Before the technician arrives</h2>
+      <ul class="checklist">
+        <li>Clear a path to the machine and a little space around it, so it can be pulled forward.</li>
+        <li>Make sure the tap and the plug point behind the machine can be reached.</li>
+        <li>If there's water in the drum, put towels down and don't force the door.</li>
+        <li>If the machine trips the earth leakage or smells of burning, leave it switched off at the wall and tell us when you book.</li>
+        <li>If the machine is in a garage, an outside laundry or a garden cottage, tell us how to get to it.</li>
+        <li>Keep pets in another room while the machine is being moved.</li>
+        <li>Have the brand and model number ready, and make sure someone can stay while the technician works and hear the quote.</li>
+      </ul>
+
+      <h2>Water and power interruptions</h2>
+      <p>Power cuts still happen in Gauteng, from load reduction in some areas or a local fault, and so do water supply interruptions. Both affect washing machines. When the water comes back after an outage, air in the pipes can slow the fill, and loosened sediment can clog the fine mesh filter where the inlet hose meets the machine, so it fills slowly or shows a water supply code. Low pressure during supply problems has the same effect. After an outage, run a nearby cold tap until the water comes out clear before you start a wash, so the first dirty water goes down the sink instead. See <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.</p>
+      <p>A power cut stops the machine mid-cycle with water in the drum, and the surge when the power returns can damage the control board. Switching the machine off at the wall during a power cut, and waiting for the supply to settle before restarting it, both help. Our article on how to <a href="/blog/protect-washing-machine-from-load-shedding/">protect your washing machine from load shedding</a> explains what else you can do.</p>
+
+      <h2>What we repair in every area</h2>
+      <p>Our full range of <a href="/services/">washing machine repair services</a> is available in every area we cover: front loader, top loader and washer-dryer repairs, installation, servicing and parts replacement. We repair all major washing machine brands (see <a href="/brands/">brands we repair</a>), and if your machine is showing a code, our <a href="/error-codes/">error code guides</a> explain what it usually means. Before you book, our guides to <a href="/problems/">common washing machine problems</a> can help you describe the fault and rule out the simple causes.</p>
+  </LongFormSection>
+  <Faq items={faqs} />
   <CtaBand />
 </BaseLayout>

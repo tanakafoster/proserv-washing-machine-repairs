@@ -1,34 +1,100 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { site } from '../data/site';
 import { faqSchema } from '../lib/schema';
 const f = site.facts;
 const path = '/washing-machine-repair-cost/';
+/** The number in running text, kept on one line on phones. */
+const phoneInText = site.phone.display.replace(/ /g, ' ');
 
-// [PLACEHOLDER] Replace each price with your real "from" price in Rands, e.g. 'From R650'.
-const prices = [
-  { job: 'Call-out and diagnosis', price: `${f.calloutFee} (${f.calloutConditionShort})`, note: 'Covers travel and finding the fault' },
-  { job: 'Pump filter or drain blockage cleared', price: '[PLACEHOLDER]', note: 'No parts needed in most cases' },
-  { job: 'Drain pump replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
-  { job: 'Carbon brushes replacement', price: '[PLACEHOLDER]', note: 'Brushed motors only' },
-  { job: 'Door lock / interlock replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
-  { job: 'Door seal (gasket) replacement', price: '[PLACEHOLDER]', note: 'Varies by model' },
-  { job: 'Inlet valve replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
-  { job: 'Heating element replacement', price: '[PLACEHOLDER]', note: 'Part plus labour' },
-  { job: 'Drum bearing and seal replacement', price: '[PLACEHOLDER]', note: 'Split tubs; sealed tubs cost more' },
-  { job: 'Shock absorbers / suspension', price: '[PLACEHOLDER]', note: 'Usually replaced in pairs' },
-  { job: 'Control board (PCB) repair or replacement', price: '[PLACEHOLDER]', note: 'Depends heavily on brand and model' },
-  { job: 'Installation and plumbing-in', price: '[PLACEHOLDER]', note: 'Existing tap and drain' },
-  { job: 'Full service', price: '[PLACEHOLDER]', note: 'Parts extra if needed' },
+// What each common repair involves and what moves its price. No figures: every job is quoted after
+// diagnosis, and the call-out fee (site.facts) is the only published price.
+const costs = [
+  {
+    job: 'Clearing a blocked pump or filter',
+    involved: 'Draining the machine and removing the blockage',
+    drivers: 'Mostly labour, unless the object broke the pump or it burnt out straining against the blockage.',
+  },
+  {
+    job: 'Drain pump replacement',
+    involved: 'Fitting a new pump and checking the hoses and sump',
+    drivers: 'The pump for your model, and access: some come out from the front, others mean tipping the machine back or removing panels.',
+  },
+  {
+    job: 'Carbon brushes',
+    involved: 'A new pair of brushes for a brushed motor',
+    drivers: `One of the cheaper parts, unless worn brushes were left until they damaged the motor. Brushless motors don't use them.`,
+  },
+  {
+    job: 'Door lock (interlock)',
+    involved: 'A new lock that holds the door shut during the wash',
+    drivers: 'Usually a modest part and a short job, unless the real fault is the handle, a hinge or the wiring.',
+  },
+  {
+    job: 'Door seal (gasket)',
+    involved: 'A new seal around the door opening, then a test for leaks',
+    drivers: 'Seals are model-specific and vary in price, and some need the front panel off, which adds labour.',
+  },
+  {
+    job: 'Inlet valve',
+    involved: 'A new valve where the water comes in at the back',
+    drivers: 'The valve made for your model, and whether the inlet hoses need replacing too.',
+  },
+  {
+    job: 'Heating element',
+    involved: 'A new element under the drum, with the sensor and wiring checked',
+    drivers: `The element for your model, whether it's reached from the back or the front, and how much scale has built up.`,
+  },
+  {
+    job: 'Drum bearings and seal',
+    involved: 'Stripping the machine to the tub and fitting new bearings and a seal',
+    drivers: 'Long labour, whether the tub is split or sealed, and any damage to the shaft, drum spider or tub. Explained below.',
+  },
+  {
+    job: 'Shock absorbers and suspension',
+    involved: 'New dampers or suspension rods, usually as a pair or set',
+    drivers: 'The parts for your model and how many have worn. Broken springs or loose counterweights add to the quote.',
+  },
+  {
+    job: 'Control board (PCB)',
+    involved: 'Testing the board, then repairing it or fitting a new one',
+    drivers: 'Among the most expensive parts, and prices vary widely by brand and model. A repairable board usually costs less than a new one.',
+  },
+  {
+    job: 'Top loader drive parts',
+    involved: 'A new belt, coupling, clutch or gearbox',
+    drivers: 'A belt or coupling is a smaller job. A clutch or gearbox costs more in parts and labour.',
+  },
 ];
 const faqs = [
-  { q: 'How much does it cost to repair a washing machine?', a: 'It depends on the fault, the part and the brand. Simple blockages are at the lower end, because clearing them is mostly labour. Bearings and control boards are at the higher end. You always get a quote before we start.' },
-  { q: 'How much is bearing replacement?', a: 'Bearing replacement is one of the bigger repairs because the machine has to be stripped down. On machines with a sealed tub, the whole tub assembly is needed, which costs more. We confirm which type you have before quoting.' },
-  { q: 'When do I pay the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. It covers the technician's travel and finding the fault.` },
-  { q: 'Do you charge more on Saturdays?', a: '[CONFIRM: weekend or after-hours rates]' },
+  {
+    q: `Why can't you give me an exact price over the phone?`,
+    a: `Because a symptom isn't a diagnosis. A machine that won't drain might have a coin in the filter, a failed pump or a blocked household drain, and each costs a different amount to fix. Testing the machine first means the quote is for the fault it actually has.`,
+  },
+  {
+    q: `What happens if I decide not to go ahead with the quote?`,
+    a: `You don't have to go ahead, and no work is done without your agreement. The ${f.calloutFee} call-out fee is ${f.calloutCondition}. You'll still know what's wrong, which helps if you're weighing up a repair against a new machine.`,
+  },
+  {
+    q: `Does a drain fault always mean a new pump?`,
+    a: `No. Water left in the drum is often down to a blocked filter, hose or household drain, which costs far less to clear than a new pump. A new pump is only needed when its motor has failed or its impeller is broken. See <a href="/problems/washing-machine-not-draining/">washing machine not draining</a> for safe checks to try first.`,
+  },
+  {
+    q: `What if the technician finds another fault during the repair?`,
+    a: `You're told before anything extra is done. Sometimes a second problem only shows once the machine is open, such as a perished hose next to the pump being replaced. The same rule applies as for the first fault: you get a quote, and you decide.`,
+  },
+  {
+    q: `How can I tell if a repair quote is fair?`,
+    a: `A clear quote names the fault, the part and the work involved, so ask the technician to explain anything that isn't clear. Don't judge it against a part price online, which leaves out the labour, testing and warranty; weigh it against the price of a comparable new machine instead. Our repairs carry a ${f.warranty} warranty on parts and labour.`,
+  },
+  {
+    q: `Can I save money by fixing it myself?`,
+    a: `Only with the safe owner checks: the plug and wall switch, the tap, kinked hoses, and cleaning the pump and inlet filters as your manual describes. Switch off at the wall and unplug first, and expect some water. Opening the machine or touching electrical parts is a technician's job: a wrong guess can make the repair dearer, and water and electricity are a dangerous mix.`,
+  },
 ];
 ---
 <BaseLayout
@@ -39,66 +105,95 @@ const faqs = [
 >
   <PageHero
     h1="Washing machine repair cost"
-    eyebrow="Prices"
-    intro={`<p>The washing machine repair cost for your machine depends on what has failed, which part it needs, the brand and model, and how long the repair takes. We can't give an exact price until we've diagnosed the machine, but we can explain what drives the price, and you will always get a clear quote in Rands before any work starts.</p>`}
+    eyebrow="Pricing explained"
+    intro={`<p>Your washing machine repair cost depends on what has failed, the part it needs, your machine's brand and model, and how long the work takes. One symptom can have several causes, so an accurate price is only possible once the machine has been diagnosed. This page explains how our pricing works and what pushes a repair up or down, so the quote you get on the day makes sense.</p>`}
   />
-  <section class="section section-alt pt-10">
-    <div class="container-site">
-      <div class="prose-site max-w-3xl">
-        <h2>What affects the price of a repair?</h2>
-        <h3>1. The part</h3>
-        <p>The part is usually the biggest variable. A drain blockage might need no parts at all. Carbon brushes, door locks and inlet valves are relatively inexpensive. Door seals and heating elements sit in the middle. Drum bearings, motors and control boards are the bigger repairs.</p>
-        <h3>2. The brand and model</h3>
-        <p>Parts for common machines are widely stocked in South Africa and reasonably priced. Parts for premium European brands, or for less common models, cost more and may need to be ordered in. Some models use one-off parts that are only available from the manufacturer.</p>
-        <h3>3. Labour</h3>
-        <p>Labour depends on how long the job takes. Replacing a pump on a front loader is quick. Replacing bearings means stripping the whole machine down to the tub. Integrated machines also take extra time to remove from and refit into the kitchen cabinets.</p>
-        <h3>4. The call-out</h3>
-        <p>Our call-out fee is {f.calloutFee}. It covers the technician's travel and the diagnosis, and it's {f.calloutCondition}.</p>
-      </div>
+  <LongFormSection>
+        <h2>How our pricing works</h2>
+        <p>Every job follows the same steps, so you know where you stand before you commit to anything.</p>
+        <ol class="steps">
+          <li><strong>Tell us what's wrong.</strong> Call, WhatsApp or use the <a href="/contact/">booking form</a>, with the brand, model and symptoms.</li>
+          <li><strong>A technician diagnoses it at your home,</strong> testing the machine where it stands, on your own tap, drain and power supply.</li>
+          <li><strong>You get a quote before any work starts,</strong> covering the fault, the part needed and the price.</li>
+          <li><strong>You decide.</strong> If you go ahead and the part is available, most repairs are finished on the same visit. If a part has to be ordered, you're told before you agree to the repair.</li>
+        </ol>
+        <p>The call-out fee is {f.calloutFee}, {f.calloutCondition}. It pays for the technician's travel and the time spent finding the fault. Whatever the repair, it carries our {f.warranty} warranty on parts and labour.</p>
 
-      <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Typical repair prices</h2>
-      <p class="mt-2 max-w-3xl text-ink-soft">Guide prices including labour. Your exact price is confirmed after diagnosis. All repairs carry our {f.warranty} warranty.</p>
-      <div class="mt-6 overflow-x-auto rounded-xl border border-line bg-white">
-        <table class="w-full min-w-[560px] border-collapse text-left">
-          <caption class="sr-only">Typical washing machine repair prices in Rands</caption>
-          <thead>
-            <tr class="bg-surface">
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Repair</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Guide price</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Notes</th>
+        <h2>What drives the cost of a repair</h2>
+        <p>Two machines with the same symptom can end up with very different quotes. These are the main reasons.</p>
+        <h3>The part that has failed</h3>
+        <p>The part is usually the biggest factor. Some faults need no part at all: a pump jammed by a coin often only needs clearing. Carbon brushes, door locks and inlet valves are among the cheaper parts, while motors, control boards and sealed tub assemblies are the most expensive.</p>
+        <h3>Brand, model and availability</h3>
+        <p>The same kind of part can cost very different amounts depending on the machine it fits: parts for premium European brands usually cost more than those for mass-market machines. Parts for older or less common models may have to be ordered, which can mean a second visit, and a discontinued part can rule a repair out altogether.</p>
+        <h3>Labour time and access</h3>
+        <p>Replacing an inlet valve is a short job; replacing drum bearings means stripping the machine to the tub, rebuilding it and testing it, which takes several hours. Access matters too: an integrated machine has to be eased out of its cupboard and refitted, and a stacked dryer or a narrow nook slows things down.</p>
+        <h3>Control board repair or replacement</h3>
+        <p>Control boards are expensive, and surges when power returns after load shedding are a well-known cause of damage. A loose connector or a single failed component can sometimes be repaired for less than a new board costs, but a badly burnt board has to be replaced.</p>
+        <h3>How long the fault has been left</h3>
+        <p>Many faults get dearer with time. A rumbling bearing wears the shaft and the bearing housing, a slow drain overworks the pump until it burns out, and a small leak can reach the motor or wiring. An early check is often the cheapest option.</p>
+
+        <h2>Cost factors for common repairs</h2>
+        <p>We don't publish a list of washing machine repair prices, because the same job can cost very different amounts on two machines. The table shows what each common repair involves and what moves its price. The figure that counts is the one you get after diagnosis.</p>
+        {/* .price-table: a normal table from 640px; on phones each row stacks as repair, what's involved,
+            what drives the price. The ARIA roles keep the table semantics when the phone layout changes
+            the cells' display. */}
+        <table class="price-table" role="table">
+          <caption class="sr-only">What affects the cost of common washing machine repairs</caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Repair</th>
+              <th scope="col" role="columnheader">What's involved</th>
+              <th scope="col" role="columnheader">What drives the price</th>
             </tr>
           </thead>
-          <tbody>
-            {prices.map((p) => (
-              <tr>
-                <th scope="row" class="border-b border-line px-3 py-3 font-medium">{p.job}</th>
-                <td class="border-b border-line px-3 py-3">{p.price}</td>
-                <td class="border-b border-line px-3 py-3 text-ink-soft">{p.note}</td>
+          <tbody role="rowgroup">
+            {costs.map((c) => (
+              <tr role="row">
+                <th scope="row" role="rowheader">{c.job}</th>
+                <td role="cell">{c.involved}</td>
+                <td role="cell">{c.drivers}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
 
-      <div class="prose-site mt-10 max-w-3xl">
         <h2>Bearing replacement cost</h2>
-        <p>Bearing replacement cost surprises a lot of people, so it's worth explaining. The bearings sit at the back of the outer tub, behind the drum. To reach them, the technician removes the top, the front panel, the door seal, the motor, the counterweights and the tub, then splits the tub, presses out the old bearings and fits new bearings and a new seal. It's several hours of work.</p>
-        <p>Many newer machines have a <strong>sealed (welded) tub</strong> that can't be split. On those, the whole tub and drum assembly has to be replaced, which costs more. We'll tell you which type you have before quoting. Read more in <a href="/blog/signs-washing-machine-bearings-are-worn/">signs your washing machine bearings are worn</a>.</p>
-
-        <h2>How to keep the cost down</h2>
+        <p>Bearing replacement cost varies more than almost any other repair, and three things decide it.</p>
         <ul>
-          <li><strong>Act early.</strong> A noisy bearing left too long can damage the seal, shaft and tub. A slow drain can burn out the pump.</li>
-          <li><strong>Empty pockets.</strong> Coins and hair clips cause many pump repairs.</li>
-          <li><strong>Use the right detergent dose.</strong> Excess suds strain the pump and leave residue.</li>
-          <li><strong>Protect against surges.</strong> See <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your machine from load shedding</a>.</li>
-          <li><strong>Book a service</strong> every year or so. See <a href="/services/washing-machine-servicing/">washing machine servicing</a>.</li>
+          <li><strong>Split or sealed tub.</strong> A split outer tub is bolted together, so it can be opened and just the bearings and shaft seal replaced. A sealed tub is welded shut at the factory, so the complete tub and drum assembly is replaced, which costs considerably more than a bearing kit.</li>
+          <li><strong>Labour.</strong> Either way, the machine is stripped to the tub, rebuilt and tested, making this one of the longest washing machine repairs.</li>
+          <li><strong>Knock-on damage.</strong> Bearings left to grind for months can damage the shaft, the drum spider (the bracket on the back of the drum that carries the shaft) or the bearing housing, which then need replacing too.</li>
+        </ul>
+        <p>The technician confirms which type of tub you have before quoting. Not sure it's the bearings? Our article on the <a href="/blog/signs-washing-machine-bearings-are-worn/">signs of worn washing machine bearings</a> explains what to listen for, and the guide to a <a href="/problems/washing-machine-noisy-when-spinning/">washing machine noisy when spinning</a> covers the other causes.</p>
+
+        <h2>Getting an accurate quote quickly</h2>
+        <p>A few details when you book help the technician understand the fault before arriving.</p>
+        <ul class="checklist">
+          <li><strong>The brand and model number</strong> from the rating plate, a sticker usually around the door opening, behind the filter flap or on the back (often under the lid on a top loader). A photo of it removes any doubt.</li>
+          <li><strong>Any error code or flashing lights.</strong> A photo of the display helps. Our <a href="/error-codes/">washing machine error code guides</a> cover several major brands.</li>
+          <li><strong>When the fault shows up:</strong> at the start, while filling, during the wash, on the spin or only on certain programmes.</li>
+          <li><strong>A short video with sound</strong> if the machine is noisy, leaking or stopping before the end of a cycle.</li>
+          <li><strong>Access details,</strong> such as an estate gate, parking in a complex, an integrated machine or a stacked dryer.</li>
+        </ul>
+        <p>Send photos and videos on WhatsApp to {phoneInText}, or describe the fault on the <a href="/contact/">booking form</a>. The final price is confirmed once the technician has tested the machine.</p>
+
+        <h2>How to keep repair costs down</h2>
+        <p>Many of the dearer faults start small. None of these habits involve opening the machine.</p>
+        <ul class="checklist">
+          <li><strong>Empty pockets,</strong> and wash underwired bras in a mesh bag. Coins, hair clips and stray bra wires often block pumps and damage drums.</li>
+          <li><strong>Don't overload it.</strong> Stay within the capacity in the manual, because overloading strains the bearings, suspension and motor.</li>
+          <li><strong>Use the right detergent, and less of it.</strong> Front loaders need low-suds detergent made for automatic machines, and too much strains the pump and leaves smelly residue (see <a href="/blog/why-does-my-washing-machine-smell/">why washing machines smell</a>).</li>
+          <li><strong>Clean the drain pump filter</strong> every few months, as your manual describes. Switch off at the wall and unplug first, and have towels and a shallow tray ready for the water.</li>
+          <li><strong>Run a hot maintenance wash</strong> once a month with the drum empty, and wipe the door seal and detergent drawer.</li>
+          <li><strong>Check the hoses</strong> for cracks or bulges, and turn the tap off when you go away.</li>
+          <li><strong>Switch off at the wall</strong> when the power goes off, and wait a few minutes after it returns. Our guide to <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your washing machine from load shedding</a> has more.</li>
+          <li><strong>Book a service</strong> if the machine works hard every day. <a href="/services/washing-machine-servicing/">Washing machine servicing</a> picks up worn parts before they fail.</li>
         </ul>
 
-        <h2>Is it worth repairing?</h2>
-        <p>For most faults on machines under about ten years old, a repair is far cheaper than a new machine. If a repair would cost more than about half the price of a comparable new machine, it's worth thinking twice. Our <a href="/repair-or-replace/">repair or replace guide</a> walks through the decision. For specific faults, see <a href="/services/washing-machine-parts-replacement/">parts replacement</a>.</p>
-      </div>
-    </div>
-  </section>
+        <h2>When a repair isn't worth it</h2>
+        <p>A repair may not make sense when the washing machine repair cost would be more than about half the price of a comparable new machine on one that's well into its life, when a key part is no longer made, or when the tub, drum or cabinet is badly damaged. If the technician doesn't think a repair is good value, you'll hear that before any work starts.</p>
+        <p>Our guide on whether to <a href="/repair-or-replace/">repair or replace your washing machine</a> walks through the decision, and the <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a> page explains how the common parts are fitted.</p>
+  </LongFormSection>
   <Faq items={faqs} heading="Repair cost questions" />
   <CtaBand heading="Want an exact price?" text="Call or WhatsApp us with your machine's brand, model and fault. We'll book a technician to diagnose it and quote before any work starts." />
 </BaseLayout>

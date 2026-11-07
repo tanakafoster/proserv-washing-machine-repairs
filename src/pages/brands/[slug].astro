@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
+import AsideLinks from '../../components/AsideLinks.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import LinkCards from '../../components/LinkCards.astro';
@@ -23,28 +25,35 @@ const others = brands.filter((o) => o.slug !== b.slug);
   schema={[serviceSchema({ name: `${b.brand} washing machine repairs`, description: b.description, path }), faqSchema(b.faqs)]}
 >
   <PageHero h1={b.h1} intro={b.intro} eyebrow="Brands we repair" />
-  <section class="section section-alt pt-10">
-    <div class="container-site grid gap-10 lg:grid-cols-[1fr_320px]">
-      <article class="prose-site max-w-3xl" set:html={b.body} />
-      <aside class="space-y-4 lg:sticky lg:top-28 lg:self-start">
-        {b.hasErrorGuide && (
-          <div class="card">
-            <h2 class="text-lg font-semibold">{b.brand} error codes</h2>
-            <p class="mt-2 text-sm text-ink-soft">What the codes on your {b.brand} display mean and what to check first.</p>
-            <a href={errorCodeUrl(b.slug)} class="btn btn-outline mt-4 w-full">{b.brand} washing machine error codes</a>
-          </div>
-        )}
-        <div class="card">
-          <h2 class="text-lg font-semibold">Book a {b.brand} repair</h2>
-          <p class="mt-2 text-sm text-ink-soft">Send us the model number and what the machine is doing.</p>
-          <a href="/contact/" class="btn btn-primary mt-4 w-full">Book a technician</a>
-        </div>
-      </aside>
-    </div>
-  </section>
-  <HowItWorks />
-  <LinkCards alt heading={`${b.brand} repairs across Gauteng`} headingId="areas-h" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}` }))} />
-  <LinkCards heading="Other brands we repair" headingId="other-brands" cols={4} items={others.map((o) => ({ href: brandUrl(o.slug), title: `${o.brand} washing machine repairs` }))} />
-  <Faq items={b.faqs} heading={`${b.brand} washing machine repair questions`} />
+  <LongFormSection reservedIds={['areas-h', 'other-brands']} bookingHeading={`Book your ${b.brand} repair`}>
+    <Fragment set:html={b.body} />
+    {b.hasErrorGuide && (
+      <Fragment slot="aside">
+        <AsideLinks
+          heading={`${b.brand} error code guide`}
+          intro={`What the codes on your ${b.brand} display mean and what to check first.`}
+          items={[{ href: errorCodeUrl(b.slug), title: `${b.brand} washing machine error codes`, icon: 'alert' }]}
+        />
+      </Fragment>
+    )}
+  </LongFormSection>
+  <HowItWorks tone="surface" />
+  <LinkCards
+    variant="compact"
+    icon="map"
+    eyebrow="Areas we cover"
+    heading={`${b.brand} repairs across Gauteng`}
+    headingId="areas-h"
+    items={site.areas.map((a) => ({ href: areaUrl(a.slug), kicker: 'Washing machine repairs', title: a.name }))}
+  />
+  <LinkCards
+    alt
+    variant="chips"
+    eyebrow="More brands"
+    heading="Other brands we repair"
+    headingId="other-brands"
+    items={others.map((o) => ({ href: brandUrl(o.slug), title: o.brand }))}
+  />
+  <Faq items={b.faqs} heading={`${b.brand} washing machine repair questions`} tone="white" />
   <CtaBand heading={`${b.brand} washing machine playing up?`} />
 </BaseLayout>

@@ -1,51 +1,152 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../data/site';
-const updated = '6 November 2026';
+import LongFormSection from '../components/LongFormSection.astro';
+import EmailText from '../components/EmailText.astro';
+import { site, areaList, mailHref } from '../data/site';
+// Change this date whenever the policy changes, including when the GTM ID in site.ts is filled in
+// (the analytics wording below switches on automatically with it).
+const updated = '7 November 2026';
+const f = site.facts;
+// Same check as BaseLayout: Google Tag Manager, and Google Analytics with it, only loads once a real container ID is set.
+const analytics = /^GTM-[A-Z0-9]+$/.test(site.gtmId) && site.gtmId !== 'GTM-XXXXXXX';
 ---
 <BaseLayout
   title="Privacy Policy | ProServ"
-  description={`How ProServ Washing Machine Repairs collects, uses and protects your personal information under POPIA. Questions? Call ${site.phone.display}.`}
+  description={`How ProServ Washing Machine Repairs collects, uses and protects your personal information under POPIA. Questions? Email us or call ${site.phone.display}.`}
   crumbs={[{ name: 'Privacy policy', href: '/privacy-policy/' }]}
 >
-  <section class="section pt-6">
-    <div class="container-site prose-site max-w-3xl">
-      <h1 class="text-3xl font-extrabold sm:text-4xl">Privacy policy</h1>
-      <p class="text-ink-soft">Last updated: {updated}</p>
-      <p>{site.name} ("ProServ", "we") respects your privacy. This policy explains what personal information we collect, why, and your rights under the Protection of Personal Information Act, 2013 (POPIA).</p>
+  <section class="pt-5 pb-8 md:pb-10 lg:pt-8">
+    <div class="container-site">
+      <p class="type-eyebrow mb-3">Your information</p>
+      <h1 class="type-page-h1">Privacy policy</h1>
+      <p class="mt-4 text-sm text-ink-soft">Last updated: {updated}</p>
+    </div>
+  </section>
+  <LongFormSection booking={false} tight>
+      <p>{site.name} ("ProServ", "we", "us") respects your privacy. This policy explains, in plain language, what personal information we collect, why, who we share it with, how long we keep it and your rights under the Protection of Personal Information Act, 2013 (POPIA).</p>
 
-      <h2>Who is responsible</h2>
-      <p>The responsible party is {site.name} [CONFIRM: registered business name and registration number, if any]. Our Information Officer is [CONFIRM: name], contactable at <a href={`mailto:${site.email}`}>{site.email}</a> or {site.phone.display}.</p>
+      <h2>Who we are</h2>
+      <p>ProServ is a mobile washing machine repair service: we repair machines at customers' homes across {areaList()}. For the information described here we are the "responsible party": POPIA's term for the business that decides why and how personal information is used.</p>
+      <p>Questions about this policy or your information go to <a href={mailHref}><EmailText /></a>.</p>
+      {site.postalAddress && <p>Our postal address is {site.postalAddress}.</p>}
 
       <h2>What we collect</h2>
+      <p>We only ask for what we need to help with your machine.</p>
+      <h3>When you contact us</h3>
       <ul>
-        <li><strong>Details you give us</strong> when you call, WhatsApp, email or use our booking form: your name, phone number, area or address, machine brand and model, a description of the fault, and your preferred appointment time.</li>
-        <li><strong>Website usage data</strong> through Google Tag Manager and Google Analytics, such as pages visited, device type, approximate location and which buttons were clicked. This uses cookies.</li>
+        <li>The <strong>booking form</strong> on our <a href="/contact/">contact page</a> asks for your name, phone number, area and machine brand, a description of the problem and, if you like, a preferred day and time.</li>
+        <li>When you <strong>call, WhatsApp or email</strong> us, we also have your phone number or email address, your messages and any photos or videos you send.</li>
+        <li>To <strong>book a visit</strong>, we need your street address and any access details, such as a unit number or gate instructions.</li>
       </ul>
+      <h3>When we repair your machine</h3>
+      <p>We keep a record of each job: the machine, what was wrong, the quote, the work done, the parts fitted and the price. We need it to honour the warranty and to keep our accounts.</p>
+      <h3>When you use this website</h3>
+      <p>Like most websites, ours is hosted by a provider that may keep standard server logs (such as IP addresses, browser types and pages requested) to keep the site secure and working.{analytics
+        ? ' We also use Google Tag Manager and Google Analytics to see how the site is used, such as which pages are visited, the device and browser, the general area a visit comes from and whether someone tapped the call or WhatsApp button or sent the form. This uses cookies (see Cookies below).'
+        : ' We don\'t use analytics, advertising or tracking tools on this website at the moment.'}</p>
+      <p>The website doesn't take payments, and we don't need sensitive details such as your ID number, health information or banking details, so please don't send them.</p>
 
       <h2>Why we use it</h2>
       <ul>
-        <li>To respond to your request, book and carry out repairs, and send quotes and invoices.</li>
-        <li>To honour our repair warranty.</li>
-        <li>To ask, once, whether you're happy to leave a review. You can ignore it.</li>
-        <li>To understand how people use the website and improve it, and to measure our advertising.</li>
+        <li>To reply to your enquiry and give you advice about the fault.</li>
+        <li>To book a visit, find your home and get to the machine.</li>
+        <li>To diagnose the fault, give you a quote, carry out the repair you agree to and give you an invoice.</li>
+        <li>To honour our {f.warranty} warranty on the parts we fit and the work we do.</li>
+        <li>To keep the financial records that tax law requires.</li>
+        <li>To check your machine is working after a repair, and to ask once whether you'd leave us a review, which you're free to ignore.</li>
+        {analytics && <li>To understand how the website is used so we can improve it and, when we advertise on Google, to see which adverts lead to enquiries.</li>}
       </ul>
-      <p>We don't sell your information. We don't send marketing messages unless you've agreed to receive them.</p>
+      <p>We don't sell, rent or trade your personal information. We won't send you marketing messages unless you've agreed to them, and you can ask us to stop at any time.</p>
+
+      <h2>Our lawful reasons</h2>
+      <p>POPIA allows personal information to be used only for a lawful reason. Ours are:</p>
+      <ul>
+        <li><strong>Your request and our agreement with you:</strong> to respond to you, quote, repair your machine and honour the warranty.</li>
+        <li><strong>Legal obligations:</strong> such as keeping financial records for tax.</li>
+        <li><strong>Legitimate interests:</strong> running the business properly, following up after a repair{analytics ? ', understanding how the website is used' : ''} and dealing with any dispute.</li>
+        <li><strong>Your consent:</strong> for anything we ask your permission for, such as marketing messages. You can withdraw your consent at any time.</li>
+      </ul>
+      <p>Giving us your details is voluntary, but we can't book a visit without your name, a phone number and an address.</p>
 
       <h2>Who we share it with</h2>
-      <p>Only with service providers that help us run the business, such as our form provider (Web3Forms), email and hosting providers, Google (analytics), and our accountant. Some of these providers may store data outside South Africa. We use reputable providers with appropriate safeguards.</p>
+      <p>We share personal information only where it's needed to provide our service, or where the law requires it:</p>
+      <ul>
+        <li><strong>Web3Forms</strong>, the service that delivers our booking form to our email inbox. Web3Forms is run from India and processes form messages on cloud servers in several countries, including the United States and the European Union. It keeps a copy of each message for the retention period set in our Web3Forms account (up to three years by default) and then deletes it automatically.</li>
+        <li><strong>WhatsApp</strong> (owned by Meta), if you message us there. WhatsApp handles your messages under its own privacy policy.</li>
+        <li><strong>Our email and website hosting providers</strong>, which store our emails and run this website.</li>
+        {analytics && <li><strong>Google</strong>, which provides Google Tag Manager, Google Analytics and advertising measurement on this website.</li>}
+        <li><strong>Our accountant or bookkeeper</strong>, who sees invoices and job records to prepare our accounts and tax returns.</li>
+        <li><strong>People you ask us to share it with</strong>, such as a landlord, a managing agent or your insurer.</li>
+        <li><strong>Authorities</strong>, such as SARS or a court, when the law requires it.</li>
+      </ul>
+      <h3>Information processed outside South Africa</h3>
+      <p>Some of these providers store or process information outside South Africa, for example in the United States. POPIA allows this when it's needed to provide the service you've asked for, or when the provider is bound by laws or agreements that protect personal information to a standard similar to POPIA's. We use established providers with published privacy and security commitments.</p>
 
       <h2>How long we keep it</h2>
-      <p>We keep job records for as long as needed for warranty, tax and legal purposes, and then delete them.</p>
+      <ul>
+        <li><strong>Enquiries that don't lead to a booking:</strong> only as long as we need to deal with your enquiry.</li>
+        <li><strong>Booking form messages held by Web3Forms:</strong> deleted automatically at the end of the retention period set in our Web3Forms account.</li>
+        <li><strong>Job records, quotes and invoices:</strong> as long as tax law requires us to keep financial records, which is generally five years.</li>
+        <li><strong>Access details</strong> such as gate codes: only while we need them for your visit.</li>
+        <li><strong>Messages, photos and call logs</strong> on our phones: we clear out what we no longer need for the job, the warranty or our records.</li>
+        {analytics && <li><strong>Website analytics:</strong> for the retention period set in our Google Analytics account, after which Google deletes the data.</li>}
+      </ul>
+      <p>When we no longer need information, we delete it or remove anything that identifies you.</p>
 
-      <h2>Your rights</h2>
-      <p>You can ask to see the personal information we hold about you, ask us to correct or delete it, or object to us using it. Contact us at <a href={`mailto:${site.email}`}>{site.email}</a>. If you're not satisfied with our response, you can complain to the Information Regulator of South Africa.</p>
+      <h2>How we protect it</h2>
+      <p>We take reasonable technical and organisational steps to protect your information against loss, misuse and unauthorised access. For example:</p>
+      <ul>
+        <li>this website and the booking form use encrypted (HTTPS) connections;</li>
+        <li>our email accounts, WhatsApp and the phones we use for the business are protected by passwords or PINs;</li>
+        <li>only the people who need your details to do the job can see them.</li>
+      </ul>
+      <p>No system is completely secure. If we believe someone has accessed or acquired your personal information without authority, we'll tell you and the Information Regulator as soon as reasonably possible, as POPIA requires.</p>
+
+      <h2>Your rights under POPIA</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>ask whether we hold personal information about you, and ask for a copy or a description of it;</li>
+        <li>ask us to correct or delete information that is inaccurate, irrelevant, excessive, out of date, incomplete, misleading or obtained unlawfully, and to delete records we're no longer allowed to keep;</li>
+        <li>object, on reasonable grounds, to our use of your information where we rely on legitimate interests, and object at any time to direct marketing;</li>
+        <li>withdraw your consent where we rely on it;</li>
+        <li>be told if your information has been accessed by someone without authority;</li>
+        <li>complain to the Information Regulator, and bring a civil claim in court if you believe your personal information has been interfered with.</li>
+      </ul>
+
+      <h2>How to make a request</h2>
+      <p>Email us at <a href={mailHref}><EmailText /></a> and tell us which of these rights you'd like to use. It helps us find your records and answer quickly if you include:</p>
+      <ul>
+        <li>your name, and the phone number or email address you used when you contacted us;</li>
+        <li>anything else that helps us find your details, such as your suburb and roughly when we visited;</li>
+        <li>what you'd like us to do and, for a correction, what the information should say.</li>
+      </ul>
+      <p>POPIA's regulations set out standard forms for objections and corrections: Form 1 to object to how we use your information, and Form 2 to ask us to correct or delete it. Both are on the Information Regulator's website, so fill in the one you need and email it to us. If you'd like help with either form, ask us: the regulations require us to help, free of charge.</p>
+      <p>We may need to confirm that a request really comes from you before we act on it, so that your information isn't given to, or changed by, someone else. We'll answer within a reasonable time and tell you what we've done. Some records, such as invoices, must be kept by law, and if that affects your request we'll explain why. If we can't agree that something needs correcting, you can ask us to add a note to the record saying that you asked for a correction.</p>
+      <p>If we don't respond within a reasonable time, or you're unhappy with our answer, you can complain to the Information Regulator, as explained in the How to complain section below.</p>
 
       <h2>Cookies</h2>
-      <p>Analytics cookies help us understand website use. You can block or delete cookies in your browser settings; the site will still work.</p>
+      {analytics ? (
+        <p>Cookies are small files that a website stores in your browser. This website sets cookies only through Google Tag Manager: Google Analytics cookies (their names start with _ga) recognise your browser between visits so that visits can be counted, and last up to two years by default. When we advertise on Google, advertising cookies may also record whether a visit from an advert led to a call, WhatsApp message or booking request. You can block or delete cookies in your browser settings; the website works without them.</p>
+      ) : (
+        <p>Cookies are small files that a website stores in your browser. This website doesn't set any cookies at the moment, because it doesn't use analytics, advertising or tracking tools. If that changes, this section will list the cookies we use.</p>
+      )}
+      <p>Links to WhatsApp and other websites take you to services that have their own cookies and privacy policies.</p>
 
-      <h2>Changes</h2>
-      <p>We may update this policy. The date at the top shows the latest version.</p>
-    </div>
-  </section>
+      <h2>Children</h2>
+      <p>We don't knowingly collect personal information from children (anyone under 18). If you think a child has sent us personal information, email us and we'll delete it.</p>
+
+      <h2>How to complain</h2>
+      <p>If you're unhappy with how we've handled your personal information, please tell us first at <a href={mailHref}><EmailText /></a> so we can try to put it right. You also have the right to lodge a complaint with the Information Regulator of South Africa, which oversees POPIA:</p>
+      <ul>
+        <li><strong>Website:</strong> inforegulator.org.za, where you can lodge a complaint through its eServices portal</li>
+        <li><strong>POPIA complaints email:</strong> POPIAComplaints@inforegulator<wbr />.org.za</li>
+        <li><strong>General enquiries:</strong> enquiries@inforegulator.org.za</li>
+        <li><strong>Phone:</strong> 010 023 5200, or toll-free 0800 017 160</li>
+        <li><strong>Address:</strong> Woodmead North Office Park, 54 Maxwell Drive, Woodmead, Johannesburg, 2191</li>
+      </ul>
+      <p>These details were correct when this policy was last updated; the Regulator's website has the latest.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We'll update this policy when the way we handle personal information changes, for example if we start using a new service provider. The date at the top shows when it last changed.</p>
+  </LongFormSection>
 </BaseLayout>

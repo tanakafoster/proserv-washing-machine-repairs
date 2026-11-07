@@ -1,0 +1,44 @@
+---
+/**
+ * Sidebar booking card: Call and WhatsApp buttons plus the call-out fee, warranty and areas,
+ * all read from site.facts so they stay in step with the rest of the site.
+ */
+import Icon from './Icon.astro';
+import { site, telHref, whatsappHref, areaList } from '../data/site';
+interface Props { heading?: string; class?: string }
+const { heading = 'Book a technician', class: cls = '' } = Astro.props;
+const f = site.facts;
+// No "Areas we cover" link on the areas hub itself: a page never links to itself.
+const showAreasLink = Astro.url.pathname.replace(/\/+$/, '') !== '/areas';
+---
+<div data-shared="booking-card" class:list={['card-surface overflow-hidden', cls]}>
+  <div class="h-1 bg-brand" aria-hidden="true"></div>
+  <div class="p-5">
+    <h2 class="type-h3 text-lg">{heading}</h2>
+    <div class="mt-4 grid gap-2.5">
+      <a href={telHref} class="btn btn-primary w-full" data-track="call"><Icon name="phone" /> Call {site.phone.display}</a>
+      <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-whatsapp w-full" data-track="whatsapp"><Icon name="whatsapp" /> WhatsApp us<span class="sr-only"> (opens in a new tab)</span></a>
+    </div>
+    <ul class="mt-5 space-y-3 border-t border-line pt-4 text-sm leading-snug text-ink">
+      <li class="flex gap-2.5">
+        <Icon name="clipboard" class="mt-px h-[18px] w-[18px] shrink-0 text-brand" />
+        <span>A technician comes to your home and <strong class="font-bold text-ink-strong">quotes before any work starts</strong></span>
+      </li>
+      <li class="flex gap-2.5">
+        <Icon name="banknote" class="mt-px h-[18px] w-[18px] shrink-0 text-brand" />
+        <span><strong class="font-bold text-ink-strong">{f.calloutFee} call-out fee</strong>, {f.calloutCondition}</span>
+      </li>
+      <li class="flex gap-2.5">
+        <Icon name="shield" class="mt-px h-[18px] w-[18px] shrink-0 text-brand" />
+        <span><strong class="font-bold text-ink-strong">{f.warranty} warranty</strong> on parts and labour</span>
+      </li>
+      <li class="flex gap-2.5">
+        <Icon name="map" class="mt-px h-[18px] w-[18px] shrink-0 text-brand" />
+        <span>{areaList()}.{showAreasLink && <Fragment>{' '}<a href="/areas/" class="font-medium whitespace-nowrap">Areas we cover</a></Fragment>}</span>
+      </li>
+    </ul>
+    <a href="/contact/" class="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-ink-strong">
+      Send a booking request <Icon name="arrow" class="h-4 w-4 text-brand" />
+    </a>
+  </div>
+</div>

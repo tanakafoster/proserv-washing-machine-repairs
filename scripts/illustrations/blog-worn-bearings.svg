@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>Washing machine drum bearings and seal</title>
+  <desc>Flat illustration: the back of a washing machine drum with its three-armed spider and shaft, and the drum seal and two bearings laid out along the shaft, with wobble marks around the drum.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="540" fill="#FFF7ED"/>
+  <path d="M799.09 388 C757.16 433.66 650.58 471.48 563.43 486.56 C476.29 501.64 349.89 504.89 276.2 478.47 C202.51 452.05 145.49 383.03 121.3 328.03 C97.11 273.03 88.66 194.6 131.04 148.46 C173.42 102.32 287.42 64.97 375.58 51.16 C463.74 37.35 586.76 38.71 660 65.62 C733.24 92.52 791.85 158.85 815.03 212.58 C838.21 266.31 841.02 342.34 799.09 388 Z" fill="#FFEDD5"/>
+  <path d="M820 400h0M842 400h0M864 400h0M886 400h0M820 422h0M842 422h0M864 422h0M886 422h0M820 444h0M842 444h0M864 444h0M886 444h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+
+  <defs>
+    <linearGradient id="drum-side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3F4F6"/>
+      <stop offset="0.5" stop-color="#D1D5DB"/>
+      <stop offset="1" stop-color="#9CA3AF"/>
+    </linearGradient>
+    <linearGradient id="drum-back" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D1D5DB"/>
+      <stop offset="1" stop-color="#6B7280"/>
+    </linearGradient>
+    <linearGradient id="shaft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3F4F6"/>
+      <stop offset="1" stop-color="#6B7280"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="270" cy="462" rx="190" ry="14" fill="#1F2937" opacity="0.14" filter="url(#soft)"/>
+
+  <!-- wobble marks: the drum shakes when the bearings wear -->
+  <g fill="none" stroke="#F97316" stroke-width="7" stroke-linecap="round">
+    <path d="M70 200 Q48 262 70 324"/>
+    <path d="M44 222 Q26 262 44 302"/>
+    <path d="M93.69 89.56 A208 208 0 0 1 181.05 56.02"/>
+    <path d="M181.05 467.98 A208 208 0 0 1 93.69 434.44"/>
+  </g>
+
+  <!-- the drum, seen from behind at an angle -->
+  <path d="M360 84 H150 A62 178 0 0 0 150 440 H360 Z" fill="url(#drum-side)"/>
+  <path d="M181 112h0M211 112h0M241 112h0M271 112h0M301 112h0M331 112h0M166 142h0M196 142h0M226 142h0M256 142h0M286 142h0M316 142h0M181 172h0M211 172h0M241 172h0M271 172h0M301 172h0M331 172h0M166 202h0M196 202h0M226 202h0M256 202h0M286 202h0M316 202h0M181 232h0M211 232h0M241 232h0M271 232h0M301 232h0M331 232h0M166 262h0M196 262h0M226 262h0M256 262h0M286 262h0M316 262h0M181 292h0M211 292h0M241 292h0M271 292h0M301 292h0M331 292h0M166 322h0M196 322h0M226 322h0M256 322h0M286 322h0M316 322h0M181 352h0M211 352h0M241 352h0M271 352h0M301 352h0M331 352h0M166 382h0M196 382h0M226 382h0M256 382h0M286 382h0M316 382h0M181 412h0M211 412h0M241 412h0M271 412h0M301 412h0M331 412h0" stroke="#9CA3AF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M176 84 V440 M330 84 V440" stroke="#9CA3AF" stroke-width="3" opacity="0.6"/>
+  <ellipse cx="360" cy="262" rx="62" ry="178" fill="url(#drum-back)"/>
+  <ellipse cx="360" cy="262" rx="54" ry="168" fill="none" stroke="#D1D5DB" stroke-width="3"/>
+  <!-- the three-armed spider and the shaft -->
+  <path d="M364.8 262 L363 108.92 L357 108.92 L355.2 262 Z" fill="#E5E7EB"/>
+  <circle cx="360" cy="108.92" r="6" fill="#9CA3AF"/>
+  <path d="M357.6 278.62 L404.68 348.93 L407.68 328.15 L362.4 245.38 Z" fill="#E5E7EB"/>
+  <circle cx="406.18" cy="338.54" r="6" fill="#9CA3AF"/>
+  <path d="M357.6 245.38 L312.32 328.15 L315.32 348.93 L362.4 278.62 Z" fill="#E5E7EB"/>
+  <circle cx="313.82" cy="338.54" r="6" fill="#9CA3AF"/>
+  <ellipse cx="360" cy="262" rx="18" ry="40" fill="#D1D5DB"/>
+  <rect x="360" y="247" width="104" height="30" fill="url(#shaft)"/>
+  <ellipse cx="464" cy="262" rx="6" ry="15" fill="#D1D5DB"/>
+
+  <!-- exploded view along the shaft: seal, then bearings -->
+  <path d="M478 262 H900" stroke="#9CA3AF" stroke-width="3" stroke-dasharray="10 9"/>
+  <!-- drum seal -->
+  <g transform="translate(546 262)">
+    <g>
+      <path d="M-8 -50 H0 A18 50 0 0 1 0 50 H-8 A18 50 0 0 1 -8 -50 Z" fill="#1F2937"/>
+      <ellipse cx="0" cy="0" rx="18" ry="50" fill="#374151"/>
+      <ellipse cx="0" cy="0" rx="12.96" ry="36" fill="none" stroke="#9CA3AF" stroke-width="3" stroke-dasharray="3 2"/>
+      <ellipse cx="0" cy="0" rx="9" ry="25" fill="#F3F4F6"/>
+    </g>
+  </g>
+  <!-- outer drum bearing (worn: rust spots) -->
+  <g transform="translate(676 262)">
+    <g>
+      <!-- outer ring seen from the side (its thickness) -->
+      <path d="M-10 -70 H0 A26 70 0 0 1 0 70 H-10 A26 70 0 0 1 -10 -70 Z" fill="#9CA3AF"/>
+      <ellipse cx="0" cy="0" rx="26" ry="70" fill="#D1D5DB"/>
+      <ellipse cx="0" cy="0" rx="20.8" ry="56" fill="#374151"/>
+      <ellipse cx="15.4" cy="12.83" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="9.66" cy="34.75" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="0.23" cy="43.4" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="-9.29" cy="35.47" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="-15.26" cy="13.99" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="-15.4" cy="-12.83" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="-9.66" cy="-34.75" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="-0.23" cy="-43.4" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="9.29" cy="-35.47" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="15.26" cy="-13.99" rx="4.16" ry="9.1" fill="#E5E7EB"/>
+      <ellipse cx="0" cy="0" rx="11.44" ry="30.8" fill="#D1D5DB"/>
+      <ellipse cx="0" cy="0" rx="7.8" ry="21" fill="#F3F4F6"/>
+      <path d="M-13 -60.2 Q-24.7 -28 -23.4 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+      <g fill="#9A3412" opacity="0.6">
+        <circle cx="18.2" cy="-35" r="3.5"/><circle cx="13" cy="-49" r="2.5"/>
+        <circle cx="19.5" cy="28" r="3"/><circle cx="-5.2" cy="61.6" r="2.5"/>
+      </g>
+    </g>
+  </g>
+  <!-- inner drum bearing -->
+  <g transform="translate(806 262)">
+    <g>
+      <!-- outer ring seen from the side (its thickness) -->
+      <path d="M-10 -56 H0 A22 56 0 0 1 0 56 H-10 A22 56 0 0 1 -10 -56 Z" fill="#9CA3AF"/>
+      <ellipse cx="0" cy="0" rx="22" ry="56" fill="#D1D5DB"/>
+      <ellipse cx="0" cy="0" rx="17.6" ry="44.8" fill="#374151"/>
+      <ellipse cx="13.03" cy="10.26" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="8.17" cy="27.8" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="0.19" cy="34.72" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="-7.86" cy="28.38" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="-12.91" cy="11.2" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="-13.03" cy="-10.26" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="-8.17" cy="-27.8" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="-0.19" cy="-34.72" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="7.86" cy="-28.38" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="12.91" cy="-11.2" rx="3.52" ry="7.28" fill="#E5E7EB"/>
+      <ellipse cx="0" cy="0" rx="9.68" ry="24.64" fill="#D1D5DB"/>
+      <ellipse cx="0" cy="0" rx="6.6" ry="16.8" fill="#F3F4F6"/>
+      <path d="M-11 -48.16 Q-20.9 -22.4 -19.8 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+
+    </g>
+  </g>
+</svg>

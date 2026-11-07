@@ -1,0 +1,37 @@
+---
+/**
+ * "Facts" card beside an inner-page hero that has no image (desktop only; phones get the
+ * HeroTrustRow under the buttons instead). Every figure comes from site.facts.
+ */
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+import { site, telHref } from '../data/site';
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+const f = site.facts;
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const items: { icon: IconName; t: string; d: string }[] = [
+  { icon: 'clipboard', t: 'Quote before any work starts', d: 'Diagnosis first, then a clear price' },
+  { icon: 'banknote', t: `${f.calloutFee} call-out fee`, d: cap(f.calloutConditionShort) },
+  { icon: 'shield', t: `${f.warranty} warranty`, d: 'On parts and labour' },
+  { icon: 'clock', t: `Aim to arrive ${f.arrivalTime}`, d: 'On urgent call-outs' },
+];
+---
+<div data-shared="hero-facts" class:list={['card-surface overflow-hidden', cls]}>
+  <div class="h-1 bg-brand" aria-hidden="true"></div>
+  <ul class="divide-y divide-line">
+    {items.map((i) => (
+      <li class="flex items-center gap-3.5 px-5 py-4">
+        <span class="icon-tile h-10 w-10 rounded-lg"><Icon name={i.icon} class="h-5 w-5" /></span>
+        <span class="min-w-0 leading-snug">
+          <strong class="block text-[15px] font-bold text-ink-strong">{i.t}</strong>
+          <span class="block text-sm text-ink-soft">{i.d}</span>
+        </span>
+      </li>
+    ))}
+  </ul>
+  <p class="flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-line bg-surface px-5 py-3.5 text-sm text-ink-soft">
+    <Icon name="phone" class="h-4 w-4 text-brand" /> Call or WhatsApp
+    <a href={telHref} data-track="call" class="-my-1.5 inline-block py-1.5 font-bold whitespace-nowrap text-ink-strong">{site.phone.display}</a>
+  </p>
+</div>

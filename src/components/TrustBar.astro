@@ -1,20 +1,27 @@
 ---
 import { site } from '../data/site';
 import Icon from './Icon.astro';
+import type { IconName } from './icons';
 const f = site.facts;
-const items = [
+// Every figure comes from site.facts. The arrival time is an aim, never a promise.
+const items: { icon: IconName; t: string; d: string }[] = [
   { icon: 'clock', t: `${f.yearsInBusiness} years`, d: 'repairing washing machines' },
-  { icon: 'tool', t: `${f.repairsCompleted} repairs`, d: 'completed in Gauteng homes' },
+  { icon: 'tool', t: `${f.repairsCompleted} repairs`, d: 'completed so far' },
   { icon: 'shield', t: `${f.warranty} warranty`, d: 'on parts and labour' },
-  { icon: 'map', t: `Arrival ${f.arrivalTime}`, d: 'on urgent call-outs' },
-] as const;
+  { icon: 'map', t: `Aim to arrive ${f.arrivalTime}`, d: 'on urgent call-outs' },
+];
 ---
-<section class="border-y border-line bg-brand-tint" aria-label="Why choose ProServ">
-  <ul class="container-site grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
+<section data-shared="trust-bar" class="border-y border-line bg-surface" aria-label="Why choose ProServ">
+  <ul class="container-site grid grid-cols-1 gap-x-6 gap-y-5 py-7 min-[420px]:grid-cols-2 lg:grid-cols-4 lg:py-8">
     {items.map((i) => (
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 text-brand-dark"><Icon name={i.icon} class="h-6 w-6" /></span>
-        <span class="min-w-0 [overflow-wrap:anywhere]"><strong class="block text-ink">{i.t}</strong><span class="text-sm text-ink-soft">{i.d}</span></span>
+      <li class="flex items-center gap-3.5">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-sm ring-1 ring-line">
+          <Icon name={i.icon} class="h-5 w-5" />
+        </span>
+        <span class="min-w-0 leading-snug">
+          <strong class="block text-[15px] font-extrabold text-ink-strong">{i.t}</strong>
+          <span class="block text-sm text-ink-soft">{i.d}</span>
+        </span>
       </li>
     ))}
   </ul>

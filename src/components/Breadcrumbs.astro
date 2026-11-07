@@ -1,17 +1,26 @@
 ---
 import type { Crumb } from '../lib/schema';
+import Icon from './Icon.astro';
 interface Props { crumbs: Crumb[] }
 const { crumbs } = Astro.props;
+const last = crumbs.length - 1;
+// The BreadcrumbList schema is built from the same crumbs in BaseLayout.
+// Keep aria-label="Breadcrumb" first on the <nav>: scripts/audit.mjs finds the trail by it.
 ---
-<nav aria-label="Breadcrumb" class="container-site pt-4 text-sm">
-  <ol class="flex flex-wrap items-center gap-1 text-ink-soft">
+<nav aria-label="Breadcrumb" class="container-site pt-4 lg:pt-6">
+  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[13px] text-ink-soft">
     {crumbs.map((c, i) => (
-      <li class="flex items-center gap-1">
-        {i > 0 && <span aria-hidden="true">/</span>}
-        {i < crumbs.length - 1 ? (
-          <a href={c.href} class="text-ink-soft underline">{c.name}</a>
+      <li class="flex min-w-0 items-center gap-1.5">
+        {i > 0 && <Icon name="chevron-right" class="h-3.5 w-3.5 shrink-0 text-ink-soft/60" />}
+        {i === 0 ? (
+          <a href={c.href} class="-my-1.5 flex min-h-8 min-w-8 items-center justify-center rounded-md text-ink-soft no-underline hover:text-ink-strong">
+            <Icon name="home" class="h-4 w-4" />
+            <span class="sr-only">{c.name}</span>
+          </a>
+        ) : i < last ? (
+          <a href={c.href} class="-my-1.5 flex min-h-8 items-center rounded-md text-ink-soft no-underline hover:text-ink-strong hover:underline">{c.name}</a>
         ) : (
-          <span aria-current="page" class="font-medium text-ink">{c.name}</span>
+          <span aria-current="page" class="line-clamp-1 font-medium text-ink-strong">{c.name}</span>
         )}
       </li>
     ))}

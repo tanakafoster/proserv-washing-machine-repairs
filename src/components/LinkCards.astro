@@ -1,23 +1,80 @@
 ---
+/**
+ * A section of linked cards (services, problems, areas, guides...) in the Electro LinkCard style.
+ *   variant 'card' (default): icon tile, bold title, short text and an arrow.
+ *   variant 'compact': one-line cards (title + arrow), for long lists of short names. An item's
+ *     `kicker` shows as a small line above the title (e.g. "Washing machine repairs" over "Sandton");
+ *     the link text still reads "Washing machine repairs Sandton".
+ *   variant 'chips': pill links in a centred row, for related brands or areas.
+ * A last row that isn't full is centred.
+ */
 import Icon from './Icon.astro';
-interface Item { href: string; title: string; text?: string }
-interface Props { items: Item[]; heading?: string; headingId?: string; cols?: 2 | 3 | 4; alt?: boolean; intro?: string }
-const { items, heading, headingId = 'links-h', cols = 3, alt = false, intro } = Astro.props;
-const grid = { 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-2 lg:grid-cols-3', 4: 'sm:grid-cols-2 lg:grid-cols-4' }[cols];
+import SectionHeading from './SectionHeading.astro';
+import type { IconName } from './icons';
+interface Item { href: string; title: string; text?: string; icon?: IconName; kicker?: string }
+interface Props {
+  items: Item[];
+  heading?: string;
+  headingId?: string;
+  eyebrow?: string;
+  intro?: string;
+  cols?: 2 | 3 | 4;
+  /** Grey section background (alternating sections). */
+  alt?: boolean;
+  variant?: 'card' | 'compact' | 'chips';
+  /** Icon used for every item that doesn't set its own. */
+  icon?: IconName;
+  align?: 'center' | 'left';
+}
+const { items, heading, headingId = 'links-h', eyebrow, intro, cols = 3, alt = false, variant = 'card', icon, align = 'center' } = Astro.props;
+// Flex rows (gap 1rem) so an incomplete last row can be centred.
+const basis = {
+  2: 'sm:basis-[calc((100%_-_1rem)/2)]',
+  3: 'sm:basis-[calc((100%_-_1rem)/2)] lg:basis-[calc((100%_-_2rem)/3)]',
+  4: 'sm:basis-[calc((100%_-_1rem)/2)] lg:basis-[calc((100%_-_3rem)/4)]',
+}[cols];
 ---
-<section class:list={['section', alt && 'section-alt']} aria-labelledby={heading ? headingId : undefined}>
+<section data-shared="link-cards" class:list={['section-y', alt ? 'bg-surface' : 'bg-white']} aria-labelledby={heading ? headingId : undefined}>
   <div class="container-site">
-    {heading && <h2 id={headingId} class="text-2xl font-bold sm:text-3xl">{heading}</h2>}
-    {intro && <p class="mt-3 max-w-3xl text-ink-soft">{intro}</p>}
-    <ul class={`mt-6 grid gap-4 ${grid}`}>
-      {items.map((i) => (
-        <li>
-          <a href={i.href} class="card-link h-full">
-            <span class="flex items-center justify-between gap-2 font-semibold text-ink">{i.title}<span class="text-brand-dark"><Icon name="arrow" /></span></span>
-            {i.text && <span class="mt-1 block text-sm text-ink-soft">{i.text}</span>}
-          </a>
-        </li>
-      ))}
-    </ul>
+    {heading && <SectionHeading id={headingId} eyebrow={eyebrow} heading={heading} intro={intro} align={align} />}
+    {variant === 'chips' ? (
+      <ul class:list={['flex flex-wrap gap-2.5', align === 'center' && 'justify-center']}>
+        {items.map((i) => (
+          <li><a href={i.href} class="chip">{i.title}</a></li>
+        ))}
+      </ul>
+    ) : (
+      <ul class:list={['flex flex-wrap gap-3 sm:gap-4', align === 'center' && 'justify-center']}>
+        {items.map((i) => {
+          const ic = i.icon ?? icon;
+          return (
+            <li class={`min-w-0 shrink-0 grow-0 basis-full ${basis}`}>
+              {variant === 'compact' ? (
+                <a href={i.href} class="card-surface card-interactive group flex h-full min-h-16 items-center gap-3 px-4 py-3 text-ink-strong no-underline hover:text-ink-strong">
+                  {ic && <span class="icon-tile h-9 w-9 rounded-lg"><Icon name={ic} class="h-[1.125rem] w-[1.125rem]" /></span>}
+                  <span class="min-w-0 flex-1 leading-snug">
+                    {i.kicker && <><span class="block text-[13px] font-medium text-ink-soft">{i.kicker}</span>{' '}</>}
+                    <span class:list={['block font-bold', i.kicker && 'text-[1.0625rem]']}>{i.title}</span>
+                  </span>
+                  <Icon name="arrow" class="h-4 w-4 shrink-0 text-brand transition-transform group-hover:translate-x-0.5" />
+                </a>
+              ) : (
+                <a href={i.href} class="card-surface card-interactive group flex h-full items-start gap-4 p-4 text-ink no-underline hover:text-ink sm:p-5">
+                  {ic && <span class="icon-tile"><Icon name={ic} class="h-[1.375rem] w-[1.375rem]" /></span>}
+                  <span class="min-w-0 flex-1">
+                    <span class="flex items-start justify-between gap-3">
+                      <span class="text-base leading-snug font-bold text-ink-strong sm:text-[1.0625rem]">{i.title}</span>
+                      <Icon name="arrow" class="mt-0.5 h-4 w-4 shrink-0 text-brand transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                    {i.text && <span class="mt-1.5 block text-sm leading-relaxed text-ink-soft">{i.text}</span>}
+                  </span>
+                </a>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    )}
+    <slot />
   </div>
 </section>

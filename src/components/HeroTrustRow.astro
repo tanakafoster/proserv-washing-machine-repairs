@@ -1,0 +1,35 @@
+---
+/**
+ * Small trust row under the hero buttons. Every figure comes from site.facts, so it stays in step
+ * with the rest of the site. `phone` shows the number as crawlable text instead of the facts.
+ */
+import { site, telHref } from '../data/site';
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+interface Props { variant?: 'facts' | 'phone'; class?: string }
+const { variant = 'facts', class: cls = '' } = Astro.props;
+const f = site.facts;
+const items: { icon: IconName; text: string }[] = [
+  { icon: 'clipboard', text: 'Quote before any work starts' },
+  { icon: 'banknote', text: `${f.calloutFee} call-out, ${f.calloutConditionShort}` },
+  { icon: 'shield', text: `${f.warranty} warranty on parts and labour` },
+];
+---
+{variant === 'phone' ? (
+  <p data-shared="trust-row" class:list={['mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft', cls]}>
+    <Icon name="phone" class="h-4 w-4 text-brand" />
+    Call or WhatsApp
+    <a href={telHref} data-track="call" class="-my-1.5 inline-block py-1.5 font-bold whitespace-nowrap text-ink-strong decoration-2">{site.phone.display}</a>
+  </p>
+) : (
+  <ul data-shared="trust-row" class:list={['mt-6 flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-ink', cls]}>
+    {items.map((i) => (
+      <li class="flex items-center gap-2">
+        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-tint text-brand-dark">
+          <Icon name={i.icon} class="h-3.5 w-3.5" strokeWidth={2.5} />
+        </span>
+        {i.text}
+      </li>
+    ))}
+  </ul>
+)}

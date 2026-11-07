@@ -1,18 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import { serviceIcon } from '../../components/icon-maps';
 import { services, serviceUrl } from '../../data/services';
 import { site } from '../../data/site';
 import { faqSchema } from '../../lib/schema';
 const f = site.facts;
 const faqs = [
-  { q: 'Do you repair washing machines at home?', a: 'Yes. All our repairs are done at your home. We only take a machine away in rare cases where a workshop repair is needed, and we will discuss that with you first.' },
-  { q: 'Do you charge a call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. You get a quote before any work starts.` },
-  { q: 'Is the repair guaranteed?', a: `Yes. Repairs carry our ${f.warranty} warranty on parts and labour.` },
+  { q: 'Which service should I book if I don\'t know what\'s wrong?', a: 'Book a repair for your type of machine and describe what it\'s doing. The technician diagnoses the fault at your home, so you don\'t need to work out the cause first. If the machine turns out to need a part or a service instead, the quote will say so.' },
+  { q: 'Is every service done at my home?', a: 'Yes. Repairs, servicing, installation and parts fitting all happen where your machine is, so there\'s no heavy machine to load into a car and no transport to arrange.' },
+  { q: 'I already know which part has failed. Can I book just that?', a: 'Yes. Book parts replacement and tell us which part it is, with the model number. The technician still checks that the part really is the cause before replacing it, because a symptom that points to one part can come from another: a noisy pump may only have a coin caught in its filter. You get the quote before any work starts.' },
+  { q: 'What happens if the part isn\'t available on the day?', a: 'The technician tells you before you agree to the repair, so you can decide with all the facts. Once the part is in, the technician comes back to finish the job.' },
+  { q: 'Can you move my machine to a new spot in the house?', a: 'Yes, as part of our installation service. The technician disconnects the machine, connects it to the tap and drain at the new spot, levels it and runs a test wash. If there\'s no tap or drain point where you want the machine, a plumber will need to add them before the move.' },
+  { q: 'Is servicing worth it if my machine is working fine?', a: 'For a machine that runs a load or more a day, usually yes. Hoses perish, filters clog and bearings wear gradually, and a service finds these before they turn into a breakdown. A lightly used machine that\'s only a year or two old mostly needs you to keep the filter, drawer and door seal clean.' },
 ];
 ---
 <BaseLayout
@@ -24,22 +29,62 @@ const faqs = [
   <PageHero
     h1="Washing machine repair services"
     eyebrow="What we do"
-    intro={`<p>ProServ offers a full range of washing machine repair services, all done at your home. Whether you have a front loader, a top loader or a washer-dryer, our technician comes to you with the common parts on board, diagnoses the fault and gives you a clear quote before starting. We repair all major washing machine brands, and we'll always tell you honestly if a repair isn't worth it.</p>`}
+    intro={`<p>ProServ's washing machine repair services cover the whole life of a machine: fixing front loaders, top loaders and washer-dryers, installing and plumbing in new machines, servicing machines that work hard, and replacing worn parts. Everything happens at your home. A technician comes to you, finds the fault and gives you a quote before any work starts. We repair all major washing machine brands, and if a repair doesn't make financial sense, we'll tell you.</p>`}
   />
-  <LinkCards alt heading="Choose a service" headingId="svc-list" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
-      <h2>Repairs for every type of washing machine</h2>
-      <p>Most washing machines in South African homes are either front loaders or top loaders, and they fail in different ways. Front loaders pack a heavy drum, bearings, a door seal and a door lock into a sealed cabinet, so their typical faults are bearings, pumps, locks and seals. Top loaders tend to wear out their lid switches, drive couplings, gearboxes and suspension. Washer-dryers add a drying system with its own heater, fan and condenser. Our <a href="/services/front-loader-repairs/">front loader repairs</a>, <a href="/services/top-loader-repairs/">top loader repairs</a> and <a href="/services/washer-dryer-repairs/">washer dryer repairs</a> pages explain the common faults for each.</p>
-      <h2>Not sure what's wrong?</h2>
-      <p>That's fine. Tell us what the machine is doing, or browse our list of <a href="/problems/">common washing machine problems</a>: not draining, not spinning, leaking, not switching on, door problems, noise, error codes and filling faults. If there's a code on the display, our <a href="/error-codes/">error code guides</a> may explain it.</p>
-      <h2>Keeping your machine going</h2>
-      <p>A yearly <a href="/services/washing-machine-servicing/">service</a> catches worn hoses, blocked filters and noisy bearings before they turn into bigger repairs. If you've bought a new machine or are moving house, our <a href="/services/washing-machine-installation/">installation and plumbing-in</a> service gets it connected, levelled and tested properly. And when a part has failed, we supply and fit it through our <a href="/services/washing-machine-parts-replacement/">parts replacement</a> service.</p>
-      <h2>Pricing</h2>
-      <p>Every job is quoted after diagnosis, before work starts. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what affects the price, and <a href="/repair-or-replace/">repair or replace</a> if your machine is getting on.</p>
-    </div>
-  </section>
-  <HowItWorks />
-  <Faq items={faqs} />
+  <LinkCards alt eyebrow="What we repair" heading="Choose a service" headingId="svc-list" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))} />
+  <LongFormSection reservedIds={['svc-list']}>
+      <h2>How to choose a service</h2>
+      <p>You don't need to know what's wrong before you book. Most people start from what the machine is doing, and that's all the technician needs to begin. This table matches common situations to the right service, and each service page goes into the detail.</p>
+      <table>
+        <thead><tr><th>Service</th><th>Book it when</th></tr></thead>
+        <tbody>
+          <tr><td><a href="/services/front-loader-repairs/">Front loader repairs</a></td><td>Your front loader stops mid-cycle, won't drain or spin, leaks at the door or has started to rumble on spin.</td></tr>
+          <tr><td><a href="/services/top-loader-repairs/">Top loader repairs</a></td><td>Your top loader fills but won't agitate or spin, bangs the cabinet on spin, or won't drain.</td></tr>
+          <tr><td><a href="/services/washer-dryer-repairs/">Washer dryer repairs</a></td><td>Your washer-dryer washes but won't dry, dries badly, or has any of the usual washing faults.</td></tr>
+          <tr><td><a href="/services/washing-machine-installation/">Installation and plumbing-in</a></td><td>A new machine needs connecting, or your machine is moving to a new spot or a new home.</td></tr>
+          <tr><td><a href="/services/washing-machine-servicing/">Servicing and maintenance</a></td><td>The machine still works, but it does a lot of washing or you'd like it checked before small problems grow.</td></tr>
+          <tr><td><a href="/services/washing-machine-parts-replacement/">Parts replacement</a></td><td>You already know which part has failed, such as a torn door seal or a broken door catch.</td></tr>
+          <tr><td>Not sure?</td><td>Describe the symptoms when you book, or start with our guide to <a href="/problems/">common washing machine problems</a>.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What each service covers</h2>
+      <p>Each service is carried out at your home. Here's what's involved in each one, with a link to the page that covers it in full.</p>
+      <h3>Front loader repairs</h3>
+      <p>Front loaders pack a heavy drum, two drum bearings, a rubber door seal, an electronic door lock, a drain pump, a motor and a control board into a compact cabinet. Repairs cover all of them: clearing or replacing pumps, fitting new door locks and seals, replacing carbon brushes or testing inverter motors, renewing heating elements and temperature sensors, and replacing the bearings and shaft seal. Bearing jobs take longest, because the drum and outer tub have to come out. Our page on <a href="/services/front-loader-repairs/">front loader repairs</a> explains each fault.</p>
+      <h3>Top loader repairs</h3>
+      <p>Top loaders load from above and move the washing with either a tall central agitator or a low pulsator in the base of the drum. Different parts wear on them: lid switches and lid locks, drive belts, couplings and clutches, gearboxes on agitator machines, suspension rods, drain pumps and inlet valves. A top loader that fills but doesn't wash, or thumps the cabinet on spin, often points to one of these. See <a href="/services/top-loader-repairs/">top loader repairs</a>.</p>
+      <h3>Washer-dryer repairs</h3>
+      <p>A washer-dryer is a front loader with a drying system added: a separate heating element, a fan, a condenser or air duct, and the thermostats or sensors that decide when the load is dry. The technician can look at both halves on the same visit. Clothes that come out hot but damp usually mean the moist air isn't being cleared, while cold, damp clothes point to the heating side. More on <a href="/services/washer-dryer-repairs/">washer dryer repairs</a>.</p>
+      <h3>Installation and plumbing-in</h3>
+      <p>A new machine needs more than a plug point. A front loader's transit bolts, which lock the drum for delivery, have to come out. The inlet hose goes onto the tap, the drain hose has to sit at the right height in a standpipe or sink trap, and the machine has to stand level so it doesn't walk on spin.</p>
+      <p>Installation covers connecting, levelling and a test run, for new machines and for machines moving to a new spot. If the space has no tap or drain point yet, mention it when you book. See <a href="/services/washing-machine-installation/">washing machine installation</a>.</p>
+      <h3>Servicing and maintenance</h3>
+      <p>A service is a check-up for a machine that still works. The technician cleans the filters, checks the hoses, door seal, drum bearings, suspension and levelling, and runs a test cycle, so worn parts are found before they fail. It's most worthwhile for machines that run a load or more a day, for rental properties between tenants, and for machines that are a few years old. Details are on <a href="/services/washing-machine-servicing/">washing machine servicing</a>.</p>
+      <h3>Parts replacement</h3>
+      <p>When a part has failed, the repair is only as good as the replacement and the way it's fitted. This covers drain pumps, motors and carbon brushes, drum bearings and seals, door seals and door locks, inlet valves, pressure switches, heating elements, shock absorbers and control boards, fitted at your home and covered by our {f.warranty} warranty. When a part has to be ordered in, you'll hear about it before you agree to the repair. See <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a>.</p>
+
+      <h2>What every visit includes</h2>
+      <p>Whichever service you book, the visit follows the same pattern, and you stay in control of the cost.</p>
+      <ul class="checklist">
+        <li><strong>A proper diagnosis.</strong> The technician starts with what you've noticed, rules out simple causes such as the water supply, the filters and the hoses, then tests the parts involved. Many modern machines also have a service test mode that helps pinpoint the fault.</li>
+        <li><strong>A quote before any work.</strong> You hear what's wrong, what needs replacing and what it will cost before the repair starts.</li>
+        <li><strong>Your decision.</strong> The call-out fee is {f.calloutFee}, {f.calloutCondition}.</li>
+        <li><strong>The repair.</strong> If the part is available, most repairs are finished on the same visit. If it has to be ordered, you'll know before you agree to the repair.</li>
+        <li><strong>A check before the technician leaves.</strong> The machine is run so you can see it working, and the repair carries our {f.warranty} warranty on parts and labour.</li>
+      </ul>
+
+      <h2>Repair, service or replace?</h2>
+      <p>A service suits a machine that works; a repair suits one that has developed a fault. If you're hearing a new noise, finding water on the floor or seeing an error code, book a repair rather than a service, because the technician needs to find the cause.</p>
+      <p>Replacing the machine only makes sense when the repair costs too much compared with a new machine of similar quality, or when the drum, outer tub or cabinet is too far gone. Age on its own doesn't decide it: a well-built machine with a sound drum and tub can be worth repairing for years. Our guide on whether to <a href="/repair-or-replace/">repair or replace your washing machine</a> covers the decision, and the technician will give you an honest view on the day.</p>
+
+      <h2>What affects the price</h2>
+      <p>Every job is quoted after the diagnosis, because the same symptom can be a quick fix or a major repair. A drain fault might be a coin in the pump filter or a pump that has burnt out. What moves the price is the part itself (a control board usually costs much more than a set of carbon brushes), the time the job takes (bearing replacements take longest), whether the machine is built into a cabinet, and whether a part has to be ordered. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for more on what drives the price.</p>
+
+      <h2>Brands and machine types</h2>
+      <p>We repair all major washing machine brands, from everyday family machines to premium European models, freestanding and integrated. Our <a href="/brands/">guide to the brands we repair</a> links to a page for each make, and if your machine is showing a code, our <a href="/error-codes/">washing machine error code guides</a> explain what it usually means.</p>
+  </LongFormSection>
+  <HowItWorks tone="surface" />
+  <Faq items={faqs} tone="white" />
   <CtaBand />
 </BaseLayout>

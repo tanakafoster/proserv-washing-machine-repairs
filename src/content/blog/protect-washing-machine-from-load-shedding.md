@@ -5,85 +5,127 @@ description: "How to protect your washing machine from load shedding and surges,
 primaryKeyword: "protect washing machine from load shedding"
 pubDate: 2026-11-06
 image: "/images/blog-load-shedding.webp"
-imageAlt: "Washing machine plug connected to a wall-mounted surge protector in a laundry"
+imageAlt: "Illustration of a washing machine plugged into a surge protector, with a lightning bolt symbol"
 summary: "Power cuts and surges are hard on modern machines. Simple ways to protect yours, and what to do when the power comes back."
+faqs:
+  - q: "If I use a surge protector, do I still need to switch off at the wall?"
+    a: "It's still worth doing. A surge protector absorbs spikes, but it doesn't stop the supply flickering on and off as it settles, and the parts inside it that soak up surges wear a little with every hit. Switching off costs nothing and keeps the machine clear of both."
+  - q: "Does an inverter protect my machine from power surges?"
+    a: "Not necessarily. Many home systems pass grid power straight through while it's on, so a spike on the grid can still reach the machine, and the surge protection built into inverters varies. Ask your installer what protection your system has, and keep using a plug-in protector or DB board protection either way."
+  - q: "Can my inverter and batteries run a whole wash?"
+    a: "Only if the inverter's continuous rating covers the machine's full draw on top of everything else that's running, and the batteries hold enough for the whole programme. A cold, quick programme is the easiest to fit within both limits. If the batteries do run flat mid-wash, the machine stops just as it would in a power cut, so restart it the same way."
+  - q: "Will a cold wash on backup power still get my washing clean?"
+    a: "For everyday loads, yes. Modern detergents are made to work in cool water, and a cold wash handles lightly and normally soiled clothes well. Keep towels, bedding and heavily soiled loads for a hot wash when grid power is back, and run a hot empty wash now and then to keep the machine fresh."
+  - q: "Should I unplug the machine when we go away?"
+    a: "Yes. With nobody home to switch it off when the power fails or a storm builds, unplugging is the simplest protection there is. Close the tap too, so a hose that gives way can't flood the floor while you're away."
+  - q: "What should I mention when I book a repair after a power cut?"
+    a: "Say when it stopped working (during the cut, as the power came back or in a storm), whether the earth leakage or a breaker tripped, and whether other appliances were damaged at the same time. Add any code on the display and the brand and model number. Those details point the technician to the likely cause before testing starts."
 ---
 
-If you want to protect your washing machine from load shedding, it helps to understand what actually goes wrong. Load shedding and washing machines don't mix well. Whether it's scheduled load shedding, a substation fault, or a cable theft that takes your street off the grid for a day, power interruptions are a fact of life in Gauteng. Modern washing machines are full of electronics, and the moment the power comes back on is often the most dangerous moment for them.
+To protect your washing machine from load shedding and power surges, start with the moment the power comes back, because that's often when the damage happens. Load shedding has eased a great deal since its worst years, but power cuts haven't gone away in Gauteng. Load reduction still switches off some areas at peak times, and municipal faults, cable theft, transformer failures and summer storms take suburbs off the grid without warning. Modern washing machines are full of electronics, and every outage ends with a restart they'd rather do gently.
 
-We see the results regularly: machines that won't switch on after an outage, control boards that have stopped responding, and doors stuck locked mid-cycle. Here's why it happens, how to protect your machine, and what to do if it's already been affected.
+Here's why outages and surges damage washing machines, the habits and devices that protect them, how to run one on backup power, and what to do if yours has stopped working after an outage.
 
-## Why power cuts and surges damage washing machines
+## Why outages harm washing machines
 
-### The surge when the power comes back
+### The surge when the power returns
 
-When power is restored to an area, the voltage doesn't always come back smoothly. There can be a brief spike, or the power can flicker on and off a few times. Every appliance in the area switches on at the same moment, which adds to the disturbance. A washing machine's control board, its power supply and its mains filter are sensitive to these spikes.
+When power is restored to an area, it doesn't always come back smoothly. There can be a brief spike, or the supply can flicker on and off a few times while everything in the area switches on at once. The control board, its power supply and the mains filter (the part that smooths electrical interference on the way in) are the most exposed to those spikes.
 
-### Brownouts and low voltage
+### Low voltage and brownouts
 
-Sometimes the problem isn't a spike but a dip, when the supply voltage drops well below normal for a while. Motors and electronics don't like running on low voltage either, and a machine may behave strangely, stop, or show an error.
+Sometimes the supply dips well below normal instead of spiking. Motors and electronics don't cope well with low voltage, so the machine may stop mid-cycle, show an error or behave strangely until the supply recovers.
 
-### Being cut off mid-cycle
+### Lightning in summer storms
 
-If the power goes off while the machine is running, it stops with water in the drum and the door locked. Most machines handle this fine and resume or restart when power returns. But if the power flickers on and off several times while the machine is trying to restart, it can confuse the electronics or trip the door lock repeatedly.
+Gauteng's summer thunderstorms bring a lot of lightning, and a nearby strike can send a large surge through the power lines. A plug-in surge protector helps with smaller spikes, but nothing plugged in is completely safe from a close strike. Unplugging is the only sure protection.
 
-## How to protect your washing machine
+### Stopping halfway through a wash
 
-### 1. Don't run the machine close to load shedding
+A cut in the middle of a programme can leave the machine stopped with water inside, and on many machines the door stays locked until the electricity is back. Most machines handle a single interruption well and resume or restart when the power returns. Repeated flickering while the machine is trying to restart is harder on the electronics and the door lock.
 
-Check your schedule and avoid starting a wash if it won't finish before your slot. A typical cotton wash can run for well over two hours, so check the cycle time on the display. Quick washes are useful when time is short.
+## Habits that protect your machine
 
-### 2. Switch off at the wall during load shedding
+These cost nothing, and they prevent a lot of damage.
 
-If you know load shedding is coming, or the power has just gone off, switch the machine off at the wall socket. When the power comes back, wait a few minutes for the supply to settle before switching on again. This one habit prevents a lot of surge damage, and it's free.
+### Switch off when the power fails
 
-### 3. Use a surge protector
+If the power goes off, or you know a cut is coming, switch the machine off at the wall socket. When the power comes back, wait a few minutes for the supply to settle before you switch on again. That way the machine isn't connected for the spike or the flickering that can follow.
 
-A good-quality plug-in surge protector between the wall socket and the machine absorbs spikes before they reach the electronics. Look for a reputable brand that's rated for the current a washing machine draws (most machines draw up to about 10 amps when heating; check the rating plate on your machine). Cheap multi-plugs with a "surge" label don't always offer much protection, and running a washing machine through a multi-plug with other appliances isn't a good idea.
+### Plan long washes around known outages
 
-Some surge protectors also include a time delay, so they only reconnect power a minute or two after it returns. That's ideal for load shedding areas.
+Before you start a long programme, check whether a cut is likely: your area's load reduction or load shedding schedule if one applies, and any planned maintenance notices from Eskom or your municipality. A standard cotton programme can run for two hours or more, so check the time on the display and use a quick programme when time is short.
 
-### 4. Consider whole-house surge protection
+### Unplug when a storm is coming
 
-An electrician can fit surge protection at your distribution board, which protects everything in the house. This is a job for a registered electrician only. If you've had repeated surge damage to appliances, it's worth asking about.
+Don't start a wash with a thunderstorm building, and unplug the machine until the storm has passed. The wall switch alone isn't enough here, because a lightning surge can jump the small gap inside a switch.
 
-### 5. Be careful with inverters and backup power
+## Surge protection that works
 
-Running a washing machine off a home inverter or a generator is possible, but there are a few things to know:
+### A quality plug-in surge protector
 
-- **The heating element draws a lot of power.** A machine heating water can draw around 2 kW or more. Many home inverter systems aren't sized for that alongside your other loads. Cold washes draw much less.
-- **Pure sine wave matters.** Modified sine wave inverters and some generators produce a rougher supply that can upset sensitive electronics. If you run a washing machine on backup power, a pure sine wave inverter is the safer choice.
-- **The changeover can cause a blip.** When a system switches between grid and battery, there can be a momentary interruption.
+A good plug-in surge protector between the wall socket and the machine absorbs spikes before they reach the electronics. Choose one from a reputable supplier that is rated for the machine's full load: a washing machine heating water can draw around 2,000 watts or more, and the rating plate on the machine gives the exact figure. Cheap multi-plugs with a "surge" label don't always offer much protection. Plug the protector straight into the wall socket and the machine straight into the protector, and never run a washing machine from a multi-plug or extension lead.
 
-If you're unsure whether your backup system can safely run your machine, ask your installer.
+The parts inside a protector that absorb surges wear out over time, and many protectors have an indicator light that shows whether the protection still works. Replace the protector when the light says so, or after a big surge.
 
-## What to do after an outage
+### Voltage protection with a delay
+
+Some plug-in protectors also disconnect the machine when the voltage goes too high or too low, and only reconnect it a little while after the supply is back to normal. That suits areas with frequent outages, because it deals with both the flickering and the brownouts for you.
+
+### Protection at the DB board
+
+A registered electrician can fit surge protection at your distribution board (DB board), which protects every appliance in the house, not just the washing machine. It's worth asking about if you've had several appliances damaged, and it's a job for an electrician only.
+
+## Running it on backup power
+
+You can run a washing machine on a home inverter, a solar system or a generator, but a few points matter:
+
+- **Heating is the big load.** A machine heating water can draw around 2,000 watts or more, and many home inverter systems aren't sized for that on top of everything else. A cold wash draws far less, because heating the water takes most of the power. Any programme that heats, including 30°C and eco settings, switches the element on at full power, so on battery power choose a cold wash. A washer-dryer runs a heater for a long time when drying, so save drying for when grid power is on.
+- **The type of inverter matters.** A pure sine wave inverter gives the cleanest supply. Modified sine wave inverters and some generators produce a rougher supply that can upset sensitive electronics.
+- **Generators need care.** Run a portable generator outdoors, well away from doors and windows, because its exhaust contains carbon monoxide. Have it connected to the house through a changeover switch fitted by a registered electrician, rather than running the washing machine from it on an extension lead.
+- **The changeover can cause a blip.** Some systems take a moment to switch between grid and battery, and some machines notice it and stop or restart.
+- **Use the sun.** If you have solar panels, run the machine in the middle of a sunny day, when the panels produce the most.
+
+If you're not sure your system can run the machine safely, ask your installer before you try.
+
+## After the power comes back
 
 If the power went off mid-wash:
 
 1. Switch the machine off at the wall.
-2. Wait until the power has been back and stable for a few minutes.
-3. Switch on. Many machines resume automatically. If not, select a rinse or spin cycle to finish off and drain the water.
-4. If the door is locked and there's water inside, don't force it. Select drain or spin first. Our guide to a [washing machine door that won't open](/problems/washing-machine-door-wont-open/) covers this.
+2. Wait until the power has been back and steady for a few minutes.
+3. Switch on. Many machines resume the programme by themselves. If yours doesn't, choose a rinse and spin or a drain programme to finish and empty the drum.
+4. If the door stays locked with water inside, don't force it. Let the machine drain first, and if it still won't release, see [washing machine door won't open](/problems/washing-machine-door-wont-open/).
+5. If the earth leakage or circuit breaker trips when you switch the machine on, leave it off and call a technician. This can indicate a dangerous fault.
 
-## Signs your machine has been damaged by a surge
+### If the water was off too
 
-- **It won't switch on at all.** No lights, no display. The mains filter or the control board power supply may have failed. See [washing machine won't turn on](/problems/washing-machine-wont-turn-on/).
-- **It trips the electricity** as soon as you switch it on or when it starts heating.
-- **It shows a strange error** that wasn't there before the outage, or the display behaves oddly.
-- **It starts but won't heat, spin or drain**, because a relay or driver on the board has been damaged.
-- **There's a burning smell.** Switch off at the wall and leave it unplugged.
+Water and power outages sometimes come together. When the water supply returns, air and sediment in the pipes can slow the fill or block the machine's inlet filter, so run the nearest cold tap until the water is clear before starting a wash. If the machine then shows a water supply error or won't fill, the [washing machine not filling with water](/problems/washing-machine-not-filling-with-water/) guide covers the next checks.
 
-Please don't open the machine to look for burnt components. Testing electrical parts is a job for a technician.
+## Signs of surge damage
 
-## Can surge damage be repaired?
+### Rule out the supply first
 
-Often, yes. Surge damage isn't always as bad as it looks. Sometimes it's just the mains filter, a fuse or a single component on the board. Sometimes the board needs replacing. We test before we replace anything, and you'll get a quote first. If you have home insurance, surge damage to appliances is sometimes covered, so keep the technician's report.
+A machine that seems dead after an outage isn't always damaged. Check that it's plugged in and switched on at the wall, that the rest of the house has power, and try a lamp in the same socket. If the machine is plugged into a surge or voltage protector, check that the protector has power and hasn't cut the supply; voltage protectors wait a little while before reconnecting. If the lamp works and the machine still doesn't, the fault is in the machine.
 
-Our [parts replacement](/services/washing-machine-parts-replacement/) service covers control boards and mains filters for all major brands.
+### What damage looks like
+
+- **No lights, no display, no response.** The mains filter or the control board's power supply may have failed. See [washing machine won't turn on](/problems/washing-machine-wont-turn-on/).
+- **It trips the electricity** as soon as you switch on or when it starts to heat. Leave it off and call a technician.
+- **A new error code** that wasn't there before the outage, or a display that behaves oddly. Note the code down, and see [washing machine showing an error code](/problems/washing-machine-showing-error-code/) for what codes mean.
+- **It starts but won't heat, drain or spin**, which can mean part of the control board was damaged.
+- **A burning smell.** Switch off at the wall and leave it unplugged.
+
+Please don't open the machine to look for burnt parts. Testing electrical parts is a job for a technician.
+
+## Can surge damage be fixed?
+
+Often, yes, and it isn't always as bad as it looks. Sometimes a single part has failed, such as the mains filter; sometimes the main control board has to be replaced. A technician works from the plug inwards: the power cord and the supply reaching the machine, then the mains filter, the door lock, the heating circuit and the control board, using the machine's own test mode where it has one. The fault is diagnosed before anything is replaced, and you get a quote before any work starts. Control boards are among the parts fitted through our [washing machine parts replacement](/services/washing-machine-parts-replacement/) service.
+
+If it's a big repair on an older machine, weigh it up with our [repair or replace guide](/repair-or-replace/). Some home insurance policies cover surge damage to appliances, so check yours before you decide.
 
 ## The bottom line
 
-The cheapest protection is a habit: switch off at the wall during load shedding and wait a few minutes after the power returns before switching on. Add a quality surge protector, avoid starting long washes close to a power cut, and be careful running the machine on backup power. If your machine has stopped working after an outage, it can usually be fixed.
+The most effective protection costs nothing: switch off at the wall as soon as the power fails, then give the supply a few minutes to settle once it's back before you switch on. Add a quality surge protector, unplug during thunderstorms, avoid starting long washes when a cut is likely, and take care running the machine on backup power. If yours has stopped working after an outage, it can often be repaired.
 
-**Machine dead after load shedding?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book online](/contact/). We'll test it properly and quote before any work.
+**Machine dead after a power cut?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book online](/contact/). We'll test it properly and quote before any work starts.

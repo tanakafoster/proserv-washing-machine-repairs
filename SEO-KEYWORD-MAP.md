@@ -18,7 +18,7 @@ Rules used when writing each page:
 | `/` | washing machine repairs | washing machine repair, washing machine technician, washing machine repairs Gauteng |
 | `/services/` | washing machine repair services | appliance repair technician, washing machine repair company |
 | `/problems/` | washing machine problems | common washing machine faults, washing machine troubleshooting |
-| `/brands/` | washing machine repairs all major brands | washing machine brands we repair, Miele washing machine repairs, Smeg washing machine repairs, Electrolux washing machine repairs, Speed Queen repairs |
+| `/brands/` | washing machine repairs all major brands | washing machine brands we repair, independent washing machine repairer, Electrolux washing machine repairs |
 | `/error-codes/` | washing machine error codes | washing machine error code meaning, error code on washing machine display |
 | `/areas/` | washing machine repairs Gauteng | washing machine repair areas, mobile washing machine technician |
 | `/washing-machine-repair-cost/` | washing machine repair cost | bearing replacement cost, washing machine call-out fee, washing machine repair prices |
@@ -68,6 +68,9 @@ Pattern: `[brand] washing machine repairs`.
 | `/brands/hisense-washing-machine-repairs/` | Hisense washing machine repairs | Hisense front loader repairs, Hisense top loader repairs |
 | `/brands/aeg-washing-machine-repairs/` | AEG washing machine repairs | AEG washer dryer repairs, AEG front loader repairs |
 | `/brands/siemens-washing-machine-repairs/` | Siemens washing machine repairs | Siemens iQ washing machine repairs, Siemens washer dryer repairs |
+| `/brands/miele-washing-machine-repairs/` | Miele washing machine repairs | Miele front loader repairs, Miele washer dryer repairs, Miele washing machine technician |
+| `/brands/smeg-washing-machine-repairs/` | Smeg washing machine repairs | Smeg front loader repairs, Smeg washer dryer repairs, Smeg washing machine technician |
+| `/brands/speed-queen-washing-machine-repairs/` | Speed Queen washing machine repairs | Speed Queen top loader repairs, Speed Queen front loader repairs, Speed Queen washer repairs |
 
 ## Error code guides
 
@@ -75,14 +78,14 @@ Pattern: `[brand] washing machine error codes`.
 
 | URL | Primary keyword | Secondary keywords |
 |---|---|---|
-| `/error-codes/defy-washing-machine-error-codes/` | Defy washing machine error codes | Defy E01 error, Defy E03 error, Defy front loader error codes |
+| `/error-codes/defy-washing-machine-error-codes/` | Defy washing machine error codes | Defy top loader error codes, Defy E1 error, Defy E3 error |
 | `/error-codes/lg-washing-machine-error-codes/` | LG washing machine error codes | LG OE error, LG IE error, LG UE error |
 | `/error-codes/samsung-washing-machine-error-codes/` | Samsung washing machine error codes | Samsung 4C error, Samsung 5C error, Samsung UB error |
 | `/error-codes/bosch-washing-machine-error-codes/` | Bosch washing machine error codes | Bosch E18 error, Bosch E17 error, Bosch E23 error |
 
 ## Area pages
 
-Pattern: `washing machine repairs [area]`. Areas come from `src/data/site.ts` ([CONFIRM] list).
+Pattern: `washing machine repairs [area]`. Areas come from `src/data/site.ts`.
 
 | URL | Primary keyword | Secondary keywords |
 |---|---|---|

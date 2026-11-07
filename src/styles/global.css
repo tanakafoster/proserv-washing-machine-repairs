@@ -1,60 +1,137 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/geist/wght.css';
+
+/* Screens tall enough for a sticky sidebar (the booking card plus a short contents list). */
+@custom-variant tall (@media (min-height: 48rem));
 
 /*
- * BRAND COLOURS — change them here and every page follows.
+ * ProServ design system, built on the Electro Appliance Repairs visual language
+ * (white pages, heavy Geist headings, orange buttons with near-black text, soft cards).
+ *
+ * BRAND COLOURS: change them here and every page follows.
  * The header logo and the theme-color meta tag read these values too. The image files can't, so
  * after a colour change run `npm run images -- icons logo og` to rebuild the favicons, app icons
  * (and the manifest's theme_color), the logo files and the share image from the values below.
- * Contrast rules (WCAG AA):
- *   - Orange text on white: use --color-brand-dark (#C2410C), never --color-brand.
- *   - Buttons: white text on --color-brand-dark, or --color-ink text on --color-brand.
- *   - Never white text on --color-brand (#F97316).
+ * Keep --color-brand, --color-brand-dark, --color-ink, --color-ink-soft and --color-surface as
+ * plain hex values: the image script and BaseLayout read them as text.
+ *
+ * Contrast rules (WCAG AA), checked:
+ *   - Orange TEXT on white or light backgrounds: --color-brand-dark (#C2410C, 5.2:1), never --color-brand.
+ *   - Orange buttons: --color-ink-strong text on --color-brand (6.3:1); hover --color-brand-hover (7.8:1).
+ *   - Never white text on --color-brand (#F97316 is only 2.8:1 with white).
+ *   - WhatsApp buttons: --color-whatsapp-ink on --color-whatsapp (8.0:1); hover 6.0:1.
+ *   - Focus ring: --color-brand-dark (4.7:1 or better on every light surface); on the orange
+ *     band it switches to --color-ink-strong (6.3:1).
  */
 @theme {
-  --color-brand: #f97316; /* bright orange: accents, icons, borders, highlights */
-  --color-brand-dark: #c2410c; /* darker orange: orange text on white, primary buttons */
-  --color-brand-darker: #9a3412; /* hover state for dark buttons */
-  --color-brand-tint: #fff7ed; /* very light orange panels */
+  /* Orange */
+  --color-brand: #f97316; /* bright orange: accents, icons, borders, highlights, button backgrounds */
+  --color-brand-hover: #fb923c; /* hover for orange buttons (keeps ink text above 4.5:1) */
+  --color-brand-dark: #c2410c; /* orange text on white, focus ring */
+  --color-brand-darker: #9a3412; /* hover for orange text links */
+  --color-brand-tint: #fff7ed; /* soft orange panels and icon tiles */
+  --color-brand-tint-strong: #ffedd5; /* borders and hover on soft panels */
+
+  /* Text */
   --color-ink: #1f2937; /* body text */
-  --color-ink-soft: #4b5563; /* secondary text (AA on white and on --color-surface) */
+  --color-ink-strong: #111827; /* headings, text on orange */
+  --color-ink-soft: #4b5563; /* secondary text (AA on white, --color-surface and --color-brand-tint) */
+
+  /* Surfaces and lines */
   --color-surface: #f3f4f6; /* alternating sections */
-  --color-line: #e5e7eb; /* borders */
+  --color-line: #e5e7eb; /* card borders and dividers */
+  --color-line-strong: #d1d5db; /* outline buttons */
+  --color-field: #6b7280; /* form field borders (4.8:1, WCAG 1.4.11) */
+
+  /* WhatsApp */
   --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #1eb757;
+  --color-whatsapp-ink: #06281a; /* text and icons on the green buttons */
   --color-whatsapp-dark: #075e54;
 
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Safety callouts */
+  --color-warn-tint: #fffbeb;
+  --color-warn-line: #fcd34d;
+  --color-warn-ink: #b45309;
+
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(17 24 39 / 0.04), 0 8px 24px -16px rgb(17 24 39 / 0.18);
+  --shadow-card-hover: 0 2px 4px rgb(17 24 39 / 0.05), 0 16px 32px -18px rgb(17 24 39 / 0.28);
+  --shadow-float: 0 24px 48px -28px rgb(17 24 39 / 0.35), 0 2px 6px rgb(17 24 39 / 0.05);
 }
 
+/* ==========================================================================
+   Base
+   ========================================================================== */
 @layer base {
   html {
+    color-scheme: light;
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    text-size-adjust: 100%;
+    /* #anchors and focused elements land below the sticky header (76px desktop, 64px phone). */
+    scroll-padding-top: 6rem;
   }
-  /* Below md the fixed Call/WhatsApp bar covers the bottom of the screen: keep focused
-     elements and #anchors clear of it. */
+  /* Below md the fixed Call / WhatsApp bar covers the bottom of the screen: keep focused
+     elements and #anchors clear of it (WCAG 2.4.11). */
   @media (max-width: 767.98px) {
     html {
-      scroll-padding-bottom: 4.5rem;
+      scroll-padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+    }
+    body {
+      padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
     }
   }
   body {
     @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
   }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  p,
+  li,
+  dd,
+  td {
+    overflow-wrap: break-word;
+  }
+  ::selection {
+    background: var(--color-brand-tint-strong);
+    color: var(--color-ink-strong);
+  }
+  /* Links: charcoal words with an orange underline (never colour alone, WCAG 1.4.1).
+     Buttons, cards and menus turn the underline off with their own classes. */
   a {
-    @apply text-brand-dark underline underline-offset-2;
+    color: var(--color-ink);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-brand);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition:
+      color 0.15s ease,
+      text-decoration-color 0.15s ease;
   }
   a:hover {
-    @apply decoration-2;
+    color: var(--color-brand-dark);
+    text-decoration-thickness: 2px;
   }
-  /* Focus ring: #C2410C is 5.2:1 on white and 4.7:1 on --color-surface (WCAG 1.4.11 needs 3:1).
-     On the dark call-to-action band the brighter orange is used instead (5.2:1 on --color-ink). */
+  /* One visible focus style for every interactive element: #C2410C is 5.2:1 on white,
+     4.7:1 on --color-surface and 4.9:1 on --color-brand-tint (WCAG 1.4.11 needs 3:1). */
   :focus-visible {
     outline: 3px solid var(--color-brand-dark);
     outline-offset: 2px;
   }
-  .bg-ink :focus-visible {
-    outline-color: var(--color-brand);
+  :where(a, summary, [tabindex]):focus-visible {
+    border-radius: 0.25rem;
+  }
+  /* On the orange band the ring turns near-black (6.3:1 on #F97316). */
+  .on-orange :focus-visible {
+    outline-color: var(--color-ink-strong);
   }
   /* Form hints: #6B7280 is 4.8:1 on white (the browser default is about 3:1). */
   input::placeholder,
@@ -68,113 +145,875 @@
   }
   summary {
     cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+  [hidden] {
+    display: none !important;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Typography (Electro scale)
+   ========================================================================== */
+@utility type-display {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(2.375rem, 1.55rem + 3.4vw, 4.25rem);
+  color: var(--color-ink-strong);
+}
+
+@utility type-page-h1 {
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3.5rem);
+  color: var(--color-ink-strong);
+}
+
+/* Long page titles (blog posts): a step smaller so they stay within three lines. */
+@utility type-page-h1-long {
+  font-weight: 900;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  font-size: clamp(1.875rem, 1.45rem + 1.7vw, 2.875rem);
+  color: var(--color-ink-strong);
+}
+
+@utility type-h2 {
+  font-weight: 900;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.5rem);
+  color: var(--color-ink-strong);
+}
+
+@utility type-h3 {
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--color-ink-strong);
+}
+
+/* Uppercase label above headings, in dark orange with a small orange square. */
+@utility type-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-dark);
+  &::before {
+    content: '';
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 2px;
+    background: var(--color-brand);
+  }
+}
+
+@utility type-lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+  @media (min-width: 768px) {
+    font-size: 1.1875rem;
+  }
+}
+
+@utility type-body {
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Layout rhythm and surfaces
+   ========================================================================== */
+/* Standard vertical padding for page sections: 48px phone, 64px tablet, 80px desktop. */
+@utility section-y {
+  padding-block: 3rem;
+  @media (min-width: 768px) {
+    padding-block: 4rem;
+  }
+  @media (min-width: 1024px) {
+    padding-block: 5rem;
+  }
+}
+
+@utility section-y-sm {
+  padding-block: 2.5rem;
+  @media (min-width: 1024px) {
+    padding-block: 3.5rem;
+  }
+}
+
+@utility card-surface {
+  border-radius: 1rem;
+  border: 1px solid var(--color-line);
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+@utility card-interactive {
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  &:hover {
+    border-color: rgb(249 115 22 / 0.45);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+/* Pill links and labels for related brands, areas and guides. */
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  background: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-ink-strong);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+  a&:hover {
+    border-color: var(--color-brand);
+    background: var(--color-brand-tint);
+    color: var(--color-ink-strong);
+  }
+}
+
+/* Inline text links: charcoal words with an orange underline. */
+@utility link-inline {
+  color: var(--color-ink);
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-brand);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  &:hover {
+    color: var(--color-brand-dark);
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* Small rounded square with an orange icon on the soft tint. */
+@utility icon-tile {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: var(--color-brand-tint);
+  color: var(--color-brand);
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+
+  /* --- Buttons ------------------------------------------------------------ */
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-semibold no-underline transition-colors;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
   .btn:hover {
-    @apply no-underline;
+    text-decoration: none;
   }
-  /* white on #C2410C passes AA (5.2:1) */
+  .btn > svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex: none;
+  }
+  .btn-lg {
+    min-height: 3.25rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  .btn-lg > svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .btn-sm {
+    min-height: 2.25rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+  }
+  /* #111827 on #F97316: 6.3:1; on the #FB923C hover: 7.8:1 */
   .btn-primary {
-    @apply bg-brand-dark text-white;
+    background: var(--color-brand);
+    color: var(--color-ink-strong);
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.06);
   }
   .btn-primary:hover {
-    @apply bg-brand-darker;
+    background: var(--color-brand-hover);
+    color: var(--color-ink-strong);
   }
-  /* #1F2937 on #F97316 passes AA (5.6:1) */
-  .btn-accent {
-    @apply bg-brand text-ink;
-  }
-  .btn-accent:hover {
-    @apply bg-[#fb923c];
-  }
+  /* #06281A on #25D366: 8.0:1; on the #1EB757 hover: 6.0:1 */
   .btn-whatsapp {
-    @apply bg-whatsapp-dark text-white;
+    background: var(--color-whatsapp);
+    color: var(--color-whatsapp-ink);
+    box-shadow: 0 1px 0 rgb(0 0 0 / 0.06);
   }
   .btn-whatsapp:hover {
-    @apply bg-[#054d45];
+    background: var(--color-whatsapp-hover);
+    color: var(--color-whatsapp-ink);
   }
   .btn-outline {
-    @apply border-2 border-brand-dark bg-white text-brand-dark;
+    background: #ffffff;
+    border-color: var(--color-line-strong);
+    color: var(--color-ink-strong);
   }
   .btn-outline:hover {
-    @apply bg-brand-tint;
+    background: var(--color-brand-tint);
+    border-color: var(--color-brand);
+    color: var(--color-ink-strong);
   }
-  .section {
-    @apply py-12 sm:py-16;
+  /* For the orange band: white on #111827 is 17.7:1 */
+  .btn-dark {
+    background: var(--color-ink-strong);
+    color: #ffffff;
   }
+  .btn-dark:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+  .btn-white {
+    background: #ffffff;
+    color: var(--color-ink-strong);
+  }
+  .btn-white:hover {
+    background: var(--color-brand-tint);
+    color: var(--color-ink-strong);
+  }
+
+  /* --- Section helpers ------------------------------------------------------ */
   .section-alt {
-    @apply bg-surface;
+    background: var(--color-surface);
   }
-  .eyebrow {
-    @apply text-sm font-semibold tracking-wide text-brand-dark uppercase;
+  /* Soft orange glow behind the top of every page (decorative). */
+  .page-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: min(46rem, 100%);
+    height: 40rem;
+    pointer-events: none;
+    background: radial-gradient(closest-side at 70% 22%, rgb(249 115 22 / 0.11), rgb(249 115 22 / 0.04) 55%, transparent);
   }
-  .card {
-    @apply rounded-xl border border-line bg-white p-5 shadow-sm;
+
+  /* --- Header menus (details/summary: they work without JavaScript) ------- */
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(255 255 255 / 0.92);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
   }
-  .card-link {
-    @apply block rounded-xl border border-line bg-white p-5 text-ink no-underline shadow-sm transition hover:border-brand hover:shadow-md;
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    height: 2.75rem;
+    padding-inline: 0.625rem;
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    white-space: nowrap;
   }
-  .card-link:hover {
-    @apply no-underline;
+  /* lg to xl: slightly tighter menu links so the logo, the menu and the full phone number fit on one row. */
+  @media (width < 80rem) {
+    .nav-link {
+      padding-inline: 0.375rem;
+    }
   }
-  /* Mobile menu panel: scrolls inside itself when the screen is short (phone landscape, zoom). */
-  .menu-panel {
+  .nav-link:hover,
+  .nav-dd[open] > .nav-link {
+    color: var(--color-ink-strong);
+    background: var(--color-surface);
+  }
+  .nav-link[aria-current='page'],
+  .nav-link.is-current {
+    color: var(--color-ink-strong);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-brand);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  .nav-dd > .nav-link svg {
+    transition: transform 0.2s ease;
+  }
+  .nav-dd[open] > .nav-link svg {
+    transform: rotate(180deg);
+  }
+  .mega-panel {
+    position: absolute;
+    top: calc(100% - 0.25rem);
+    left: 1rem;
+    right: 1rem;
     max-height: calc(100vh - 6rem);
     max-height: calc(100dvh - 6rem);
     overflow-y: auto;
     overscroll-behavior: contain;
+    border: 1px solid var(--color-line);
+    border-top: 3px solid var(--color-brand);
+    border-radius: 0 0 1rem 1rem;
+    background: #ffffff;
+    box-shadow: 0 24px 48px -24px rgb(17 24 39 / 0.3);
   }
-  .placeholder-note {
-    @apply rounded bg-brand-tint px-1 text-brand-dark;
+  @media (min-width: 1024px) {
+    .mega-panel {
+      left: 2rem;
+      right: 2rem;
+    }
+  }
+  .mega-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .mega-link:hover {
+    background: var(--color-brand-tint);
+    color: var(--color-ink-strong);
   }
 
-  /* Long-form copy (pages built from data + blog posts) */
-  .prose-site {
-    @apply max-w-none text-[1.0625rem] leading-relaxed text-ink;
+  /* Mobile menu: a full-screen sheet. The toggle stays on top of it as the close button. */
+  .m-menu[open] > summary {
+    position: fixed;
+    top: 0.625rem;
+    right: 1rem;
+    z-index: 2;
   }
-  .prose-site > * + * {
-    @apply mt-4;
+  @media (min-width: 640px) {
+    .m-menu[open] > summary {
+      right: 1.5rem;
+    }
   }
-  .prose-site h2 {
-    @apply mt-10 text-2xl font-bold text-ink sm:text-3xl;
+  html.menu-open {
+    overflow: hidden;
   }
-  .prose-site h3 {
-    @apply mt-8 text-xl font-semibold text-ink;
+  .m-sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
   }
-  .prose-site ul {
-    @apply list-disc space-y-2 pl-6;
+  .m-sheet-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
-  .prose-site ol {
-    @apply list-decimal space-y-2 pl-6;
+  .m-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    text-decoration: none;
   }
-  .prose-site li::marker {
+  .m-link:hover {
     color: var(--color-brand-dark);
   }
-  .prose-site a {
-    @apply font-medium underline;
+  .m-acc[open] > summary .m-chevron {
+    transform: rotate(180deg);
+  }
+  .menu-label-close,
+  .m-menu[open] .menu-label-open,
+  .m-menu[open] .menu-icon-open {
+    display: none;
+  }
+  .m-menu[open] .menu-label-close {
+    display: inline;
+  }
+  .menu-icon-close {
+    display: none;
+  }
+  .m-menu[open] .menu-icon-close {
+    display: block;
+  }
+
+  /* --- FAQ accordion -------------------------------------------------------- */
+  .faq-item[open] {
+    border-color: rgb(249 115 22 / 0.4);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+  .faq-answer > * + * {
+    margin-top: 0.75rem;
+  }
+  .faq-answer a,
+  .rich-text a {
+    font-weight: 500;
+  }
+
+  /* Hero lead (intro HTML from the data files). */
+  .hero-lead > * + * {
+    margin-top: 1rem;
+  }
+  .hero-lead strong {
+    font-weight: 650;
+    color: var(--color-ink);
+  }
+
+  /* --- Table of contents ----------------------------------------------------- */
+  /* A long list scrolls inside the sticky sidebar, so the booking card under it stays in view;
+     the soft shadows show there is more to scroll to. */
+  .toc-list {
+    background:
+      linear-gradient(#fff 30%, rgb(255 255 255 / 0)) center top / 100% 2rem no-repeat local,
+      linear-gradient(rgb(255 255 255 / 0), #fff 70%) center bottom / 100% 2rem no-repeat local,
+      radial-gradient(farthest-side at 50% 0, rgb(17 24 39 / 0.14), transparent) center top / 100% 0.625rem no-repeat scroll,
+      radial-gradient(farthest-side at 50% 100%, rgb(17 24 39 / 0.14), transparent) center bottom / 100% 0.625rem no-repeat scroll,
+      #fff;
+  }
+  .toc-link {
+    display: block;
+    border-left: 2px solid var(--color-line);
+    padding: 0.375rem 0.25rem 0.375rem 0.875rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+  }
+  .toc-link:hover {
+    border-left-color: var(--color-brand);
+    color: var(--color-ink-strong);
+  }
+  /* Inset ring: the list can be a scroll area, which would clip an outside ring. */
+  .toc-link:focus-visible {
+    outline-offset: -3px;
+  }
+  .toc-mobile[open] .m-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* --- Error code table: stacked cards on phones, a real table from sm --- */
+  .code-label {
+    display: none;
+  }
+  @media (max-width: 639.98px) {
+    .code-table,
+    .code-table tbody,
+    .code-table tr,
+    .code-table th,
+    .code-table td {
+      display: block;
+    }
+    /* Column headers stay available to screen readers (the roles keep the table semantics). */
+    .code-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    /* Each row is a card: the code and its meaning side by side, then causes and checks.
+       The code column stops at 7.5rem (long codes wrap in their chip) so the meaning keeps room on a 320px phone. */
+    .code-table tbody tr {
+      display: grid;
+      grid-template-columns: fit-content(7.5rem) minmax(0, 1fr);
+      gap: 0.625rem 0.875rem;
+      align-items: center;
+      padding: 1rem 1rem 1.125rem;
+    }
+    .code-table tbody td:nth-of-type(n + 2) {
+      grid-column: 1 / -1;
+    }
+    .code-table tbody tr + tr {
+      border-top: 1px solid var(--color-line);
+    }
+    .code-table tbody td:first-of-type .code-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .code-label {
+      display: block;
+      margin-bottom: 0.125rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-ink-soft);
+    }
+  }
+  @media (min-width: 640px) {
+    .code-table tbody tr + tr > * {
+      border-top: 1px solid var(--color-line);
+    }
+  }
+}
+
+/* ==========================================================================
+   Long-form copy (pages built from the data files, blog posts, guides)
+   Writers use exactly these patterns: h2, h3, p, strong, em, a, ul, ol, li, table,
+   .callout (+ .callout-safety, .callout-tip), ul.checklist and ol.steps.
+   ========================================================================== */
+@layer components {
+  .prose-site {
+    max-width: 70ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-ink);
+  }
+  .prose-site > * + * {
+    margin-top: 1.25rem;
+  }
+  .prose-site > :first-child {
+    margin-top: 0;
+  }
+  .prose-site h2 {
+    margin-top: 3rem;
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--color-ink-strong);
+  }
+  .prose-site h3 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    color: var(--color-ink-strong);
+  }
+  .prose-site > h2:first-child,
+  .prose-site > h3:first-child {
+    margin-top: 0;
+  }
+  .prose-site h2 + *,
+  .prose-site h3 + * {
+    margin-top: 0.75rem;
   }
   .prose-site strong {
-    @apply font-semibold;
+    font-weight: 650;
+    color: var(--color-ink-strong);
+  }
+  .prose-site em {
+    font-style: italic;
+  }
+  .prose-site a {
+    font-weight: 500;
+  }
+  .prose-site ul,
+  .prose-site ol {
+    padding-left: 1.375rem;
+  }
+  .prose-site ul {
+    list-style: disc;
+  }
+  .prose-site ol {
+    list-style: decimal;
+  }
+  .prose-site li {
+    padding-left: 0.25rem;
+  }
+  .prose-site li + li {
+    margin-top: 0.5rem;
+  }
+  .prose-site li > ul,
+  .prose-site li > ol {
+    margin-top: 0.5rem;
+  }
+  .prose-site ul > li::marker {
+    color: var(--color-brand);
+    font-size: 1.15em;
+  }
+  .prose-site ol > li::marker {
+    color: var(--color-brand-dark);
+    font-weight: 700;
+  }
+  .prose-site hr {
+    margin-block: 2.5rem;
+    border-color: var(--color-line);
+  }
+
+  /* Tick list */
+  .prose-site ul.checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-site ul.checklist > li {
+    position: relative;
+    padding-left: 2.125rem;
+  }
+  .prose-site ul.checklist > li + li {
+    margin-top: 0.75rem;
+  }
+  .prose-site ul.checklist > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(0.875em - 0.6875rem);
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 9999px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c2410c' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+        center / 0.8125rem no-repeat,
+      var(--color-brand-tint-strong);
+  }
+
+  /* Numbered steps */
+  .prose-site ol.steps {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step;
+  }
+  .prose-site ol.steps > li {
+    position: relative;
+    counter-increment: step;
+    min-height: 2.5rem;
+    padding-left: 3.25rem;
+  }
+  .prose-site ol.steps > li + li {
+    margin-top: 1.5rem;
+  }
+  .prose-site ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: calc(0.875em - 1.125rem);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background: var(--color-brand);
+    color: var(--color-ink-strong);
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 2.25rem;
+    text-align: center;
+  }
+  .prose-site ol.steps > li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(1.125rem - 1px);
+    top: calc(0.875em + 1.375rem);
+    bottom: -1.25rem;
+    width: 2px;
+    border-radius: 2px;
+    background: rgb(249 115 22 / 0.3);
+  }
+
+  /* Callouts: a boxed note, a safety warning and a tip, each with its own icon. */
+  .prose-site .callout,
+  .prose-site blockquote {
+    position: relative;
+    border: 1px solid var(--color-line);
+    border-left: 4px solid var(--color-brand);
+    border-radius: 0.875rem;
+    background: #ffffff;
+    padding: 1rem 1.25rem 1rem 3.25rem;
+    box-shadow: var(--shadow-card);
+  }
+  .prose-site .callout > * + *,
+  .prose-site blockquote > * + * {
+    margin-top: 0.625rem;
+  }
+  .prose-site .callout::before,
+  .prose-site blockquote::before {
+    content: '';
+    position: absolute;
+    left: 1.0625rem;
+    top: calc(1rem + 0.875em - 0.6875rem);
+    width: 1.375rem;
+    height: 1.375rem;
+    background-color: var(--color-brand);
+    -webkit-mask: var(--callout-icon) center / contain no-repeat;
+    mask: var(--callout-icon) center / contain no-repeat;
+    --callout-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E%3C/svg%3E");
+  }
+  .prose-site .callout-safety {
+    border-color: rgb(252 211 77 / 0.8);
+    border-left-color: rgb(252 211 77 / 0.8);
+    border-left-width: 1px;
+    background: var(--color-warn-tint);
+    box-shadow: none;
+  }
+  .prose-site .callout-safety::before {
+    background-color: var(--color-warn-ink);
+    --callout-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='M12 8v4'/%3E%3Cpath d='M12 16h.01'/%3E%3C/svg%3E");
+  }
+  .prose-site .callout-tip {
+    border-color: var(--color-brand-tint-strong);
+    border-left-color: var(--color-brand-tint-strong);
+    border-left-width: 1px;
+    background: var(--color-brand-tint);
+    box-shadow: none;
+  }
+  .prose-site .callout-tip::before {
+    background-color: var(--color-brand-dark);
+    --callout-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3C/svg%3E");
+  }
+
+  /* Tables: the page templates wrap each table in .table-wrap (a keyboard-focusable scroll area),
+     so wide tables scroll sideways on phones instead of squeezing the text. */
+  .prose-site .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    /* Shadows at the edges show there is more to scroll to. */
+    background:
+      linear-gradient(to right, #fff 35%, rgb(255 255 255 / 0)) left center / 2.5rem 100% no-repeat local,
+      linear-gradient(to left, #fff 35%, rgb(255 255 255 / 0)) right center / 2.5rem 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(17 24 39 / 0.2), transparent) left center / 0.875rem 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(17 24 39 / 0.2), transparent) right center / 0.875rem 100% no-repeat scroll,
+      #fff;
   }
   .prose-site table {
-    @apply w-full border-collapse text-left text-base;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    text-align: left;
   }
-  .prose-site th {
-    @apply border-b-2 border-brand bg-surface px-3 py-2 font-semibold;
+  .prose-site > table {
+    display: block;
+    overflow-x: auto;
   }
+  .prose-site th,
   .prose-site td {
-    @apply border-b border-line px-3 py-2 align-top;
+    min-width: 8rem;
+    padding: 0.75rem 1rem;
+    vertical-align: top;
   }
-  .prose-site blockquote,
-  .prose-site .callout {
-    @apply rounded-r-lg border-l-4 border-brand bg-brand-tint px-4 py-3;
+  /* Phones: tighter cells so a two or three column table fits without scrolling. */
+  @media (width < 40rem) {
+    .prose-site th,
+    .prose-site td {
+      min-width: 7rem;
+      padding: 0.625rem 0.75rem;
+    }
+  }
+  .prose-site thead th {
+    border-bottom: 2px solid var(--color-brand);
+    background: var(--color-surface);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-ink-strong);
+  }
+  .prose-site tbody tr + tr > * {
+    border-top: 1px solid var(--color-line);
+  }
+  .prose-site tbody th,
+  .prose-site tbody td:first-child {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+  }
+  /* The cost page's table.price-table: on phones each row stacks as repair, what's involved and
+     what drives the price, so nothing has to scroll sideways. */
+  @media (width < 40rem) {
+    .prose-site .price-table,
+    .prose-site .price-table tbody,
+    .prose-site .price-table tr,
+    .prose-site .price-table th,
+    .prose-site .price-table td {
+      display: block;
+      min-width: 0;
+    }
+    .prose-site .price-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .prose-site .price-table tbody tr {
+      padding: 0.875rem 1rem 1rem;
+    }
+    .prose-site .price-table tbody tr > * {
+      padding: 0;
+      border: 0;
+    }
+    .prose-site .price-table tbody tr + tr {
+      border-top: 1px solid var(--color-line);
+    }
+    .prose-site .price-table tbody th {
+      font-weight: 700;
+    }
+    .prose-site .price-table tbody td:nth-of-type(1) {
+      margin-top: 0.25rem;
+    }
+    .prose-site .price-table tbody td:nth-of-type(2) {
+      margin-top: 0.125rem;
+      font-size: 0.875rem;
+      color: var(--color-ink-soft);
+    }
   }
 }

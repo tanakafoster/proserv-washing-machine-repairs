@@ -1,37 +1,88 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
+import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { errorGuides } from '../../data/errorCodes';
 import { site, errorCodeUrl } from '../../data/site';
+import { faqSchema } from '../../lib/schema';
+const faqs = [
+  { q: 'Why did my machine show a code and then carry on?', a: 'Some codes are warnings rather than faults. An unbalanced load or too much foam can make the machine pause, try to correct the problem and then continue, sometimes with a gentler spin. If it finishes and the washing is fine, there\'s nothing to fix, but a warning that appears on most washes is worth looking into.' },
+  { q: 'Can load shedding cause an error code?', a: 'Yes. Some machines show a power interruption code when the supply is cut mid-cycle, and others simply stop. Restart the programme once the power is back and stable. If the machine won\'t respond at all after an outage, see our guide to a <a href="/problems/washing-machine-wont-turn-on/">washing machine that won\'t turn on</a>.' },
+  { q: 'Do codes mean the same thing on every model of a brand?', a: 'Usually, but not always. Manufacturers change their codes between ranges and generations, and front loaders and top loaders from the same brand can use different systems. The manual for your exact model number has the final word.' },
+  { q: 'I can\'t find my code anywhere. What should I do?', a: 'Look at the display again. On segment displays some characters look alike, such as 5 and S, 0 and O, or 3 and E, so OE can look like 0E. Then check the manual for your model, and if it still doesn\'t match, send us a photo of the display with the model number.' },
+  { q: 'Does the code tell you what the repair will cost?', a: 'No. A code points to a system, and the same drain code could mean a blocked filter you can clean yourself or a pump that needs replacing. The technician tests the machine and quotes before any work starts. The <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page covers what drives the price.' },
+  { q: 'Can a technician see codes my machine showed earlier?', a: 'Often, yes. Many modern machines keep a short record of recent faults that a technician can read in a service or test mode, which helps when a fault comes and goes. Tell us everything you\'ve noticed anyway, even if the code has cleared.' },
+  { q: 'Where can I find the manual for my machine?', a: 'Most manufacturers publish their manuals online, searchable by model number, and the model number is on the rating sticker on the machine. Keep the troubleshooting section handy, because it lists the codes your exact model uses.' },
+];
 ---
 <BaseLayout
   title="Washing Machine Error Codes by Brand | ProServ"
   description={`Washing machine error codes explained for LG, Samsung, Bosch and Defy, with safe first checks. Code won't clear? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Error codes', href: '/error-codes/' }]}
+  schema={[faqSchema(faqs)]}
 >
   <PageHero
     h1="Washing machine error codes"
     eyebrow="Error code guides"
-    intro={`<p>Washing machine error codes are your machine's way of saying where the problem is. Pick your brand below to see what the common codes usually mean, the likely causes, and the checks you can safely do yourself. If the code keeps coming back, we're a call or WhatsApp away.</p>`}
+    intro={`<p>Washing machine error codes are your machine's way of telling you which step it couldn't finish: filling, draining, locking the door, balancing the load, heating the water or turning the drum. Pick your brand below for a guide to its common codes, or read on to understand what any code is telling you, which checks are safe and which codes mean you should stop using the machine.</p>`}
   />
-  <LinkCards alt heading="Choose your brand" headingId="guide-list" cols={2} items={errorGuides.map((g) => ({ href: errorCodeUrl(g.slug), title: `${g.brand} washing machine error codes`, text: g.summary }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
-      <h2>How to read an error code</h2>
-      <p>Most codes fall into a few groups: water supply, drainage, door lock, balance, motor, heating, leaks and electronics. The same problem can have different codes on different brands. For example, a drain fault might be OE on an LG, 5C on a Samsung, and E18 on a Bosch. The code tells you which system to look at, not always which part has failed.</p>
-      <h2>Codes can differ between models</h2>
-      <p>Manufacturers change their codes between ranges and generations. Always check the code against the manual for your exact model number, which is on a sticker inside the door rim or on the back of the machine. Codes we haven't yet confirmed against the manufacturer's documentation are marked [VERIFY] in our guides. If your manual says something different, the manual is right.</p>
-      <h2>First steps for any code</h2>
-      <ol>
-        <li>Photograph the code and note the model number.</li>
-        <li>Switch off at the wall for a few minutes, then switch on and try again.</li>
-        <li>Do the simple checks: tap open, hose not kinked, door closed, load balanced, pump filter clear.</li>
-        <li>If the code comes back, stop using the machine and call us.</li>
-      </ol>
-      <p>Our general guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> goes into more detail. Don't see your brand? We repair all major washing machine brands. See <a href="/brands/">brands we repair</a> and send us your code on WhatsApp.</p>
-    </div>
-  </section>
+  <LinkCards alt eyebrow="Error code guides" heading="Choose your brand" headingId="guide-list" cols={2} icon="alert" items={errorGuides.map((g) => ({ href: errorCodeUrl(g.slug), title: `${g.brand} washing machine error codes`, text: g.summary }))} />
+  <LongFormSection reservedIds={['guide-list']}>
+      <h2>How error codes work</h2>
+      <p>A modern washing machine checks itself all the way through a programme. A pressure sensor reports the water level, a switch confirms the door is locked, a speed sensor tracks how the drum is turning and a temperature sensor watches the heating. The control board also times each step. When a reading is out of range, or a step such as filling or draining takes too long, the board stops the programme and shows a code.</p>
+      <p>That's why a code points to a system rather than a part. A drain code means the water didn't leave in time. The cause might be a sock in the pump filter, a kinked hose, a blocked standpipe or a failed pump. The code tells you where to look first; testing confirms what has actually failed.</p>
+
+      <h2>What codes look like</h2>
+      <p>Each manufacturer has its own system, and the format usually tells you which kind of code you're dealing with:</p>
+      <ul>
+        <li><strong>Two letters</strong> on many LG machines, such as OE for a drain problem or IE for the water inlet.</li>
+        <li><strong>A number and a letter</strong> on many Samsung machines, such as 4C for the water supply or 5C for drainage. Some Samsung models show the same number with an E instead, such as 4E.</li>
+        <li><strong>An E and a number</strong> on Bosch machines, such as E18 for drainage. Some Bosch models use an F in place of the E.</li>
+        <li><strong>Codes that vary by range</strong> on brands such as Defy, which has sold many different front loaders and top loaders over the years.</li>
+        <li><strong>Flashing lights</strong> on machines without a full display, where the number of flashes, or the lights that blink together, identify the fault.</li>
+      </ul>
+      <p>Not everything on the display is a fault. Many LG machines show CL when the child lock is on, and LG and Samsung machines can show Sud when there's too much foam in the drum. These clear once you deal with the cause: turn off the child lock as your manual describes, or use less detergent next time.</p>
+
+      <h2>The main code families</h2>
+      <p>Whatever the brand, most codes belong to one of these families. The examples are codes the manufacturers themselves document.</p>
+      <h3>Water supply</h3>
+      <p>The machine didn't detect enough water in the time allowed. LG's IE, Samsung's 4C and Bosch's E17 are examples. Start with the tap, the hose and the water pressure, then the inlet filter. See <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.</p>
+      <h3>Draining</h3>
+      <p>Water didn't leave the drum in time, as with LG's OE, Samsung's 5C and Bosch's E18. A blocked pump filter or a kinked drain hose is the first thing to check, and a blocked standpipe or sink trap can be the cause too. See <a href="/problems/washing-machine-not-draining/">washing machine not draining</a>.</p>
+      <h3>Door and lock</h3>
+      <p>The machine can't confirm that the door is shut and locked, as with LG's dE and Samsung's DC or dC. Washing caught in the seal, or a door that isn't pushed fully closed, is the simple cause; a faulty lock needs a technician. See <a href="/problems/washing-machine-door-wont-open/">washing machine door won't open or lock</a>.</p>
+      <h3>Balance</h3>
+      <p>The machine couldn't even out the load for spinning, as with LG's UE and Samsung's UB or Ub. On its own this isn't a fault: the machine stops or slows the spin to protect itself. Spread the load out, or add or remove items. If it happens with normal loads, the levelling or worn shock absorbers may be to blame. See <a href="/problems/washing-machine-noisy-when-spinning/">washing machine noisy when spinning</a>.</p>
+      <h3>Motor and drum</h3>
+      <p>The drum isn't turning as it should, as with Samsung's 3C. An overloaded drum or something jammed between the drum and the tub can cause it, and a motor code that keeps coming back needs testing by a technician. See <a href="/problems/washing-machine-not-spinning/">washing machine not spinning</a>.</p>
+      <h3>Heating and temperature</h3>
+      <p>The water isn't heating properly, or the temperature reading doesn't make sense, as with Samsung's HC and LG's tE. Check that the inlet hose is connected to the water supply your manual specifies, which is usually cold. Beyond that, these codes involve electrical parts and are for a technician.</p>
+      <h3>Leaks and overflow</h3>
+      <p>Water is where it shouldn't be, or the level is too high: Bosch's E23 means water has collected in the base of the machine, and Samsung's OC is an overflow code. Switch off at the wall (at the DB board if the plug or socket is wet), turn off the tap and have the machine checked rather than clearing the code again. See <a href="/problems/washing-machine-leaking/">washing machine leaking</a>.</p>
+      <h3>Power and electronics</h3>
+      <p>Some codes record a power interruption, such as LG's PF. Others mean the boards inside the machine aren't communicating with each other. An electronics code that keeps returning needs a technician.</p>
+
+      <h2>Our brand guides</h2>
+      <p>We've written detailed guides for four brands. Each one explains what that brand's common codes usually mean, the likely causes and the checks you can safely do. A code only goes into a guide once it has been checked against the manufacturer's own documentation, and every guide lists the sources it was checked against.</p>
+      <ul>
+        <li><a href={errorCodeUrl('lg')}>LG washing machine error codes</a>, for LG's two-letter codes</li>
+        <li><a href={errorCodeUrl('samsung')}>Samsung washing machine error codes</a>, for Samsung's number-and-letter codes</li>
+        <li><a href={errorCodeUrl('bosch')}>Bosch washing machine error codes</a>, for Bosch's E codes</li>
+        <li><a href={errorCodeUrl('defy')}>Defy washing machine error codes</a>, for Defy machines, whose codes differ between ranges</li>
+      </ul>
+      <p>Even within one brand, codes can change between ranges and generations, so if your manual says something different, follow the manual for your model. For other makes, such as Hisense, Whirlpool or AEG, the manual is the place to start. Siemens machines come from the same manufacturer as Bosch, and some use similar codes. See <a href="/brands/">brands we repair</a> for help with your make.</p>
+
+      <h2>Codes that mean stop</h2>
+      <div class="callout callout-safety"><p><strong>Safety first:</strong> if a code points to a leak or an overflow, if the earth leakage or circuit breaker trips, or if you notice a burning smell, stop using the machine. Switch off at the wall, or at the DB board if water has reached the plug or socket, then turn off the tap, leave it off and call a technician.</p></div>
+      <p>Don't keep clearing a code and restarting the machine to see whether it goes away. Repeated restarts with a leak, heating or motor fault can make the damage worse. And never force open a door that a fault has left locked: wait for the machine to release it, and if it won't, call us.</p>
+
+      <h2>When a code keeps coming back</h2>
+      <p>A code that returns after the safe checks means a part needs testing. Before you book, photograph the display, note the programme that was running and the point where it stopped, and jot down what you've already checked, such as the filter or the tap. Our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> walks through the first steps for any code.</p>
+      <p>When you're ready, call or WhatsApp us or use the <a href="/contact/">booking form</a>. The technician tests the system the code points to, finds the failed part and quotes before any work starts.</p>
+  </LongFormSection>
+  <Faq items={faqs} />
   <CtaBand />
 </BaseLayout>

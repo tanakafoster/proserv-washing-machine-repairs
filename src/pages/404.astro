@@ -4,18 +4,20 @@ import ContactButtons from '../components/ContactButtons.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout title="Page Not Found | ProServ" description={`Sorry, that page doesn't exist. Find washing machine repair help or call ProServ on ${site.phone.display}.`} noindex notFound>
-  <section class="section">
+  <section class="section-y">
     <div class="container-site max-w-2xl text-center">
-      <p class="eyebrow">Error 404</p>
-      <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl">Sorry, we can't find that page</h1>
-      <p class="mt-4 text-lg text-ink-soft">The page may have moved. Try one of these, or get in touch and we'll help with your washing machine.</p>
-      <ul class="mt-6 flex flex-wrap justify-center gap-3">
-        <li><a href="/" class="btn btn-outline">Home</a></li>
-        <li><a href="/services/" class="btn btn-outline">Services</a></li>
-        <li><a href="/problems/" class="btn btn-outline">Problems</a></li>
-        <li><a href="/areas/" class="btn btn-outline">Areas</a></li>
+      <p class="type-eyebrow mb-3 justify-center">Error 404</p>
+      <h1 class="type-page-h1">Sorry, we can't find that page</h1>
+      <p class="type-lead mx-auto mt-5 max-w-xl">The link may be out of date, or the address may have a typo. If your washing machine is giving trouble, one of these pages should help, or call or WhatsApp us and we'll help you work out what's wrong.</p>
+      <ul class="mt-8 flex flex-wrap justify-center gap-2.5">
+        <li><a href="/problems/" class="chip">Washing machine problems</a></li>
+        <li><a href="/error-codes/" class="chip">Error code guides</a></li>
+        <li><a href="/services/" class="chip">Repair services</a></li>
+        <li><a href="/areas/" class="chip">Areas we cover</a></li>
+        <li><a href="/contact/" class="chip">Book a repair</a></li>
+        <li><a href="/" class="chip">Home page</a></li>
       </ul>
-      <ContactButtons class="mt-8 justify-center" />
+      <ContactButtons class="mt-10 justify-center" size="lg" />
     </div>
   </section>
 </BaseLayout>

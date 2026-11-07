@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
+import Icon from '../../components/Icon.astro';
+import { serviceIcon } from '../../components/icon-maps';
 import { site, areaUrl } from '../../data/site';
 import { areaContent, type AreaContent } from '../../data/areas';
 import { services, serviceUrl } from '../../data/services';
@@ -29,25 +32,42 @@ const nearby = c.nearby.map((s) => site.areas.find((a) => a.slug === s)).filter(
   schema={[serviceSchema({ name: `Washing machine repairs ${area.inName}`, description: c.description, path, areaName: area.name }), faqSchema(c.faqs)]}
 >
   <PageHero h1={c.h1} intro={c.intro} eyebrow={`Serving ${area.label}`} />
-  <section class="section section-alt pt-10">
-    <div class="container-site grid gap-10 lg:grid-cols-[1fr_320px]">
-      <article class="prose-site max-w-3xl" set:html={c.body} />
-      <aside class="lg:sticky lg:top-28 lg:self-start">
-        <div class="card">
-          <h2 class="text-lg font-semibold">Suburbs we cover {area.inName} <span class="placeholder-note text-xs">[CONFIRM]</span></h2>
-          <ul class="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-sm text-ink-soft">
-            {c.suburbs.map((s) => <li>{s}</li>)}
+  <LongFormSection reservedIds={['svc-h', 'nearby-h']}>
+    <Fragment set:html={c.body} />
+    {c.suburbs.length > 0 && (
+      <Fragment slot="aside">
+        <div class="card-surface p-5">
+          <h2 class="type-h3 flex items-center gap-2 text-lg">
+            <Icon name="map" class="h-5 w-5 shrink-0 text-brand" /> Suburbs we cover {area.inName}
+          </h2>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {c.suburbs.map((s) => <li class="rounded-full border border-line bg-surface px-3 py-1 text-sm leading-snug text-ink">{s}</li>)}
           </ul>
-          <p class="mt-3 text-sm text-ink-soft">Not listed? Ask us. We probably cover you.</p>
+          <p class="mt-4 text-sm leading-relaxed text-ink-soft">Not listed? Call or WhatsApp us with your suburb and we’ll tell you whether a technician can reach you.</p>
         </div>
-      </aside>
-    </div>
-  </section>
-  <LinkCards heading={`Our services ${area.inName}`} headingId="svc-h" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))} />
+      </Fragment>
+    )}
+  </LongFormSection>
+  <LinkCards
+    alt
+    eyebrow="What we repair"
+    heading={`Our services ${area.inName}`}
+    headingId="svc-h"
+    items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))}
+  />
   <HowItWorks heading={`How a repair works ${area.inName}`} />
   {nearby.length > 0 && (
-    <LinkCards alt heading="Nearby areas" headingId="nearby-h" items={nearby.map((n) => ({ href: areaUrl(n.slug), title: `Washing machine repairs ${n.name}` }))} />
+    <LinkCards
+      alt
+      variant="compact"
+      icon="map"
+      eyebrow="Nearby"
+      heading="Nearby areas"
+      headingId="nearby-h"
+      cols={nearby.length >= 3 ? 3 : 2}
+      items={nearby.map((n) => ({ href: areaUrl(n.slug), kicker: 'Washing machine repairs', title: n.name }))}
+    />
   )}
-  <Faq items={c.faqs} heading={`Washing machine repairs ${area.inName}: FAQs`} />
+  <Faq items={c.faqs} heading={`Washing machine repairs ${area.inName}: FAQs`} tone={nearby.length > 0 ? 'white' : 'surface'} />
   <CtaBand heading={`Need a washing machine technician ${area.inName}?`} />
 </BaseLayout>

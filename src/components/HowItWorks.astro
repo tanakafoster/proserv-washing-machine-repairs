@@ -1,24 +1,30 @@
 ---
 import { site } from '../data/site';
-interface Props { heading?: string }
-const { heading = 'How it works' } = Astro.props;
+import SectionHeading from './SectionHeading.astro';
+interface Props { heading?: string; tone?: 'white' | 'surface' }
+const { heading = 'How it works', tone = 'white' } = Astro.props;
 const f = site.facts;
+// `d` is HTML: the warranty stays on one line ("6-month" never breaks after the hyphen).
 const steps = [
   { t: 'Contact us', d: 'Call or WhatsApp with your machine brand and what it is doing. A photo of the error code helps.' },
-  { t: 'A technician comes out', d: `We book a time that suits you and aim to arrive ${f.arrivalTime} on urgent jobs.` },
+  { t: 'A technician comes out', d: `We book a time that suits you, and on urgent call-outs we aim to arrive ${f.arrivalTime}, depending on where the technician is working.` },
   { t: 'Diagnose and quote', d: `We find the fault and give you a clear price before any work. The ${f.calloutFee} call-out fee is ${f.calloutCondition}.` },
-  { t: 'Repair', d: `Most repairs are done on the spot, and every repair carries our ${f.warranty} warranty.` },
+  { t: 'Repair', d: `Most repairs are done on the spot when the part is available, and every repair carries our <span class="whitespace-nowrap">${f.warranty}</span> warranty.` },
 ];
 ---
-<section class="section" aria-labelledby="how-h">
+<section data-shared="how-it-works" class:list={['section-y', tone === 'surface' ? 'bg-surface' : 'bg-white']} aria-labelledby="how-h">
   <div class="container-site">
-    <h2 id="how-h" class="text-2xl font-bold sm:text-3xl">{heading}</h2>
-    <ol class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <SectionHeading id="how-h" eyebrow={heading === 'How it works' ? 'Four simple steps' : 'How it works'} heading={heading} />
+    {/* Phones: a vertical timeline. From sm: numbered cards. */}
+    <ol class="grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-5">
       {steps.map((s, i) => (
-        <li class="card">
-          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-lg font-bold text-ink" aria-hidden="true">{i + 1}</span>
-          <h3 class="mt-4 text-lg font-semibold">{s.t}</h3>
-          <p class="mt-2 text-ink-soft">{s.d}</p>
+        <li class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 pb-7 last:pb-0 sm:block sm:card-surface sm:p-6">
+          {i < steps.length - 1 && <span class="absolute top-12 bottom-2 left-5 w-0.5 -translate-x-1/2 rounded-full bg-brand/30 sm:hidden" aria-hidden="true"></span>}
+          <span class="relative flex h-10 w-10 items-center justify-center rounded-full bg-brand text-base font-black text-ink-strong sm:mb-4" aria-hidden="true">{i + 1}</span>
+          <div class="min-w-0 pt-1.5 sm:pt-0">
+            <h3 class="type-h3 text-[1.0625rem]">{s.t}</h3>
+            <p class="mt-1.5 text-[15px] leading-relaxed text-ink-soft" set:html={s.d} />
+          </div>
         </li>
       ))}
     </ol>

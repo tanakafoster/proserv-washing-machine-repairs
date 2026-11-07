@@ -5,74 +5,124 @@ description: "Worn washing machine bearings cause rumbling, drum play and leaks.
 primaryKeyword: "worn washing machine bearings"
 pubDate: 2026-11-06
 image: "/images/blog-worn-bearings.webp"
-imageAlt: "Old rusted drum bearing next to a new replacement bearing on a workbench"
+imageAlt: "Illustration of a washing machine drum bearing and seal beside the back of a drum"
 summary: "That rumble on spin might be your bearings. Here's how to tell, and why it pays to act early."
+faqs:
+  - q: "How loud should a healthy machine be on spin?"
+    a: "Every machine gets louder in the final spin, and the higher the spin speed, the more you'll hear. A healthy machine makes a smooth, even whirr that sounds much the same from one wash to the next. What points to wear is a change: a rumble or grinding that wasn't there before and grows louder over the weeks."
+  - q: "Does water under the machine always mean worn bearings?"
+    a: "No. A puddle under the middle or back of the machine together with a rumble on spin points to the shaft seal and bearings, but many leaks have simpler causes, such as a loose or split hose, the pump filter cover, the door seal or too many suds. Our guide to a <a href=\"/problems/washing-machine-leaking/\">washing machine leaking</a> shows how to tell them apart by where the water appears."
+  - q: "Can I grease noisy bearings myself?"
+    a: "No. The bearings sit in a housing on the outer tub, behind the shaft seal, so they can't be reached without taking the machine apart, and once they're rough, fresh grease won't bring them back. Spraying lubricant around the drum or the door seal won't reach them either, and it can attract dirt and harm the rubber."
+  - q: "How does a technician confirm the bearings are worn?"
+    a: "First by the same signs you can check: the noise on a test spin, roughness when the drum is turned by hand and play when it's lifted. With a panel off, the technician also looks for water and rust streaks around the bearing housing, and rules out the pump, the shock absorbers and anything caught between the drum and the tub."
+  - q: "Why are the bearings and the seal replaced together?"
+    a: "The seal is what keeps water away from the bearings, and it's usually the part that failed first. Refitting an old seal in front of new bearings would let water in again and wear them out the same way, so the two go in as a set."
+  - q: "Will new bearings make my machine quiet again?"
+    a: "Usually, yes. With new bearings and a seal, the roar on spin should go and the drum should turn smoothly by hand again. Every machine still makes some noise on spin, though, and if worn shock absorbers or an uneven floor were adding to it, those need attention too."
 ---
 
-Worn washing machine bearings are one of the most common causes of a noisy machine, and one of the faults that gets more expensive the longer you leave it. The bearings let the drum spin smoothly at over a thousand revolutions a minute while carrying the weight of a wet load. When they start to wear, the machine gives you plenty of warning, if you know what to listen for.
+Worn washing machine bearings rarely fail without warning. The bearings let the drum spin smoothly at 1,000 to 1,400 revolutions a minute on many front loaders while it carries a heavy, wet load, and as they wear, the machine starts telling you: a rumble on spin, a rough feel when you turn the drum, a drip under the machine. Acting on those signs early matters, because a bearing repair grows bigger and dearer the longer the machine keeps running on worn ones.
 
-Here are the six signs to watch for, what causes bearings to fail, and what a repair involves.
+Below are the six signs to look and listen for, the simple checks you can do safely, the faults that sound similar, and what a bearing repair actually involves.
 
-## What do washing machine bearings do?
+## What drum bearings do
 
-Behind the drum of every washing machine is a steel shaft that passes through the back of the outer tub. That shaft sits in two bearings, held in place in a housing at the back of the tub, with a rubber shaft seal in front of them to keep the water out. When the drum spins, the bearings take the load.
+On a front loader, the drum is fixed to a metal bracket on its back called the spider. A shaft runs from the spider through the back of the outer tub, where it turns in two bearings held in a housing. In front of the bearings sits a rubber shaft seal that keeps the wash water away from them.
 
-Front loaders put a lot of strain on their bearings because the drum hangs horizontally, so all of its weight pulls on the shaft. Top loaders have bearings too, usually under the tub, but bearing failure is far more common on front loaders.
+Because a front loader's drum hangs on its side from that shaft, the bearings carry its full weight, the wet load and the forces of a fast spin. Top loaders have bearings and a seal under the tub that do a similar job, and when they wear, the symptoms are much the same: noise on spin and, in time, water underneath.
 
-## Sign 1: A rumbling or roaring noise on spin
+There's no fixed lifespan for bearings. It depends on how often the machine runs, how heavily it's loaded and how long the seal stays watertight.
 
-This is the classic sign. It starts as a low rumble, gets louder as the drum speeds up, and eventually sounds like a jet engine or a train going past. It's usually quiet during the slow wash part of the cycle and loudest during the final spin.
+## Signs you can hear
 
-If your machine has started sounding like this, see our guide to a [washing machine noisy when spinning](/problems/washing-machine-noisy-when-spinning/) to rule out other causes like an unbalanced load or something stuck in the drum.
+### 1. A rumble or roar on spin
 
-## Sign 2: The drum feels rough or gritty
+This is the classic sign. It starts as a low rumble, grows louder as the drum speeds up, and in the late stages sounds like a jet engine or a passing train. It's usually quiet while the drum turns slowly during the wash and loudest in the final spin. If the noise rises and falls with the drum speed, rather than only appearing while the pump is draining, bearings are a likely cause.
 
-With the machine switched off and empty, turn the drum slowly by hand. A healthy drum turns smoothly and quietly. With worn bearings, you'll often feel a rough, gritty or notchy movement, and sometimes hear a grinding sound.
+### 2. Scraping or rubbing
 
-## Sign 3: The drum has play in it
+As the bearings wear further, the front of the drum drops. It can then catch the outer tub or the door seal, making a scraping or swishing noise on every turn, and you may find marks on the drum or a worn patch on the seal. By this stage the damage is spreading, so don't wait.
 
-Still with the machine off and empty, put your hand at the top of the drum opening and lift it up and down. A small amount of give is normal because of the suspension, and the whole tub will move. What you're feeling for is the drum moving separately from the tub, with a knock or clunk. That play means the bearings have worn.
+## Signs you can feel
 
-## Sign 4: Water leaking from under the machine
+<div class="callout callout-safety">
 
-The bearings usually fail because the shaft seal in front of them has failed first. Once water gets past the seal, it washes the grease out of the bearings and they start to rust. That same failed seal can let water drip out of the back of the tub and onto the floor, usually under the middle or back of the machine. If you're seeing a [washing machine leaking](/problems/washing-machine-leaking/) along with a rumble, bearings are a strong suspect.
+**Safety first:** do these checks with the machine switched off at the wall and unplugged, the drum empty and the door open. Never remove panels or run the machine to look inside it.
 
-## Sign 5: Brown or rusty streaks
+</div>
 
-On some machines you can see rusty brown streaks running down the back of the outer tub from the bearing housing. You'd normally only see this with a panel removed, but sometimes rusty marks show up on clothes or in the door seal too.
+### 3. A rough or gritty drum
 
-## Sign 6: The drum rubs or the door seal is damaged
+Turn the drum slowly by hand, a few times in each direction. A healthy drum turns smoothly and quietly. With worn bearings, it often feels rough, gritty or notchy, and you may hear a faint grinding.
 
-In the late stages, the drum drops enough to rub against the outer tub or the door seal. You may hear scraping, see marks on the drum, or find the seal torn. By this point, damage is spreading, and the repair costs more.
+### 4. Play in the drum
+
+Hold the top edge of the drum opening and lift it up and down, then push it from side to side. The whole tub moving on its springs and shock absorbers is normal. What you're feeling for is the drum moving on its own, separately from the tub, often with a knock or a clunk. That movement means the bearings have worn.
+
+Both checks are easiest on a front loader. On a top loader, go by the noise and by any water underneath, and leave the rest to the technician.
+
+## Signs you can see
+
+### 5. Water under the machine
+
+Bearings usually fail because the shaft seal in front of them failed first. Once water gets past the seal, it washes the grease out of the bearings, and they rust and wear quickly. The same failed seal can let water drip from the back of the tub, so a puddle appears under the middle or back of the machine. A [washing machine leaking](/problems/washing-machine-leaking/) at the same time as it rumbles on spin points strongly to the seal and bearings.
+
+### 6. Rust-coloured marks
+
+Water that has passed through the bearings picks up rust, so a leak from this area can leave brown, rusty marks or drips. When a technician opens the machine, rust streaks running down the back of the tub from the bearing housing are a tell-tale sign. You won't see those without removing panels, so leave that part to the technician.
+
+## Noises that aren't bearings
+
+Several other faults sound similar, and some are simple to rule out:
+
+- **An unbalanced load.** One heavy item, such as a bath mat or a pair of jeans, can make the machine bang and roar on spin. Rearrange the load and try again.
+- **The machine isn't level.** If it rocks, adjust the feet until all four stand firmly on the floor.
+- **Transit bolts still fitted.** A newly installed front loader that shakes violently may still have the bolts that lock the drum in place for transport.
+- **Objects between the drum and tub.** Coins, bra underwires and hair clips cause rattling and scraping. Empty pockets, and check the pump filter as your manual describes, with the machine switched off at the wall and unplugged and towels and a tray ready for the water.
+- **Worn shock absorbers or springs.** These cause banging and thumping rather than a steady roar.
+- **A noisy drain pump.** If the noise only happens while water is pumping out, the pump is the more likely culprit.
+- **A cracked or corroded spider.** This also causes play and noise, and a technician can tell it apart from worn bearings once the machine is open.
+
+For more on each of these, see [washing machine noisy when spinning](/problems/washing-machine-noisy-when-spinning/).
 
 ## Why bearings wear out
 
-- **Age and use.** Bearings are a wear part. A machine that does a load or two every day will wear them faster.
-- **Overloading.** Cramming the drum, or washing heavy items like duvets and rugs in a machine that's too small for them, strains the bearings.
-- **Unbalanced loads.** Constant banging on spin is hard on bearings and suspension.
-- **Failed shaft seal.** As described above, water gets in and washes out the grease.
-- **Transit bolts left in.** If a new machine is run with its transit bolts still fitted, the bearings can be damaged quickly. Our [washing machine installation](/services/washing-machine-installation/) service removes them and sets the machine up properly.
+- **Age and use.** Bearings are a wear part, and a machine that runs a load or two every day wears them faster than one used twice a week.
+- **Overloading.** Packing the drum tight, or washing duvets and rugs in a machine too small for them, overloads the bearings on every spin.
+- **Constant imbalance.** A machine that bangs on spin week after week strains its bearings and suspension.
+- **A failed shaft seal.** Water in the bearings is the most direct route to failure.
+- **Transit bolts left in.** Manufacturers warn that running a machine with its transit bolts fitted can cause heavy vibration and damage. Our [washing machine installation](/services/washing-machine-installation/) service removes them, levels the machine and tests it.
 
-## What a bearing replacement involves
+## What the repair involves
 
-This is one of the bigger washing machine repairs, and it helps to understand why. To reach the bearings, a technician has to remove the top and front panels, the door seal, the counterweights, the motor and the drum and tub assembly. On many machines, the tub is in two halves that unbolt. The old bearings are pressed out, the housing is cleaned, new bearings and a new seal are fitted, and everything goes back together. It's several hours of work.
+When you book, it helps to mention when the noise happens (washing, spinning or draining), how long it has been going on, whether there's water under the machine, and the brand and model number from the rating label, usually around the door opening, under the lid or at the back. That helps the technician confirm the fault quickly.
 
-Many newer machines have a **sealed tub**, where the two halves are welded together at the factory. On those, the bearings can't be replaced on their own, so the whole tub and drum assembly needs replacing, which costs more. We'll tell you which type your machine has before quoting.
+A bearing replacement is one of the biggest jobs on a washing machine. The technician first confirms the diagnosis and checks how your machine's tub is built, then quotes. If you go ahead, the machine is stripped down to the tub: panels, door seal, counterweights, motor, suspension and hoses come off or are disconnected so the tub assembly can come out. The tub is split, the drum's shaft is driven out of the bearings, and the old bearings and seal are pressed out. Then the housing is cleaned, new bearings and a new seal go in, and the shaft and spider are checked for wear before the machine is rebuilt and test-run.
 
-For an idea of what affects the price, see our [washing machine repair cost](/washing-machine-repair-cost/) page, which covers bearing replacement cost in more detail.
+That takes several hours and needs clear space around the machine. Integrated machines take longer, because they first have to come out of the kitchen cabinetry.
 
-## Is it worth replacing bearings?
+## Split tub or sealed tub
 
-On a machine with a split tub that's otherwise in good condition, usually yes. It's a labour-heavy repair, but much cheaper than a good new machine. On a sealed-tub machine, or an older machine with other wear, it's worth comparing the price with replacement. Our [repair or replace guide](/repair-or-replace/) walks through how to decide.
+How the outer tub is built makes the biggest difference to the cost:
 
-The key thing is not to wait. A bearing that's just started to rumble is a straightforward repair. Leave it until the drum is rubbing, and you may also be paying for a new seal, a new drum spider (the bracket that holds the shaft) or even a new tub.
+- **Split tub.** The two halves are bolted or clipped together, so they can be separated and the bearings and seal replaced on their own.
+- **Sealed tub.** On many newer machines, the tub halves are welded together at the factory and the bearings sit permanently inside. The manufacturer's repair is then a complete new tub and drum assembly, which costs considerably more.
 
-## Can I keep using it?
+Before quoting, the technician checks which kind of tub your machine has, so the price reflects the right repair. For what pushes the price of a big repair up or down, see our guide to [washing machine repair cost](/washing-machine-repair-cost/).
 
-For a short while, but not for long. Each wash causes more wear, and if a bearing collapses, it can damage the shaft and tub. If you hear the rumble, book an inspection sooner rather than later.
+## Is it worth fixing?
+
+On a split-tub machine in otherwise good condition, a bearing replacement is usually worthwhile: it's labour-heavy, but it generally costs less than a comparable new machine. On a sealed-tub machine, or an older machine with other worn parts, weigh the quote against replacing it. Our [repair or replace guide](/repair-or-replace/) walks you through the decision.
+
+Timing matters as much as the tub type. Caught when it first starts to rumble, a worn bearing usually needs only new bearings and a seal. Leave it until the drum is rubbing, and the bill can grow to include a new shaft, spider or tub.
+
+## Can you keep using it?
+
+For a short while, but not for long. Every wash adds wear, and a bearing that collapses can damage the shaft, the spider and the tub. Until it's repaired, wash smaller loads on a lower spin speed. If water is leaking onto the floor, stop using the machine and switch it off: at the wall if the plug and socket are dry, or at the DB board if they're wet. Then close the tap and keep the area dry.
 
 ## The bottom line
 
-A rumble on spin, a rough-feeling drum, play when you lift the drum, or water under the middle of the machine are all signs your bearings need attention. Catching it early keeps the repair simpler and cheaper. Our [front loader repairs](/services/front-loader-repairs/) service covers bearing and seal replacement on all major brands.
+A rumble on spin, a rough or loose drum, water under the middle of the machine and rusty marks all point to bearings that need attention, and catching them early keeps the repair simpler. Our [front loader repairs](/services/front-loader-repairs/) and [top loader repairs](/services/top-loader-repairs/) cover bearings and seals on all major brands, and our [washing machine parts replacement](/services/washing-machine-parts-replacement/) service supplies and fits the parts.
 
 **Hear a rumble on spin?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll check the bearings, tell you whether your machine has a split or sealed tub, and quote before any work starts.

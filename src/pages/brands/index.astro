@@ -1,16 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { brands, otherBrands, trademarkNote } from '../../data/brands';
-import { site, brandUrl } from '../../data/site';
+import { site, brandUrl, errorCodeUrl } from '../../data/site';
 import { faqSchema } from '../../lib/schema';
+const f = site.facts;
+// The brand pages, in the order the "Brands with their own page" list shows them.
+const brandPages = [
+  { slug: 'defy', name: 'Defy', text: 'front loaders, top loaders and twin tubs from a long-established South African brand, from older machines to current models.' },
+  { slug: 'lg', name: 'LG', text: 'front loaders with LG\'s direct drive motor, as well as top loaders and washer-dryers.' },
+  { slug: 'samsung', name: 'Samsung', text: 'front loaders, top loaders and washer-dryers, many with Samsung\'s digital inverter motor.' },
+  { slug: 'bosch', name: 'Bosch', text: 'front loaders and washer-dryers, freestanding and integrated.' },
+  { slug: 'siemens', name: 'Siemens', text: 'iQ front loaders and washer-dryers, made by the same group as Bosch.' },
+  { slug: 'aeg', name: 'AEG', text: 'premium front loaders and washer-dryers, including built-in models.' },
+  { slug: 'whirlpool', name: 'Whirlpool', text: 'front loaders, top loaders and washer-dryers, from older models to current ranges.' },
+  { slug: 'hisense', name: 'Hisense', text: 'front loaders, top loaders, twin tubs and washer-dryers, including inverter models.' },
+  { slug: 'miele', name: 'Miele', text: 'premium German front loaders and washer-dryers built for a long working life.' },
+  { slug: 'smeg', name: 'Smeg', text: 'freestanding and integrated front loaders and washer-dryers from the Italian appliance maker.' },
+  { slug: 'speed-queen', name: 'Speed Queen', text: 'heavy-duty top loaders and front loaders built to commercial standards and used in homes and laundromats.' },
+];
+// Makes we repair that don't have their own page (a brand drops out of this list once it gets one).
+const hasPage = (name: string) => [...brands.map((b) => b.brand), ...brandPages.map((p) => p.name)].some((n) => n.toLowerCase() === name.toLowerCase());
+const otherMakes = otherBrands.filter((o) => !hasPage(o));
+const otherMakesText = otherMakes.length > 1 ? `${otherMakes.slice(0, -1).join(', ')} and ${otherMakes[otherMakes.length - 1]}` : otherMakes.join('');
 const faqs = [
-  { q: 'Are you an authorised agent for any brand?', a: 'No. ProServ is an independent repairer. We repair all major washing machine brands, but we are not affiliated with or authorised by any manufacturer. If your machine is under the manufacturer\'s warranty, contact the manufacturer first.' },
-  { q: 'Do you repair brands not listed here?', a: 'Very likely. Send us the brand and model number and we will confirm whether we can get parts.' },
-  { q: 'Do you use original parts?', a: 'We use original manufacturer parts where they are available and reasonably priced, and good-quality equivalents where they are not. We will tell you which before fitting.' },
+  { q: 'Is a premium machine worth repairing?', a: 'Usually, yes. A new premium machine costs a lot, and these machines are designed for a long working life. If the drum, tub and cabinet are sound, replacing a worn part normally costs a fraction of a new machine. Our guide on whether to <a href="/repair-or-replace/">repair or replace a washing machine</a> covers the exceptions.' },
+  { q: 'Are budget brands worth repairing?', a: 'Often, yes. Many budget and mid-range machines use straightforward parts such as pumps, door locks and carbon brushes, so common repairs usually cost well below the price of a new machine. A sealed tub with worn bearings, or a failed control board on an older machine, can tip the balance towards replacing it.' },
+  { q: 'Does the brand affect what a repair costs?', a: 'It can. Parts prices differ between brands and models, and premium or built-in machines can take longer to work on. The technician quotes after diagnosing the fault, so you know the cost for your machine before any work starts. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what drives the price.' },
+  { q: 'Why do you need the model number and not just the brand?', a: 'One brand can sell dozens of models at the same time, with different motors, tubs, control boards and door locks. The model number tells the technician how your machine is built and which parts fit it, so the right part can be quoted and, if necessary, ordered.' },
+  { q: 'Do you repair old machines from ranges that are no longer sold?', a: 'Yes, as long as parts can still be found. Many older machines are mechanically simple and repair well, and the limit is usually parts, particularly control boards for discontinued ranges. Send us the model number and we\'ll tell you honestly what\'s possible.' },
+  { q: 'Will an independent repair affect my manufacturer\'s warranty?', a: `It may. While a machine is covered by the manufacturer's warranty, the manufacturer generally expects to handle repairs, so contact them first. Once that warranty has ended, an independent repair is a sensible way to keep a good machine running, and our repairs carry a ${f.warranty} warranty on parts and labour.` },
 ];
 ---
 <BaseLayout
@@ -22,21 +45,52 @@ const faqs = [
   <PageHero
     h1="Washing machine repairs for all major brands"
     eyebrow="Brands we repair"
-    intro={`<p>We repair all major washing machine brands sold in South Africa, from everyday family machines to premium European models: front loaders, top loaders and washer-dryers. If your brand isn't listed, ask us: we'll check whether parts are available before booking. Choose your brand below to see the faults we fix most often and what to tell us when you book.</p>`}
+    intro={`<p>We do washing machine repairs for all major brands sold in South Africa: front loaders, top loaders and washer-dryers, freestanding and built in, from everyday family machines to premium European and heavy-duty American models. Choose your brand below to see the faults we fix and what to tell us when you book. If your make isn't listed, ask us anyway and we'll tell you whether we can help.</p>`}
   />
-  <LinkCards alt heading="Choose your brand" headingId="brand-list" cols={4} items={brands.map((b) => ({ href: brandUrl(b.slug), title: `${b.brand} washing machine repairs`, text: b.summary }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
-      <h2>Other brands we repair</h2>
-      <p>We also repair {otherBrands.join(', ')} washing machines. Miele and Smeg machines are premium European appliances and parts sometimes need to be ordered in, so we may need a second visit. Electrolux machines share a lot of engineering with AEG. Speed Queen top loaders are heavy-duty machines built for long service lives and are usually well worth repairing.</p>
-      <h2>What brand information helps us</h2>
-      <p>When you book, the brand and the full model number make the biggest difference. The model number is on a sticker inside the door rim on front loaders, under the lid on top loaders, or on the back panel. With it, we can check common faults for that model and whether parts are on hand before we arrive.</p>
-      <h2>Error code guides by brand</h2>
-      <p>Many machines show a code when something goes wrong. We have guides for <a href="/error-codes/lg-washing-machine-error-codes/">LG</a>, <a href="/error-codes/samsung-washing-machine-error-codes/">Samsung</a>, <a href="/error-codes/bosch-washing-machine-error-codes/">Bosch</a> and <a href="/error-codes/defy-washing-machine-error-codes/">Defy</a>. See all <a href="/error-codes/">washing machine error codes</a>.</p>
+  <LinkCards alt eyebrow="Brands" heading="Choose your brand" headingId="brand-list" cols={4} icon="washer" items={brands.map((b) => ({ href: brandUrl(b.slug), title: `${b.brand} washing machine repairs`, text: b.summary }))} />
+  <LongFormSection reservedIds={['brand-list']}>
+      <h2>Brands with their own page</h2>
+      <p>Each brand page covers the machines that make sells, the faults that affect them and how a repair works. In brief:</p>
+      <ul>
+        {brandPages.map((p) => <li><a href={brandUrl(p.slug)}>{p.name}</a>: {p.text}</li>)}
+      </ul>
+
+      <h2>How we approach different makes</h2>
+      <p>Every washing machine does the same job: it fills, washes, drains and spins. What changes the repair is how each manufacturer builds the parts that do it. These are the differences the technician looks at first.</p>
+      <h3>Motors</h3>
+      <p>Many front loaders and some top loaders use a brushed motor with two carbon brushes that wear down over the years, and worn brushes leave the drum turning weakly or not at all. Belt-driven machines add a drive belt that can stretch or slip off. Others use a brushless inverter motor, such as LG's direct drive, which has no brushes to wear and, mounted on the drum itself, no belt either. On those, faults are more likely to be in the motor's position sensor, its windings or wiring, or the electronics that drive it, so the testing is different.</p>
+      <h3>Top loader designs</h3>
+      <p>Top loaders come in two main designs. Some have a tall agitator in the centre of the drum, driven through a gearbox or transmission. Others have a low pulsator in the base of the drum, with a clutch or coupling that switches the drive between washing and spinning. Both designs hang the tub on suspension rods that wear with heavy loads. Heavy-duty machines such as Speed Queen are built with commercial-grade parts, which suits households that wash a lot.</p>
+      <h3>Drums, tubs and bearings</h3>
+      <p>Some machines have an outer tub in two halves, held together with screws or clips, so the drum bearings and shaft seal can be replaced on their own. Many newer machines have a sealed tub that can't be opened, so worn bearings mean replacing the whole tub assembly, which costs more. This depends on the model rather than the badge on the front, and the model number tells the technician which design you have.</p>
+      <h3>Electronics and error codes</h3>
+      <p>Each manufacturer uses its own control boards, displays and fault codes, and many machines have a service test mode that lets a technician check each part in turn. We have guides to <a href={errorCodeUrl('lg')}>LG error codes</a>, <a href={errorCodeUrl('samsung')}>Samsung error codes</a>, <a href={errorCodeUrl('bosch')}>Bosch error codes</a> and <a href={errorCodeUrl('defy')}>Defy error codes</a>, and our <a href="/error-codes/">washing machine error codes</a> page explains how codes work on other makes.</p>
+      <h3>Washer-dryers</h3>
+      <p>Washer-dryers from brands such as LG, Samsung, Bosch, Siemens and AEG combine a front loader with a drying system: a heating element, a fan and a condenser or air duct. The technician checks both halves, because a drying fault can come from lint blocking the condenser or duct as well as from the heater itself. See <a href="/services/washer-dryer-repairs/">washer dryer repairs</a> for the details.</p>
+      <h3>Freestanding and integrated</h3>
+      <p>Integrated machines from makers such as Bosch, Siemens, AEG and Miele sit behind a kitchen cabinet door. The repairs are the same as on a freestanding machine, but the machine has to be eased out of its space and refitted afterwards, which adds time to the visit. Tell us it's built in when you book.</p>
+      <h3>Parts supply</h3>
+      <p>Parts for models that sold in large numbers in South Africa are usually easier to find than parts for less common imports or older ranges. Some model-specific parts have to be ordered, and when that happens, the technician tells you before you agree to the repair. If a part is no longer made for an older machine, we'll say so rather than leave you waiting.</p>
+
+      <h2>Other makes we work on</h2>
+      <p>Not every brand has its own page. {otherMakesText ? `We also work on ${otherMakesText} machines, and on other makes sold in South Africa.` : 'We also work on other makes sold in South Africa.'} Send us the brand and the model number, ideally with a photo of the rating sticker, and we'll tell you whether it's something we can help with before anyone comes out.</p>
+
+      <h2>Finding your model number</h2>
+      <p>The model number is printed on the machine's rating sticker, together with the serial number. Look for it here:</p>
+      <ul>
+        <li><strong>Front loaders:</strong> on the frame around the door opening (open the door to see it), or on the back of the machine.</li>
+        <li><strong>Top loaders:</strong> under the lid, on the back of the control panel or on the back of the cabinet.</li>
+        <li><strong>Integrated machines:</strong> around the door opening, which you can reach once the cabinet door is open.</li>
+      </ul>
+      <p>Bosch and Siemens label theirs E-Nr, and other makers may simply call it the model or type. On many machines the sticker also shows when the machine was made, which helps when you're deciding whether a repair is worth it. A clear photo of the whole sticker, sent on WhatsApp, gives us everything we need.</p>
+
+      <h2>If you're replacing a machine</h2>
+      <p>If a repair doesn't make sense and you're shopping for a new machine, think about future repairs as well as the price tag. A brand and model that sells widely in South Africa is usually easier to find parts for later on. A longer manufacturer's warranty covers the early years. Extra features such as steam programmes, Wi-Fi control or a second loading door add convenience, but they also add parts that can fail. And choose a capacity that suits your household, because a machine that's regularly overloaded wears its bearings and suspension faster.</p>
+      <p>Our comparison of a <a href="/blog/front-loader-vs-top-loader/">front loader vs top loader</a> helps with the type of machine, and our guide on whether to <a href="/repair-or-replace/">repair or replace a washing machine</a> helps you decide whether it's time.</p>
+
       <h2>Independent repairs</h2>
-      <p class="callout">{trademarkNote} If your machine is still under the manufacturer's warranty, contact the manufacturer first, because an outside repair may affect that warranty.</p>
-    </div>
-  </section>
+      <div class="callout"><p>{trademarkNote}</p></div>
+  </LongFormSection>
   <Faq items={faqs} />
   <CtaBand />
 </BaseLayout>
