@@ -9,8 +9,6 @@ export interface ErrorCode {
   causes: string;
   /** Safe, non-electrical check for the owner. */
   check: string;
-  /** @deprecated Codes are only published once checked against the manufacturer's own documentation. */
-  verify?: boolean;
 }
 
 /** A manufacturer document or support page the codes on a guide were checked against. */

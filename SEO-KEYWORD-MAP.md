@@ -78,7 +78,7 @@ Pattern: `[brand] washing machine error codes`.
 
 | URL | Primary keyword | Secondary keywords |
 |---|---|---|
-| `/error-codes/defy-washing-machine-error-codes/` | Defy washing machine error codes | Defy E01 error, Defy E03 error, Defy front loader error codes |
+| `/error-codes/defy-washing-machine-error-codes/` | Defy washing machine error codes | Defy top loader error codes, Defy E1 error, Defy E3 error |
 | `/error-codes/lg-washing-machine-error-codes/` | LG washing machine error codes | LG OE error, LG IE error, LG UE error |
 | `/error-codes/samsung-washing-machine-error-codes/` | Samsung washing machine error codes | Samsung 4C error, Samsung 5C error, Samsung UB error |
 | `/error-codes/bosch-washing-machine-error-codes/` | Bosch washing machine error codes | Bosch E18 error, Bosch E17 error, Bosch E23 error |
