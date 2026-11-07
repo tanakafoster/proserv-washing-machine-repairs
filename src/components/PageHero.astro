@@ -45,7 +45,7 @@ const grid = image
       <slot name="after" />
     </div>
     {image && (
-      <div class="relative aspect-[3/2] overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--shadow-float)]">
+      <div class="relative overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--shadow-float)]" style={`aspect-ratio: ${image.width} / ${image.height}`}>
         <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-center" />
       </div>
     )}

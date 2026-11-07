@@ -20,6 +20,11 @@ const blog = defineCollection({
     image: z.string().startsWith('/'),
     imageAlt: z.string(),
     summary: text(),
+    /**
+     * The post's FAQs: 6 to 10 questions and answers (answers may use simple HTML), shown under the
+     * post with FAQPage schema. A post without the field gets an empty list instead of a build error.
+     */
+    faqs: z.array(z.object({ q: text(), a: text() })).min(6).max(10).optional().transform((v) => v ?? []),
   }),
 });
 

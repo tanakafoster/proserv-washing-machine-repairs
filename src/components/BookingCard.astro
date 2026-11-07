@@ -8,6 +8,8 @@ import { site, telHref, whatsappHref, areaList } from '../data/site';
 interface Props { heading?: string; class?: string }
 const { heading = 'Book a technician', class: cls = '' } = Astro.props;
 const f = site.facts;
+// No "Areas we cover" link on the areas hub itself: a page never links to itself.
+const showAreasLink = Astro.url.pathname.replace(/\/+$/, '') !== '/areas';
 ---
 <div data-shared="booking-card" class:list={['card-surface overflow-hidden', cls]}>
   <div class="h-1 bg-brand" aria-hidden="true"></div>
@@ -32,7 +34,7 @@ const f = site.facts;
       </li>
       <li class="flex gap-2.5">
         <Icon name="map" class="mt-px h-[18px] w-[18px] shrink-0 text-brand" />
-        <span>{areaList()}. <a href="/areas/" class="font-medium whitespace-nowrap">Areas we cover</a></span>
+        <span>{areaList()}.{showAreasLink && <Fragment>{' '}<a href="/areas/" class="font-medium whitespace-nowrap">Areas we cover</a></Fragment>}</span>
       </li>
     </ul>
     <a href="/contact/" class="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-ink-strong">

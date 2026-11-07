@@ -14,7 +14,7 @@ const promises: { icon: IconName; t: string; d: string }[] = [
   { icon: 'clipboard', t: 'Quote before work starts', d: 'Diagnosis first, then a clear price' },
   { icon: 'banknote', t: `${f.calloutFee} call-out fee`, d: `${f.calloutConditionShort.charAt(0).toUpperCase()}${f.calloutConditionShort.slice(1)}` },
   { icon: 'shield', t: `${f.warranty} warranty`, d: 'On parts and labour' },
-  { icon: 'home', t: 'Repairs at your home', d: `Mobile technicians across Gauteng` },
+  { icon: 'home', t: 'Repairs at your home', d: `We come to you across Gauteng` },
 ];
 const quickLinks = [
   { href: '/problems/', label: 'Common problems' },
@@ -87,9 +87,9 @@ const contactRow = 'flex min-h-11 items-center gap-3 text-[15px] text-ink-soft n
 
       <div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:col-span-8">
         <nav aria-labelledby="f-areas" class="col-span-2 md:col-span-1">
-          <h2 id="f-areas" class={colHead}>Areas we cover</h2>
+          <h2 id="f-areas" class={colHead}>Service areas</h2>
           <ul>
-            {site.areas.map((a) => <li><a href={areaUrl(a.slug)} class={colLink}>Washing machine repairs {a.name}</a></li>)}
+            {site.areas.map((a) => <li><a href={areaUrl(a.slug)} class={colLink}>Washing machine repairs {a.inName}</a></li>)}
             <li><a href="/areas/" class={`${colLink} font-semibold text-ink-strong`}>All service areas</a></li>
           </ul>
         </nav>

@@ -477,6 +477,12 @@
     text-decoration: none;
     white-space: nowrap;
   }
+  /* lg to xl: slightly tighter menu links so the logo, the menu and the full phone number fit on one row. */
+  @media (width < 80rem) {
+    .nav-link {
+      padding-inline: 0.375rem;
+    }
+  }
   .nav-link:hover,
   .nav-dd[open] > .nav-link {
     color: var(--color-ink-strong);
@@ -969,12 +975,8 @@
     font-weight: 600;
     color: var(--color-ink-strong);
   }
-  /* Price list (the cost page's table.price-table): the price stands out, and on phones each
-     row stacks as repair, guide price, note, so nothing has to scroll sideways. */
-  .prose-site .price-table tbody td:nth-of-type(1) {
-    font-weight: 600;
-    color: var(--color-ink-strong);
-  }
+  /* The cost page's table.price-table: on phones each row stacks as repair, what's involved and
+     what drives the price, so nothing has to scroll sideways. */
   @media (width < 40rem) {
     .prose-site .price-table,
     .prose-site .price-table tbody,
@@ -1002,10 +1004,11 @@
     .prose-site .price-table tbody tr + tr {
       border-top: 1px solid var(--color-line);
     }
+    .prose-site .price-table tbody th {
+      font-weight: 700;
+    }
     .prose-site .price-table tbody td:nth-of-type(1) {
       margin-top: 0.25rem;
-      font-weight: 700;
-      color: var(--color-ink-strong);
     }
     .prose-site .price-table tbody td:nth-of-type(2) {
       margin-top: 0.125rem;

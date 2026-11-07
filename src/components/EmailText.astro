@@ -1,11 +1,15 @@
 ---
 /**
- * The site email address with a soft break after the "@", so on a narrow phone it wraps as
- * "info@" / "domain" instead of breaking in the middle of a word. Use it inside a mailto link.
+ * The site email address with soft breaks after the "@" and before the domain's first dot, so on
+ * a narrow phone it wraps as "info@" / "proservwashingmachinerepairs" / ".co.za" instead of
+ * breaking in the middle of a word. Use it inside a mailto link.
  */
 import { site } from '../data/site';
 const at = site.email.indexOf('@');
 const local = at > 0 ? site.email.slice(0, at + 1) : site.email;
 const domain = at > 0 ? site.email.slice(at + 1) : '';
+const dot = domain.indexOf('.');
+const name = dot > 0 ? domain.slice(0, dot) : domain;
+const tld = dot > 0 ? domain.slice(dot) : '';
 ---
-{local}{domain && <wbr />}{domain}
+{local}{domain && <wbr />}{name}{tld && <wbr />}{tld}

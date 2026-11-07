@@ -148,6 +148,9 @@ for (const file of files) {
   if (ph.length) errors.push(`${url}: placeholder text visible on the page: ${[...new Set(ph)].join(', ')}`);
   const tokens = [...new Set(html.match(/\{\{[A-Z_]+\}\}/g) ?? [])];
   if (tokens.length) errors.push(`${url}: unfilled token(s) ${tokens.join(', ')} (only {{PHONE}}, {{TEL}} and {{WHATSAPP}} exist)`);
+  // Settings still on their example value (e.g. the Web3Forms key), anywhere in the HTML.
+  const unset = [...new Set(html.match(/\bYOUR_[A-Z0-9_]+\b/g) ?? [])];
+  if (unset.length) warnings.push(`${url}: setting not filled in: ${unset.join(', ')} (set it in src/data/site.ts before launch)`);
 
   pages.push({ url, title, desc, canonical, noindex, h1s, wc, first100, missingAlt, missingDims, types: [...new Set(types)], refs, ids, ph });
 }

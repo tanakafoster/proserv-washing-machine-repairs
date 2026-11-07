@@ -51,14 +51,14 @@ const menus: Menu[] = [
     href: '/brands/',
     title: 'Brands we repair',
     text: 'We repair all major washing machine brands as an independent repairer.',
-    allLabel: 'All brands',
+    allLabel: 'All brand guides',
     items: brands.map((b) => ({ href: brandUrl(b.slug), title: b.brand, text: b.summary })),
   },
   {
     label: 'Areas',
     href: '/areas/',
     title: 'Areas we cover',
-    text: `Mobile technicians across ${areaList()}.`,
+    text: `Repairs at your home across ${areaList()}.`,
     allLabel: 'All areas',
     items: site.areas.map((a) => ({ href: areaUrl(a.slug), title: a.name, icon: 'map' as IconName })),
   },
@@ -152,8 +152,8 @@ const menuActive = (m: Menu) => isActive(m.href) || (m.alsoActive ?? []).some(is
       </ul>
     </nav>
 
-    <a href={telHref} class="btn btn-primary hidden min-h-12 rounded-xl px-5 md:inline-flex lg:ml-2" data-track="call">
-      <Icon name="phone" />
+    <a href={telHref} class="btn btn-primary hidden min-h-12 shrink-0 whitespace-nowrap rounded-xl px-5 md:inline-flex lg:ml-2" data-track="call">
+      <Icon name="phone" class="h-5 w-5 lg:max-xl:hidden" />
       <span><span class="sr-only">Call </span>{site.phone.display}</span>
     </a>
 
