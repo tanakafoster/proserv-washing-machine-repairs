@@ -671,10 +671,11 @@
       clip-path: inset(50%);
       white-space: nowrap;
     }
-    /* Each row is a card: the code and its meaning side by side, then causes and checks. */
+    /* Each row is a card: the code and its meaning side by side, then causes and checks.
+       The code column stops at 7.5rem (long codes wrap in their chip) so the meaning keeps room on a 320px phone. */
     .code-table tbody tr {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: fit-content(7.5rem) minmax(0, 1fr);
       gap: 0.625rem 0.875rem;
       align-items: center;
       padding: 1rem 1rem 1.125rem;
