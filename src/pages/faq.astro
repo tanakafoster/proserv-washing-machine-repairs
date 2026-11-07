@@ -51,7 +51,13 @@ const all = groups.flatMap((g) => g.items);
     h1="Washing machine repair questions"
     eyebrow="FAQ"
     intro={`<p>Here are the washing machine repair questions we get asked most, from booking and call-out fees to warranties and brands. If your question isn't here, call or WhatsApp us and we'll happily help.</p>`}
-  />
-  {groups.map((g) => <Faq items={g.items} heading={g.heading} id={g.id} />)}
+  >
+    <nav slot="after" aria-label="FAQ topics" class="mt-7 border-t border-line pt-6">
+      <ul class="flex flex-wrap gap-2.5">
+        {groups.map((g) => <li><a href={`#${g.id}`} class="chip">{g.heading}</a></li>)}
+      </ul>
+    </nav>
+  </PageHero>
+  {groups.map((g, i) => <Faq items={g.items} heading={g.heading} id={g.id} tone={i % 2 === 0 ? 'surface' : 'white'} eyebrow={false} />)}
   <CtaBand />
 </BaseLayout>

@@ -1,0 +1,66 @@
+---
+/**
+ * Error code table for the error code guides. Below 640px each row becomes a card with its own
+ * labels; from 640px it is a normal four-column table (it fits the copy column at every width).
+ * The ARIA roles keep the table semantics when the phone layout changes the display of the cells,
+ * and the column headers stay in the accessibility tree (visually hidden on phones).
+ * `sources` renders under the table as "Where these codes come from", with external links.
+ */
+import Icon from './Icon.astro';
+import type { ErrorCode, CodeSource } from '../data/errorCodes';
+interface Props {
+  brand: string;
+  codes: ErrorCode[];
+  sources?: CodeSource[];
+}
+const { brand, codes, sources = [] } = Astro.props;
+const cols = ['What it usually means', 'Likely causes', 'What you can safely check'];
+---
+<div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
+  <table class="code-table w-full border-collapse text-left text-[0.9375rem] leading-relaxed sm:min-w-[36rem]" role="table" data-bare>
+    <caption class="sr-only">{brand} washing machine error codes, meanings, likely causes and safe checks</caption>
+    <thead class="bg-surface" role="rowgroup">
+      <tr role="row">
+        <th scope="col" role="columnheader" class="border-b-2 border-brand px-4 py-3 text-sm font-bold text-ink-strong">Code</th>
+        {cols.map((c) => <th scope="col" role="columnheader" class="border-b-2 border-brand px-4 py-3 text-sm font-bold text-ink-strong">{c}</th>)}
+      </tr>
+    </thead>
+    <tbody role="rowgroup">
+      {codes.map((c) => (
+        <tr role="row" class="align-top">
+          <th scope="row" role="rowheader" class="sm:px-4 sm:py-3.5 sm:whitespace-nowrap">
+            <span class="inline-flex rounded-lg bg-brand-tint px-2.5 py-1 font-mono text-[0.9375rem] font-bold text-ink-strong ring-1 ring-brand/30">{c.code}</span>
+          </th>
+          <td role="cell" class="leading-snug font-semibold text-ink-strong sm:px-4 sm:py-3.5 sm:leading-relaxed">
+            <span class="code-label" aria-hidden="true">{cols[0]}</span>{c.meaning}
+          </td>
+          <td role="cell" class="text-ink-soft sm:px-4 sm:py-3.5">
+            <span class="code-label" aria-hidden="true">{cols[1]}</span>{c.causes}
+          </td>
+          <td role="cell" class="text-ink-soft sm:px-4 sm:py-3.5">
+            <span class="code-label" aria-hidden="true">{cols[2]}</span>{c.check}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+{sources.length > 0 && (
+  <div class="mt-5 rounded-2xl border border-line bg-surface p-5">
+    <h3 class="type-h3 flex items-center gap-2 text-base"><Icon name="book" class="h-5 w-5 shrink-0 text-brand" /> Where these codes come from</h3>
+    <ul class="mt-1.5 -mb-3 text-[15px] leading-snug">
+      {sources.map((s) => {
+        // Keep the last word and the "external" icon together so the icon never wraps alone.
+        const words = s.label.trim().split(/\s+/);
+        const last = words.pop();
+        return (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" class="link-inline inline-block py-3 font-medium">
+              {words.length > 0 && `${words.join(' ')} `}<span class="whitespace-nowrap">{last}<Icon name="external" class="ml-1.5 inline-block h-4 w-4 align-[-0.15em] text-brand-dark" /></span><span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+)}

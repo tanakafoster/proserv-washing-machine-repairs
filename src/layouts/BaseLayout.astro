@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import themeCss from '../styles/global.css?raw';
-import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileCallBar from '../components/MobileCallBar.astro';
@@ -50,7 +50,7 @@ const themeColor = themeCss.match(/--color-brand-dark:\s*(#[0-9a-fA-F]{3,8})/)?.
     {!notFound && <link rel="canonical" href={canonical} />}
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
 
-    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
     {preloadImage && (
       <link rel="preload" as="image" href={preloadImage.src} imagesrcset={preloadImage.srcset} imagesizes={preloadImage.sizes} fetchpriority="high" />
     )}
@@ -105,9 +105,10 @@ const themeColor = themeCss.match(/--color-brand-dark:\s*(#[0-9a-fA-F]{3,8})/)?.
     {gtmReady && (
       <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${site.gtmId}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
     )}
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
+    <a href="#main" class="sr-only rounded-xl bg-white px-4 py-3 font-semibold text-ink-strong no-underline shadow-lg focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70]">Skip to content</a>
     <Header />
-    <main id="main" class="flex-1">
+    <main id="main" class="relative isolate flex-1">
+      <div class="page-glow" aria-hidden="true"></div>
       {fullCrumbs && <Breadcrumbs crumbs={fullCrumbs} />}
       <slot />
     </main>

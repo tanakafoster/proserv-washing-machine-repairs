@@ -1,17 +1,37 @@
 ---
-import ContactButtons from './ContactButtons.astro';
-import { site, hoursText, hasHours } from '../data/site';
-interface Props { heading?: string; text?: string }
+/**
+ * Closing call to action (Electro cta-band): an orange band with near-black text, a dark Call
+ * button and white WhatsApp / booking buttons. Every pair passes AA: #111827 on #F97316 is 6.3:1.
+ */
+import Icon from './Icon.astro';
+import EmailText from './EmailText.astro';
+import { site, telHref, whatsappHref, mailHref, hoursText, hasHours } from '../data/site';
+interface Props { heading?: string; text?: string; eyebrow?: string }
 const {
   heading = 'Washing machine broken? Let\'s get it fixed.',
   text = `Call or WhatsApp now and we'll book a technician to come to you. You'll get a quote before any work starts.`,
+  eyebrow = 'Book a technician',
 } = Astro.props;
+const btn = 'btn btn-lg w-full sm:w-auto lg:w-full';
 ---
-<section class="bg-ink py-12 text-white sm:py-16" aria-labelledby="cta-h">
-  <div class="container-site text-center">
-    <h2 id="cta-h" class="text-2xl font-bold sm:text-3xl">{heading}</h2>
-    <p class="mx-auto mt-3 max-w-2xl text-gray-200">{text}</p>
-    <ContactButtons class="mt-6 justify-center" size="lg" />
-    <p class="mt-4 text-sm text-gray-300">{hasHours ? `${hoursText()} · ` : ''}{site.email}</p>
+<section class="on-orange relative isolate overflow-hidden bg-brand section-y" aria-labelledby="cta-h">
+  <div class="pointer-events-none absolute -right-24 -bottom-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(closest-side,rgb(255_255_255/0.28),transparent)]" aria-hidden="true"></div>
+  <div class="container-site grid items-center gap-8 text-center lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:text-left">
+    <div class="min-w-0">
+      <p class="mb-3 text-xs font-bold tracking-[0.16em] text-ink-strong uppercase">{eyebrow}</p>
+      <h2 id="cta-h" class="type-h2 text-ink-strong">{heading}</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-ink-strong md:text-lg lg:mx-0">{text}</p>
+      <p class="mt-4 text-sm text-ink-strong">
+        {hasHours && <span>{hoursText()} · </span>}
+        <a href={mailHref} class="font-semibold text-ink-strong decoration-ink-strong hover:text-ink-strong"><EmailText /></a>
+      </p>
+    </div>
+    <div class="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:w-[20rem] lg:flex-col">
+      <a href={telHref} class:list={[btn, 'btn-dark']} data-track="call"><Icon name="phone" /> Call {site.phone.display}</a>
+      <a href={whatsappHref} target="_blank" rel="noopener" class:list={[btn, 'btn-white']} data-track="whatsapp">
+        <Icon name="whatsapp" class="text-whatsapp-dark" /> WhatsApp us<span class="sr-only"> (opens in a new tab)</span>
+      </a>
+      <a href="/contact/" class:list={[btn, 'btn-white']}><Icon name="calendar" class="text-brand-dark" /> Book a repair</a>
+    </div>
   </div>
 </section>

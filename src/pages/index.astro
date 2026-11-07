@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
+import HeroTrustRow from '../components/HeroTrustRow.astro';
 import TrustBar from '../components/TrustBar.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import LinkCards from '../components/LinkCards.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
+import { serviceIcon, problemIcon } from '../components/icon-maps';
 import { site, areaUrl, brandUrl, hoursText, hasHours, areaList } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { problems, problemUrl } from '../data/problems';
@@ -17,7 +20,7 @@ const f = site.facts;
 const hero = {
   src: '/images/hero-technician.webp',
   srcset: '/images/hero-technician-640.webp 640w, /images/hero-technician.webp 1200w',
-  sizes: '(min-width: 1024px) 540px, 100vw',
+  sizes: '(min-width: 1280px) 560px, (min-width: 1024px) 44vw, 100vw',
 };
 const faqs = [
   { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. The technician diagnoses the fault and gives you a quote before any work starts.` },
@@ -25,6 +28,20 @@ const faqs = [
   { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele, Smeg, Electrolux and Speed Queen. We are an independent repairer, not an agent for any brand.' },
   { q: 'Are your repairs guaranteed?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour.` },
   { q: 'Do I need to take my machine anywhere?', a: 'No. We repair washing machines at your home. In the rare case that a workshop repair is needed, we will discuss it with you first.' },
+];
+const benefits = [
+  'Quote before we start',
+  `${f.calloutFee} call-out, ${f.calloutConditionShort}`,
+  `${f.warranty} repair warranty`,
+  'Front, top and washer-dryers',
+];
+const expectations = [
+  'A technician at your door, with a booked time',
+  'A proper diagnosis, not a guess over the phone',
+  'A clear quote before any work',
+  `${f.calloutFee} call-out fee, ${f.calloutCondition}`,
+  `${f.warranty} warranty on parts and labour`,
+  `${f.fiveStarReviews} five-star reviews from local customers`,
 ];
 ---
 <BaseLayout
@@ -34,34 +51,45 @@ const faqs = [
   preloadImage={hero}
 >
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-brand-tint to-white">
-    <div class="container-site grid items-center gap-8 py-8 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:py-16">
-      <div>
-        <p class="eyebrow">Gauteng's mobile washing machine technicians</p>
-        <h1 class="mt-2 text-4xl leading-tight font-extrabold sm:text-5xl">Washing machine repairs at your door</h1>
-        <p class="mt-4 max-w-xl text-lg text-ink-soft">
+  <section class="relative overflow-hidden border-b border-line/70">
+    <div class="pointer-events-none absolute -top-48 right-[-12%] -z-10 hidden h-[44rem] w-[44rem] rounded-full bg-[radial-gradient(closest-side,rgb(249_115_22/0.12),transparent)] lg:block" aria-hidden="true"></div>
+    <div class="container-site grid items-center gap-10 pt-8 pb-12 md:pt-12 md:pb-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14 lg:pt-14 lg:pb-20 xl:gap-16">
+      <div class="min-w-0">
+        <p class="type-eyebrow mb-4">Gauteng's mobile washing machine technicians</p>
+        <h1 class="type-display">
+          <span class="block">Washing machine repairs</span>
+          <span class="block text-brand-dark">at your door</span>
+        </h1>
+        <p class="type-lead mt-5 max-w-xl">
           Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work, and fix most faults on the spot. We repair all major washing machine brands across {areaList()}.
         </p>
-        <ContactButtons class="mt-6" size="lg" />
-        <ul class="mt-6 grid gap-2 text-ink-soft sm:grid-cols-2">
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Quote before we start</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out, {f.calloutConditionShort}</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} repair warranty</li>
-          <li class="flex items-center gap-2"><span class="text-brand-dark"><Icon name="check" /></span> Front, top and washer-dryers</li>
+        <ul class="mt-6 grid max-w-xl gap-x-6 gap-y-2.5 text-[15px] text-ink sm:grid-cols-2">
+          {benefits.map((b) => (
+            <li class="flex items-start gap-2.5">
+              <span class="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-tint-strong text-brand-dark">
+                <Icon name="check" class="h-3.5 w-3.5" strokeWidth={3} />
+              </span>
+              <span class="leading-snug">{b}</span>
+            </li>
+          ))}
         </ul>
+        <ContactButtons class="mt-8" size="lg" />
+        <div class="hidden sm:block"><HeroTrustRow variant="phone" /></div>
       </div>
-      <img
-        src={hero.src}
-        srcset={hero.srcset}
-        sizes={hero.sizes}
-        width="1200"
-        height="900"
-        alt="ProServ technician repairing a front loader washing machine in a customer's kitchen"
-        fetchpriority="high"
-        loading="eager"
-        decoding="async"
-        class="h-auto w-full rounded-2xl border border-line object-cover shadow-md"
-      />
+      <div class="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--shadow-float)] lg:aspect-[4/3]">
+        <img
+          src={hero.src}
+          srcset={hero.srcset}
+          sizes={hero.sizes}
+          width="1200"
+          height="900"
+          alt="Illustration of a front loader washing machine with a technician's toolbox and spanner"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover object-center"
+        />
+      </div>
     </div>
   </section>
 
@@ -69,25 +97,30 @@ const faqs = [
 
   <!-- Services -->
   <LinkCards
+    eyebrow="What we repair"
     heading="Washing machine repair services"
     headingId="services-h"
     intro="Whatever kind of machine you have, we'll come to you and fix it properly."
-    items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))}
-  />
+    items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))}
+  >
+    <p class="mt-8 text-center">
+      <a href="/services/" class="btn btn-outline">All repair services <Icon name="arrow" class="text-brand" /></a>
+    </p>
+  </LinkCards>
 
   <!-- Brands (text only, no logos) -->
-  <section class="section section-alt" aria-labelledby="brands-h">
+  <section class="section-y bg-surface" aria-labelledby="brands-h">
     <div class="container-site">
-      <h2 id="brands-h" class="text-2xl font-bold sm:text-3xl">We repair all major washing machine brands</h2>
-      <ul class="mt-6 flex flex-wrap gap-3">
+      <SectionHeading id="brands-h" eyebrow="Brands" heading="We repair all major washing machine brands" />
+      <ul class="mx-auto flex max-w-6xl flex-wrap justify-center gap-2.5">
         {brands.map((b) => (
-          <li><a href={brandUrl(b.slug)} class="inline-block rounded-full border border-line bg-white px-4 py-2 font-semibold text-ink no-underline hover:border-brand">{b.brand}</a></li>
+          <li><a href={brandUrl(b.slug)} class="chip">{b.brand}</a></li>
         ))}
         {otherBrands.map((b) => (
-          <li><span class="inline-block rounded-full border border-line bg-white px-4 py-2 text-ink-soft">{b}</span></li>
+          <li><span class="chip border-line-strong/70 bg-transparent font-medium text-ink-soft">{b}</span></li>
         ))}
       </ul>
-      <p class="mt-4 text-sm text-ink-soft">{trademarkNote} <a href="/brands/">See all brands</a>.</p>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-ink-soft">{trademarkNote} <a href="/brands/" class="font-semibold whitespace-nowrap">See all brands</a>.</p>
     </div>
   </section>
 
@@ -96,32 +129,42 @@ const faqs = [
   <!-- Problems -->
   <LinkCards
     alt
+    eyebrow="Fault guides"
     heading="Common washing machine problems we fix"
     headingId="problems-h"
     cols={4}
-    items={problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary }))}
+    items={problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary, icon: problemIcon(p.slug) }))}
   />
 
-  <!-- Why us / copy -->
-  <section class="section" aria-labelledby="why-h">
-    <div class="container-site grid gap-10 lg:grid-cols-2">
-      <div class="prose-site">
-        <h2 id="why-h">A local washing machine repair service you can trust</h2>
-        <p>When your washing machine stops, life gets complicated fast. Laundry piles up, school uniforms don't get washed and the laundromat eats your weekend. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
-        <p>Our technicians have been doing washing machine repair work for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. We carry the most common parts on the van, so many machines are fixed on the first visit. We explain what's wrong in plain language, show you the faulty part, and give you a price before we start.</p>
-        <p>If a machine isn't worth repairing, we'll say so. Our <a href="/repair-or-replace/">repair or replace guide</a> explains how we think about it, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains what affects the price.</p>
+  <!-- Why us -->
+  <section class="section-y bg-white" aria-labelledby="why-h">
+    <div class="container-site grid items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+      <div class="min-w-0">
+        <p class="type-eyebrow mb-3">Why choose ProServ</p>
+        <h2 id="why-h" class="type-h2">A local washing machine repair service you can trust</h2>
+        <div class="rich-text mt-6 max-w-[65ch] space-y-4 text-[1.0625rem] leading-relaxed text-ink">
+          <p>When your washing machine stops, life gets complicated fast. Laundry piles up, school uniforms don't get washed and the laundromat eats your weekend. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
+          <p>Our technicians have been doing washing machine repair work for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. We carry the most common parts on the van, so many machines are fixed on the first visit. We explain what's wrong in plain language, show you the faulty part, and give you a price before we start.</p>
+          <p>If a machine isn't worth repairing, we'll say so. Our <a href="/repair-or-replace/">repair or replace guide</a> explains how we think about it, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains what affects the price.</p>
+        </div>
       </div>
-      <div class="card self-start">
-        <h3 class="text-xl font-semibold">What you can expect</h3>
-        <ul class="mt-4 space-y-3">
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A technician at your door, with a booked time</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A proper diagnosis, not a guess over the phone</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> A clear quote before any work</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.calloutFee} call-out fee, {f.calloutCondition}</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} warranty on parts and labour</li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.fiveStarReviews} five-star reviews from local customers</li>
-        </ul>
-        {hasHours && <p class="mt-4 text-sm text-ink-soft">{hoursText()}</p>}
+      <div class="card-surface overflow-hidden">
+        <div class="h-1 bg-brand" aria-hidden="true"></div>
+        <div class="p-6 sm:p-7">
+          <h3 class="type-h3 text-xl">What you can expect</h3>
+          <ul class="mt-5 space-y-3.5 text-[15px] leading-snug text-ink">
+            {expectations.map((e) => (
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-tint-strong text-brand-dark">
+                  <Icon name="check" class="h-3.5 w-3.5" strokeWidth={3} />
+                </span>
+                <span class="pt-0.5">{e}</span>
+              </li>
+            ))}
+          </ul>
+          {hasHours && <p class="mt-5 flex items-start gap-2 border-t border-line pt-4 text-sm text-ink-soft"><Icon name="clock" class="mt-0.5 h-4 w-4 shrink-0 text-brand" />{hoursText()}</p>}
+          <ContactButtons class="mt-6 border-t border-line pt-6" block="always" />
+        </div>
       </div>
     </div>
   </section>
@@ -129,12 +172,19 @@ const faqs = [
   <!-- Areas -->
   <LinkCards
     alt
+    variant="compact"
+    eyebrow="Where we work"
     heading="Areas we cover"
     headingId="areas-h"
     intro="Our mobile technicians cover these areas and the suburbs around them."
-    items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}` }))}
-  />
+    icon="map"
+    items={site.areas.map((a) => ({ href: areaUrl(a.slug), kicker: 'Washing machine repairs', title: a.name }))}
+  >
+    <p class="mt-8 text-center">
+      <a href="/areas/" class="btn btn-outline">All service areas <Icon name="arrow" class="text-brand" /></a>
+    </p>
+  </LinkCards>
 
-  <Faq items={faqs} />
+  <Faq items={faqs} tone="white" />
   <CtaBand />
 </BaseLayout>

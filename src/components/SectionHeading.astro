@@ -1,0 +1,22 @@
+---
+/**
+ * Section header in the Electro style: optional eyebrow, a heavy H2 and an optional lead line.
+ * <SectionHeading id="services-h" eyebrow="What we repair" heading="..." intro="..." />
+ */
+interface Props {
+  heading: string;
+  id?: string;
+  eyebrow?: string | false;
+  intro?: string;
+  align?: 'center' | 'left';
+  class?: string;
+}
+const { heading, id, eyebrow, intro, align = 'center', class: cls = '' } = Astro.props;
+const center = align === 'center';
+---
+<div class:list={['mb-8 md:mb-10', center ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl', cls]}>
+  {eyebrow && <p class:list={['type-eyebrow mb-3', center && 'justify-center']}>{eyebrow}</p>}
+  <h2 id={id} class="type-h2">{heading}</h2>
+  {intro && <p class="type-lead mt-4">{intro}</p>}
+  <slot />
+</div>

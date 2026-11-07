@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
+import AsideLinks from '../../components/AsideLinks.astro';
+import ErrorCodeTable from '../../components/ErrorCodeTable.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import LinkCards from '../../components/LinkCards.astro';
@@ -22,41 +25,38 @@ const others = errorGuides.filter((o) => o.slug !== g.slug);
   schema={[faqSchema(g.faqs)]}
 >
   <PageHero h1={g.h1} intro={g.intro} eyebrow="Error code guides" />
-  <section class="section section-alt pt-10">
-    <div class="container-site">
-      <div class="prose-site max-w-3xl" set:html={g.body} />
-      <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Common {g.brand} washing machine error codes</h2>
-      <div class="mt-6 overflow-x-auto rounded-xl border border-line bg-white">
-        <table class="w-full min-w-[640px] border-collapse text-left text-[0.95rem]">
-          <caption class="sr-only">{g.brand} washing machine error codes, meanings, likely causes and safe checks</caption>
-          <thead>
-            <tr class="bg-surface">
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Code</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">What it usually means</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Likely causes</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">What you can safely check</th>
-            </tr>
-          </thead>
-          <tbody>
-            {g.codes.map((c) => (
-              <tr class="align-top">
-                <th scope="row" class="border-b border-line px-3 py-3 font-mono font-bold whitespace-nowrap">{c.code}</th>
-                <td class="border-b border-line px-3 py-3">{c.meaning}{c.verify && <span class="placeholder-note ml-1 text-xs font-semibold whitespace-nowrap">[VERIFY]</span>}</td>
-                <td class="border-b border-line px-3 py-3 text-ink-soft">{c.causes}</td>
-                <td class="border-b border-line px-3 py-3 text-ink-soft">{c.check}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div class="prose-site mt-10 max-w-3xl">
-        <h2>When to stop and call a technician</h2>
+  <LongFormSection reservedIds={['codes-h', 'stop-h', 'other-guides']} toc>
+    <Fragment set:html={g.body} />
+    <Fragment slot="after">
+      <section aria-labelledby="codes-h">
+        <div class="prose-site"><h2 id="codes-h">Common {g.brand} washing machine error codes</h2></div>
+        <ErrorCodeTable brand={g.brand} codes={g.codes} sources={g.sources} />
+      </section>
+      <div class="prose-site mt-12">
+        <h2 id="stop-h">When to stop and call a technician</h2>
         <p>Stop using the machine and call us if a code keeps coming back after the simple checks, if there's water on the floor, a burning smell, or the machine trips the electricity. Codes that point to heating, sensors, the motor or the control board involve electrical parts, so please leave those to a technician.</p>
         <p>WhatsApp us a photo of the display and the model number and we'll tell you what the code usually means on that model. For the full picture, see <a href={brandUrl(g.brandSlug)}>{g.brand} washing machine repairs</a>, or read our general guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a>.</p>
       </div>
-    </div>
-  </section>
-  <LinkCards heading="Other error code guides" headingId="other-guides" items={others.map((o) => ({ href: errorCodeUrl(o.slug), title: `${o.brand} washing machine error codes`, text: o.summary }))} />
-  <Faq items={g.faqs} heading={`${g.brand} error code questions`} />
+    </Fragment>
+    <Fragment slot="aside">
+      <AsideLinks
+        heading="Related help"
+        items={[
+          { href: brandUrl(g.brandSlug), title: `${g.brand} washing machine repairs`, icon: 'washer' },
+          { href: '/problems/washing-machine-showing-error-code/', title: 'Washing machine showing an error code', icon: 'alert' },
+        ]}
+      />
+    </Fragment>
+  </LongFormSection>
+  <LinkCards
+    alt
+    cols={3}
+    eyebrow="More guides"
+    heading="Other error code guides"
+    headingId="other-guides"
+    icon="alert"
+    items={others.map((o) => ({ href: errorCodeUrl(o.slug), title: `${o.brand} washing machine error codes`, text: o.summary }))}
+  />
+  <Faq items={g.faqs} heading={`${g.brand} error code questions`} tone="white" />
   <CtaBand heading={`${g.brand} error code won't clear?`} />
 </BaseLayout>

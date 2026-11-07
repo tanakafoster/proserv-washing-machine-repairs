@@ -1,9 +1,11 @@
 ---
 import { whatsappHref } from '../data/site';
 import Icon from './Icon.astro';
+// Desktop and tablet only (md and up); phones get the Call / WhatsApp bar instead.
+// The two-tone focus ring (white gap, near-black ring) stays visible over any section colour.
 ---
 <a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp"
-  class="fixed right-6 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-whatsapp-dark text-white shadow-lg transition hover:scale-105 md:flex"
-  aria-label="Chat to ProServ on WhatsApp">
-  <Icon name="whatsapp" class="h-8 w-8" />
+  class="fixed right-6 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-whatsapp-ink no-underline shadow-[0_10px_30px_-8px_rgb(37_211_102/0.6)] transition-transform hover:scale-105 hover:text-whatsapp-ink focus-visible:shadow-[0_0_0_3px_#fff] focus-visible:outline-ink-strong md:flex">
+  <Icon name="whatsapp" class="h-7 w-7" />
+  <span class="sr-only">Chat to ProServ on WhatsApp (opens in a new tab)</span>
 </a>

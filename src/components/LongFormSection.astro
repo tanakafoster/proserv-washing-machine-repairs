@@ -1,0 +1,135 @@
+---
+/**
+ * Two-column layout for long copy: a readable prose column plus a sidebar with an "On this page"
+ * list (built from the copy's <h2>s) and the booking card. On phones the contents collapse into a
+ * small "On this page" toggle above the copy and the sidebar moves below it.
+ *
+ *   <LongFormSection><Fragment set:html={page.body} /></LongFormSection>
+ *   <LongFormSection><Content /></LongFormSection>                      (Markdown)
+ *   <LongFormSection>...<Fragment slot="after">non-prose blocks</Fragment>
+ *                       <Fragment slot="aside">extra sidebar cards</Fragment></LongFormSection>
+ *
+ * The copy is post-processed: each <h2> gets a unique id (kept if it already has one), each <table>
+ * is wrapped in a keyboard-focusable scroll area, and ul.checklist / ol.steps get role="list".
+ */
+import BookingCard from './BookingCard.astro';
+import Icon from './Icon.astro';
+interface Props {
+  /** Show "On this page". Default: when the copy has 3 or more <h2>s. */
+  toc?: boolean;
+  tone?: 'white' | 'surface';
+  /** Show the booking card in the sidebar (default true). */
+  booking?: boolean;
+  bookingHeading?: string;
+  /** Ids used elsewhere on the page, so generated heading ids never clash with them. */
+  reservedIds?: string[];
+  /** Less space above the section (when it follows the hero directly). */
+  tight?: boolean;
+}
+const { toc, tone = 'white', booking = true, bookingHeading, reservedIds = [], tight = false } = Astro.props;
+
+interface Heading { id: string; text: string }
+const decode = (s: string) =>
+  s
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&');
+const plain = (html: string) => decode(html.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+const escAttr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/['’]/g, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 64)
+    .replace(/-+$/g, '') || 'section';
+
+// Ids that components on the same page use.
+const used = new Set(['main', 'faq', 'faq-h', 'cta-h', 'how-h', 'toc-h', 'links-h', 'booking-form', 'f-areas', 'f-services', 'f-quick', ...reservedIds]);
+const headings: Heading[] = [];
+
+const prepare = (raw: string) => {
+  for (const m of raw.matchAll(/\sid="([^"]+)"/g)) used.add(m[1]);
+  let html = raw.replace(/<h2(\s[^>]*)?>([\s\S]*?)<\/h2>/g, (_all, attrs: string | undefined, inner: string) => {
+    let a = attrs ?? '';
+    const text = plain(inner);
+    let id = /\sid="([^"]+)"/.exec(a)?.[1];
+    if (!id) {
+      const base = slugify(text);
+      id = base;
+      for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+      used.add(id);
+      a = `${a} id="${id}"`;
+    }
+    headings.push({ id, text });
+    return `<h2${a}>${inner}</h2>`;
+  });
+  html = html.replace(/<table\b[\s\S]*?<\/table>/g, (table: string, offset: number, whole: string) => {
+    if (/^<table[^>]*\sdata-bare\b/.test(table)) return table;
+    const caption = /<caption[^>]*>([\s\S]*?)<\/caption>/.exec(table)?.[1];
+    const heading = [...whole.slice(0, offset).matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/g)].pop()?.[1];
+    const label = plain(caption ?? heading ?? '') || 'Table';
+    return `<div class="table-wrap" role="region" tabindex="0" aria-label="${escAttr(`Table: ${label}`)}">${table}</div>`;
+  });
+  html = html.replace(/<(ul|ol)(\s[^>]*\bclass="[^"]*\b(?:checklist|steps)\b[^"]*"[^>]*)>/g, (m: string, tag: string, attrs: string) =>
+    /\srole=/.test(attrs) ? m : `<${tag}${attrs} role="list">`,
+  );
+  return html;
+};
+
+const body = prepare(Astro.slots.has('default') ? await Astro.slots.render('default') : '');
+const after = Astro.slots.has('after') ? prepare(await Astro.slots.render('after')) : '';
+const showToc = toc ?? headings.length >= 3;
+const hasAsideSlot = Astro.slots.has('aside');
+// Without the booking card or extra cards the sidebar only holds the desktop contents list.
+const asideCls = booking || hasAsideSlot ? 'min-w-0' : 'hidden min-w-0 lg:block';
+const hasAside = booking || hasAsideSlot || showToc;
+---
+<section class:list={[tight ? 'pt-2 pb-12 md:pb-16 lg:pb-20' : 'pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-16 lg:pb-20', tone === 'surface' ? 'bg-surface' : 'bg-white']}>
+  <div class:list={['container-site', hasAside && 'grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20']}>
+    <div class="min-w-0">
+      {showToc && (
+        <details class="toc-mobile card-surface mb-8 lg:hidden">
+          <summary class="flex min-h-12 items-center justify-between gap-3 px-4 py-3 font-bold text-ink-strong">
+            <span class="flex items-center gap-2.5"><Icon name="list" class="h-5 w-5 text-brand" /> On this page</span>
+            <Icon name="chevron-down" class="m-chevron h-5 w-5 text-ink-soft transition-transform" />
+          </summary>
+          <ol class="border-t border-line px-2 py-2">
+            {headings.map((h) => (
+              <li><a href={`#${h.id}`} class="flex min-h-11 items-center rounded-lg px-2 text-[15px] leading-snug text-ink no-underline hover:bg-surface">{h.text}</a></li>
+            ))}
+          </ol>
+        </details>
+      )}
+      <div class="prose-site" set:html={body} />
+      {after && <div class="mt-12" set:html={after} />}
+    </div>
+    {hasAside && (
+    <aside class={asideCls} aria-label={!booking ? 'Page contents' : showToc ? 'Page contents and booking' : 'Booking and related links'}>
+      {hasAsideSlot && <div class="mb-5 space-y-5"><slot name="aside" /></div>}
+      <div class="space-y-5 lg:tall:sticky lg:tall:top-24">
+        {showToc && (
+          <nav class="hidden rounded-2xl border border-line bg-white p-5 lg:block" aria-labelledby="toc-h">
+            <p id="toc-h" class="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-ink-strong uppercase">
+              <Icon name="list" class="h-4 w-4 text-brand" /> On this page
+            </p>
+            <ol class="toc-list mt-3 lg:tall:max-h-[max(6rem,calc(100dvh-42rem))] lg:tall:overflow-y-auto">
+              {headings.map((h) => <li><a href={`#${h.id}`} class="toc-link">{h.text}</a></li>)}
+            </ol>
+          </nav>
+        )}
+        {booking && <BookingCard heading={bookingHeading} />}
+      </div>
+    </aside>
+    )}
+  </div>
+</section>

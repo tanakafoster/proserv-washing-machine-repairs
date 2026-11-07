@@ -1,12 +1,14 @@
 ---
 import { telHref, whatsappHref } from '../data/site';
 import Icon from './Icon.astro';
+// Phones and small tablets (below md): a fixed bar with equal Call and WhatsApp buttons.
+// The body gets matching bottom padding in global.css, so the bar never hides content.
 ---
-<div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-line bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.08)] md:hidden" style="padding-bottom: env(safe-area-inset-bottom)">
-  <a href={telHref} class="flex min-h-14 items-center justify-center gap-2 bg-brand-dark font-semibold text-white no-underline focus-visible:-outline-offset-4 focus-visible:outline-white" data-track="call">
+<nav aria-label="Call or WhatsApp" class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-white/95 px-3 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))] shadow-[0_-8px_24px_-16px_rgb(0_0_0/0.25)] backdrop-blur md:hidden">
+  <a href={telHref} class="btn btn-primary min-h-12 w-full" data-track="call">
     <Icon name="phone" /> Call now
   </a>
-  <a href={whatsappHref} target="_blank" rel="noopener" class="flex min-h-14 items-center justify-center gap-2 bg-whatsapp-dark font-semibold text-white no-underline focus-visible:-outline-offset-4 focus-visible:outline-white" data-track="whatsapp">
-    <Icon name="whatsapp" /> WhatsApp
+  <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-whatsapp min-h-12 w-full" data-track="whatsapp">
+    <Icon name="whatsapp" /> WhatsApp<span class="sr-only"> (opens in a new tab)</span>
   </a>
-</div>
+</nav>

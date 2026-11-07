@@ -1,57 +1,118 @@
 ---
 import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import EmailText from './EmailText.astro';
+import type { IconName } from './icons';
 import { site, telHref, whatsappHref, mailHref, areaUrl, hoursText, hasHours } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { trademarkNote } from '../data/brands';
 const year = new Date().getFullYear();
+const f = site.facts;
+
+// Promises from site.facts, repeated on every page.
+const promises: { icon: IconName; t: string; d: string }[] = [
+  { icon: 'clipboard', t: 'Quote before work starts', d: 'Diagnosis first, then a clear price' },
+  { icon: 'banknote', t: `${f.calloutFee} call-out fee`, d: `${f.calloutConditionShort.charAt(0).toUpperCase()}${f.calloutConditionShort.slice(1)}` },
+  { icon: 'shield', t: `${f.warranty} warranty`, d: 'On parts and labour' },
+  { icon: 'home', t: 'Repairs at your home', d: `Mobile technicians across Gauteng` },
+];
+const quickLinks = [
+  { href: '/problems/', label: 'Common problems' },
+  { href: '/brands/', label: 'Brands we repair' },
+  { href: '/error-codes/', label: 'Error code guides' },
+  { href: '/washing-machine-repair-cost/', label: 'Repair prices' },
+  { href: '/repair-or-replace/', label: 'Repair or replace?' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: 'About us' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/contact/', label: 'Contact and bookings' },
+  { href: '/privacy-policy/', label: 'Privacy policy' },
+];
+const colLink = '-mx-1 inline-block rounded-md px-1 py-1.5 text-[15px] leading-snug text-ink-soft no-underline hover:text-ink-strong hover:underline';
+const colHead = 'mb-3 text-xs font-bold tracking-[0.14em] text-ink-strong uppercase';
+const contactRow = 'flex min-h-11 items-center gap-3 text-[15px] text-ink-soft no-underline hover:text-ink-strong';
 ---
-<footer class="border-t-4 border-brand bg-surface pb-20 text-ink">
-  <div class="container-site grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-    <div>
-      <Logo class="h-11 w-auto" />
-      <p class="mt-4 text-sm text-ink-soft">Mobile washing machine repairs at your door across Gauteng. We repair all major washing machine brands.</p>
-      <ul class="mt-4 space-y-2 text-sm">
-        <li><a href={telHref} data-track="call" class="font-semibold">{site.phone.display}</a></li>
-        <li><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">WhatsApp {site.phone.display}</a></li>
-        <li><a href={mailHref} class="break-all">{site.email}</a></li>
-        {hasHours && <li class="text-ink-soft">{hoursText()}</li>}
-        {hasHours && site.hoursNote && <li class="text-ink-soft">{site.hoursNote}</li>}
-      </ul>
-    </div>
-    <nav aria-labelledby="f-areas">
-      <h2 id="f-areas" class="font-semibold">Areas we cover</h2>
-      <ul class="mt-3 space-y-2 text-sm">
-        {site.areas.map((a) => <li><a href={areaUrl(a.slug)}>Washing machine repairs {a.name}</a></li>)}
-        <li><a href="/areas/">All service areas</a></li>
-      </ul>
-    </nav>
-    <nav aria-labelledby="f-services">
-      <h2 id="f-services" class="font-semibold">Services</h2>
-      <ul class="mt-3 space-y-2 text-sm">
-        {services.map((s) => <li><a href={serviceUrl(s.slug)}>{s.name}</a></li>)}
-      </ul>
-    </nav>
-    <nav aria-labelledby="f-quick">
-      <h2 id="f-quick" class="font-semibold">Quick links</h2>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li><a href="/problems/">Common problems</a></li>
-        <li><a href="/brands/">Brands we repair</a></li>
-        <li><a href="/error-codes/">Error code guides</a></li>
-        <li><a href="/washing-machine-repair-cost/">Repair prices</a></li>
-        <li><a href="/repair-or-replace/">Repair or replace?</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about/">About us</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="/contact/">Contact and bookings</a></li>
-        <li><a href="/privacy-policy/">Privacy policy</a></li>
-        {site.googleReviewUrl && <li><a href={site.googleReviewUrl} target="_blank" rel="noopener">Leave us a Google review</a></li>}
-      </ul>
-    </nav>
+<footer class="border-t border-line bg-white text-ink">
+  <div class="border-b border-line bg-surface">
+    <ul class="container-site grid gap-x-6 gap-y-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
+      {promises.map((p) => (
+        <li class="flex items-center gap-3">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-sm ring-1 ring-line">
+            <Icon name={p.icon} class="h-5 w-5" />
+          </span>
+          <span class="min-w-0 leading-snug">
+            <span class="block font-bold text-ink-strong">{p.t}</span>
+            <span class="block text-sm text-ink-soft">{p.d}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
   </div>
-  <div class="border-t border-line">
-    <div class="container-site py-5 text-xs text-ink-soft">
+
+  <div class="container-site pt-12 pb-8 lg:pt-16">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-4">
+        <a href="/" class="inline-block rounded-lg no-underline" aria-label="ProServ Washing Machine Repairs home">
+          <Logo class="h-11 w-auto" />
+        </a>
+        <p class="mt-4 max-w-md text-[15px] leading-relaxed text-ink-soft">Mobile washing machine repairs at your door across Gauteng. We repair all major washing machine brands.</p>
+        <p class={`${colHead} mt-6`}>Contact</p>
+        <ul>
+          <li>
+            <a href={telHref} data-track="call" class={contactRow}>
+              <Icon name="phone" class="h-5 w-5 shrink-0 text-brand" />
+              <span><span class="block font-bold text-ink-strong">{site.phone.display}</span><span class="block text-sm">Calls and WhatsApp</span></span>
+            </a>
+          </li>
+          <li>
+            <a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp" class={contactRow}>
+              <Icon name="whatsapp" class="h-5 w-5 shrink-0 text-whatsapp-dark" />
+              <span>WhatsApp {site.phone.display}<span class="sr-only"> (opens in a new tab)</span></span>
+            </a>
+          </li>
+          <li>
+            <a href={mailHref} class={contactRow}>
+              <Icon name="mail" class="h-5 w-5 shrink-0 text-brand" />
+              <span class="min-w-0"><EmailText /></span>
+            </a>
+          </li>
+          {hasHours && (
+            <li class="flex items-start gap-3 py-2 text-[15px] text-ink-soft">
+              <Icon name="clock" class="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+              <span>{hoursText()}{site.hoursNote && <span class="block text-sm">{site.hoursNote}</span>}</span>
+            </li>
+          )}
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:col-span-8">
+        <nav aria-labelledby="f-areas" class="col-span-2 md:col-span-1">
+          <h2 id="f-areas" class={colHead}>Areas we cover</h2>
+          <ul>
+            {site.areas.map((a) => <li><a href={areaUrl(a.slug)} class={colLink}>Washing machine repairs {a.name}</a></li>)}
+            <li><a href="/areas/" class={`${colLink} font-semibold text-ink-strong`}>All service areas</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-services">
+          <h2 id="f-services" class={colHead}>Services</h2>
+          <ul>
+            {services.map((s) => <li><a href={serviceUrl(s.slug)} class={colLink}>{s.name}</a></li>)}
+            <li><a href="/services/" class={`${colLink} font-semibold text-ink-strong`}>All services</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="f-quick">
+          <h2 id="f-quick" class={colHead}>Quick links</h2>
+          <ul>
+            {quickLinks.map((l) => <li><a href={l.href} class={colLink}>{l.label}</a></li>)}
+            {site.googleReviewUrl && <li><a href={site.googleReviewUrl} target="_blank" rel="noopener" class={colLink}>Leave us a Google review<span class="sr-only"> (opens in a new tab)</span></a></li>}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-line pt-6 text-sm text-ink-soft">
       <p>© {year} {site.name}. All rights reserved.</p>
-      <p class="mt-2">{trademarkNote}</p>
+      <p class="mt-2 max-w-4xl text-xs leading-relaxed">{trademarkNote}</p>
     </div>
   </div>
 </footer>

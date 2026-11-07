@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import { serviceIcon } from '../../components/icon-maps';
 import { services, serviceUrl } from '../../data/services';
 import { site } from '../../data/site';
 import { faqSchema } from '../../lib/schema';
@@ -26,9 +28,8 @@ const faqs = [
     eyebrow="What we do"
     intro={`<p>ProServ offers a full range of washing machine repair services, all done at your home. Whether you have a front loader, a top loader or a washer-dryer, our technician comes to you with the common parts on board, diagnoses the fault and gives you a clear quote before starting. We repair all major washing machine brands, and we'll always tell you honestly if a repair isn't worth it.</p>`}
   />
-  <LinkCards alt heading="Choose a service" headingId="svc-list" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
+  <LinkCards alt eyebrow="What we repair" heading="Choose a service" headingId="svc-list" items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))} />
+  <LongFormSection reservedIds={['svc-list']}>
       <h2>Repairs for every type of washing machine</h2>
       <p>Most washing machines in South African homes are either front loaders or top loaders, and they fail in different ways. Front loaders pack a heavy drum, bearings, a door seal and a door lock into a sealed cabinet, so their typical faults are bearings, pumps, locks and seals. Top loaders tend to wear out their lid switches, drive couplings, gearboxes and suspension. Washer-dryers add a drying system with its own heater, fan and condenser. Our <a href="/services/front-loader-repairs/">front loader repairs</a>, <a href="/services/top-loader-repairs/">top loader repairs</a> and <a href="/services/washer-dryer-repairs/">washer dryer repairs</a> pages explain the common faults for each.</p>
       <h2>Not sure what's wrong?</h2>
@@ -37,9 +38,8 @@ const faqs = [
       <p>A yearly <a href="/services/washing-machine-servicing/">service</a> catches worn hoses, blocked filters and noisy bearings before they turn into bigger repairs. If you've bought a new machine or are moving house, our <a href="/services/washing-machine-installation/">installation and plumbing-in</a> service gets it connected, levelled and tested properly. And when a part has failed, we supply and fit it through our <a href="/services/washing-machine-parts-replacement/">parts replacement</a> service.</p>
       <h2>Pricing</h2>
       <p>Every job is quoted after diagnosis, before work starts. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what affects the price, and <a href="/repair-or-replace/">repair or replace</a> if your machine is getting on.</p>
-    </div>
-  </section>
-  <HowItWorks />
-  <Faq items={faqs} />
+  </LongFormSection>
+  <HowItWorks tone="surface" />
+  <Faq items={faqs} tone="white" />
   <CtaBand />
 </BaseLayout>

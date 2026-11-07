@@ -1,7 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
 import { site } from '../../data/site';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -12,38 +15,40 @@ const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 
   crumbs={[{ name: 'Blog', href: '/blog/' }]}
   preloadImage={posts[0] && { src: posts[0].data.image }}
 >
-  <section class="pt-6 pb-10">
+  <PageHero
+    h1="Washing machine tips and advice"
+    eyebrow="Blog"
+    actions={false}
+    trust={false}
+    intro={`<p>Practical washing machine tips from the technicians who fix them every day. We write about the problems we see most in Gauteng homes: how to keep your machine running, how to spot trouble early, and how to protect it from power problems. No DIY electrical work, just honest advice that saves you money.</p>`}
+  />
+  <section class="section-y bg-surface" aria-labelledby="posts-h">
     <div class="container-site">
-      <p class="eyebrow">Blog</p>
-      <h1 class="mt-2 text-3xl font-extrabold sm:text-4xl">Washing machine tips and advice</h1>
-      <div class="prose-site mt-4 max-w-3xl text-lg">
-        <p>Practical washing machine tips from the technicians who fix them every day. We write about the problems we see most in Gauteng homes: how to keep your machine running, how to spot trouble early, and how to protect it from power problems. No DIY electrical work, just honest advice that saves you money.</p>
-      </div>
+      <h2 id="posts-h" class="sr-only">Latest articles</h2>
+      <ul class="grid gap-5 sm:grid-cols-2 lg:gap-6">
+        {posts.map((p, i) => (
+          <li class="min-w-0">
+            <a href={`/blog/${p.id}/`} class="card-surface card-interactive group flex h-full flex-col overflow-hidden text-ink no-underline hover:text-ink">
+              <span class="relative block aspect-[16/9] overflow-hidden bg-surface">
+                <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+              </span>
+              <span class="flex flex-1 flex-col p-5 sm:p-6">
+                <span class="block text-sm text-ink-soft"><time datetime={p.data.pubDate.toISOString().slice(0, 10)}>{fmt(p.data.pubDate)}</time></span>
+                <span class="type-h3 mt-1.5 block text-xl">{p.data.title}</span>
+                <span class="mt-2 block flex-1 leading-relaxed text-ink-soft">{p.data.summary}</span>
+                <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-ink-strong" aria-hidden="true">Read the article <Icon name="arrow" class="h-4 w-4 text-brand transition-transform group-hover:translate-x-0.5" /></span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
-  <section class="section section-alt pt-10">
-    <ul class="container-site grid gap-6 sm:grid-cols-2">
-      {posts.map((p, i) => (
-        <li>
-          <a href={`/blog/${p.id}/`} class="card-link h-full overflow-hidden p-0">
-            <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" class="h-auto w-full" />
-            <span class="block p-5">
-              <span class="block text-sm text-ink-soft"><time datetime={p.data.pubDate.toISOString().slice(0, 10)}>{fmt(p.data.pubDate)}</time></span>
-              <span class="mt-1 block text-xl font-semibold text-ink">{p.data.title}</span>
-              <span class="mt-2 block text-ink-soft">{p.data.summary}</span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
-      <h2>Looking for help with a specific fault?</h2>
-      <p>Our <a href="/problems/">washing machine problems</a> guides cover not draining, not spinning, leaks, power, doors, noise, error codes and filling problems. For codes on the display, see our <a href="/error-codes/">error code guides</a>.</p>
-      <h2>Coming up on the blog</h2>
-      <p>We publish new articles twice a month. Coming soon: how to clean your washing machine filter, simple maintenance habits that make a machine last longer, what to check before you call a technician, why a washing machine trips the electricity, and how to move a washing machine without damaging it. If there's something you'd like us to cover, send us a WhatsApp.</p>
-    </div>
-  </section>
+  <LongFormSection toc={false}>
+    <h2>Looking for help with a specific fault?</h2>
+    <p>Our <a href="/problems/">washing machine problems</a> guides cover not draining, not spinning, leaks, power, doors, noise, error codes and filling problems. For codes on the display, see our <a href="/error-codes/">error code guides</a>.</p>
+    <h2>Coming up on the blog</h2>
+    <p>We publish new articles twice a month. Coming soon: how to clean your washing machine filter, simple maintenance habits that make a machine last longer, what to check before you call a technician, why a washing machine trips the electricity, and how to move a washing machine without damaging it. If there's something you'd like us to cover, send us a WhatsApp.</p>
+  </LongFormSection>
   <CtaBand />
 </BaseLayout>

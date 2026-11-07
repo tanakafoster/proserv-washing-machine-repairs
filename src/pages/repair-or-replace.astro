@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { faqSchema } from '../lib/schema';
@@ -24,8 +25,7 @@ const faqs = [
     eyebrow="Honest advice"
     intro={`<p>Whether to repair or replace a washing machine comes down to four things: how old it is, what's wrong with it, what the repair costs compared with a new machine, and the overall condition of the machine. Most of the time a repair is the better value, but not always. Here's how we help customers decide, honestly.</p>`}
   />
-  <section class="section section-alt pt-10">
-    <div class="container-site prose-site max-w-3xl">
+  <LongFormSection>
       <h2>The 50% rule of thumb</h2>
       <p>A simple guide: if the repair would cost more than about half the price of a comparable new machine, and your machine is more than about seven or eight years old, replacement deserves serious thought. If the repair is a fraction of that price, repair is almost always the better choice.</p>
 
@@ -67,8 +67,7 @@ const faqs = [
 
       <h2>How we help you decide</h2>
       <p>Our technician diagnoses the fault and gives you a price before any work. If the repair doesn't make sense, we'll tell you. If you decide to replace, our <a href="/services/washing-machine-installation/">installation service</a> can connect and test the new machine, and our guide to <a href="/blog/front-loader-vs-top-loader/">front loaders vs top loaders</a> may help you choose. See <a href="/washing-machine-repair-cost/">washing machine repair cost</a> for what drives repair prices.</p>
-    </div>
-  </section>
+  </LongFormSection>
   <Faq items={faqs} />
   <CtaBand heading="Not sure if it's worth fixing?" text="Book a diagnosis. We'll tell you what's wrong, what it costs, and whether repairing it makes sense." />
 </BaseLayout>
