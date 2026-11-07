@@ -3,31 +3,119 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
+import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { problemIcon } from '../../components/icon-maps';
 import { problems, problemUrl } from '../../data/problems';
 import { site } from '../../data/site';
+import { faqSchema } from '../../lib/schema';
+const f = site.facts;
+const faqs = [
+  { q: 'Is it safe to keep using my machine while it has a problem?', a: 'It depends on the problem. A slow drain or an unbalanced load is fine to retry after the safe checks, but stop using the machine if it leaks, trips the electricity, smells of burning or grinds loudly on spin. Running it like that can turn a small repair into a big one, or put you at risk.' },
+  { q: 'What\'s the difference between a problem guide and an error code guide?', a: 'A problem guide starts from what you notice, such as water on the floor or a drum that won\'t turn, and covers the likely causes. An error code guide starts from the code on the display and explains what that brand\'s code usually means. If your machine shows a code, use both: the code tells you which problem guide to open.' },
+  { q: 'Can you tell what\'s wrong from a call or a WhatsApp?', a: 'A description, a photo of the display or a short video often shows which system is involved, such as the drain, the door lock or the motor. Confirming the exact cause means testing the machine, which is why the quote comes after the technician\'s diagnosis at your home.' },
+  { q: 'Why does the problem only happen now and then?', a: 'Faults that come and go are common. A partly blocked filter may only cause trouble on full loads, a loose connection may only act up when the machine vibrates on spin, and an unbalanced load depends on what\'s in the drum. Note when it happens and which programme was running, and take a video if you can.' },
+  { q: 'Could the cause be my plumbing or electricity rather than the machine?', a: 'Sometimes. A blocked standpipe or sink trap stops the machine draining, low water pressure slows filling, and a plug point with no power stops it starting. The safe checks in each guide help you rule these out before you book.' },
+  { q: 'Can leaving a problem make it worse?', a: 'Often, yes. Worn bearings damage the shaft seal and the tub the longer they run, a pump straining against a blockage can burn out, a slow leak can damage flooring and cupboards, and a machine that bangs on spin wears out its suspension. Booking early usually keeps the repair smaller.' },
+  { q: 'My problem isn\'t listed. Can you still help?', a: 'Yes. Describe what the machine is doing when you book, even if it doesn\'t match any of the guides. The technician will find the fault at your home and quote before starting any work.' },
+];
 ---
 <BaseLayout
   title="Washing Machine Problems & What They Mean | ProServ"
   description={`Common washing machine problems explained in plain language: drainage, spin, leaks, power, doors, noise and codes. Call ${site.phone.display}.`}
   crumbs={[{ name: 'Problems', href: '/problems/' }]}
+  schema={[faqSchema(faqs)]}
 >
   <PageHero
     h1="Common washing machine problems"
     eyebrow="What's wrong with my machine?"
-    intro={`<p>Washing machine problems usually show up in one of a few ways: water that won't drain, a drum that won't spin, a puddle on the floor, a dead display, a stuck door, a loud noise, an error code, or a machine that won't fill. Pick the one that matches yours below. Each guide explains the likely causes in plain language, the simple checks you can safely do, and when it's time to call a technician.</p>`}
+    intro={`<p>Most washing machine problems show up in one of eight ways: water left in the drum, a drum that won't spin, a puddle on the floor, a machine that won't switch on, a door that won't open or lock, a loud noise on spin, an error code, or a machine that won't fill. Pick the guide that matches yours below. Each one explains the likely causes, the checks you can safely do yourself and when it's time to call a technician.</p>`}
   />
   <LinkCards alt eyebrow="Fault guides" heading="Pick your problem" headingId="prob-list" cols={4} items={problems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary, icon: problemIcon(p.slug) }))} />
   <LongFormSection reservedIds={['prob-list']}>
-      <h2>A word on safety</h2>
-      <p>Our guides only suggest checks that don't involve electrical work: things like making sure the tap is open, the hose isn't kinked, or the pump filter is clear. Always switch off and unplug the machine first. Please don't open panels, test wiring or replace electrical parts yourself. A washing machine combines mains electricity and water, and that's a job for a qualified technician.</p>
-      <h2>Why the same symptom can have different causes</h2>
-      <p>A machine that "won't spin" might have an unbalanced load, water that hasn't drained, worn carbon brushes, a broken belt or a door lock fault. That's why we diagnose before we quote, rather than guessing over the phone. What you tell us still helps a lot: the brand and model number, what the machine was doing when it stopped, any error code on the display, and whether there were any unusual sounds or smells.</p>
-      <h2>Brand-specific help</h2>
-      <p>If your machine shows a code, see our guides to <a href="/error-codes/">washing machine error codes</a>. For common faults by brand, visit <a href="/brands/">brands we repair</a>.</p>
-      <h2>Ready to book?</h2>
-      <p>Call or WhatsApp us, or use our <a href="/contact/">booking form</a>. We'll arrange a time and send a technician to your home. You'll get a quote before any work starts.</p>
+      <h2>Before you check anything</h2>
+      <div class="callout callout-safety"><p><strong>Safety first:</strong> a washing machine combines mains electricity and water. Before you check anything, switch off at the wall and pull out the plug. If the earth leakage or circuit breaker trips when the machine runs, leave it off and call a technician, because it can indicate a dangerous fault.</p></div>
+      <p>The checks in our guides never involve opening panels, testing or replacing electrical parts, or forcing a locked door. Stop and call a technician if you notice any of these:</p>
+      <ul>
+        <li>A burning or electrical smell, smoke, or scorch marks on the plug or socket</li>
+        <li>Water on the floor near the plug point, or water coming from underneath the machine</li>
+        <li>A door that stays locked with water in the drum after the machine has finished</li>
+        <li>Grinding, scraping or banging that comes back on every wash</li>
+      </ul>
+
+      <h2>Quick symptom guide</h2>
+      <p>Symptoms don't always fit neatly into one guide. Use this table to find the one to read first.</p>
+      <table>
+        <thead><tr><th>What you notice</th><th>Read this first</th></tr></thead>
+        <tbody>
+          <tr><td>Water left in the drum at the end of a cycle</td><td><a href="/problems/washing-machine-not-draining/">Washing machine not draining</a></td></tr>
+          <tr><td>The water drained, but the clothes are soaking wet</td><td><a href="/problems/washing-machine-not-spinning/">Washing machine not spinning</a></td></tr>
+          <tr><td>Water on the floor at the front, behind or underneath</td><td><a href="/problems/washing-machine-leaking/">Washing machine leaking</a></td></tr>
+          <tr><td>No lights at all, even with the wall switch on</td><td><a href="/problems/washing-machine-wont-turn-on/">Washing machine won't turn on</a></td></tr>
+          <tr><td>Lights come on, but the programme won't start</td><td>Check the child lock and delay timer, then see <a href="/problems/washing-machine-door-wont-open/">door won't open or lock</a></td></tr>
+          <tr><td>The door stays locked after the cycle ends</td><td><a href="/problems/washing-machine-door-wont-open/">Washing machine door won't open</a>, and if water is still inside, the <a href="/problems/washing-machine-not-draining/">not draining guide</a></td></tr>
+          <tr><td>A rumble or roar that gets louder on spin</td><td><a href="/problems/washing-machine-noisy-when-spinning/">Noisy when spinning</a> and <a href="/blog/signs-washing-machine-bearings-are-worn/">signs of worn bearings</a></td></tr>
+          <tr><td>Thumping, shaking or walking across the floor</td><td><a href="/problems/washing-machine-noisy-when-spinning/">Washing machine noisy when spinning</a></td></tr>
+          <tr><td>Letters, numbers or flashing lights on the display</td><td><a href="/problems/washing-machine-showing-error-code/">Washing machine showing an error code</a></td></tr>
+          <tr><td>Humming or clicking, but no water coming in</td><td><a href="/problems/washing-machine-not-filling-with-water/">Washing machine not filling with water</a></td></tr>
+          <tr><td>Dead, or behaving oddly, after a power cut</td><td><a href="/blog/protect-washing-machine-from-load-shedding/">Load shedding and your washing machine</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Describing the problem</h2>
+      <p>A clear description helps the technician arrive prepared and saves time on the day. Before you call or WhatsApp, note:</p>
+      <ul class="checklist">
+        <li><strong>When it happens.</strong> While filling, washing, draining or spinning, at the start or near the end, and on every programme or only one. A fault that shows only on hot washes points somewhere different from one on every wash.</li>
+        <li><strong>What you see, hear or smell.</strong> Where the water appears, what the noise sounds like (a rumble, a bang, a grind or a hum) and any burning or musty smell.</li>
+        <li><strong>Anything on the display.</strong> The exact code or the pattern of flashing lights, written down or photographed.</li>
+        <li><strong>What changed recently.</strong> A power cut, a move, a new hose, an unusually heavy load, or a coin or hair clip that went in with the washing.</li>
+        <li><strong>The brand and model number.</strong> Our <a href="/brands/">brands we repair</a> page explains where to find the model number.</li>
+      </ul>
+      <div class="callout callout-tip"><p><strong>Tip:</strong> a short video of the machine doing the wrong thing, sent on WhatsApp, often explains a noise or a leak better than words can.</p></div>
+
+      <h2>One symptom, several causes</h2>
+      <p>The same symptom can come from very different faults, which is why the technician diagnoses before quoting. A machine that won't spin might have an unbalanced load, water that hasn't drained, worn carbon brushes, a slipping belt or a motor sensor fault. A puddle might come from the door seal, the detergent drawer, a hose connection, the pump or a crack in the outer tub. A dead display might mean a plug point with no power, an internal fuse or the control board.</p>
+      <p>Guessing from a description often means buying the wrong part. Testing the system involved, for example watching how quickly the machine drains or checking whether the motor is getting power, confirms the cause before you spend money on it.</p>
+
+      <h2>Problems that come together</h2>
+      <p>Some faults cause others, so it pays to start with the right guide:</p>
+      <ul>
+        <li><strong>Not draining and not spinning.</strong> Most machines won't spin while water is still in the drum, so a drain blockage often looks like a spin fault. Start with <a href="/problems/washing-machine-not-draining/">washing machine not draining</a>.</li>
+        <li><strong>Not draining and a locked door.</strong> A front loader keeps its door locked while it senses water in the drum. Once the drain problem is sorted, the door usually releases.</li>
+        <li><strong>A rumble that turns into a leak.</strong> When the drum's shaft seal wears, water reaches the bearings behind it. The bearings start to rumble, and the noise and the leak grow together. Our article on <a href="/blog/signs-washing-machine-bearings-are-worn/">signs of worn washing machine bearings</a> explains the pattern.</li>
+        <li><strong>Dead after a power cut.</strong> A surge when the power returns can damage the control board or the mains filter. See <a href="/problems/washing-machine-wont-turn-on/">washing machine won't turn on</a>.</li>
+        <li><strong>A code with any of these.</strong> The code usually names the system involved, such as the drain or the water supply, which tells you which guide to open. Our <a href="/error-codes/">washing machine error codes</a> page explains how codes work.</li>
+      </ul>
+
+      <h2>Checks you can safely do</h2>
+      <p>These owner checks fix some problems without a call-out. Switch off at the wall and unplug the machine before each one.</p>
+      <ul class="checklist">
+        <li>The plug is in, the wall switch is on and the house has power. During load shedding, wait for the power to return, and try a lamp in the same socket.</li>
+        <li>The tap is turned fully on, and the inlet hose behind the machine isn't kinked or flattened.</li>
+        <li>The drain hose isn't kinked, and its end sits at the height your manual gives, not pushed deep into the standpipe or lying on the floor.</li>
+        <li>The load is a sensible size and evenly spread, with heavy items such as jeans and towels mixed with lighter ones.</li>
+        <li>The machine stands level and firm on all four feet.</li>
+        <li>You're using a detergent made for automatic machines (marked "auto" on many packs), not hand-wash powder, in the amount the pack suggests.</li>
+        <li>The pump filter is clear. Clean it as your manual describes, expecting water, with towels and a shallow tray ready.</li>
+        <li>The small mesh filter where the inlet hose meets the machine is free of grit, cleaned as your manual describes.</li>
+      </ul>
+      <p>Anything beyond these, such as removing panels or testing parts, is a job for a technician.</p>
+
+      <h2>Faults without their own guide</h2>
+      <p>Some problems don't have a dedicated guide. Here's where to start with them:</p>
+      <ul>
+        <li><strong>A bad smell.</strong> This is usually detergent and softener residue feeding mould in the door seal, the drawer and the pump filter, rather than a fault. See <a href="/blog/why-does-my-washing-machine-smell/">why your washing machine smells</a>.</li>
+        <li><strong>Washing that doesn't come out clean.</strong> Overloading, the wrong detergent or dose, a short or cold programme, or a partly blocked drain can all leave clothes grubby or marked with residue. If the basics are right, a <a href="/services/washing-machine-servicing/">washing machine service</a> checks the rest.</li>
+        <li><strong>Powder left in the drawer.</strong> A blocked drawer is the usual culprit, and weak water flow can cause it too. Clean the drawer, and if it keeps happening, see <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.</li>
+        <li><strong>A top loader that fills but won't agitate.</strong> A worn drive coupling, belt or clutch, or a faulty lid switch, is a common cause. See <a href="/services/top-loader-repairs/">top loader repairs</a>.</li>
+        <li><strong>A programme that stops before the end.</strong> The machine is usually waiting for something: water to fill, water to drain, the load to balance or the door to lock. Check the display for a code and start with the matching guide.</li>
+        <li><strong>A washer-dryer that won't dry.</strong> See <a href="/services/washer-dryer-repairs/">washer dryer repairs</a>.</li>
+        <li><strong>The electricity trips when the machine runs.</strong> This one isn't for owner checks: keep the machine switched off at the wall and call a technician.</li>
+      </ul>
+
+      <h2>When to call a technician</h2>
+      <p>If the safe checks don't solve it, or the problem keeps coming back, it's time for a technician. Call or WhatsApp us, or send a request through our <a href="/contact/">booking form</a>. A technician comes to your home, diagnoses the fault and quotes before any work starts. The call-out fee is {f.calloutFee}, {f.calloutCondition}.</p>
   </LongFormSection>
+  <Faq items={faqs} />
   <CtaBand />
 </BaseLayout>
