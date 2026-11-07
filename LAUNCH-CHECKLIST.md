@@ -14,7 +14,8 @@ The site has no placeholders left: `npm run audit` fails if any `[PLACEHOLDER]`,
 - [ ] GTM container ID added (`gtmId`)
 - [ ] Optional: real photos swapped in for the illustrations (same file names and sizes, see README). Don't run `npm run images -- photos` or `--force` afterwards: they redraw the illustrations over your photos
 - [ ] Optional: a few lines about you and how the business started on the About page (it says nothing about the owner or team that you haven't supplied)
-- [ ] Optional: privacy policy. If you have a registered business name or want to name an Information Officer, add them (it currently sends privacy questions to the email address)
+- [ ] POPIA: register your Information Officer with the Information Regulator (inforegulator.org.za). That's a legal step for the business, not website copy. The privacy policy sends privacy questions to the email address; if you want, add your registered business name and a postal address to it
+- [ ] The privacy policy describes Google Analytics and cookies only once `gtmId` is set. If you add other tags to the GTM container, or switch the form to the cPanel PHP handler, update the policy to match
 - [ ] `npm run build && npm run audit` shows 0 errors
 
 ## 2. Domain, hosting and redirects
