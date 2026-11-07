@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { site } from '../data/site';
@@ -42,9 +43,7 @@ const faqs = [
     eyebrow="Prices"
     intro={`<p>The washing machine repair cost for your machine depends on what has failed, which part it needs, the brand and model, and how long the repair takes. We can't give an exact price until we've diagnosed the machine, but we can explain what drives the price, and you will always get a clear quote in Rands before any work starts.</p>`}
   />
-  <section class="section section-alt pt-10">
-    <div class="container-site">
-      <div class="prose-site max-w-3xl">
+  <LongFormSection>
         <h2>What affects the price of a repair?</h2>
         <h3>1. The part</h3>
         <p>The part is usually the biggest variable. A drain blockage might need no parts at all. Carbon brushes, door locks and inlet valves are relatively inexpensive. Door seals and heating elements sit in the middle. Drum bearings, motors and control boards are the bigger repairs.</p>
@@ -54,33 +53,31 @@ const faqs = [
         <p>Labour depends on how long the job takes. Replacing a pump on a front loader is quick. Replacing bearings means stripping the whole machine down to the tub. Integrated machines also take extra time to remove from and refit into the kitchen cabinets.</p>
         <h3>4. The call-out</h3>
         <p>Our call-out fee is {f.calloutFee}. It covers the technician's travel and the diagnosis, and it's {f.calloutCondition}.</p>
-      </div>
 
-      <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Typical repair prices</h2>
-      <p class="mt-2 max-w-3xl text-ink-soft">Guide prices including labour. Your exact price is confirmed after diagnosis. All repairs carry our {f.warranty} warranty.</p>
-      <div class="mt-6 overflow-x-auto rounded-xl border border-line bg-white">
-        <table class="w-full min-w-[560px] border-collapse text-left">
+        <h2>Typical repair prices</h2>
+        <p>Guide prices including labour. Your exact price is confirmed after diagnosis. All repairs carry our {f.warranty} warranty.</p>
+        {/* .price-table: a normal table from 640px; on phones each row stacks as repair, price, note.
+            The ARIA roles keep the table semantics when the phone layout changes the cells' display. */}
+        <table class="price-table" role="table">
           <caption class="sr-only">Typical washing machine repair prices in Rands</caption>
-          <thead>
-            <tr class="bg-surface">
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Repair</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Guide price</th>
-              <th scope="col" class="border-b-2 border-brand px-3 py-3">Notes</th>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Repair</th>
+              <th scope="col" role="columnheader">Guide price</th>
+              <th scope="col" role="columnheader">Notes</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             {prices.map((p) => (
-              <tr>
-                <th scope="row" class="border-b border-line px-3 py-3 font-medium">{p.job}</th>
-                <td class="border-b border-line px-3 py-3">{p.price}</td>
-                <td class="border-b border-line px-3 py-3 text-ink-soft">{p.note}</td>
+              <tr role="row">
+                <th scope="row" role="rowheader">{p.job}</th>
+                <td role="cell">{p.price}</td>
+                <td role="cell">{p.note}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
 
-      <div class="prose-site mt-10 max-w-3xl">
         <h2>Bearing replacement cost</h2>
         <p>Bearing replacement cost surprises a lot of people, so it's worth explaining. The bearings sit at the back of the outer tub, behind the drum. To reach them, the technician removes the top, the front panel, the door seal, the motor, the counterweights and the tub, then splits the tub, presses out the old bearings and fits new bearings and a new seal. It's several hours of work.</p>
         <p>Many newer machines have a <strong>sealed (welded) tub</strong> that can't be split. On those, the whole tub and drum assembly has to be replaced, which costs more. We'll tell you which type you have before quoting. Read more in <a href="/blog/signs-washing-machine-bearings-are-worn/">signs your washing machine bearings are worn</a>.</p>
@@ -96,9 +93,7 @@ const faqs = [
 
         <h2>Is it worth repairing?</h2>
         <p>For most faults on machines under about ten years old, a repair is far cheaper than a new machine. If a repair would cost more than about half the price of a comparable new machine, it's worth thinking twice. Our <a href="/repair-or-replace/">repair or replace guide</a> walks through the decision. For specific faults, see <a href="/services/washing-machine-parts-replacement/">parts replacement</a>.</p>
-      </div>
-    </div>
-  </section>
+  </LongFormSection>
   <Faq items={faqs} heading="Repair cost questions" />
   <CtaBand heading="Want an exact price?" text="Call or WhatsApp us with your machine's brand, model and fault. We'll book a technician to diagnose it and quote before any work starts." />
 </BaseLayout>

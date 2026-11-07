@@ -1,23 +1,54 @@
 ---
+/**
+ * Inner-page hero (Electro PageHero): eyebrow, heavy H1, lead (the page's intro HTML), Call and
+ * WhatsApp buttons and a small trust row. With an image, the image sits beside the copy from lg.
+ * Without one, a "facts" card (HeroFactsCard) sits beside the copy from lg, lined up with the
+ * LongFormSection sidebar below; phones and tablets get the compact trust row instead.
+ * Anything in the default slot renders under the intro (e.g. a blog post's byline); the `after`
+ * slot renders under the buttons and trust row (e.g. topic chips on the FAQ page).
+ */
 import ContactButtons from './ContactButtons.astro';
+import HeroTrustRow from './HeroTrustRow.astro';
+import HeroFactsCard from './HeroFactsCard.astro';
 interface Props {
   h1: string;
-  intro: string;
+  /** Intro HTML (one or more <p>). */
+  intro?: string;
   eyebrow?: string;
   image?: { src: string; alt: string; width: number; height: number };
+  /** Show the Call / WhatsApp buttons (default true). */
+  actions?: boolean;
+  /** 'facts' (default), 'phone' or false. */
+  trust?: 'facts' | 'phone' | false;
 }
-const { h1, intro, eyebrow, image } = Astro.props;
+const { h1, intro, eyebrow, image, actions = true, trust = 'facts' } = Astro.props;
+const factsCard = !image && trust === 'facts';
+const grid = image
+  ? 'grid items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14'
+  : factsCard
+    ? 'grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20'
+    : '';
 ---
-<section class="pt-6 pb-10 sm:pb-14">
-  <div class:list={['container-site', image && 'grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]']}>
-    <div>
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <h1 class="mt-2 text-3xl leading-tight font-extrabold sm:text-4xl lg:text-5xl">{h1}</h1>
-      <div class="prose-site mt-5 max-w-3xl text-lg" set:html={intro} />
-      <ContactButtons class="mt-6" />
+<section class="border-b border-line/70 pt-5 pb-12 md:pb-14 lg:pt-8 lg:pb-16">
+  <div class:list={['container-site', grid]}>
+    <div class="min-w-0 max-w-3xl">
+      {eyebrow && <p class="type-eyebrow mb-3">{eyebrow}</p>}
+      <h1 class={h1.length > 50 ? 'type-page-h1-long' : 'type-page-h1'}>{h1}</h1>
+      {intro && <div class="hero-lead type-lead mt-5 max-w-[62ch]" set:html={intro} />}
+      <slot />
+      {actions && <ContactButtons class="mt-8" size="lg" />}
+      {trust && (
+        <div class:list={[factsCard && 'lg:hidden']}>
+          <HeroTrustRow variant={trust} />
+        </div>
+      )}
+      <slot name="after" />
     </div>
     {image && (
-      <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" fetchpriority="high" class="h-auto w-full rounded-2xl border border-line object-cover shadow-sm" />
+      <div class="relative aspect-[3/2] overflow-hidden rounded-2xl border border-line bg-surface shadow-[var(--shadow-float)]">
+        <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover object-center" />
+      </div>
     )}
+    {factsCard && <HeroFactsCard class="hidden lg:block" />}
   </div>
 </section>

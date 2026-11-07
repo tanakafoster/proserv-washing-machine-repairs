@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import LinkCards from '../../components/LinkCards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { site, areaUrl, areaList } from '../../data/site';
@@ -17,9 +18,8 @@ const f = site.facts;
     eyebrow="Areas we cover"
     intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. Our technicians drive to you, so there's no need to take your machine anywhere. We cover ${areaList()}, plus many suburbs in between [CONFIRM]. Choose your area below for local details and the suburbs we work in.</p>`}
   />
-  <LinkCards alt heading="Choose your area" headingId="area-list" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}`, text: areaContent[a.slug]?.suburbs.slice(0, 4).join(', ') + '…' }))} />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
+  <LinkCards alt eyebrow="Areas we cover" heading="Choose your area" headingId="area-list" icon="map" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}`, text: areaContent[a.slug]?.suburbs.slice(0, 4).join(', ') + '…' }))} />
+  <LongFormSection reservedIds={['area-list']}>
       <h2>How our mobile service works</h2>
       <p>You call or WhatsApp us, we book a time, and a technician comes to your home with the most common parts on the van. We aim to arrive {f.arrivalTime} on urgent call-outs, depending on where the technician is working. The technician diagnoses the fault and quotes before starting. The call-out fee is {f.calloutFee}, {f.calloutCondition}.</p>
       <h2>Not sure if we cover your suburb?</h2>
@@ -28,7 +28,6 @@ const f = site.facts;
       <p>Many Gauteng homes are in estates or complexes with access control. When you book, send us your gate instructions or register our technician with security. For flats, tell us about parking, lifts and stairs. It helps us arrive on time and keeps the visit short.</p>
       <h2>What we repair</h2>
       <p>We repair all major washing machine brands in every area we cover. See our <a href="/services/">washing machine repair services</a> and the <a href="/brands/">brands we repair</a>.</p>
-    </div>
-  </section>
+  </LongFormSection>
   <CtaBand />
 </BaseLayout>

@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import LongFormSection from '../../components/LongFormSection.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import LinkCards from '../../components/LinkCards.astro';
+import { serviceIcon, problemIcon } from '../../components/icon-maps';
 import { services, serviceUrl, type Service } from '../../data/services';
 import { problems, problemUrl } from '../../data/problems';
 import { site, areaUrl } from '../../data/site';
@@ -26,23 +28,35 @@ const otherServices = services.filter((o) => o.slug !== s.slug);
   preloadImage={s.image && { src: s.image.src }}
 >
   <PageHero h1={s.h1} intro={s.intro} eyebrow="Washing machine repair services" image={s.image} />
-  <section class="section section-alt pt-10">
-    <div class="container-site">
-      <article class="prose-site max-w-3xl" set:html={s.body} />
-    </div>
-  </section>
+  <LongFormSection reservedIds={['rel-problems', 'areas-h', 'other-services']}>
+    <Fragment set:html={s.body} />
+  </LongFormSection>
   {relatedProblems.length > 0 && (
-    <LinkCards heading="Problems this service fixes" headingId="rel-problems" items={relatedProblems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary }))} />
+    <LinkCards
+      alt
+      eyebrow="Fault guides"
+      heading="Problems this service fixes"
+      headingId="rel-problems"
+      cols={relatedProblems.length >= 4 ? 4 : relatedProblems.length === 3 ? 3 : 2}
+      items={relatedProblems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary, icon: problemIcon(p.slug) }))}
+    />
   )}
   <HowItWorks />
   <LinkCards
     alt
+    variant="compact"
+    icon="map"
+    eyebrow="Areas we cover"
     heading="Where we work"
     headingId="areas-h"
-    cols={3}
-    items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `${s.name} ${a.inName}` }))}
+    items={site.areas.map((a) => ({ href: areaUrl(a.slug), kicker: s.name, title: a.name }))}
   />
-  <LinkCards heading="Other services" headingId="other-services" items={otherServices.map((o) => ({ href: serviceUrl(o.slug), title: o.name, text: o.summary }))} />
+  <LinkCards
+    eyebrow="More services"
+    heading="Other services"
+    headingId="other-services"
+    items={otherServices.map((o) => ({ href: serviceUrl(o.slug), title: o.name, text: o.summary, icon: serviceIcon(o.slug) }))}
+  />
   <Faq items={s.faqs} heading={`${s.name}: questions we get asked`} />
   <CtaBand />
 </BaseLayout>

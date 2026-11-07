@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { site, areaList } from '../data/site';
 const f = site.facts;
-const hero = { src: '/images/about-technician-van.webp', alt: 'ProServ washing machine technician standing next to the service van', width: 960, height: 640 };
+const hero = { src: '/images/about-technician-van.webp', alt: "Illustration of a home with a washing machine and a technician's toolbox at the front door", width: 960, height: 640 };
 ---
 <BaseLayout
   title="ProServ Washing Machine Repairs: About Us"
@@ -21,14 +22,13 @@ const hero = { src: '/images/about-technician-van.webp', alt: 'ProServ washing m
     intro={`<p>ProServ Washing Machine Repairs is a local, mobile repair service for Gauteng homes. We do one thing and do it well: we fix washing machines at your door. Our technicians have been repairing washing machines for ${f.yearsInBusiness} years, and we've completed ${f.repairsCompleted} repairs in homes across ${areaList()}.</p>`}
   />
   <TrustBar />
-  <section class="section">
-    <div class="container-site prose-site max-w-3xl">
+  <LongFormSection>
       <h2>Why we do things the way we do</h2>
       <p>Most people call us on a bad day. The machine has stopped mid-wash, there's water in the drum, and there's a pile of laundry waiting. So we keep it simple: answer the phone, turn up when we said we would, find the actual fault, and tell you the price before we touch anything.</p>
       <p>[PLACEHOLDER: a few sentences about the owner, how the business started, and the team. Real detail here builds trust and helps Google understand who you are.]</p>
 
       <h2>Our promises</h2>
-      <ul>
+      <ul class="checklist">
         <li><strong>Quote first.</strong> You'll know the price before any work starts.</li>
         <li><strong>Fair call-out.</strong> The call-out fee is {f.calloutFee}, {f.calloutCondition}.</li>
         <li><strong>Warranty.</strong> Every repair carries our {f.warranty} warranty on parts and labour.</li>
@@ -43,8 +43,7 @@ const hero = { src: '/images/about-technician-van.webp', alt: 'ProServ washing m
 
       <h2>Get in touch</h2>
       <p>Call or WhatsApp us on <a href={`tel:${site.phone.e164}`} data-track="call">{site.phone.display}</a>, email <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href="/contact/">send us a booking request</a>.</p>
-    </div>
-  </section>
-  <HowItWorks />
+  </LongFormSection>
+  <HowItWorks tone="surface" />
   <CtaBand />
 </BaseLayout>

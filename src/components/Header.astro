@@ -1,44 +1,254 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
-import { site, telHref, mainNav } from '../data/site';
+import EmailText from './EmailText.astro';
+import type { IconName } from './icons';
+import { serviceIcon, problemIcon } from './icon-maps';
+import { site, telHref, whatsappHref, mailHref, areaUrl, brandUrl, areaList } from '../data/site';
+import { services, serviceUrl } from '../data/services';
+import { problems, problemUrl } from '../data/problems';
+import { brands } from '../data/brands';
+
 const path = Astro.url.pathname;
 const isActive = (href: string) => href !== '/' && path.startsWith(href);
+const current = (href: string) => (path === href ? 'page' : undefined);
+
+interface MenuItem { href: string; title: string; text?: string; icon?: IconName }
+interface Menu {
+  label: string;
+  href: string;
+  /** Other sections that count as "inside" this menu for the active state. */
+  alsoActive?: string[];
+  title: string;
+  text: string;
+  allLabel: string;
+  items: MenuItem[];
+  extra?: { href: string; label: string };
+}
+
+// Dropdown menus. Each one ends with a link to its hub page, so nothing depends on the dropdown.
+const menus: Menu[] = [
+  {
+    label: 'Services',
+    href: '/services/',
+    title: 'Washing machine repair services',
+    text: 'Every repair is done at your home, with a quote before any work starts.',
+    allLabel: 'All services',
+    items: services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) })),
+  },
+  {
+    label: 'Problems',
+    href: '/problems/',
+    alsoActive: ['/error-codes/'],
+    title: 'Common washing machine problems',
+    text: 'The likely causes in plain language, and the safe checks you can do first.',
+    allLabel: 'All problems',
+    items: problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary, icon: problemIcon(p.slug) })),
+    extra: { href: '/error-codes/', label: 'Error code guides' },
+  },
+  {
+    label: 'Brands',
+    href: '/brands/',
+    title: 'Brands we repair',
+    text: 'We repair all major washing machine brands as an independent repairer.',
+    allLabel: 'All brands',
+    items: brands.map((b) => ({ href: brandUrl(b.slug), title: b.brand, text: b.summary })),
+  },
+  {
+    label: 'Areas',
+    href: '/areas/',
+    title: 'Areas we cover',
+    text: `Mobile technicians across ${areaList()}.`,
+    allLabel: 'All areas',
+    items: site.areas.map((a) => ({ href: areaUrl(a.slug), title: a.name, icon: 'map' as IconName })),
+  },
+];
+const links = [
+  { label: 'Prices', href: '/washing-machine-repair-cost/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contact', href: '/contact/' },
+];
+const mobileLinks: { label: string; href: string; icon: IconName }[] = [
+  { label: 'Prices', href: '/washing-machine-repair-cost/', icon: 'banknote' },
+  { label: 'Repair or replace?', href: '/repair-or-replace/', icon: 'list-checks' },
+  { label: 'Blog', href: '/blog/', icon: 'book' },
+  { label: 'About us', href: '/about/', icon: 'badge' },
+  { label: 'FAQ', href: '/faq/', icon: 'help' },
+  { label: 'Contact and bookings', href: '/contact/', icon: 'calendar' },
+];
+const menuIcon: Record<string, IconName> = { Services: 'tool', Problems: 'alert', Brands: 'tag', Areas: 'map' };
+const menuActive = (m: Menu) => isActive(m.href) || (m.alsoActive ?? []).some(isActive);
 ---
-<header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
-  <div class="container-site flex h-16 items-center justify-between gap-4 md:h-20">
-    <a href="/" class="shrink-0 no-underline" aria-label="ProServ Washing Machine Repairs home">
-      <Logo class="h-9 w-auto md:h-11" />
+<nav aria-label="Contact" class="border-b border-line bg-surface">
+  <div class="container-site flex min-h-10 items-center gap-x-4 text-[13px]">
+    <p class="hidden text-ink-soft lg:block">Mobile washing machine repairs across Gauteng</p>
+    <a href={mailHref} class="inline-flex min-h-10 min-w-0 items-center gap-1.5 font-medium text-ink no-underline hover:underline">
+      <Icon name="mail" class="h-4 w-4 shrink-0 text-brand" />
+      <span class="min-[480px]:hidden">Email us</span>
+      <span class="hidden min-[480px]:inline">{site.email}</span>
+    </a>
+    <p class="ml-auto flex shrink-0 items-center gap-1.5 text-ink-soft">
+      <span class="hidden sm:inline">Call or WhatsApp</span>
+      <a href={telHref} data-track="call" class="inline-flex min-h-10 items-center font-bold text-ink-strong tabular-nums decoration-2">{site.phone.display}</a>
+    </p>
+    <a href="/contact/" class="btn btn-primary btn-sm hidden lg:inline-flex">Book a repair</a>
+  </div>
+</nav>
+<header class="site-header sticky top-0 z-50 border-b border-line">
+  <div class="container-site relative flex h-16 items-center gap-3 lg:h-[76px]">
+    <a href="/" class="mr-auto shrink-0 rounded-lg no-underline lg:mr-4" aria-label="ProServ Washing Machine Repairs home">
+      <Logo class="h-10 w-auto lg:h-11" />
     </a>
 
-    <nav aria-label="Main" class="hidden lg:block">
-      <ul class="flex items-center gap-5 text-[0.95rem] font-medium">
-        {mainNav.map((n) => (
-          <li><a href={n.href} class:list={['no-underline hover:text-brand-dark', isActive(n.href) ? 'text-brand-dark' : 'text-ink']} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a></li>
+    <nav aria-label="Main" class="ml-auto hidden lg:block">
+      <ul class="flex items-center gap-0.5 xl:gap-1">
+        {menus.map((m) => (
+          <li>
+            <details class="nav-dd" data-dd>
+              <summary class:list={['nav-link', menuActive(m) && 'is-current']}>
+                {m.label}
+                <Icon name="chevron-down" class="h-4 w-4 text-ink-soft" />
+              </summary>
+              <div class="mega-panel">
+                <div class="grid gap-6 p-5 xl:p-6 lg:grid-cols-[15rem_minmax(0,1fr)]">
+                  <div class="flex flex-col rounded-xl bg-surface p-5">
+                    <p class="type-eyebrow">{m.label}</p>
+                    <p class="mt-3 text-lg leading-snug font-extrabold text-ink-strong">{m.title}</p>
+                    <p class="mt-2 text-sm leading-relaxed text-ink-soft">{m.text}</p>
+                    <div class="mt-auto space-y-1 pt-4">
+                      <a href={m.href} aria-current={current(m.href)} class="flex min-h-11 items-center gap-1.5 text-sm font-bold text-ink-strong">
+                        {m.allLabel}
+                        <Icon name="arrow" class="h-4 w-4 text-brand" />
+                      </a>
+                      {m.extra && (
+                        <a href={m.extra.href} aria-current={current(m.extra.href)} class="flex min-h-11 items-center gap-1.5 text-sm font-bold text-ink-strong">
+                          {m.extra.label}
+                          <Icon name="arrow" class="h-4 w-4 text-brand" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <ul class="grid content-start gap-1 sm:grid-cols-2 xl:grid-cols-3">
+                    {m.items.map((i) => (
+                      <li>
+                        <a href={i.href} class="mega-link" aria-current={current(i.href)}>
+                          {i.icon && <span class="icon-tile h-10 w-10 rounded-lg"><Icon name={i.icon} class="h-5 w-5" /></span>}
+                          <span class="min-w-0">
+                            <span class="block text-[15px] leading-snug font-bold text-ink-strong">{i.title}</span>
+                            {i.text && <span class="mt-0.5 block text-[13px] leading-snug text-ink-soft">{i.text}</span>}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </li>
+        ))}
+        {links.map((l) => (
+          <li><a href={l.href} class:list={['nav-link', isActive(l.href) && 'is-current']} aria-current={current(l.href)}>{l.label}</a></li>
         ))}
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2">
-      <a href={telHref} class="btn btn-primary hidden md:inline-flex" data-track="call">
-        <Icon name="phone" /> {site.phone.display}
-      </a>
-      <details class="relative lg:hidden" id="mobile-menu">
-        <summary class="btn btn-outline min-h-11 list-none px-3 py-2 [&::-webkit-details-marker]:hidden">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <span class="sr-only">Menu</span>
-        </summary>
-        <nav aria-label="Mobile" class="menu-panel absolute right-0 mt-2 w-64 rounded-xl border border-line bg-white p-2 shadow-xl">
+    <a href={telHref} class="btn btn-primary hidden min-h-12 rounded-xl px-5 md:inline-flex lg:ml-2" data-track="call">
+      <Icon name="phone" />
+      <span><span class="sr-only">Call </span>{site.phone.display}</span>
+    </a>
+
+    <details class="m-menu lg:hidden" data-menu>
+      <summary class="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink-strong">
+        <Icon name="menu" class="menu-icon-open h-6 w-6" />
+        <Icon name="x" class="menu-icon-close h-6 w-6" />
+        <span class="sr-only"><span class="menu-label-open">Open menu</span><span class="menu-label-close">Close menu</span></span>
+      </summary>
+      <div class="m-sheet">
+        <div class="flex h-16 shrink-0 items-center border-b border-line px-4 sm:px-6">
+          <a href="/" class="inline-flex min-h-11 items-center rounded-lg no-underline" aria-label="ProServ Washing Machine Repairs home"><Logo class="h-10 w-auto" /></a>
+        </div>
+        <nav aria-label="Mobile" class="m-sheet-body px-4 pb-6 sm:px-6">
           <ul>
-            <li><a href="/" class="block rounded-lg px-3 py-3 text-ink no-underline hover:bg-surface">Home</a></li>
-            {mainNav.map((n) => (
-              <li><a href={n.href} class="block rounded-lg px-3 py-3 text-ink no-underline hover:bg-surface">{n.label}</a></li>
+            <li>
+              <a href="/" class="m-link" aria-current={current('/')}>
+                <span class="icon-tile h-9 w-9 rounded-lg"><Icon name="home" class="h-5 w-5" /></span>Home
+              </a>
+            </li>
+            {menus.map((m) => (
+              <li>
+                <details class="m-acc">
+                  <summary class="m-link justify-between">
+                    <span class="flex items-center gap-3">
+                      <span class="icon-tile h-9 w-9 rounded-lg"><Icon name={menuIcon[m.label] ?? 'tool'} class="h-5 w-5" /></span>
+                      {m.label}
+                    </span>
+                    <Icon name="chevron-down" class="m-chevron h-5 w-5 text-ink-soft transition-transform" />
+                  </summary>
+                  <ul class="border-b border-line py-2 pl-12">
+                    <li><a href={m.href} aria-current={current(m.href)} class="flex min-h-11 items-center rounded-lg px-3 text-[15px] font-bold text-ink-strong no-underline hover:bg-surface">{m.allLabel}</a></li>
+                    {m.extra && <li><a href={m.extra.href} aria-current={current(m.extra.href)} class="flex min-h-11 items-center rounded-lg px-3 text-[15px] font-bold text-ink-strong no-underline hover:bg-surface">{m.extra.label}</a></li>}
+                    {m.items.map((i) => (
+                      <li><a href={i.href} aria-current={current(i.href)} class="flex min-h-11 items-center rounded-lg px-3 text-[15px] font-medium text-ink no-underline hover:bg-surface">{i.title}</a></li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
             ))}
-            <li><a href="/about/" class="block rounded-lg px-3 py-3 text-ink no-underline hover:bg-surface">About us</a></li>
-            <li><a href="/faq/" class="block rounded-lg px-3 py-3 text-ink no-underline hover:bg-surface">FAQ</a></li>
+            {mobileLinks.map((l) => (
+              <li>
+                <a href={l.href} class="m-link" aria-current={current(l.href)}>
+                  <span class="icon-tile h-9 w-9 rounded-lg"><Icon name={l.icon} class="h-5 w-5" /></span>{l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul class="mt-6 space-y-1 text-[15px]">
+            <li><a href={telHref} data-track="call" class="flex min-h-11 items-center gap-3 font-semibold text-ink-strong no-underline"><Icon name="phone" class="h-5 w-5 text-brand" />{site.phone.display}</a></li>
+            <li><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp" class="flex min-h-11 items-center gap-3 font-semibold text-ink-strong no-underline"><Icon name="whatsapp" class="h-5 w-5 text-whatsapp-dark" />WhatsApp {site.phone.display}<span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a href={mailHref} class="flex min-h-11 items-center gap-3 font-medium text-ink no-underline"><Icon name="mail" class="h-5 w-5 shrink-0 text-brand" /><span class="min-w-0"><EmailText /></span></a></li>
           </ul>
         </nav>
-      </details>
-    </div>
+        <div class="shrink-0 border-t border-line bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:px-6">
+          <div class="grid grid-cols-2 gap-3">
+            <a href={telHref} class="btn btn-primary btn-lg" data-track="call"><Icon name="phone" /> Call</a>
+            <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg" data-track="whatsapp"><Icon name="whatsapp" /> WhatsApp<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+          <p class="mt-3 text-center text-xs text-ink-soft">A quote before any work starts.</p>
+        </div>
+      </div>
+    </details>
   </div>
 </header>
+
+<script is:inline>
+  // Optional polish for the menus (they work without it): one open at a time, close on Escape,
+  // on a click outside or when focus leaves, and stop the page scrolling under the phone menu.
+  (function () {
+    var menus = document.querySelectorAll('[data-dd], [data-menu]');
+    var root = document.documentElement;
+    menus.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; });
+        if (d.hasAttribute('data-menu')) root.classList.toggle('menu-open', d.open);
+      });
+      d.addEventListener('focusout', function (e) {
+        if (d.open && e.relatedTarget && !d.contains(e.relatedTarget)) d.open = false;
+      });
+    });
+    document.addEventListener('click', function (e) {
+      menus.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      menus.forEach(function (d) {
+        if (!d.open) return;
+        d.open = false;
+        var s = d.querySelector('summary');
+        if (s) s.focus();
+      });
+    });
+    var wide = window.matchMedia('(min-width: 1024px)');
+    var closePhoneMenu = function () { if (wide.matches) document.querySelectorAll('[data-menu]').forEach(function (d) { d.open = false; }); };
+    if (wide.addEventListener) wide.addEventListener('change', closePhoneMenu);
+  })();
+</script>

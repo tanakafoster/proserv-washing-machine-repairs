@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import { site } from '../data/site';
 const updated = '6 November 2026';
 ---
@@ -8,10 +9,14 @@ const updated = '6 November 2026';
   description={`How ProServ Washing Machine Repairs collects, uses and protects your personal information under POPIA. Questions? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Privacy policy', href: '/privacy-policy/' }]}
 >
-  <section class="section pt-6">
-    <div class="container-site prose-site max-w-3xl">
-      <h1 class="text-3xl font-extrabold sm:text-4xl">Privacy policy</h1>
-      <p class="text-ink-soft">Last updated: {updated}</p>
+  <section class="pt-5 pb-8 md:pb-10 lg:pt-8">
+    <div class="container-site">
+      <p class="type-eyebrow mb-3">Your information</p>
+      <h1 class="type-page-h1">Privacy policy</h1>
+      <p class="mt-4 text-sm text-ink-soft">Last updated: {updated}</p>
+    </div>
+  </section>
+  <LongFormSection booking={false} tight>
       <p>{site.name} ("ProServ", "we") respects your privacy. This policy explains what personal information we collect, why, and your rights under the Protection of Personal Information Act, 2013 (POPIA).</p>
 
       <h2>Who is responsible</h2>
@@ -46,6 +51,5 @@ const updated = '6 November 2026';
 
       <h2>Changes</h2>
       <p>We may update this policy. The date at the top shows the latest version.</p>
-    </div>
-  </section>
+  </LongFormSection>
 </BaseLayout>

@@ -1,21 +1,37 @@
 ---
+/**
+ * FAQ accordion (Electro faq-accordion): native <details>, so it opens and closes with the
+ * keyboard and works without JavaScript. The page adds the matching FAQPage schema.
+ */
 import type { FaqItem } from '../data/types';
-interface Props { items: FaqItem[]; heading?: string; id?: string }
-const { items, heading = 'Frequently asked questions', id = 'faq' } = Astro.props;
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+  id?: string;
+  eyebrow?: string | false;
+  tone?: 'white' | 'surface';
+  intro?: string;
+}
+const { items, heading = 'Frequently asked questions', id = 'faq', eyebrow = 'Questions and answers', tone = 'surface', intro } = Astro.props;
 ---
-<section class="section section-alt" aria-labelledby={`${id}-h`}>
-  <div class="container-site max-w-3xl">
-    <h2 id={`${id}-h`} class="text-2xl font-bold sm:text-3xl">{heading}</h2>
-    <div class="mt-6 space-y-3">
+<section id={id} class:list={['section-y', tone === 'surface' ? 'bg-surface' : 'bg-white']} aria-labelledby={`${id}-h`}>
+  <div class="container-site">
+    <SectionHeading id={`${id}-h`} eyebrow={eyebrow} heading={heading} intro={intro} />
+    <div class="mx-auto max-w-3xl space-y-3">
       {items.map((item) => (
-        <details class="group rounded-lg border border-line bg-white p-4">
-          <summary class="flex items-start justify-between gap-4 font-semibold">
-            <span set:html={item.q} />
-            <span class="text-brand-dark transition group-open:rotate-45" aria-hidden="true">+</span>
+        <details class="faq-item group card-surface overflow-hidden transition-[border-color,box-shadow] duration-200">
+          <summary class="flex min-h-14 items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-surface/60 sm:px-6">
+            <span class="min-w-0 flex-1 text-base leading-snug font-bold text-ink-strong" set:html={item.q} />
+            <span class="faq-icon inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-tint text-brand-dark transition-transform duration-200" aria-hidden="true">
+              <Icon name="plus" class="h-4 w-4" strokeWidth={2.5} />
+            </span>
           </summary>
-          <div class="mt-3 text-ink-soft" set:html={item.a} />
+          <div class="faq-answer border-t border-line px-4 py-4 text-base leading-relaxed text-ink sm:px-6" set:html={item.a} />
         </details>
       ))}
     </div>
+    <slot />
   </div>
 </section>
