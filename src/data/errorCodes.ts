@@ -24,6 +24,10 @@ export interface ErrorGuide extends ContentPage {
   codes: ErrorCode[];
   /** Where the codes were checked: shown on the page under the code table. */
   sources?: CodeSource[];
+  /** Sections shown straight after the code table (same HTML rules as body). `body` ends with the safe checks. */
+  bodyAfterTable: string;
+  /** Closing sections, shown after "When to stop and call a technician": "If your code isn't listed", then booking. */
+  closing: string;
 }
 
 /*
@@ -58,30 +62,30 @@ export const errorGuides: ErrorGuide[] = [
 <div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug before you clean a filter or move a hose, and let the water cool after a hot wash. Never open panels or touch wiring.</p></div>
 <ol class="steps">
   <li><strong>Write the code down</strong>, with any number after it and the point in the cycle where it appeared.</li>
-  <li><strong>Restart once.</strong> LG's advice for several codes is to unplug for 10 to 60 seconds and try again; if the same code returns, the cause is still there.</li>
-  <li><strong>Do the check in the table</strong> for your code: the tap and inlet hose for IE, the load for UE, the door seal for dE.</li>
-  <li><strong>For OE on a front loader, clean the drain pump filter</strong> as your manual shows. It sits behind the small cover at the bottom front: put down towels and a shallow tray, let the water out through the little drain tube first, then unscrew the filter slowly, rinse it and screw it back firmly.</li>
-</ol>
-
+  <li><strong>Restart once, unless the code is FE, AE or tE.</strong> LG's advice for several codes is to unplug for 10 to 60 seconds and try again; if the same code returns, the cause is still there. FE and AE mean switching off at the wall and closing the tap straight away (if there's water near the plug or on the floor, switch off at the DB board instead and don't touch the plug), and tE means leaving the machine off for a technician.</li>
+  <li><strong>Do the check in the table below</strong> for your code: the tap and inlet hose for IE, the load for UE, the door seal for dE.</li>
+  <li><strong>For OE on a front loader, clean the drain pump filter</strong> as your manual shows. It sits behind the small cover at the bottom front: put down towels and a shallow tray, let the water out through the little drain tube first, then plug the tube and clip it back into place. Unscrew the filter slowly, rinse it and screw it back firmly.</li>
+</ol>`,
+    bodyAfterTable: `
 <h2>Codes that need a technician</h2>
 <p>LG's manuals tell owners to call for service on tE, FE, PE, vS and AE, and on a door code that won't clear. These involve sensors, valves, the door lock or a leak inside the cabinet, and finding the fault means testing parts that carry mains power.</p>
-<p>Act quickly on two of them. With <strong>FE</strong> the machine is overfilling, so switch off at the wall, unplug it and close the tap straight away. With <strong>AE</strong> water is escaping inside the machine: switch off at the wall, close the tap and keep children away from water on the floor. If the earth leakage or circuit breaker trips, leave the machine off until it has been checked.</p>
+<p>Act quickly on two of them. With <strong>FE</strong> the machine is overfilling, so switch off at the wall, unplug it and close the tap straight away. With <strong>AE</strong> water is escaping inside the machine: switch off at the wall if the plug and socket are dry and you don't have to stand in water (otherwise at the DB board, without touching the plug), close the tap and keep children away from water on the floor. If the earth leakage or circuit breaker trips, leave the machine off until it has been checked.</p>
 
 <h2>What our technician checks</h2>
 <p>The technician confirms the code, asks when it appeared and tests the parts behind it before replacing anything. IE and FE lead to the inlet valve and water level sensor, OE to the drain pump, dE to the door lock and catch, and tE to the temperature sensor and heater. Balance and drive codes mean checking the suspension and, on direct drive models, the motor's position sensor and wiring.</p>
-<p>You get a quote before any work starts, and if the part is available most repairs are finished on the same visit. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Parts and labour are covered by a ${f.warranty} warranty. Our <a href="${brandUrl('lg')}">LG washing machine repairs</a> page covers the wider faults on these machines, and there's more on <a href="/services/front-loader-repairs/">front loader repairs</a>, <a href="/services/top-loader-repairs/">top loader repairs</a> and <a href="/services/washer-dryer-repairs/">washer dryer repairs</a>.</p>
+<p>You get a quote before any work starts, and if the part is available most repairs are finished on the same visit. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. Parts and labour are covered by a ${f.warranty} warranty. Our <a href="${brandUrl('lg')}">LG washing machine repairs</a> page covers the wider faults on these machines, and there's more on how we repair <a href="/services/front-loader-repairs/">front loaders</a>, <a href="/services/top-loader-repairs/">top loaders</a> and <a href="/services/washer-dryer-repairs/">washer-dryers</a>.</p>`,
+    closing: `
+<h2>If your code isn't listed</h2>
+<p>Some LG models add codes of their own, such as the dispenser codes on machines with automatic dosing. Check your manual's troubleshooting pages or send us the code and model number, and see our guides to <a href="/problems/washing-machine-not-draining/">drain faults</a> and <a href="/problems/washing-machine-not-filling-with-water/">water supply faults</a>. ProServ is an independent repairer with no link to LG; the meanings in the table above come from LG's published manuals and support pages.</p>
 
 <h2>Booking an LG repair</h2>
-<p>Call or WhatsApp us with the code and model number, or use our <a href="/contact/">contact page</a>. We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. If your machine has a fault but no code, start with our guide to <a href="/">washing machine repairs</a>.</p>
-
-<h2>If your code isn't listed</h2>
-<p>Some LG models add codes of their own, such as the dispenser codes on machines with automatic dosing. Check your manual's troubleshooting pages or send us the code and model number, and see our guides to a <a href="/problems/washing-machine-not-draining/">washing machine not draining</a> and a <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>. ProServ is an independent repairer with no link to LG; the meanings below come from LG's published manuals and support pages.</p>`,
+<p>Call or WhatsApp us with the code and model number, or use our <a href="/contact/">contact page</a>. We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. If your machine has a fault but no code, start with the <a href="/">troubleshooting checks on our home page</a>.</p>`,
     codes: [
       { code: 'IE', meaning: "Water inlet error: the drum hasn't filled in time", causes: 'Tap closed or partly open, kinked hose, blocked inlet hose filter, low pressure, a faulty inlet valve, or a leaking Aqua stop hose (red indicator)', check: 'Open the tap fully, straighten the hose and clean the inlet hose filter with the tap closed' },
       { code: 'OE', meaning: "Drain error: the water isn't draining, or drains too slowly", causes: 'Kinked or blocked drain hose, clogged drain pump filter, too many suds or a failed drain pump', check: 'Straighten the drain hose and clean the drain pump filter (switch off and unplug first, expect water)' },
       { code: 'UE', meaning: "Unbalanced load: the drum can't be balanced for the spin", causes: 'Load too small, one heavy item, laundry bunched on one side, an overfull drum or the machine not level', check: 'Spread the load out, add one or two similar items to a small load and level the machine' },
       { code: 'dE / dE1 / dE2 / dE4', meaning: "Door error: the door isn't closed properly or hasn't locked", causes: 'Laundry caught in the seal, door not pushed shut, an overfull drum, a bent or broken catch, or a faulty lock', check: 'Clear the seal, close the door firmly, then switch off at the wall for a minute and restart' },
-      { code: 'LE', meaning: "Motor locked: the drum isn't turning as it should", causes: 'An overloaded drum, or a coin or other item jamming it; otherwise a motor fault', check: 'Reduce the load, remove anything stuck and leave the machine off for 30 minutes before restarting' },
+      { code: 'LE', meaning: "Motor locked: the drum isn't turning as it should", causes: 'An overloaded drum, or a coin or other item jamming it; otherwise a motor fault', check: 'Reduce the load and leave the machine off for 30 minutes before restarting; if something is jammed between the drum and the tub, or LE returns, call a technician' },
       { code: 'tE', meaning: "Heating or temperature sensor error (LG's front loader manual calls it a control error)", causes: 'Usually a faulty temperature sensor (thermistor), or a heating fault', check: 'Switch off at the wall and call a technician' },
       { code: 'FE', meaning: 'Overflow: too much water in the drum', causes: "An inlet valve that won't close, or extra water coming in through the detergent drawer", check: 'Close the tap, switch off at the wall, unplug and call a technician' },
       { code: 'PE', meaning: "Pressure sensor error: the machine can't read the water level", causes: 'A faulty water level sensor or connection', check: 'Restart once; if PE returns, close the tap and call a technician' },
@@ -95,7 +99,7 @@ export const errorGuides: ErrorGuide[] = [
       { code: 'tCL', meaning: 'Tub clean reminder (not a fault)', causes: 'A prompt to run the Tub Clean programme', check: 'Run Tub Clean with the drum empty' },
     ],
     sources: [
-      { label: "LG FV1450S4W and FV1409S4W owner's manual (MFL71408049): troubleshooting", url: 'https://www.manualslib.com/manual/2656181/Lg-Fv1450s4w.html?page=35' },
+      { label: "LG FV1450S4W and FV1409S4W owner's manual (MFL71408049), ManualsLib copy: troubleshooting", url: 'https://www.manualslib.com/manual/2656181/Lg-Fv1450s4w.html?page=35' },
       { label: 'LG Help Library: front load washer error code list', url: 'https://www.lg.com/us/support/help-library/lg-front-load-washer-error-code-list--20155069413456' },
       { label: 'LG Help Library: washer error code list (front and top load)', url: 'https://www.lg.com/us/support/help-library/lg-washer-error-codes--20150140270078' },
       { label: 'LG Help Library: front load washer dE, dE1 and dE2 codes', url: 'https://www.lg.com/us/support/help-library/front-load-washer-what-are-de-de1-and-de2-error-codes--1400508168566' },
@@ -125,7 +129,7 @@ export const errorGuides: ErrorGuide[] = [
     intro: `<p>Samsung washing machine error codes, which Samsung calls information codes, pair a number or letter with C or E, such as <strong>4C</strong> (no water coming in) and <strong>5C</strong> (not draining). Here is what each code means according to Samsung's own support guides, with the checks you can safely do first.</p>`,
     body: `
 <h2>How Samsung information codes work</h2>
-<p>A Samsung machine shows a code when one of its self-checks fails, then stops or pauses the programme. Samsung lists the C and E forms of each code together with one meaning, so 4C and 4E both mean a water supply problem, and your machine shows one form or the other. An extra digit narrows things down: 4C2 means the incoming water is too hot, and dC1 points to the door lock rather than an open door.</p>
+<p>A Samsung machine shows a code when one of its self-checks fails, then stops or pauses the programme. Samsung usually lists the C and E forms of a code together with one meaning (8C and 8E can differ, as the table shows), so 4C and 4E both mean a water supply problem, and your machine shows one form or the other. An extra digit narrows things down: 4C2 means the incoming water is too hot, and dC1 points to the door lock rather than an open door.</p>
 <p>Samsung warns that some characters look alike on the display, such as 5 and S or 3 and E, so read the code twice if it seems to be missing from the table.</p>
 
 <h2>Find your Samsung model number</h2>
@@ -134,33 +138,33 @@ export const errorGuides: ErrorGuide[] = [
 <h2>Safe checks before you call</h2>
 <div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug before you touch a filter or hose. Samsung warns you to take extra care with the hot water connection, and water left after a hot wash can scald, so let it cool first.</p></div>
 <h3>Not filling: 4C and 4C2</h3>
-<p>Check that the tap is fully open, the hose isn't kinked and the pressure is normal at another tap. For 4C2, move the cold inlet hose off the hot tap, which in most homes is the one fed by the geyser. With the taps closed, rinse the mesh filter in the hose, and clean the detergent drawer, which Samsung links to some 4C codes.</p>
+<p>Check that the tap is fully open, the hose isn't kinked and the pressure is normal at another tap. For 4C2, switch off at the wall and close both taps, then move the cold inlet hose off the hot tap, which in most homes is the one fed by the geyser, and onto the cold tap before you open it again. With the taps closed, rinse the mesh filter in the hose, and clean the detergent drawer, which Samsung links to some 4C codes.</p>
 <h3>Not draining: 5C</h3>
-<p>On a front loader, the debris filter is behind a small cover at the bottom front. Put down towels and a container, pull out the emergency drain hose, take off its cap and let the water run out. Then turn the filter anticlockwise, clean it with a soft brush and refit it clockwise until it's secure.</p>
+<p>On a front loader, the debris filter is behind a small cover at the bottom front. Put down towels and a container, pull out the emergency drain hose, take off its cap and let the water run out. Then turn the filter anticlockwise, clean it with a soft brush and refit it clockwise until it's secure. Finally, put the cap back on the emergency drain hose and secure it.</p>
 <h3>Balance and power: Ub and UC</h3>
-<p>For Ub, spread the laundry evenly around the drum and check the machine stands level on a flat, stable floor. For UC or the 9C codes, plug the machine straight into a wall socket, not an extension lead, and wait for steady power.</p>
-
+<p>For Ub, spread the laundry evenly around the drum and check the machine stands level on a flat, stable floor. For UC or the 9C codes, plug the machine straight into a wall socket, not an extension lead, and wait for steady power.</p>`,
+    bodyAfterTable: `
 <h2>When a technician is needed</h2>
-<p>For the sensor, motor, heating and board codes (1C, 3C, 8C, AC, HC, tE and tC), Samsung's advice is to switch off, wait a minute and start a new programme. If the code comes back, the part behind it needs testing. The top loader clutch codes PC and PE, and an overflow code that returns after a drain and spin, need a technician too.</p>
+<p>For the sensor, motor, heating and board codes (1C, 3C, 8C, AC, HC, tE and tC), Samsung's advice is to switch the machine off and restart the programme. If the code comes back, the part behind it needs testing. The top loader clutch codes PC and PE need a technician too, and so does an overflow code (OC, OE or OF), even if it clears after the machine drains.</p>
 <p>If the machine overfills or you find water underneath, switch off at the wall and close the tap. If the earth leakage trips when the machine starts, leave it off until it has been checked.</p>
 
 <h2>What happens on a repair visit</h2>
 <p>The technician reads the code, asks what the machine was doing when it stopped and tests the parts behind it: for 4C and 1C, the inlet valve, the water level sensor and the small air hose that feeds it; for 5C, the drain pump; for dC1, the door lock; for HC or tE, the heater and temperature sensor. On inverter models, 3C and AC6 mean testing the motor, its wiring and the inverter board.</p>
-<p>You get a quote before any work starts, and most repairs are done there and then when the part is available. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and every repair comes with a ${f.warranty} warranty on parts and labour. See <a href="${brandUrl('samsung')}">Samsung washing machine repairs</a> for the wider picture, or our <a href="/services/front-loader-repairs/">front loader repairs</a> and <a href="/services/top-loader-repairs/">top loader repairs</a> pages.</p>
+<p>You get a quote before any work starts, and most repairs are done there and then when the part is available. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and every repair comes with a ${f.warranty} warranty on parts and labour. See <a href="${brandUrl('samsung')}">Samsung washing machine repairs</a> for the wider picture, or our pages on repairing <a href="/services/front-loader-repairs/">front loaders</a> and <a href="/services/top-loader-repairs/">top loaders</a>.</p>`,
+    closing: `
+<h2>If your code isn't listed</h2>
+<p>Washer dryers and machines with extra features have codes of their own, so check your model's manual or send us the code with the model number. Our guides to a <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a> and a <a href="/problems/washing-machine-door-wont-open/">washing machine door that won't open</a> cover the symptoms behind several codes. We're an independent repairer, not part of Samsung; the meanings here come from Samsung's own support pages.</p>
 
 <h2>Book a Samsung repair</h2>
-<p>Call or WhatsApp with the code and your model number, or use our <a href="/contact/">contact form</a>. We've been repairing washing machines for ${f.yearsInBusiness} years, and our <a href="/">washing machine repairs</a> page explains how a visit works.</p>
-
-<h2>If your code isn't listed</h2>
-<p>Washer dryers and machines with extra features have codes of their own, so check your model's manual or send us the code with the model number. Our guides to a <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a> and a <a href="/problems/washing-machine-door-wont-open/">washing machine door that won't open</a> cover the symptoms behind several codes. We're an independent repairer, not part of Samsung; the meanings here come from Samsung's own support pages.</p>`,
+<p>Call or WhatsApp with the code and your model number, or use our <a href="/contact/">contact form</a>. We've been repairing washing machines for ${f.yearsInBusiness} years, and our home page sets out <a href="/">what happens when a technician visits</a>.</p>`,
     codes: [
       { code: '4C / 4E', meaning: "Water supply problem: the machine isn't filling", causes: 'Tap closed, kinked hose, low pressure, a clogged mesh filter or blocked detergent drawer; also the inlet valve, level sensor or main board', check: 'Open the tap, straighten the hose, and clean the mesh filter (taps closed) and the detergent drawer' },
-      { code: '4C2 / 4E2', meaning: 'The water coming in is too hot', causes: 'The cold inlet hose is on a hot tap', check: 'Close the taps, move the hose to the cold tap, then switch off and restart' },
+      { code: '4C2 / 4E2', meaning: 'The water coming in is too hot', causes: 'The cold inlet hose is on a hot tap', check: 'Switch off at the wall and unplug, close the taps, move the hose to the cold tap, then open the cold tap and restart' },
       { code: '5C / 5E', meaning: "Drain problem: the water isn't draining", causes: 'Clogged debris filter, kinked or blocked drain hose, a blocked household drain or a faulty drain pump', check: 'Straighten the drain hose and clean the debris filter (switch off and unplug first, expect water)' },
       { code: 'dC / dE', meaning: "Door open: the door isn't properly closed", causes: 'Door not pushed shut, or laundry caught in it', check: 'Close the door firmly with nothing caught in it' },
       { code: 'dC1 / dE1', meaning: "The door lock isn't locking or unlocking properly", causes: 'A door lock fault', check: 'Switch off at the wall, wait a minute and restart; if it returns, call a technician' },
       { code: 'ddC', meaning: 'Add Door opened without pressing Start/Pause (models with an Add Door)', causes: "The small Add Door was opened mid-cycle or isn't shut", check: 'Close the Add Door, then press and hold Start/Pause' },
-      { code: 'OC / OE / OF', meaning: 'Overflow: too much water in the drum', causes: "Water still coming in, such as an inlet valve that won't close or a water level fault", check: 'Let it drain and spin, then restart; if it returns, close the tap and call a technician' },
+      { code: 'OC / OE / OF', meaning: 'Overflow: too much water in the drum', causes: "Too much detergent, or water still coming in, such as an inlet valve that won't close or a water level fault", check: 'Switch off at the wall, close the tap and call a technician; use less detergent next time' },
       { code: 'Ub / UE', meaning: "Unbalanced load: the spin can't start", causes: 'Laundry bunched on one side, one bulky item, or the machine not level', check: 'Spread the laundry evenly and check the machine is level and stable' },
       { code: 'LC / LE', meaning: 'Low water level or a drain hose problem (also LC1 or LE1)', causes: 'Drain hose end too low so water siphons out, a blocked drain hose, or a leak', check: 'Raise the hose end to the height in your manual and look for water under the machine' },
       { code: '1C / 1E', meaning: "Water level sensor isn't working properly", causes: 'The level sensor, its air hose or its connection', check: 'Restart once; if it returns, call a technician' },
@@ -184,7 +188,7 @@ export const errorGuides: ErrorGuide[] = [
     faqs: [
       { q: 'Are 4C and 4E the same code on a Samsung?', a: "Yes. Samsung lists them together with one meaning: water isn't being supplied. Which one you see depends on the model, and the checks are the same for both: the tap, the hose, the pressure and the mesh filter." },
       { q: 'Why will my Samsung not respond after showing 4C?', a: "Samsung says the machine drains for about three minutes after a 4C code, and the buttons stay disabled while it does. Wait for it to finish, sort out the water supply, then start the programme again." },
-      { q: 'What does 4C2 mean on a Samsung washing machine?', a: "It means the water coming in is too hot, usually because the cold inlet hose has been connected to a hot tap. Move the hose to the cold tap, switch off and restart. Samsung warns that hot water may deform some laundry on certain cycles." },
+      { q: 'What does 4C2 mean on a Samsung washing machine?', a: "It means the water coming in is too hot, usually because the cold inlet hose has been connected to a hot tap. Switch off at the wall and unplug, close both taps and move the hose to the cold tap, then open the cold tap and restart. Samsung warns that hot water may deform some laundry on certain cycles." },
       { q: 'Why does my Samsung show LC when nothing is leaking?', a: "LC can come from the drain hose rather than a leak. If the end of the hose sits too low, for example on the floor, water can siphon out while the machine fills. Raise the hose end into the standpipe or sink as the manual shows, and check it isn't blocked." },
       { q: 'What does UC mean on my Samsung?', a: "UC means the supply voltage is low or unstable, which can happen around load shedding or when the machine runs off an extension lead. Plug it straight into a wall socket and wait for steady power. If it keeps showing when the rest of the house has a good supply, have the machine checked." },
       { q: 'Is Sud a fault on a Samsung washing machine?', a: "No. Sud means the machine has detected too much foam and is removing it, after which it carries on with the wash. Use less detergent next time, and choose one made for automatic machines rather than hand washing." },
@@ -216,21 +220,21 @@ export const errorGuides: ErrorGuide[] = [
 <h3>Not filling: E17, E:30-10 or the tap symbol</h3>
 <p>Turn the tap fully on and check that the inlet hose isn't kinked or squashed behind the machine. With the tap closed, clean the small filters at the hose connection as your manual shows, then check the pressure at another tap.</p>
 <h3>Not draining: E18, E:30-80 or E:36</h3>
-<p>Check that the drain hose isn't kinked, trapped or routed too high, and that no unapproved extension has been added. Then clean the drain pump: open the service flap at the bottom front, drain the water through the small emergency hose into a container, unscrew the pump cover slowly and remove any fluff, coins or hair clips so the impeller turns freely. Screw the cover back on firmly. Then, as Bosch suggests, pour about a litre of water into compartment II of the drawer and run the drain programme to check for leaks.</p>
-
+<p>Check that the drain hose isn't kinked, trapped or routed too high, and that no unapproved extension has been added. Then clean the drain pump: open the service flap at the bottom front, drain the water through the small emergency hose into a container, put its sealing cap back on and press it down firmly, then unscrew the pump cover slowly and remove any fluff, coins or hair clips so the impeller turns freely. Screw the cover back on firmly. Then, as Bosch suggests, pour about a litre of water into compartment II of the drawer and run the drain programme to check for leaks.</p>`,
+    bodyAfterTable: `
 <h2>Faults Bosch says you can't fix</h2>
 <p>Bosch says the owner can't put right E19, E23, E25, E26, F27 or E28, which cover the heating, the Aquastop leak protection and the machine's sensors. For these, switch off at the wall and book a technician. E20 is worth one reset by switching off and on; if it returns, it needs a repair.</p>
 <p>Take E23 seriously: Aquastop stops the water when it detects a leak, so clearing the code without fixing the leak lets water escape again on the next wash. If the earth leakage or breaker trips when the machine runs, leave it switched off until it has been checked.</p>
 
 <h2>What the technician checks</h2>
 <p>A Bosch repair starts with the code and the E-Nr. E18 and the E:36 codes lead to the drain pump, its housing and the hose run; E17 and E:30-10 to the inlet valve, the water level sensor and, where fitted, the flow sensor. For E23 the technician traces the leak to a hose, the pump, a seal or the tub before the leak protection is reset. Heating codes mean testing the element and its sensor.</p>
-<p>You'll have a quote before any work starts. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and a ${f.warranty} warranty covers the parts and labour. Our <a href="${brandUrl('bosch')}">Bosch washing machine repairs</a> page covers the wider faults on these machines, from door locks to bearings.</p>
+<p>You'll have a quote before any work starts. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and a ${f.warranty} warranty covers the parts and labour. Our <a href="${brandUrl('bosch')}">Bosch washing machine repairs</a> page covers the wider faults on these machines, from door locks to bearings.</p>`,
+    closing: `
+<h2>If your code isn't listed</h2>
+<p>Bosch has made many generations of washing machines, and no single table covers them all. For a code your manual doesn't list, Bosch's newer manuals say to hold the on/off button for about five seconds to restart; if the code returns, unplug the machine for at least 30 seconds and book a repair, quoting the exact code. Our guides to <a href="/problems/washing-machine-not-draining/">a machine that won't drain</a> and <a href="/problems/washing-machine-leaking/">a machine that leaks</a> cover the symptoms. ProServ is an independent repair business with no tie to Bosch; every meaning in the table comes from Bosch's published support pages and manuals.</p>
 
 <h2>Book a Bosch repair</h2>
-<p>Call or WhatsApp us with the code and the E-Nr, or fill in the form on our <a href="/contact/">contact page</a>. We aim to be with you ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. If the machine has stopped without a code, our main <a href="/">washing machine repairs</a> page explains how a visit works.</p>
-
-<h2>If your code isn't listed</h2>
-<p>Bosch has made many generations of washing machines, and no single table covers them all. For a code your manual doesn't list, Bosch's newer manuals say to hold the on/off button for about five seconds to restart; if the code returns, unplug the machine for at least 30 seconds and book a repair, quoting the exact code. Our guides to a <a href="/problems/washing-machine-not-draining/">washing machine not draining</a> and a <a href="/problems/washing-machine-leaking/">washing machine leaking</a> cover the symptoms. ProServ is an independent repair business with no tie to Bosch; every meaning in the table comes from Bosch's published support pages and manuals.</p>`,
+<p>Call or WhatsApp us with the code and the E-Nr, or fill in the form on our <a href="/contact/">contact page</a>. We aim to be with you ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. If the machine has stopped without a code, our main <a href="/">washing machine repair service</a> page explains how a visit works.</p>`,
     codes: [
       { code: 'E16 / F16', meaning: 'Door open', causes: "The door isn't closed properly, or laundry is caught in it", check: 'Close the door firmly; if the code stays, call a technician' },
       { code: 'E17 / F17', meaning: "Water supply time exceeded: the machine didn't fill in time", causes: 'Tap closed, kinked inlet hose, blocked inlet filter or low water pressure', check: 'Open the tap fully, straighten the hose and clean the inlet filter with the tap closed' },
@@ -243,7 +247,7 @@ export const errorGuides: ErrorGuide[] = [
       { code: 'F27', meaning: 'Pressure sensor faulty', causes: 'A faulty water level sensor or connection', check: 'Switch off at the wall and call a technician' },
       { code: 'E28 / F28', meaning: 'Flow sensor faulty (it measures the water coming in)', causes: 'A faulty sensor or connection', check: 'Switch off at the wall and call a technician' },
       { code: 'E:30-10', meaning: 'Water supply problem (newer models)', causes: 'Tap off, inlet hose kinked or jammed, inlet filters blocked, low water pressure, or a faulty water level sensor', check: 'Turn the tap fully on, check the hose, clean the inlet filters and check the pressure at another tap' },
-      { code: 'E:30-20', meaning: 'Water level fault that Bosch calls a critical malfunction', causes: 'Too much detergent, or water added during the programme; otherwise a fault that needs a technician', check: 'Turn off the tap, wait about 5 minutes for it to drain and restart; call a technician if it returns' },
+      { code: 'E:30-20', meaning: "Critical malfunction (Bosch's manual gives no more detail)", causes: 'Too much detergent, or water added during the programme; otherwise a fault that needs a technician', check: 'Turn off the tap, wait about 5 minutes for it to drain and restart; call a technician if it returns' },
       { code: 'E:36-10 / E:30-80', meaning: "Water isn't being pumped out", causes: 'Drain hose routed too high, kinked, trapped or wrongly extended, or a blocked drain pipe or hose', check: 'Check the drain hose against the installation instructions, clear any blockage and clean the drain pump' },
       { code: 'E:36-25 / E:36-26', meaning: 'Drain pump blocked', causes: 'Fluff, coins or small items caught in the drain pump', check: 'Switch off and unplug, let hot water cool, then drain and clean the pump as your manual shows' },
       { code: 'E:38-25 / E:38-26', meaning: 'Drain pump blocked, or the inlet opening in the rubber door seal is blocked', causes: 'Fluff or debris in the pump or in the small opening in the door seal', check: 'Run the drum clean programme, then clean the drain pump and the opening in the door seal as your manual describes' },
@@ -289,7 +293,7 @@ export const errorGuides: ErrorGuide[] = [
 <p>That's why the model number matters. It starts with DTL on Defy top loaders and DAW on front loaders, and it's printed on a sticker on the cabinet, usually at the back, under the lid or inside the door opening. Defy publishes the manuals for its current machines, with the codes in the troubleshooting pages.</p>
 
 <h2>Safe first checks</h2>
-<div class="callout callout-safety"><p><strong>Safety first:</strong> press the power button to switch off, then switch off at the wall before you touch a hose or a filter. Close the tap before you unscrew the inlet hose. Never force a locked lid and never open the cabinet: Defy's own manual warns owners not to try to repair a machine that has stopped working.</p></div>
+<div class="callout callout-safety"><p><strong>Safety first:</strong> press the power button to switch off, then switch off at the wall and unplug before you touch a hose or a filter. Close the tap before you unscrew the inlet hose, and after a hot wash let the water cool before you open a front loader's filter. Never force a locked lid and never open the cabinet: Defy's own manual warns owners not to try to repair a machine that has stopped working.</p></div>
 <ul class="checklist">
   <li><strong>E1, slow water intake:</strong> check that the tap is open and the municipal supply hasn't been cut, test the pressure at another tap and make sure the hot and cold hoses haven't been swapped. With the tap closed, rinse the small filter where the hose meets the machine.</li>
   <li><strong>E2, slow draining:</strong> make sure the drain hose isn't bent, isn't hooked too high and sits properly in the standpipe or sink, and check whether the power went off during the cycle, which Defy also lists as a cause.</li>
@@ -297,21 +301,21 @@ export const errorGuides: ErrorGuide[] = [
   <li><strong>E6, lid open:</strong> on the DTL148, DTL149, DTL150 and DTL161, close the lid and check that nothing is stopping it closing.</li>
   <li><strong>Por, power warning:</strong> the mains voltage is too low or too high. Wait for the supply to settle, for example after load shedding, and plug the machine straight into a wall socket rather than an extension lead.</li>
 </ul>
-<p>On a front loader with no code, the same basics apply: tap open, inlet hose straight, inlet filter clean, drain hose clear and the pump filter cleaned as the manual describes, with towels and a shallow tray ready for the water.</p>
-
+<p>On a front loader with no code, the same basics apply: tap open, inlet hose straight, inlet filter clean, drain hose clear and the pump filter cleaned as the manual describes, with the machine unplugged, any hot water left to cool and towels and a shallow tray ready.</p>`,
+    bodyAfterTable: `
 <h2>Codes to leave to a technician</h2>
 <p>For E4, E5, E8, Ec, Ed, EE, EF and EA, Defy's manual gives one instruction: call for service. These codes involve the water level sensor, the control electronics, the heating, the lid lock and the motor drive, none of which an owner can safely test. Switch the machine off at the wall and note the code.</p>
 <p>E4 means the machine has overfilled, so close the tap as well, and with EE don't pull on the lid, because the lid lock has already failed. If the earth leakage trips when the machine runs, leave it off until a technician has checked it.</p>
 
 <h2>What the technician checks</h2>
-<p>On a top loader with E1 or E5, the technician tests the inlet valve and the water level (pressure) sensor. E2 leads to the drain path: the hose, the drain pump on pump models, and anything caught in between. An E3 that keeps coming back with a well-spread load can come down to worn suspension rods, which let the tub swing too far. Electronic codes such as Ec, E8, EF and EA mean testing the control board and the inverter before deciding what to replace.</p>
-<p>You'll get a quote before any work begins. If the part is available, most repairs are completed on the same visit; if it has to be ordered, the technician tells you before you agree. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and we give a ${f.warranty} warranty on parts and labour. Our <a href="${brandUrl('defy')}">Defy washing machine repairs</a> page covers the wider faults on Defy front and top loaders, and <a href="/services/top-loader-repairs/">top loader repairs</a> explains how those jobs are done.</p>
+<p>On a top loader with E1 or E5, the technician tests the inlet valve and the water level (pressure) sensor. E2 leads to the drain path: the hose, the drain pump on pump models or the drain valve on models that drain by gravity, and anything caught in between. An E3 that keeps coming back with a well-spread load can come down to worn suspension rods, which let the tub swing too far. Electronic codes such as Ec, E8, EF and EA mean testing the control board and the inverter before deciding what to replace.</p>
+<p>You'll get a quote before any work begins. If the part is available, most repairs are completed on the same visit; if it has to be ordered, the technician tells you before you agree. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and we give a ${f.warranty} warranty on parts and labour. Our <a href="${brandUrl('defy')}">Defy washing machine repairs</a> page covers the wider faults on Defy front and top loaders, and our page on <a href="/services/top-loader-repairs/">repairing top loaders</a> explains how those jobs are done.</p>`,
+    closing: `
+<h2>If your code isn't listed</h2>
+<p>Defy machines outside the ranges above may use different codes. Check the troubleshooting section of your manual, or send us the code (or a short video of the display) with the model number, and see our guides to <a href="/problems/washing-machine-not-draining/">water that won't drain</a> and <a href="/problems/washing-machine-not-spinning/">a drum that won't spin</a>. We're an independent repairer with no connection to Defy, and the meanings in the table come from Defy's published manuals.</p>
 
 <h2>Book a Defy repair</h2>
-<p>Call or WhatsApp us with the code and model number, or use our <a href="/contact/">contact page</a>. We've been repairing washing machines for ${f.yearsInBusiness} years and come to homes in ${areaList()}. Our <a href="/">washing machine repairs</a> page explains the whole process.</p>
-
-<h2>If your code isn't listed</h2>
-<p>Defy machines outside the ranges above may use different codes. Check the troubleshooting section of your manual, or send us the code (or a short video of the display) with the model number, and see our guides to a <a href="/problems/washing-machine-not-draining/">washing machine not draining</a> and a <a href="/problems/washing-machine-not-spinning/">washing machine not spinning</a>. We're an independent repairer with no connection to Defy, and the meanings in the table come from Defy's published manuals.</p>`,
+<p>Call or WhatsApp us with the code and model number, or use our <a href="/contact/">contact page</a>. We've been repairing washing machines for ${f.yearsInBusiness} years and come to homes in ${areaList()}. The <a href="/">ProServ home page</a> explains the whole process.</p>`,
     codes: [
       { code: 'E1', meaning: 'Water intake is very slow', causes: 'Tap shut, supply cut off, low water pressure, a clogged filter at the inlet valve, or the hot and cold hoses swapped', check: 'Open the tap, test the pressure at another tap, check the hoses are on the right taps and rinse the inlet filter with the tap closed' },
       { code: 'E2', meaning: 'Water drainage is very slow', causes: 'Drain hose badly positioned, bent or placed too high, a blockage in the hose or the drain pump (pump models), or a power failure', check: "Straighten and reposition the drain hose at the right height, check for blockages and check the power didn't go off" },
@@ -340,7 +344,7 @@ export const errorGuides: ErrorGuide[] = [
       { q: 'What does Por mean on my Defy?', a: "Por is a warning that the power supply is out of range, meaning the mains voltage is too low or too high. It can happen when the supply is unstable, for example around load shedding. If it keeps appearing while the rest of the house has normal power, have the machine checked." },
       { q: 'Can I open the lid when my Defy shows EE?', a: "Don't force it. EE means the mechanical lid lock has failed, and Defy's manual asks whether the lock is broken or the lid was forced open. Switch off at the wall and book a technician to free the lid and repair the lock safely." },
       { q: 'Is E3 on a Defy top loader a serious fault?', a: "Usually not. E3 means the load is unbalanced, so spread the laundry evenly around the tub and check that the machine is level. If it shows with every load, the suspension may be worn and needs a technician." },
-      { q: "Does E2 mean my Defy's pump is broken?", a: "Not necessarily. Defy lists a bent or badly placed drain hose, a hose hooked too high, a blockage and even a power failure as causes of E2. Check those first; if the water still drains slowly, a technician can test the drain pump and clear the drain path." },
+      { q: "Does E2 mean my Defy's pump is broken?", a: "Not necessarily. Defy lists a bent or badly placed drain hose, a hose hooked too high, a blockage and even a power failure as causes of E2. Check those first; if the water still drains slowly, a technician can test the drain pump, or the drain valve on models that drain by gravity, and clear the drain path." },
       { q: 'Why does my Defy show E6?', a: "On the DTL148, DTL149, DTL150 and DTL161, E6 means the lid is open. Close it firmly and make sure nothing, such as a sleeve, is stopping it shutting. If E6 stays with the lid closed, the lid switch needs checking." },
     ],
   },

@@ -90,9 +90,20 @@ const body = prepare(Astro.slots.has('default') ? await Astro.slots.render('defa
 const after = Astro.slots.has('after') ? prepare(await Astro.slots.render('after')) : '';
 const showToc = toc ?? headings.length >= 3;
 const hasAsideSlot = Astro.slots.has('aside');
+// The extra sidebar cards, rendered here so the sidebar can be named by what they hold.
+const asideCards = hasAsideSlot ? await Astro.slots.render('aside') : '';
 // Without the booking card or extra cards the sidebar only holds the desktop contents list.
 const asideCls = booking || hasAsideSlot ? 'min-w-0' : 'hidden min-w-0 lg:block';
 const hasAside = booking || hasAsideSlot || showToc;
+// Name the sidebar by what it holds at every width; the desktop-only contents list is a nav with its own name.
+// Extra cards count as related links, unless they hold no links (the area pages' suburb list): then their heading names them.
+// A slot can be declared but render nothing (brand pages without an error code guide), so test what it rendered.
+const cardsName = !asideCards.trim()
+  ? ''
+  : /<a\s/.test(asideCards)
+    ? 'Related links'
+    : plain(/<h2[^>]*>([\s\S]*?)<\/h2>/.exec(asideCards)?.[1] ?? '') || 'More information';
+const asideLabel = booking ? (cardsName ? `${cardsName} and booking` : 'Booking') : cardsName || 'Page contents';
 ---
 <section class:list={[tight ? 'pt-2 pb-12 md:pb-16 lg:pb-20' : 'pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-16 lg:pb-20', tone === 'surface' ? 'bg-surface' : 'bg-white']}>
   <div class:list={['container-site', hasAside && 'grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20']}>
@@ -114,8 +125,8 @@ const hasAside = booking || hasAsideSlot || showToc;
       {after && <div class="mt-12" set:html={after} />}
     </div>
     {hasAside && (
-    <aside class={asideCls} aria-label={!booking ? 'Page contents' : showToc ? 'Page contents and booking' : 'Booking and related links'}>
-      {hasAsideSlot && <div class="mb-5 space-y-5"><slot name="aside" /></div>}
+    <aside class={asideCls} aria-label={asideLabel}>
+      {hasAsideSlot && <div class="mb-5 space-y-5" set:html={asideCards} />}
       <div class="space-y-5 lg:tall:sticky lg:tall:top-24">
         {showToc && (
           <nav class="hidden rounded-2xl border border-line bg-white p-5 lg:block" aria-labelledby="toc-h">

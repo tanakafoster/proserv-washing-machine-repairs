@@ -1,7 +1,9 @@
 ---
 /**
  * Error code table for the error code guides. Below 640px each row becomes a card with its own
- * labels; from 640px it is a normal four-column table (it fits the copy column at every width).
+ * labels; from 640px it is a normal four-column table. Codes wrap inside their chips, and guides with
+ * long codes (such as "E:10-00 / E:10-10 / E:10-20") get a 9rem Code column, so the table fits the
+ * copy column; if it ever didn't, the wrapper scrolls sideways instead of cutting text off.
  * The ARIA roles keep the table semantics when the phone layout changes the display of the cells,
  * and the column headers stay in the accessibility tree (visually hidden on phones).
  * `sources` renders under the table as "Where these codes come from", with external links.
@@ -15,20 +17,22 @@ interface Props {
 }
 const { brand, codes, sources = [] } = Astro.props;
 const cols = ['What it usually means', 'Likely causes', 'What you can safely check'];
+// Only guides with long codes need the fixed Code column; short codes (Defy's E1, Ec, Por) keep it narrow.
+const longCodes = codes.some((c) => c.code.length > 9);
 ---
-<div class="mt-6 overflow-hidden rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
+<div class="mt-6 overflow-x-auto rounded-2xl border border-line bg-white shadow-[var(--shadow-card)]">
   <table class="code-table w-full border-collapse text-left text-[0.9375rem] leading-relaxed sm:min-w-[36rem]" role="table" data-bare>
     <caption class="sr-only">{brand} washing machine error codes, meanings, likely causes and safe checks</caption>
     <thead class="bg-surface" role="rowgroup">
       <tr role="row">
-        <th scope="col" role="columnheader" class="border-b-2 border-brand px-4 py-3 text-sm font-bold text-ink-strong">Code</th>
+        <th scope="col" role="columnheader" class:list={['border-b-2 border-brand px-4 py-3 text-sm font-bold text-ink-strong', longCodes && 'sm:w-36']}>Code</th>
         {cols.map((c) => <th scope="col" role="columnheader" class="border-b-2 border-brand px-4 py-3 text-sm font-bold text-ink-strong">{c}</th>)}
       </tr>
     </thead>
     <tbody role="rowgroup">
       {codes.map((c) => (
         <tr role="row" class="align-top">
-          <th scope="row" role="rowheader" class="sm:px-4 sm:py-3.5 sm:whitespace-nowrap">
+          <th scope="row" role="rowheader" class="sm:px-4 sm:py-3.5">
             <span class="inline-flex rounded-lg bg-brand-tint px-2.5 py-1 font-mono text-[0.9375rem] font-bold text-ink-strong ring-1 ring-brand/30">{c.code}</span>
           </th>
           <td role="cell" class="leading-snug font-semibold text-ink-strong sm:px-4 sm:py-3.5 sm:leading-relaxed">
