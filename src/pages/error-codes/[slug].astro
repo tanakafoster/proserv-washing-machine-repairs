@@ -35,7 +35,7 @@ const others = errorGuides.filter((o) => o.slug !== g.slug);
         <ErrorCodeTable brand={g.brand} codes={g.codes} sources={g.sources} />
       </section>
       <div class="prose-site mt-12" set:html={g.bodyAfterTable} />
-      <div class="prose-site mt-12">
+      <div class="prose-site mt-12" data-shared="error-guide-stop">
         <h2 id="stop-h">When to stop and call a technician</h2>
         <p>Stop using the machine and call us if a code keeps coming back after the simple checks, if there's water on the floor, a burning smell, or the machine trips the electricity. Codes that point to heating, sensors, the motor or the control board involve electrical parts, so please leave those to a technician.</p>
         <p>WhatsApp us a photo of the display and the model number and we'll tell you what the code usually means on that model. For the full picture, see <a href={brandUrl(g.brandSlug)}>{g.brand} washing machine repairs</a>, or read our general guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a>.</p>
