@@ -11,16 +11,16 @@ import { faqSchema } from '../../lib/schema';
 const f = site.facts;
 // The brand pages, in the order the "Brands with their own page" list shows them.
 const brandPages = [
-  { slug: 'defy', name: 'Defy', text: 'front loaders and top loaders from a long-established South African brand, from older machines to current models.' },
+  { slug: 'defy', name: 'Defy', text: 'front loaders, top loaders and twin tubs from a long-established South African brand, from older machines to current models.' },
   { slug: 'lg', name: 'LG', text: 'front loaders with LG\'s direct drive motor, as well as top loaders and washer-dryers.' },
   { slug: 'samsung', name: 'Samsung', text: 'front loaders, top loaders and washer-dryers, many with Samsung\'s digital inverter motor.' },
   { slug: 'bosch', name: 'Bosch', text: 'front loaders and washer-dryers, freestanding and integrated.' },
   { slug: 'siemens', name: 'Siemens', text: 'iQ front loaders and washer-dryers, made by the same group as Bosch.' },
   { slug: 'aeg', name: 'AEG', text: 'premium front loaders and washer-dryers, including built-in models.' },
-  { slug: 'whirlpool', name: 'Whirlpool', text: 'front loaders and top loaders, from older models to current ranges.' },
-  { slug: 'hisense', name: 'Hisense', text: 'front loaders and top loaders, including inverter models.' },
-  { slug: 'miele', name: 'Miele', text: 'premium German machines built for a long working life.' },
-  { slug: 'smeg', name: 'Smeg', text: 'washing machines from the Italian appliance maker.' },
+  { slug: 'whirlpool', name: 'Whirlpool', text: 'front loaders, top loaders and washer-dryers, from older models to current ranges.' },
+  { slug: 'hisense', name: 'Hisense', text: 'front loaders, top loaders, twin tubs and washer-dryers, including inverter models.' },
+  { slug: 'miele', name: 'Miele', text: 'premium German front loaders and washer-dryers built for a long working life.' },
+  { slug: 'smeg', name: 'Smeg', text: 'freestanding and integrated front loaders and washer-dryers from the Italian appliance maker.' },
   { slug: 'speed-queen', name: 'Speed Queen', text: 'heavy-duty top loaders and front loaders built to commercial standards and used in homes and laundromats.' },
 ];
 // Makes we repair that don't have their own page (a brand drops out of this list once it gets one).
@@ -53,7 +53,7 @@ const faqs = [
       <h2>Brands with their own page</h2>
       <p>Each brand page covers the machines that make sells, the faults that affect them and how a repair works. In brief:</p>
       <ul>
-        {brandPages.map((p) => <li><a href={brandUrl(p.slug)}>{p.name} washing machine repairs</a>: {p.text}</li>)}
+        {brandPages.map((p) => <li><a href={brandUrl(p.slug)}>{p.name}</a>: {p.text}</li>)}
       </ul>
 
       <h2>How we approach different makes</h2>
