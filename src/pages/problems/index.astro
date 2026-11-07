@@ -34,12 +34,12 @@ const faqs = [
   <LinkCards alt eyebrow="Fault guides" heading="Pick your problem" headingId="prob-list" cols={4} items={problems.map((p) => ({ href: problemUrl(p.slug), title: `Washing machine ${p.name.toLowerCase()}`, text: p.summary, icon: problemIcon(p.slug) }))} />
   <LongFormSection reservedIds={['prob-list']}>
       <h2>Before you check anything</h2>
-      <div class="callout callout-safety"><p><strong>Safety first:</strong> a washing machine combines mains electricity and water. Before you check anything, switch off at the wall and pull out the plug. If the earth leakage or circuit breaker trips when the machine runs, leave it off and call a technician, because it can indicate a dangerous fault.</p></div>
+      <div class="callout callout-safety"><p><strong>Safety first:</strong> a washing machine combines mains electricity and water. Apart from checking that the machine has power, switch off at the wall and pull out the plug before you check anything. If the plug or socket is wet, or the floor in front of them is, leave them alone and switch off at the DB board instead. If the earth leakage or circuit breaker trips when the machine runs, leave it off and call a technician, because it can indicate a dangerous fault.</p></div>
       <p>The checks in our guides never involve opening panels, testing or replacing electrical parts, or forcing a locked door. Stop and call a technician if you notice any of these:</p>
       <ul>
         <li>A burning or electrical smell, smoke, or scorch marks on the plug or socket</li>
         <li>Water on the floor near the plug point, or water coming from underneath the machine</li>
-        <li>A door that stays locked with water in the drum after the machine has finished</li>
+        <li>A door that stays locked, or water that won't drain, after you've run the drain or spin programme and cleaned the pump filter</li>
         <li>Grinding, scraping or banging that comes back on every wash</li>
       </ul>
 
@@ -69,7 +69,7 @@ const faqs = [
         <li><strong>What you see, hear or smell.</strong> Where the water appears, what the noise sounds like (a rumble, a bang, a grind or a hum) and any burning or musty smell.</li>
         <li><strong>Anything on the display.</strong> The exact code or the pattern of flashing lights, written down or photographed.</li>
         <li><strong>What changed recently.</strong> A power cut, a move, a new hose, an unusually heavy load, or a coin or hair clip that went in with the washing.</li>
-        <li><strong>The brand and model number.</strong> Our <a href="/brands/">brands we repair</a> page explains where to find the model number.</li>
+        <li><strong>The brand and model number.</strong> Our <a href="/brands/">guide to the brands we repair</a> explains where to find the model number.</li>
       </ul>
       <div class="callout callout-tip"><p><strong>Tip:</strong> a short video of the machine doing the wrong thing, sent on WhatsApp, often explains a noise or a leak better than words can.</p></div>
 
@@ -88,7 +88,7 @@ const faqs = [
       </ul>
 
       <h2>Checks you can safely do</h2>
-      <p>These owner checks fix some problems without a call-out. Switch off at the wall and unplug the machine before each one.</p>
+      <p>These owner checks fix some problems without a call-out. Start with the power supply, then switch off at the wall and unplug the machine before you do any of the other checks.</p>
       <ul class="checklist">
         <li>The plug is in, the wall switch is on and the house has power. During load shedding, wait for the power to return, and try a lamp in the same socket.</li>
         <li>The tap is turned fully on, and the inlet hose behind the machine isn't kinked or flattened.</li>
@@ -97,7 +97,7 @@ const faqs = [
         <li>The machine stands level and firm on all four feet.</li>
         <li>You're using a detergent made for automatic machines (marked "auto" on many packs), not hand-wash powder, in the amount the pack suggests.</li>
         <li>The pump filter is clear. Clean it as your manual describes, expecting water, with towels and a shallow tray ready.</li>
-        <li>The small mesh filter where the inlet hose meets the machine is free of grit, cleaned as your manual describes.</li>
+        <li>The small mesh filter where the inlet hose meets the machine is free of grit. Close the tap first, then clean the filter as your manual describes, with a towel and a small tray ready for the water left in the hose.</li>
       </ul>
       <p>Anything beyond these, such as removing panels or testing parts, is a job for a technician.</p>
 
