@@ -74,7 +74,7 @@ export const problems: Problem[] = [
   <li><strong>Blockage:</strong> cleared, then proved with a test drain and spin.</li>
   <li><strong>Jammed or worn pump:</strong> cleared or replaced, one of the routine <a href="/services/washing-machine-parts-replacement/">washing machine parts replacements</a>.</li>
   <li><strong>Hose set-up:</strong> rerouted to the right height, or a damaged hose replaced. If the trouble started after a move, our <a href="/services/washing-machine-installation/">washing machine installation</a> service sets it up properly.</li>
-  <li><strong>Sensor or control fault:</strong> tested, then repaired or replaced once you've accepted the quote.</li>
+  <li><strong>Sensor or control fault:</strong> confirmed by testing first, because a pump that never gets the signal to run looks just like a failed one.</li>
 </ul>
 <p>We fix drain faults on all major brands, including <a href="${brandUrl('defy')}">Defy</a>, <a href="${brandUrl('hisense')}">Hisense</a> and <a href="${brandUrl('whirlpool')}">Whirlpool</a>.</p>
 
@@ -157,7 +157,7 @@ export const problems: Problem[] = [
   <li><strong>Rebalance the load.</strong> Once the door unlocks, spread the washing out, take out one heavy item or add a couple of towels to a small load, then run a spin-only or rinse-and-spin programme.</li>
   <li><strong>Look for water and foam.</strong> If water is left in the drum, follow the drain guide. If there's a lot of foam, run a rinse without detergent and use less next time.</li>
   <li><strong>Close the door or lid properly.</strong> Make sure nothing is caught in the door seal and the door clicks shut. On a top loader, check that the lid closes fully.</li>
-  <li><strong>Check that the machine is level.</strong> Press down on opposite corners. If it rocks, adjust the levelling feet as your manual describes and tighten their lock nuts.</li>
+  <li><strong>Make sure it stands firm.</strong> A machine that rocks can't keep the drum balanced, so it may refuse to spin up. If it moves when you push down on opposite corners, adjust the feet as your manual describes until it stands steady, then lock them.</li>
   <li><strong>Write down any code.</strong> An unbalance or motor code narrows things down, and our <a href="/error-codes/">washing machine error code guides</a> explain the common ones.</li>
 </ol>
 
@@ -191,7 +191,7 @@ export const problems: Problem[] = [
       { q: `Why are my clothes still soaking wet after the wash?`, a: `Either the machine skipped or shortened the final spin, or it never drained properly. Check the spin setting and the load balance first, then look for water left in the drum. If both look fine, a worn part is stopping the drum reaching full speed.` },
       { q: `Why does my machine spin with some loads but not others?`, a: `Balance is almost always the reason. A small load with one heavy item, like a bath mat or a pair of jeans, is the hardest to balance, while a mix of large and small items spreads out evenly. If it struggles with every load, have the shock absorbers and motor checked.` },
       { q: `Is a broken motor the usual reason a machine won't spin?`, a: `No. Load balance, drainage, the door lock, carbon brushes and belts are all much more common causes than a failed motor. That's why it pays to diagnose the machine properly before assuming the worst.` },
-      { q: `Can load shedding stop my washing machine spinning?`, a: `It can. A surge when the power comes back can damage the board that drives the motor, and a machine cut off mid-cycle may need its programme restarted before it will spin. Switching off at the wall when the power goes, and waiting a few minutes after it returns, lowers the risk.` },
+      { q: `Can load shedding stop my washing machine spinning?`, a: `It can, in two ways. A programme cut off mid-cycle may need restarting before it reaches the spin, so once the power is back, try a spin-only or drain-and-spin programme. If it still won't spin, the surge when the power returned may have damaged the board that drives the motor, which needs a technician to test.` },
       { q: `Why does my washing machine smell of burning when it tries to spin?`, a: `Worn carbon brushes, a slipping belt or an overheating motor are the usual causes. Stop using the machine, switch it off at the wall and have it checked, because running it can damage the motor further.` },
       { q: `Why does my top loader agitate but not spin?`, a: `The lid switch or lid lock is the first suspect, because the machine won't spin unless it knows the lid is shut. A worn clutch, a slipping belt or water that hasn't drained can do the same. If the lid closes properly and the water has gone, the switch and drive parts need testing.` },
       { q: `How full should I load my front loader?`, a: `Fill the drum loosely, leaving roughly a hand's width of space at the top. A packed drum can't tumble or balance properly, while a very small load is easily thrown off balance. Your manual gives the maximum load for each programme.` },
@@ -276,7 +276,7 @@ export const problems: Problem[] = [
   <li><strong>Inlet or drain hoses:</strong> replaced, with new washers and a check of the tap.</li>
   <li><strong>Pump, sump hose or internal hoses:</strong> resealed or replaced.</li>
   <li><strong>Detergent drawer and housing:</strong> cleared, or a cracked part replaced.</li>
-  <li><strong>Tub seal and bearings:</strong> replaced together. On a machine with a sealed tub that can't be split, you'll get the cost of the whole tub assembly before you decide.</li>
+  <li><strong>Tub seal:</strong> replaced together with the drum bearings, because water getting past the seal ruins them. Our page on a <a href="/problems/washing-machine-noisy-when-spinning/">washing machine noisy when spinning</a> explains what the bearing job involves, including on sealed tubs.</li>
   <li><strong>Cracked outer tub:</strong> replaced where it makes sense, or you'll be told honestly if a new machine is better value.</li>
 </ul>
 <p>Most of these are routine <a href="/services/washing-machine-parts-replacement/">washing machine parts replacements</a>. If the leak started after the machine was installed or moved, our <a href="/services/washing-machine-installation/">washing machine installation</a> service puts the connections right. We fix leaks on all major brands, including <a href="${brandUrl('bosch')}">Bosch</a>, <a href="${brandUrl('aeg')}">AEG</a>, <a href="${brandUrl('siemens')}">Siemens</a> and <a href="${brandUrl('defy')}">Defy</a>.</p>
@@ -385,7 +385,6 @@ export const problems: Problem[] = [
       { q: `Why does my washing machine trip the electricity?`, a: `A heating element leaking current to earth is a classic cause, along with a damaged cable, a failing mains filter or water reaching an electrical part. Either way, the earth leakage is a safety device doing its job. Leave the machine unplugged and have it tested before you use it again.` },
       { q: `Why do the lights come on but the machine won't start?`, a: `Check the child lock and any delay timer, and make sure the door is pushed firmly shut. If those are fine, the door lock may not be engaging or the board may not be responding to the buttons. Both need testing by a technician.` },
       { q: `Can I plug my washing machine into an extension lead?`, a: `It's safer not to. A washing machine draws a heavy current when it heats water, and extension leads and multi-plugs can overheat or make the machine cut out. Plug it straight into a wall socket that's in good condition.` },
-      { q: `Is it worth repairing a control board?`, a: `Often, especially on a newer or better-quality machine, where a board costs far less than a new machine. On an older machine with other worn parts, the numbers may not add up. The technician gives you the price first, so you can decide.` },
       { q: `Why does my machine switch off in the middle of a cycle?`, a: `A loose plug, a worn socket or a multi-plug can lose the connection when the machine vibrates, and dips in the supply can do it too. If the plug and socket are sound and it keeps happening, an internal connection or the board needs testing.` },
       { q: `Can a burnt plug be the reason my machine is dead?`, a: `Yes. A scorched or melted plug usually means a poor connection that has overheated, and it can damage the socket as well. Don't use the machine: switch off at the wall and have the plug, the cable and the socket checked.` },
       { q: `My machine was dead, then started working again. Should I worry?`, a: `It's worth having it checked if it happens more than once. Faults that come and go usually come from a loose connection, a failing switch or a board on its way out, and they rarely fix themselves. Note when it happens and what the display shows, because that helps the technician find it.` },
@@ -459,7 +458,7 @@ export const problems: Problem[] = [
   <li><strong>Board or wiring fault:</strong> traced, then repaired or replaced once you've accepted the quote.</li>
   <li><strong>Lid lock or lid switch on a top loader:</strong> replaced. See <a href="/services/top-loader-repairs/">top loader repairs</a>.</li>
 </ul>
-<p>Door faults on front loaders are part of our <a href="/services/front-loader-repairs/">front loader repairs</a>, on all major brands, including <a href="${brandUrl('whirlpool')}">Whirlpool</a> and <a href="${brandUrl('aeg')}">AEG</a>.</p>
+<p>For more on door locks and seals, see our <a href="/services/front-loader-repairs/">front loader repairs</a> page. The <a href="${brandUrl('whirlpool')}">Whirlpool</a> and <a href="${brandUrl('aeg')}">AEG</a> pages describe door faults on those machines.</p>
 
 <h2>How long it usually takes</h2>
 <p>Locks, handles and door hooks are small parts, and fitting them is usually quick, so the job is normally finished on the same visit when the part is available. If the part for your model has to be ordered in, you're told before you agree to the work. Board faults take longer to trace. How the price is worked out is explained in our <a href="/washing-machine-repair-cost/">repair pricing guide</a>.</p>
@@ -558,7 +557,7 @@ export const problems: Problem[] = [
   <li><strong>Bearings and seal:</strong> replaced together on a tub that can be split. On a sealed tub, you get a quote for the tub assembly so you can decide.</li>
   <li><strong>Noisy pump:</strong> cleared or replaced.</li>
 </ul>
-<p>Most of this falls under our <a href="/services/front-loader-repairs/">front loader repairs</a> and <a href="/services/top-loader-repairs/">top loader repairs</a>, on all major brands from <a href="${brandUrl('lg')}">LG</a> and <a href="${brandUrl('defy')}">Defy</a> to <a href="${brandUrl('speed-queen')}">Speed Queen</a>.</p>
+<p>Our <a href="/services/front-loader-repairs/">front loader repairs</a> and <a href="/services/top-loader-repairs/">top loader repairs</a> pages explain the bearing and suspension work in more depth, and the <a href="${brandUrl('lg')}">LG</a>, <a href="${brandUrl('defy')}">Defy</a> and <a href="${brandUrl('speed-queen')}">Speed Queen</a> pages cover those makes.</p>
 
 <h2>How long noise repairs take</h2>
 <p>Removing an object, tightening a counterweight or replacing shock absorbers is usually done in one visit when the parts are available. Bearings take several hours, and if the bearings or the tub for your model have to be ordered, that's explained with the quote, before you agree to the repair. On an older machine with worn bearings, our <a href="/repair-or-replace/">repair or replace guide</a> helps you weigh up the cost.</p>
@@ -664,11 +663,9 @@ export const problems: Problem[] = [
       { q: `Can I clear a washing machine error code myself?`, a: `Often, yes: switching off at the wall for a few minutes clears many codes from the display. Whether it stays clear depends on the cause. If the same code returns after the simple checks, there's a real fault to fix.` },
       { q: `My machine flashes lights instead of showing a code. What does that mean?`, a: `Machines without a digital display use patterns of flashing lights to show faults, and the manual lists what each pattern means. Count the flashes or take a short video. Send it to us with the model number when you book.` },
       { q: `Does the error code tell you exactly which part is broken?`, a: `Not usually. It tells you which system has a problem, such as the drain, and the cause could be a blockage, a pump, a sensor or the board. Testing confirms which one, and the quote is based on that.` },
-      { q: `Are error codes the same on every machine of one brand?`, a: `No. Manufacturers change their codes between ranges and over the years, and a code on a front loader can mean something different on a top loader of the same brand. Always check it against your model number.` },
       { q: `Is it safe to keep using my machine while it shows a code?`, a: `It depends on the code. An imbalance or foam code is usually safe to sort out yourself, and a heating or motor code may clear after one restart at the wall, but if it comes back, leave the machine off until it's checked. With a leak or overflow code, switch off at the wall, or at the DB board if the plug, the socket or the floor around them is wet, then close the tap and call straight away. If the machine trips the power, leave it off and call a technician.` },
       { q: `Why did an error code appear after load shedding?`, a: `A cycle cut off by a power failure can leave water in the drum and an unfinished programme, and some machines show a code or a power-failure notice when the power returns. Switch off at the wall for a few minutes and restart. If a different code keeps appearing, the surge may have damaged something.` },
       { q: `My code isn't in any of your guides. What now?`, a: `Check the manual for your model first, because it's the most reliable source. If you don't have it, send us the code, the brand and the model number when you get in touch. The technician can then check it against your exact model.` },
-      { q: `Can a technician read old error codes from my machine?`, a: `On many modern machines, yes. They store recent fault codes, and a technician can call them up in a service mode, which helps when a fault comes and goes. Older and simpler machines don't keep a history, so it helps to note the code yourself.` },
     ],
   },
   {
@@ -733,13 +730,13 @@ export const problems: Problem[] = [
 <h2>What the technician checks and fixes</h2>
 <p>The technician checks the flow and pressure reaching the machine, then the hose and filters. They test the inlet valve and the signal the board sends to it, check that the door lock confirms, and test the water level sensor and its hose.</p>
 <ul>
-  <li><strong>Faulty inlet valve:</strong> replaced. It's one of the more routine <a href="/services/washing-machine-parts-replacement/">washing machine parts replacements</a>.</li>
+  <li><strong>Faulty inlet valve:</strong> replaced with one that matches your model, because valves differ in how many outlets they have and how they're fitted. See <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a>.</li>
   <li><strong>Blocked filter or damaged hose:</strong> cleaned or replaced.</li>
-  <li><strong>Level sensor or door lock:</strong> replaced and tested through a full fill.</li>
+  <li><strong>Level sensor or door lock:</strong> replaced, then the machine is run until it has filled to the right level and moved on to the wash.</li>
   <li><strong>Board fault:</strong> repaired or replaced once you've accepted the quote.</li>
   <li><strong>A supply or tap problem:</strong> explained clearly, so you know when a plumber is the right person for it.</li>
 </ul>
-<p>We sort out filling faults on all major brands, including <a href="${brandUrl('hisense')}">Hisense</a>, <a href="${brandUrl('samsung')}">Samsung</a>, <a href="${brandUrl('smeg')}">Smeg</a> and <a href="${brandUrl('miele')}">Miele</a>.</p>
+<p>Our pages on <a href="${brandUrl('hisense')}">Hisense</a>, <a href="${brandUrl('samsung')}">Samsung</a>, <a href="${brandUrl('smeg')}">Smeg</a> and <a href="${brandUrl('miele')}">Miele</a> machines describe their water intake faults in more detail.</p>
 
 <h2>How long it usually takes</h2>
 <p>Most filling faults are found quickly, and a filter clean or a hose fix happens on the spot. An inlet valve is usually fitted on the same visit when the part is available; when one has to be ordered, the technician tells you before you say yes to the repair. Our guide to <a href="/washing-machine-repair-cost/">the cost of a repair</a> covers what the price depends on.</p>

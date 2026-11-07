@@ -194,7 +194,7 @@ ${indie('Defy')}`,
 <p>If the earth leakage trips, or you smell burning, skip the checks: leave the machine switched off at the wall and book a technician.</p>
 
 <h2>Is an LG worth repairing?</h2>
-<p>Usually, yes. Pumps, door locks, inlet valves, sensors and shock absorbers are single parts that cost far less than a new machine, and most are replaced on the spot when the part is available. The decision gets harder on an older LG that needs a new tub or a main control board, because either can cost a large share of a new washer. The technician tells you plainly when that's the case. Our pages on <a href="/repair-or-replace/">whether to repair or replace</a> and <a href="/washing-machine-repair-cost/">how a repair is priced</a> explain what to weigh up.</p>
+<p>Usually, yes. The decision gets harder on an older LG that needs a new tub or a main control board, because either can cost a large share of a new washer. The technician tells you plainly when that's the case. Our pages on <a href="/repair-or-replace/">whether to repair or replace</a> and <a href="/washing-machine-repair-cost/">how a repair is priced</a> explain what to weigh up.</p>
 
 <h2>Looking after an LG</h2>
 <ul>
@@ -272,7 +272,6 @@ ${indie('LG')}`,
 
 <h2>Looking after a Samsung</h2>
 <ul>
-  <li><strong>Drum Clean:</strong> many Samsung front loaders flash a reminder to run Eco Drum Clean every 40 washes. Run it with the drum empty.</li>
   <li><strong>Debris filter:</strong> Samsung advises cleaning the filter at the bottom front five or six times a year. Switch off at the wall and unplug first, then drain the water through the emergency hose into a container before you unscrew the filter.</li>
   <li><strong>Detergent drawer:</strong> pull it out using the release lever and rinse it under running water with a soft brush.</li>
   <li><strong>Door and seal:</strong> wipe the seal and leave the door ajar after washing so the drum can dry; with small children or pets in the house, close the laundry door as well.</li>
@@ -291,7 +290,7 @@ ${indie('LG')}`,
 <div class="callout callout-safety"><p><strong>Safety first:</strong> if the earth leakage trips, the machine sparks or you smell burning, don't switch it on again. Leave it off at the wall and book a technician. Never open the cabinet or the control panel to look for the fault yourself.</p></div>
 
 <h2>Is a Samsung worth repairing?</h2>
-<p>For most faults, yes. A drain pump, inlet valve, door lock, shock absorber or heating element is a single part, and replacing it costs far less than buying a new machine of the same size. It's a closer call when an older machine needs drum bearings, which means stripping it down to the tub, or when a control board fails on a machine that has already done years of service. The technician compares the repair with replacement and tells you plainly which makes sense; our page on <a href="/repair-or-replace/">repairing versus replacing</a> sets out the same reasoning, and our <a href="/services/front-loader-repairs/">front loader page</a> explains how the bigger jobs are done.</p>
+<p>For most faults, yes. The harder decisions on an older Samsung are drum bearings, which mean stripping the machine down to the tub, and a control board that fails after years of service. The technician compares the repair with replacement and tells you plainly which makes sense; our page on <a href="/repair-or-replace/">repairing versus replacing</a> sets out the same reasoning, and our <a href="/services/front-loader-repairs/">front loader page</a> explains how the bigger jobs are done.</p>
 
 <h2>Areas and booking</h2>
 <p>We repair Samsung washing machines across ${areaLinks()}, and every repair is done at your home.</p>
@@ -303,7 +302,7 @@ ${indie('Samsung')}`,
       { q: `Where is the model number on my Samsung?`, a: `On a front loader it is printed around the door opening or on the back of the machine. On a top loader it is on the back. Take a photo of the label and send it with your booking.` },
       { q: `Do you repair Samsung top loaders as well as front loaders?`, a: `Yes. We repair Samsung top loaders, front loaders and washer-dryers at your home, including lid locks, drain pumps, inlet valves, suspension and control faults.` },
       { q: `My Samsung display is dead after a power cut. What should I do?`, a: `Switch off at the wall, check the plug point with a lamp and make sure the power is back and stable, then try again. If the display stays dead, a surge may have damaged the board or its power supply, which needs a technician to test.` },
-      { q: `How long does a Samsung repair take?`, a: `Most single-part repairs, such as a drain pump, door lock or inlet valve, are finished on the same visit when the part is available. Bearing work takes longer, because the machine has to be stripped down to the tub. If the part needs ordering, you'll know before you approve the repair, so you can decide whether to wait for it.` },
+      { q: `Why does my Samsung keep reminding me to run Eco Drum Clean?`, a: `Many Samsung front loaders show the reminder every 40 washes. It's a prompt to clean the drum, not a fault: run Eco Drum Clean with the drum empty, as your manual describes, to clear residue and help keep smells away.` },
     ],
   },
 
@@ -321,7 +320,7 @@ ${indie('Samsung')}`,
     intro: `<p>If your Bosch won't fill or drain, leaks, or roars on the spin, the technician finds the cause at your home. Our Bosch washing machine repairs cover freestanding and integrated front loaders and washer-dryers across Gauteng, from drain, fill and leak faults to bearings and boards, with a quote before any work starts.</p>`,
     body: `
 <h2>Bosch machines and their technology</h2>
-<p>Bosch washing machines are made by BSH Hausgeräte, the home appliance company owned by the Bosch group. BSH also makes Siemens-branded machines on related platforms, which is why the two brands have so much in common (see <a href="${brandUrl('siemens')}">Siemens washing machine repairs</a>). Bosch sells its machines in ranges such as Series 4, Series 6 and Series 8, mostly as front loaders, either freestanding or built in behind a kitchen cabinet door, along with washer-dryers.</p>
+<p>Bosch's washing machines come from BSH Hausgeräte, the Bosch group's home appliance company, which also builds Siemens-branded machines on related platforms. That's why the two brands have so much in common (see <a href="${brandUrl('siemens')}">Siemens washing machine repairs</a>). Bosch sells its machines in ranges such as Series 4, Series 6 and Series 8, mostly as front loaders, either freestanding or built in behind a kitchen cabinet door, along with washer-dryers.</p>
 <p>A few Bosch features matter when something goes wrong:</p>
 <ul>
   <li><strong>EcoSilence Drive:</strong> a brushless motor, used on many newer models and designed to run quietly and efficiently.</li>
@@ -364,7 +363,7 @@ ${indie('Samsung')}`,
   <li>The load is sensible and the machine stands level.</li>
   <li>If the machine was moved recently, the hoses weren't kinked or squashed when it was pushed back into place.</li>
 </ul>
-<div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug the machine before you open the service flap, and let the water cool if a hot wash was running. Put down towels and a shallow tray, and expect more water than you'd think. Never open the cabinet, and never tip the machine to clear a leak warning: the leak is still there.</p></div>
+<div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug the machine before you open the service flap, and let the water cool if a hot wash was running. Put down towels and a shallow tray, and expect more water than you'd think. Never open the cabinet.</p></div>
 
 <h2>Integrated Bosch machines</h2>
 <p>A built-in Bosch sits behind a kitchen cabinet door, with the hoses and plug hidden behind it. To work on it, the technician removes the plinth (the kick board under the cabinets) and slides the machine out carefully, then disconnects the hoses. Once the repair is done, the machine goes back in, the cabinet door is checked for alignment and the hoses are checked for leaks before the plinth goes back on. That takes longer than a freestanding machine, so the extra time is included in the quote. Before the visit, clear the cupboards and floor in front of the machine, and check whether the tap and plug are in the next cupboard, so the technician can reach them.</p>
@@ -376,7 +375,7 @@ ${indie('Samsung')}`,
 <p>The rating plate on the inner rim of the door opening carries the E-Nr (the model number) and the FD number, which together identify the exact version of your machine. Bosch has made many generations of similar-looking machines with different parts, so these numbers are how the technician makes sure the right part is quoted. If the label isn't on the door rim, look behind the service flap or on the back of the machine.</p>
 
 <h2>Is a Bosch worth fixing?</h2>
-<p>In most cases, yes. A Bosch is a well-built machine, and a pump, door lock, set of carbon brushes, inlet valve or heating element costs far less than a new machine of the same quality. It's a harder call when an older machine needs a control module and bearings at the same time, or when the bearings sit in a tub that has to be replaced as a whole. The technician will tell you honestly if the repair doesn't make sense, and our <a href="/repair-or-replace/">repair or replace advice</a> helps with the decision. For more on what the work involves, see <a href="/services/front-loader-repairs/">how we repair front loaders</a>.</p>
+<p>In most cases, yes. It's a harder call when an older machine needs a control module and bearings at the same time, or when the bearings sit in a tub that has to be replaced as a whole. The technician will tell you honestly if the repair doesn't make sense, and our <a href="/repair-or-replace/">repair or replace advice</a> helps with the decision. For more on what the work involves, see <a href="/services/front-loader-repairs/">how we repair front loaders</a>.</p>
 
 <h2>Looking after your Bosch</h2>
 <ul>
@@ -397,7 +396,7 @@ ${indie('Bosch')}`,
       { q: `Why do some Bosch programmes take so long?`, a: `Eco programmes save electricity by washing at lower temperatures for longer, so a long programme time is normal. A machine that stops counting down, or never reaches the end of the cycle, is a different matter and needs a technician.` },
       { q: `Can I add a forgotten item after my Bosch has started?`, a: `Many Bosch models let you pause the programme and add laundry, as long as the water level and temperature allow it, and the manual for your model explains how. If the door stays locked when you pause, the machine is protecting you from hot water or a spill. That's a safety feature, not a fault.` },
       { q: `Do I still need to close the tap if my Bosch has AquaStop?`, a: `It's still a sensible habit when you go away for a few days. AquaStop shuts off the water if it detects a leak, but closing the tap takes the pressure off the hose and valve while nobody is home to notice a problem.` },
-      { q: `Why does my Bosch fill and drain at the same time?`, a: `Water that runs straight out as it comes in is usually siphoning through the drain hose, because the hose sits too low or is pushed too far into the standpipe. Check that it rises to the height your manual gives before it drops into the drain. If the hose is right and it still happens, the inlet valve or the water level sensor needs a technician.` },
+      { q: `Can I tip my Bosch to clear the leak protection warning?`, a: `No. Tipping it may let the water run out of the base and clear the warning for a while, but whatever put the water there is still leaking, and a washing machine is heavy enough to hurt you if it slips. Switch it off at the wall if the plug and socket are dry, or at the DB board if they're wet, then close the tap and book a technician to find the leak.` },
       { q: `Does a Bosch washing machine need regular servicing?`, a: `Washing machines don't usually need a fixed service schedule, but an older Bosch benefits from a check-up that catches worn hoses, a tired door seal or a noisy bearing before they cause a breakdown. Our <a href="/services/washing-machine-servicing/">washing machine servicing</a> page explains what a service covers.` },
     ],
   },
@@ -420,7 +419,7 @@ ${indie('Bosch')}`,
 <p>We work on all of them: <a href="/services/front-loader-repairs/">front loaders</a> and <a href="/services/top-loader-repairs/">top loaders</a>, belt-driven and direct drive designs, compact machines and washer-dryers, old and new. The model number tells the technician which design yours is, and that decides which parts are involved when something fails.</p>
 
 <h2>Early warning signs</h2>
-<p>Apart from a machine that simply won't turn on, most faults give some warning first. Catching them early can save you money:</p>
+<p>Many Whirlpool faults show up as small changes before the machine stops altogether, so it pays to book as soon as you notice one of these:</p>
 <ul>
   <li><strong>Slow or incomplete draining:</strong> water left in the drum, or clothes that come out much wetter than usual.</li>
   <li><strong>A weak or missing spin:</strong> the drum turns but never reaches full speed.</li>
@@ -428,10 +427,10 @@ ${indie('Bosch')}`,
   <li><strong>New noises:</strong> grinding, squealing or knocking that wasn't there before.</li>
   <li><strong>Washing that isn't clean:</strong> grey, smelly or still soapy laundry.</li>
 </ul>
-<p>If something doesn't seem right during a wash, stop the programme, switch off at the wall and take the laundry out once the door releases. Running a faulty machine for one more load can turn a small repair into an expensive one.</p>
+<p>If you notice one of these, don't start another load: switch the machine off at the wall, or at the DB board if water has reached the plug or socket, and book a technician. Tell us what you noticed, because a struggling pump or a bearing that has started to grind usually gets worse with every wash.</p>
 
 <h2>Why a Whirlpool won't drain</h2>
-<p>Drainage problems have several possible causes, and some are easy to rule out yourself. Start with the drain hose: a kink, a hose pushed too far into the standpipe or a blocked household drain will all stop the water. On a front loader, the next check is the pump filter, where socks, coins and fluff collect.</p>
+<p>Water left in a Whirlpool's drum is usually held up somewhere between the drum and your household drain. You can rule out the drain hose and the pump filter yourself, using the steps under safe troubleshooting below.</p>
 <p>If those are clear, the fault is inside the machine. On front loaders it is usually the drain pump itself, or a blockage in the sump hose that runs from the drum to the pump. On top loaders, a faulty lid switch can stop the machine before the drain-and-spin stage, and on some older belt-driven top loaders a worn or slipping belt affects the pump as well as the spin. Our page on a <a href="/problems/washing-machine-not-draining/">washing machine that won't drain</a> goes into more detail.</p>
 
 <h2>Whirlpool faults we repair</h2>
@@ -464,13 +463,13 @@ ${indie('Bosch')}`,
 <p>Take out some of the load if the drum is packed, untangle sheets wrapped around the agitator, spread the load evenly and close the lid firmly. If it still won't move, the drive or the lid switch needs a technician.</p>
 
 <h2>Whirlpool error codes</h2>
-<p>Whirlpool codes vary a lot between models, ranges and the markets they were made for, so we don't publish one general list. Your user manual lists the codes you can deal with yourself. For anything else, photograph the display and send it with the model number, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for the safe first steps.</p>
+<p>Whirlpool codes vary a lot between models, ranges and the markets they were made for, so we don't publish one general list. Note the code and the stage the machine had reached, whether it was filling, washing or spinning, and look it up in the manual for your model. If it isn't one you can clear yourself, send us the code with a photo of the model number label, and our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> explains what to do in the meantime.</p>
 
 <h2>Quote first, then the repair</h2>
 <p>When the technician has found the fault, you get a quote before any work starts, and the choice is yours. If you go ahead, most repairs are done on the same visit when the part is available; if a part has to be ordered, you'll know before you agree. The call-out fee is ${f.calloutFee}, ${f.calloutCondition}, and the repair carries our ${f.warranty} warranty on parts and labour.</p>
 
 <h2>Whirlpool washer-dryers</h2>
-<p>A Whirlpool washer-dryer can develop the usual washing faults plus a few of its own on the drying side. If it washes well but leaves the laundry damp, check that you're drying a smaller load than you wash, as the manual sets out, and that the drying programme suits the fabric. If it still won't dry, the drying heater, the fan, a temperature sensor or lint in the drying path needs a technician. See <a href="/services/washer-dryer-repairs/">our washer-dryer page</a>.</p>
+<p>A Whirlpool washer-dryer can develop the usual washing faults plus a few of its own on the drying side. If it washes well but leaves the laundry damp, check that you're drying a smaller load than you wash, as the manual sets out, and that the drying programme suits the fabric. If it still won't dry, book a technician to test the drying side. See <a href="/services/washer-dryer-repairs/">our washer-dryer page</a>.</p>
 
 <h2>Repair, or install a new machine</h2>
 <p>If the repair isn't worth it, for example when the tub is cracked or a part costs nearly as much as a new machine, the technician will say so. If you decide to replace it, we can also install the new machine properly, with the hoses connected, the transit bolts removed and the machine levelled. See <a href="/services/washing-machine-installation/">washing machine installation</a> and our advice on <a href="/repair-or-replace/">when a machine is worth replacing</a>.</p>
@@ -492,9 +491,8 @@ ${indie('Whirlpool')}`,
     faqs: [
       { q: `Why does my Whirlpool drum move after the wash has finished?`, a: `If your machine has FreshCare+, that is the feature at work: it uses steam and gentle movements of the drum to keep the laundry fresh if you can't unload it straight away. If the drum moves on a machine without that feature, or the cycle never ends, book a technician.` },
       { q: `What does 6th Sense mean on a Whirlpool?`, a: `It is Whirlpool's name for sensors that detect how much laundry is in the drum and adjust the water, energy and programme time to suit. It also means water levels and programme times change from load to load, which is normal and not a fault.` },
-      { q: `Do you repair older Whirlpool top loaders?`, a: `Yes, as long as parts are still available. Many older Whirlpool top loaders are mechanically simple, and a new lid switch, coupling, belt or pump can keep one going for years.` },
+      { q: `Do you repair older Whirlpool top loaders?`, a: `Yes. Worn agitator dogs, a lid switch or a coupling are typical repairs on an older Whirlpool top loader, and the technician checks that the part for your model number can still be found before quoting.` },
       { q: `My Whirlpool leaves detergent in the drawer. Why?`, a: `The drawer or the siphon in the softener compartment is usually blocked with old detergent, or the water pressure is too low to flush it. Take the drawer out and rinse it, check the tap is fully open and use the right amount of detergent. If it still happens, the inlet valve may not be letting enough water through.` },
-      { q: `My Whirlpool shakes and moves across the floor. What should I check?`, a: `Check that the machine is level with all four feet firmly on the floor, and that the load isn't bunched on one side. On a newly installed machine, make sure the transit bolts were removed. If it still shakes, the suspension or bearings need a technician.` },
       { q: `Is my Whirlpool belt-driven or direct drive?`, a: `It depends on the model and its age, and the model number tells the technician which design you have. It matters because the faults differ: a belt-driven machine can slip or break its belt, while many direct drive top loaders link the motor to the gearbox through a coupling that wears out instead.` },
       { q: `What should I do if a hose bursts on my Whirlpool?`, a: `Switch the power off first: at the wall if the plug and socket are dry, or at the DB board, without touching the plug, if they're wet or you'd have to stand in water to reach them. Then close the tap, mop up and look at whether the hose split or came loose at a connection. A split hose has to be replaced, and the technician can fit a new one and check the other hose at the same time.` },
     ],
@@ -538,7 +536,7 @@ ${indie('Whirlpool')}`,
 <p>On a twin tub, the wash side and the spin side work independently, so one can fail while the other carries on. If the wash side runs but the spin tub doesn't turn, the spin motor, its lid switch or the spin timer is the likely cause. If the spin side works but the wash plate stands still, look to the wash motor, its belt or the wash timer. Twin tubs that work hard also block their lint filter and drain, and the lint filter is easy to clean yourself.</p>
 
 <h2>Hisense error codes</h2>
-<p>Hisense codes differ between models, and between front loaders and top loaders, so check the code against the manual for your model number. The manual lists the codes you can deal with yourself, usually water supply, drain, door and balance problems. For anything else, send us a photo of the display and the model number on WhatsApp, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for the safe first steps.</p>
+<p>Hisense front loaders and top loaders don't share one set of codes, and codes also change between models, so look the code up in the manual for your model before you try anything. Water supply, drain, door and balance codes usually point to something you can check, such as the tap, the drain hose or the load. If the code comes back after those checks, photograph the display and the model label and send them to us on WhatsApp, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for what's safe in the meantime.</p>
 
 <h2>Checks to try before you call</h2>
 <p>Switch the machine off at the wall first. Then:</p>
@@ -556,15 +554,14 @@ ${indie('Whirlpool')}`,
 <p>Wear parts such as drain pumps, inlet valves and door locks are generally easier to get than parts that belong to one model, such as a control board or display panel, which sometimes have to be ordered. If the part isn't available on the day, the technician tells you before you agree to the repair, so you can decide with the full picture. Our <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a> page explains how parts are matched to your machine.</p>
 
 <h2>Repair or replace your Hisense?</h2>
-<p>It's always worth comparing a big repair with the cost of a new machine of the same size and type. A pump, valve, door lock or lid switch is almost always worth fixing. A control board on an older machine, or bearings on a machine with a sealed tub, can cost a large share of a new one, and the technician will tell you honestly if replacing makes more sense. Our guide to <a href="/repair-or-replace/">whether a repair is worth it</a> and the <a href="/washing-machine-repair-cost/">repair cost page</a> explain the numbers.</p>
+<p>It's always worth comparing a big repair with the cost of a new machine of the same size and type. A control board on an older machine, or bearings on a machine with a sealed tub, can cost a large share of a new one, and the technician will tell you honestly if replacing makes more sense. See the <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page for what drives the price, and our <a href="/repair-or-replace/">repair or replace guide</a> for how to decide.</p>
 
 <h2>Care tips for Hisense owners</h2>
 <ul>
   <li>With the machine unplugged, clean the drain filter on front loaders, and the lint filter on top loaders and twin tubs, regularly.</li>
-  <li>Use detergent made for automatic machines in front loaders and top loaders; hand-wash powder foams far too much.</li>
   <li>Don't overload big top loaders. A packed tub can't move the clothes, and the load can't balance for the spin.</li>
   <li>Stand the machine on a firm, level floor, and adjust the feet so it doesn't rock or walk on spin.</li>
-  <li>Switch off at the wall during load shedding. If the display is dead when the power returns, check the plug point with a lamp before calling. Our article on <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your machine from load shedding</a> explains how to reduce the risk.</li>
+  <li>Switch off at the wall during load shedding. On inverter models the surge when the power returns can reach the motor's drive electronics as well as the main board, and our article on <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your machine from load shedding</a> explains how to reduce the risk.</li>
 </ul>
 
 <h2>Areas and booking</h2>
@@ -572,13 +569,12 @@ ${indie('Whirlpool')}`,
 <p>Book by calling or WhatsApping ${site.phone.display}, or <a href="/contact/">send us your booking online</a>. Send the model number, what the machine is doing and a photo of any code, and tell us whether it's a front loader, top loader or twin tub.</p>
 ${indie('Hisense')}`,
     faqs: [
-      { q: `Can you repair a Hisense twin tub?`, a: `Yes. We repair Hisense twin tubs at your home, including timers, wash and spin motors, belts, drain problems and the spin lid switch and brake. When you book, say which side has stopped, the wash or the spin, so the technician knows where to start.` },
+      { q: `My Hisense twin tub has stopped on one side. Can you fix it?`, a: `Usually, yes, at your home. When you book, say which side has stopped, the wash or the spin, and whether its motor hums or stays silent. The two sides have their own motors and timers, so that tells the technician which parts to test first.` },
       { q: `Why does my Hisense top loader take so long to fill?`, a: `A big top loader holds a lot of water, so low water pressure makes a long fill even longer. Check that the tap is fully open and the inlet hose isn't kinked. If it's still slow, the small mesh filter where the hose connects may be blocked, or the inlet valve may be failing, and the technician can check both.` },
       { q: `Does the automatic dosing tank on my Hisense need cleaning?`, a: `Yes, now and then. Old detergent can build up in the tank and its channels, so clean it as your manual describes and fill it only with the type of detergent the manual specifies. If the machine stops dosing even though the tank is full, book a technician.` },
-      { q: `Why won't the lid of my Hisense top loader open after the wash?`, a: `If your model has a lid lock, it keeps the lid shut while the tub is spinning and releases it once the drum has stopped, so wait a minute or two after the programme ends. If the lid stays locked, or there's still water in the tub, don't force it. Switch off at the wall and book a technician to check the drain and the lid lock.` },
       { q: `Is it normal for my Hisense top loader to pause during the wash?`, a: `Yes. Many top loader programmes include pauses while the clothes soak between bursts of washing, and the machine may also stop briefly to sense the load. If it stops for a long time and the time display stops counting down, note the stage it stopped at and book a technician.` },
-      { q: `Why does my Hisense only leak during the spin?`, a: `A leak that appears only on spin usually comes from the drain side, because that's when the pump pushes the most water out: a loose or split drain hose, a leaking pump or a standpipe that can't take the flow. Switch the machine off at the wall first, or at the DB board if the plug or socket is wet, then check the hose connections at the back and at the drain. If they're tight and dry, the pump needs a technician.` },
-      { q: `Do you repair Hisense washer-dryers?`, a: `Yes. We repair the washing side and the drying side, including drying heaters, fans, condensers and sensors. Our page on <a href="/services/washer-dryer-repairs/">repairing washer-dryers</a> explains what the technician checks.` },
+      { q: `My Hisense twin tub won't drain. What should I check?`, a: `Switch it off at the wall, then check the drain hose. Most twin tubs drain by gravity, so the hose has to run downhill all the way without kinks, and the drain selector has to be turned fully to drain. If the water still won't go, the drain valve or the drain path may be blocked or stuck, which needs a technician.` },
+      { q: `Can I use hand-wash powder in my Hisense?`, a: `Not in a front loader or an automatic top loader. Hand-wash powder makes far more foam than these machines are designed to rinse away, and the extra suds can stop the spin, leave residue in the drum and spill out of the machine. Use a detergent made for automatic machines, at the dose on the pack.` },
     ],
   },
 
@@ -631,10 +627,10 @@ ${indie('Hisense')}`,
 <h3>Electronics</h3>
 <p>Boards and displays can fail, sometimes after a power surge when the electricity comes back after load shedding. Switching the machine off at the wall while the power is off reduces that risk, as our article on <a href="/blog/protect-washing-machine-from-load-shedding/">protecting your washing machine from load shedding</a> explains. The technician tests before replacing a board, because the fault is not always where it seems.</p>
 <h3>Washer-dryers</h3>
-<p>When an AEG washer-dryer stops drying, the drying heater, the fan, the condenser or the humidity sensor is usually involved. See <a href="/services/washer-dryer-repairs/">drying problems on washer-dryers</a>.</p>
+<p>An AEG washer-dryer that washes well but leaves the laundry damp has a fault on the drying side, so the technician tests that side on its own. Our page on <a href="/services/washer-dryer-repairs/">drying problems on washer-dryers</a> explains the parts involved.</p>
 
 <h2>Codes on the AEG display</h2>
-<p>AEG codes vary between models and generations, so check yours against the manual for your model number. The manual covers the codes you can deal with yourself, such as a closed tap or a blocked filter. For the rest, send us a photo of the display with the model number and PNC, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for the safe first steps.</p>
+<p>Look the code up in the manual for your exact AEG, because codes change between models and generations. The PNC on the data plate tells the technician exactly which version you have, so photograph the plate together with the display and send both to us. While you wait, our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> explains which first steps are safe.</p>
 
 <h2>Simple checks for AEG owners</h2>
 <p>Before you book, and with the machine switched off at the wall, it's worth ruling out the simple things:</p>
@@ -670,7 +666,7 @@ ${indie('AEG')}`,
     faqs: [
       { q: `My AEG gives me a shock when I touch it. What should I do?`, a: `Stop using it straight away. Switch off at the wall and unplug it if you can reach the plug without touching the machine; if you can't, switch the power off at the DB board instead, and don't touch the machine until the power is off. A shock usually means an earth fault or water reaching an electrical part, so a technician needs to test it before it is used again.` },
       { q: `Where is the PNC on my AEG?`, a: `It is on the data plate, which on AEG washing machines is behind the door or behind the filter door at the bottom front. Send us a photo of the whole plate when you book.` },
-      { q: `Is an AEG worth repairing?`, a: `Usually, yes. AEG machines are premium appliances, and most faults involve a single replaceable part such as a pump, door lock, heater or sensor. If an older AEG needs bearings and a control board at the same time, the sums change, and the technician will tell you so before you decide.` },
+      { q: `Is an AEG worth repairing?`, a: `Usually, yes, as long as the part for your machine's PNC can still be found, which the technician checks before quoting. If an older AEG needs bearings and a control board at the same time, the sums change, and you'll hear that before you decide.` },
       { q: `What does ProSense do on my AEG?`, a: `ProSense is AEG's load-sensing system. It weighs the laundry and adjusts the programme time, water and energy to suit, which is why the time on the display can change after the wash has started. That's normal, and not a sign of a fault.` },
       { q: `Does a smelly door seal on my AEG need replacing?`, a: `Not usually. Most smells come from residue and lint in the folds of the seal, which you can wipe out before running an empty hot wash. A seal needs replacing when it has split, or when black mould has stained deep into the rubber and keeps coming back.` },
       { q: `My AEG hums but won't drain. What does that mean?`, a: `A hum with no water moving usually means the drain pump is trying to run but something is blocking it, often a coin, button or hair clip caught in the filter. Switch off at the wall and unplug, then clean the filter as your manual describes, with towels and a tray ready and any hot water given time to cool. If the filter is clear and it still hums, the pump has probably failed and needs a technician.` },
@@ -717,7 +713,7 @@ ${indie('AEG')}`,
 <h3>Drain and fill faults</h3>
 <p>Drain faults are usually the pump filter behind the flap at the bottom front, a kinked or blocked drain hose or a worn pump. Fill faults are usually the tap, low pressure, a blocked filter in the hose connection, the aquaStop valve or the inlet valve. Our guides to <a href="/problems/washing-machine-not-draining/">drainage faults</a> and <a href="/problems/washing-machine-not-filling-with-water/">a slow or failed fill</a> cover the checks in more detail.</p>
 <h3>Leak protection</h3>
-<p>If water collects in the base of the machine, the leak protection stops the programme and the water supply. Clearing the warning isn't a repair: the source has to be found, whether it's a hose, the pump, the door seal, the drawer or foam from too much detergent. See <a href="/problems/washing-machine-leaking/">a leaking washing machine</a>.</p>
+<p>When water collects in the base, the leak protection stops the programme and cuts the supply, and clearing the warning doesn't fix the leak. A leak that never reaches the base, such as a drip at the tap connection behind a built-in machine, shows up outside it instead, as described under hidden leaks below. Our page on a <a href="/problems/washing-machine-leaking/">washing machine leaking</a> helps trace the source.</p>
 <h3>Motor and drum</h3>
 <p>Newer iQdrive machines don't have carbon brushes, so a drum that won't turn points to the motor, its control electronics, the door lock or something jamming the drum. Older Siemens machines with brushed motors can simply need new brushes, which is one of the more straightforward repairs. Our guide to a <a href="/problems/washing-machine-not-spinning/">drum that won't spin</a> covers the simpler causes to rule out first.</p>
 <h3>Door lock faults</h3>
@@ -746,25 +742,23 @@ ${indie('AEG')}`,
 <h3>Hidden leaks</h3>
 <p>Cabinetry hides the floor around a built-in machine, so a small leak can go unnoticed for a long time. Swollen cupboard edges, a musty smell from the kitchen units or damp skirting near the machine are all signs to close the tap and book a technician, even if the machine still seems to work.</p>
 
-<h2>Finding the E-Nr and FD number</h2>
-<p>Siemens machines carry an E-Nr (the model number) and an FD number (the production version) on the rating plate, usually on the inner rim of the door opening. Similar-looking machines from different years can use different parts, so the technician needs both numbers to quote the right part. A photo of the plate, sent when you book, saves time on the day. If the plate is hard to read, the model number is also printed in the manual and often on the original invoice.</p>
 
 <h2>Siemens care tips</h2>
 <ul>
   <li>Clean the pump filter every few months, with the machine unplugged and towels and a tray ready.</li>
-  <li>Measure detergent carefully: excess foam can spill into the base and set off the leak protection.</li>
+  <li>On i-Dos models, let the machine dose the liquid detergent from its tank; on others, measure the dose to the load, because foam that overflows into the base trips the leak protection just as a leak would.</li>
   <li>Run an empty hot wash now and then to clear residue, and leave the door ajar afterwards if children and pets can't get to the machine.</li>
   <li>Leave the detergent drawer slightly open between washes so it can dry, and rinse it out now and then.</li>
   <li>Keep the inlet hose free of kinks behind the machine, especially after it has been pushed back into place.</li>
 </ul>
 
 <h2>Is a Siemens worth repairing?</h2>
-<p>Usually, yes. A Siemens is a well-made machine, and most faults involve a single wear part: a pump, door lock, inlet valve or heating element, or carbon brushes on older models. The numbers change when an older machine needs bearings in a sealed tub, or a control module and another major part at the same time.</p>
+<p>Usually, yes. The numbers change when an older machine needs bearings in a sealed tub, or a control module and another major part at the same time.</p>
 <p>With a built-in machine, the cost of fitting a new one into the same space belongs in the sum too. The technician will compare the cost with a new machine and say so plainly. See our guide to <a href="/repair-or-replace/">repairing or replacing an older machine</a>, and our page on <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a>.</p>
 
 <h2>Areas and booking</h2>
 <p>We repair Siemens washing machines across ${areaLinks()}.</p>
-<p>Ring or WhatsApp ${site.phone.display} to book, or leave your details on our <a href="/contact/">contact page</a>. A photo of the rating plate inside the door, plus any code on the display, helps the technician arrive knowing what to look for.</p>
+<p>Ring or WhatsApp ${site.phone.display} to book, or leave your details on our <a href="/contact/">contact page</a>. A photo of the rating plate around the door opening, plus any code on the display, helps the technician arrive knowing what to look for, because the E-Nr and FD number on the plate show which parts your machine takes. If the plate is hard to read, the model number is also in the manual and often on the original invoice.</p>
 ${indie('Siemens')}`,
     faqs: [
       { q: `Can I put washing powder in the i-Dos tank?`, a: `No. The i-Dos tanks are made for liquid detergent and liquid softener. If you prefer powder, use the normal detergent drawer and dose it by hand.` },
@@ -829,7 +823,7 @@ ${indie('Siemens')}`,
 <p>A Miele that stops mid-programme is usually reporting a fault on its display. A machine that trips the circuit breaker or earth leakage may have a fault in the heating element or wiring, or water reaching an electrical part. Leave it off at the wall and have it tested; don't keep resetting the breaker.</p>
 
 <h2>Fault messages on Miele displays</h2>
-<p>Miele machines report problems on the display, as a short message or a fault number depending on the model, and older machines without a text display flash their indicator lights instead. The manual explains the ones you can deal with yourself, such as a closed tap or a blocked drain filter, and anything else needs a technician. Photograph the message and send it to us with the model and serial number, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for the safe first steps.</p>
+<p>Miele machines report problems on the display, as a short message or a fault number depending on the model, and older machines without a text display flash their indicator lights instead. A message about the water inlet or the drain often points to something you can check yourself, like the tap or the drain filter, while a fault number that comes back after those checks needs a technician. Note the message or count the flashes, then send it to us with the model and serial number from the data plate, and see our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> for the safe first steps.</p>
 
 <h2>Before you book a Miele repair</h2>
 <p>Switch the machine off at the wall, then check these simple things first:</p>
@@ -845,7 +839,7 @@ ${indie('Siemens')}`,
 <p>Many Miele parts are specific to Miele, and some are made only for particular models, so the technician identifies the exact model and serial number before quoting. The data plate also carries a material number, which tells versions of the same model apart. See <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a>.</p>
 
 <h2>Miele washer-dryers</h2>
-<p>A Miele washer-dryer combines a <a href="/services/front-loader-repairs/">front loader</a> with a drying system, so it can develop the faults of either. When it washes well but no longer dries, the drying heater, the fan, a sensor or lint build-up in the drying path is usually involved. Dry smaller loads than you wash, too: the manual gives the drying capacity for each programme. See <a href="/services/washer-dryer-repairs/">what goes wrong on the drying side</a>.</p>
+<p>A Miele washer-dryer combines a <a href="/services/front-loader-repairs/">front loader</a> with a drying system, so it can develop the faults of either. When it washes well but no longer dries, the drying side needs testing. See <a href="/services/washer-dryer-repairs/">what goes wrong on the drying side</a>.</p>
 
 <h2>Looking after a Miele</h2>
 <p>Regular care keeps a Miele running efficiently and safely, and helps it reach the long life it was built for:</p>
@@ -865,7 +859,7 @@ ${indie('Miele')}`,
     faqs: [
       { q: `Is an older Miele worth repairing?`, a: `Often, yes. A Miele with a sound drum, tub and cabinet is usually worth a repair such as a pump, valve or door lock, even after many years of use. If several major parts have failed at once, the technician will compare the cost with replacing it.` },
       { q: `Where is the model and serial number on my Miele?`, a: `On many models the data plate is above the porthole glass, visible when you open the door. It shows the model, the material number and the serial number. If it isn't there, the manual shows where to find it on your model.` },
-      { q: `What happens if my Miele needs a part that has to be ordered?`, a: `The technician tells you before you agree to the repair, and explains whether the machine can be used safely in the meantime. Once the part arrives, the technician comes back to fit it.` },
+      { q: `Can I fit an ordinary inlet hose to my Miele?`, a: `Not if it has the Waterproof System. On a WPS model the inlet hose is part of the leak protection, with a safety valve at the tap end, so it has to be replaced with the right WPS hose for your model. If the hose is damaged, close the tap and book a technician to fit the new one.` },
       { q: `My Miele TwinDos has stopped dosing. What should I check?`, a: `Check that both containers are pushed fully into place and have detergent in them, and that TwinDos is switched on for the programme you chose. If a container is seated and full but nothing is dosed, the dosing system needs a technician.` },
       { q: `Is it safe to keep using my Miele if it leaks?`, a: `No. Switch off before you touch a wet floor: at the wall if the plug and socket are dry, or at the DB board if they're wet. Then close the tap and put towels down. Even a small leak can reach electrical parts or damage the floor and cabinets around the machine, so book a technician to find where the water is coming from.` },
       { q: `Why does my Miele spin so gently on some programmes?`, a: `Delicate programmes, such as woollens and silks, spin gently on purpose to protect the fabric, and many programmes let you choose the spin speed. If laundry comes out wet on a cottons programme too, check that the load isn't bunched to one side, and clean the drain filter with the machine unplugged and towels and a tray ready. If it still happens, book a technician.` },
@@ -889,9 +883,9 @@ ${indie('Miele')}`,
 <p>Smeg is an Italian company, founded in 1948 by Vittorio Bertazzoni in Guastalla, in the province of Reggio Emilia. The name is an acronym of the original enamelling and metalworking business, and the company introduced its first washing machine in the 1960s. Smeg is known for design-led appliances, and its laundry range in South Africa includes freestanding front loaders, fully integrated washer-dryers and tumble dryers, with features such as steam and automatic dosing on some models.</p>
 <p>Smeg machines are part of our <a href="/">washing machine repairs</a> service, alongside all the other major brands.</p>
 
-<h2>Newer machines need careful diagnosis</h2>
-<p>A modern Smeg uses a fraction of the water and electricity an older machine needed, and it manages that with sensors and an electronic control board. That makes it efficient, but it also means a fault is rarely obvious from the outside. A machine that won't spin could have a drain problem, a door lock fault, an unbalanced load or a motor fault, and only testing tells them apart.</p>
-<p>It's also why we don't advise DIY repairs on a Smeg. Beyond the simple checks in your manual, opening the machine or testing parts yourself risks an electric shock, and it can turn a small fault into a bigger and more expensive one.</p>
+<h2>Why Smeg faults need testing</h2>
+<p>A modern Smeg relies on sensors reporting to an electronic control board, so when a part fails, the machine often just stops or refuses to spin, and the symptom alone rarely shows which part it was. A machine that won't spin could have a drain problem, a door lock fault, an unbalanced load or a motor fault, and only testing tells them apart.</p>
+<p>So beyond the simple checks below, leave the testing to the technician. There's mains voltage inside the machine, and a part swapped on a guess may not be the one that failed.</p>
 
 <h2>Signs your Smeg needs attention</h2>
 <ul>
@@ -948,7 +942,7 @@ ${indie('Miele')}`,
 <p>Some Smeg parts are specific to particular models and have to be ordered rather than collected on the day. The technician identifies the exact model and serial number, confirms the part, and tells you before you agree to the repair if it has to be ordered. Common wear parts, such as pumps and inlet valves, are usually simpler to source. See <a href="/services/washing-machine-parts-replacement/">washing machine parts replacement</a>.</p>
 
 <h2>Repair or replace your Smeg?</h2>
-<p>For most faults, repair is the sensible choice. A pump, inlet valve, door lock or heating element costs far less than a new machine of the same standard, and with an integrated Smeg there's another reason: a replacement has to fit the same cabinet space and take the same door, which narrows your choice. Replacing makes more sense when an older machine needs several major parts at once, such as bearings and a control board. The technician sets out the options plainly, and our guide to <a href="/repair-or-replace/">repair versus replacement</a> explains how to weigh them up.</p>
+<p>For most faults, repair is the sensible choice, and with an integrated Smeg it has a further advantage: a replacement has to fit the same cabinet space and take the same door, which narrows your choice. Replacing makes more sense when an older machine needs several major parts at once, such as bearings and a control board. The technician sets out the options plainly, and our guide to <a href="/repair-or-replace/">repair versus replacement</a> explains how to weigh them up.</p>
 
 <h2>Care tips for Smeg owners</h2>
 <ul>
@@ -964,7 +958,7 @@ ${indie('Miele')}`,
 <p>To arrange a visit, call or WhatsApp ${site.phone.display}, or fill in the form on our <a href="/contact/">contact page</a>. Send the model number from the label on the machine, tell us whether it's freestanding or integrated, and describe what it's doing. If the fault started after load shedding, after the machine was moved or after a new installation, mention that too, because it helps the technician narrow things down.</p>
 ${indie('Smeg')}`,
     faqs: [
-      { q: `My Smeg stopped mid-cycle with water inside. What should I do?`, a: `Don't force the door. Switch off at the wall, wait a few minutes and switch on again to see whether a drain or spin programme will empty it. If it won't, the water can be let out through the pump filter as your manual describes, with the machine unplugged, any hot water given time to cool and a tray and towels ready, or you can leave it for the technician.` },
+      { q: `My integrated Smeg has stopped full of water. Should I pull it out of its cupboard?`, a: `No. A machine full of water is much heavier than usual, and sliding it out can strain the hoses and cable hidden behind it or spill water into the cupboards. Switch off at the wall, close the tap and leave it where it is: the technician drains it first and then takes it out of its space.` },
       { q: `Where do I find the model number on my Smeg?`, a: `Look for the rating label on the machine: on many front loaders it's around the door opening, and your manual shows where it is on your model. Send us a photo of it when you book.` },
       { q: `My Smeg is noisy on spin. Is it the bearings?`, a: `Not always. Before blaming the bearings, check that the machine stands level on all four feet and that the load isn't bunched up, and listen for a tick or scrape that could be a coin trapped in the drum. Bearing noise is a deep, steady roar that gets louder as the spin speeds up, and the technician confirms it before quoting.` },
       { q: `Is an integrated Smeg harder to repair?`, a: `The parts and the repair are the same as on a freestanding Smeg; what takes longer is getting to the machine. Tell us it's integrated when you book so the technician allows enough time, and clear the cupboards and floor in front of it if you can.` },
@@ -990,15 +984,9 @@ ${indie('Smeg')}`,
 <p>Speed Queen is an American brand with roots in 1908, when two hardware store owners in Ripon, Wisconsin, went into the washing machine business. The machines took the Speed Queen name in 1928, and the brand now belongs to Alliance Laundry Systems, which also builds machines for laundromats. That commercial background shapes the home machines: the company has used stainless steel wash tubs since 1939, and it describes its top loaders as commercial-grade machines built to last.</p>
 <p>The Speed Queen top loaders sold in South Africa have a central agitator and a steel drum, and they're used both in homes and by small businesses that wash a lot, such as guest houses. They're heavy, simple to use and, with the right parts, very repairable. We repair them, and Speed Queen front loaders, as part of our <a href="/">washing machine repairs</a> service.</p>
 
-<h2>How a top loader like yours works</h2>
-<p>Every washing machine does four jobs: fill, wash, drain and spin. Knowing them makes it easier to describe a fault when you call.</p>
-<ol class="steps">
-  <li><strong>Fill:</strong> the inlet valves open and let hot and cold water into the tub until it reaches the right level.</li>
-  <li><strong>Wash:</strong> the agitator in the middle of the tub twists back and forth, dragging the clothes down through the water and detergent and letting them work their way back up.</li>
-  <li><strong>Drain:</strong> the pump pushes the dirty water out through the drain hose.</li>
-  <li><strong>Spin:</strong> the inner tub spins at speed and throws the water out through the holes in its wall into the outer tub, which holds the water and sends it to the drain.</li>
-</ol>
-<p>The controls tell the machine how to run each stage: on simpler models a timer dial and selectors for the programme, water temperature and load size, and on newer models an electronic touchpad. Inside are the motor, the drive that links it to the agitator and tub, the pump, the agitator, the inner and outer tubs and the inlet valves. A fault in any one of them shows up at a particular stage, which is why the technician will ask exactly when the machine stopped. Our page on <a href="/services/top-loader-repairs/">repairing a top loader</a> explains how the technician tracks down which of these parts has failed.</p>
+<h2>How a Speed Queen top loader runs a wash</h2>
+<p>Knowing the order of a cycle helps you tell us where yours stopped. A Speed Queen top loader takes in hot and cold water through its inlet valves, then the central agitator moves the load through the water. After draining, the inner tub spins fast, and the water flung out through its holes collects in the outer tub and is pumped away.</p>
+<p>Inside, a motor drives the agitator and the tub through a belt and transmission, and a pump empties the tub after the wash and during the spin. Simpler models run each stage from a timer dial and newer ones from an electronic touchpad, so tell us which yours has and the last stage it finished. Our page on <a href="/services/top-loader-repairs/">repairing a top loader</a> explains how the technician tracks down the part that has failed.</p>
 
 <h2>Speed Queen faults we repair</h2>
 <h3>Shaking and walking</h3>
@@ -1019,7 +1007,7 @@ ${indie('Smeg')}`,
 <p>On dial-controlled models, a worn timer can stop the machine moving from one stage to the next. On electronic models, the control board runs the cycle and reports faults on the display.</p>
 
 <h2>Electronic models and fault codes</h2>
-<p>Newer Speed Queen machines have electronic controls with built-in diagnostics, and the owner's manual explains the codes you can deal with yourself. For anything else, photograph the display and send it to us with the model and serial number. Our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> covers the safe first steps for any brand.</p>
+<p>A Speed Queen with a timer dial and no display usually can't show a code, so tell us where the dial was pointing when it stopped. Models with an electronic touchpad can show a fault code instead. Check what it means in your owner's manual, then send us a photo of the display with the model and serial number. Our guide to a <a href="/problems/washing-machine-showing-error-code/">washing machine showing an error code</a> covers the safe first steps.</p>
 
 <h2>Speed Queen front loaders</h2>
 <p>Speed Queen also makes front loaders, and we repair them too. Their faults follow the usual front loader pattern: a door lock that won't engage or release, a blocked drain pump, a leaking door seal, worn bearings that rumble on spin, or a fault in the electronic controls. See <a href="/services/front-loader-repairs/">how front loaders are repaired</a>, and if you're choosing between the two types, our guide to <a href="/blog/front-loader-vs-top-loader/">front loaders vs top loaders</a>.</p>
