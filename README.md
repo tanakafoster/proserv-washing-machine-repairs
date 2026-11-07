@@ -15,7 +15,7 @@ npm run audit      # SEO audit of dist/ → PAGE-AUDIT.md (run after build)
 npm run images     # create any missing illustrations, logo files and favicons (never overwrites)
 ```
 
-Always run `npm run build && npm run audit` before deploying. The audit fails on broken links or `#anchors`, missing images, missing alt text, invalid schema, duplicate titles/metas, orphan pages, missing H1s, or any placeholder text left on a page (`[PLACEHOLDER]`, `[CONFIRM]`, `[VERIFY]`, "coming soon"). It also lists pages with fewer than 1,500 words.
+Always run `npm run build && npm run audit` before deploying. The audit fails on broken links or `#anchors`, missing images, missing alt text, invalid schema, duplicate titles/metas, orphan pages, missing H1s, or any placeholder text left on a page (`[PLACEHOLDER]`, `[CONFIRM]`, `[VERIFY]`, "coming soon"). It also lists pages with fewer than 1,500 words, and warns about any setting in `src/data/site.ts` still left as `YOUR_…` (such as the Web3Forms key).
 
 **`npm run images` and your real photos:** with no options it only creates files that don't exist yet, so it never touches photos or a logo you've added. Naming a group rebuilds (overwrites) it: `npm run images -- icons` (favicons and app icons), `logo` (`public/logo.svg` and `logo.png`), `og` (`public/images/og-default.jpg`), `photos` (every photo in `public/images/`). `npm run images -- --force` rebuilds all of them. Don't use `photos` or `--force` once real photos are in.
 
@@ -27,6 +27,7 @@ Always run `npm run build && npm run audit` before deploying. The audit fails on
 | **Service areas** | `src/data/site.ts` → `areas` (`inName` and `label` say how the place reads in a sentence, e.g. "on the East Rand"). Each area also needs unique content in `src/data/areas.ts` (the build stops if it's missing, to avoid thin "doorway" pages) |
 | **Opening hours** | `src/data/site.ts` → `hours`. While it's empty the site shows no hours anywhere; once you add them they appear in the footer, the contact page, the FAQ and the schema |
 | **Business facts** (years, repairs, reviews, arrival time, call-out fee and when it's charged, warranty) | `src/data/site.ts` → `facts`. Every page reads them from there, so a change shows everywhere after a rebuild. The call-out wording (`calloutCondition`, `calloutConditionShort`) is used on every page that mentions the call-out, so change it there if your policy differs |
+| **Postal address for the privacy policy** | `src/data/site.ts` → `postalAddress` (a PO Box is fine). POPIA asks for the responsible party's address; it shows on `/privacy-policy/` once filled in |
 | **Contact form key** | `src/data/site.ts` → `web3formsKey` (see "Contact form" below) |
 | **Google Tag Manager ID** | `src/data/site.ts` → `gtmId` (GTM only loads once this is a real `GTM-…` ID) |
 | **Google review link** | `src/data/site.ts` → `googleReviewUrl` (footer link) |
@@ -53,7 +54,8 @@ The form on `/contact/` posts to **Web3Forms**, which emails each submission.
 
 1. Go to https://web3forms.com and create an access key **using info@proservwashingmachinerepairs.co.za** (submissions go to the email the key was created with).
 2. Paste the key into `src/data/site.ts` → `web3formsKey`.
-3. Rebuild and deploy, then send a test.
+3. Rebuild and deploy, then send a test. Until the key is set, the form can't send and `npm run audit` warns about it.
+4. Optional: in the Web3Forms dashboard, shorten how long Web3Forms keeps submissions (up to three years by default). The privacy policy describes Web3Forms as keeping each message for the period set in your account.
 
 Spam protection: a hidden honeypot checkbox (`botcheck`). On success, the site fires the `form_submit` event and redirects to `/thank-you/` (without JavaScript, Web3Forms redirects there itself).
 

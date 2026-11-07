@@ -10,13 +10,15 @@ The site has no placeholders left: `npm run audit` fails if any `[PLACEHOLDER]`,
 - [ ] Service areas and the suburb lists on each area page are places you're happy to drive to (`src/data/site.ts`, `src/data/areas.ts`)
 - [ ] Error code guides: they list only codes checked against the manufacturers' own documents, which each guide names under "Where these codes come from". Add a code only after checking it in the manual, and add that document to the guide's `sources` in `src/data/errorCodes.ts`
 - [ ] Optional: guide prices. The site shows no prices apart from the call-out fee, and the cost page explains what drives the price instead. If you want to publish typical prices, add them to `/washing-machine-repair-cost/` and the installation and servicing pages
-- [ ] Web3Forms access key added (`web3formsKey`), created with info@proservwashingmachinerepairs.co.za
+- [ ] Web3Forms access key added (`web3formsKey`), created with info@proservwashingmachinerepairs.co.za. Until it's set, the booking form can't send and `npm run audit` warns about it
+- [ ] Optional but recommended: in the Web3Forms dashboard, shorten how long Web3Forms keeps form messages. It keeps them for up to three years by default, and when this was checked in November 2026 the shortest setting was 7 days. The privacy policy says Web3Forms deletes them at the end of the period set in your account, so it stays true whatever you choose
 - [ ] GTM container ID added (`gtmId`)
 - [ ] Optional: real photos swapped in for the illustrations (same file names and sizes, see README). Don't run `npm run images -- photos` or `--force` afterwards: they redraw the illustrations over your photos
 - [ ] Optional: a few lines about you and how the business started on the About page (it says nothing about the owner or team that you haven't supplied)
-- [ ] POPIA: register your Information Officer with the Information Regulator (inforegulator.org.za). That's a legal step for the business, not website copy. The privacy policy sends privacy questions to the email address; if you want, add your registered business name and a postal address to it
+- [ ] POPIA: register your Information Officer with the Information Regulator (inforegulator.org.za). That's a legal step for the business, not website copy. The privacy policy sends privacy questions to the email address. Add a postal address (a PO Box is fine) in `src/data/site.ts` → `postalAddress`, and add your registered business name to the policy if it differs from the trading name: POPIA section 18 asks for the responsible party's name and address
+- [ ] Read the privacy policy and check it describes how you really work: the business phones, email and WhatsApp are locked with a PIN or password, old job messages and photos are cleared out once you no longer need them, each customer gets one review request, and job records are kept for five years. If anything is different, change the policy (and its "Last updated" date) before launch
 - [ ] The privacy policy describes Google Analytics and cookies only once `gtmId` is set. If you add other tags to the GTM container, or switch the form to the cPanel PHP handler, update the policy to match
-- [ ] `npm run build && npm run audit` shows 0 errors
+- [ ] `npm run build && npm run audit` shows 0 errors and 0 warnings (the audit warns about any setting still left as `YOUR_…`, such as the Web3Forms key)
 
 ## 2. Domain, hosting and redirects
 - [ ] Site deployed (cPanel: upload `dist/` contents to `public_html`; Netlify/Vercel: connect the repo)
