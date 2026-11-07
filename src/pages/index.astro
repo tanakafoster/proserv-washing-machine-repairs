@@ -7,7 +7,7 @@ import LinkCards from '../components/LinkCards.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
-import { site, areaUrl, brandUrl, hoursText, areaList } from '../data/site';
+import { site, areaUrl, brandUrl, hoursText, hasHours, areaList } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { problems, problemUrl } from '../data/problems';
 import { brands, otherBrands, trademarkNote } from '../data/brands';
@@ -25,7 +25,6 @@ const faqs = [
   { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele, Smeg, Electrolux and Speed Queen. We are an independent repairer, not an agent for any brand.' },
   { q: 'Are your repairs guaranteed?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour.` },
   { q: 'Do I need to take my machine anywhere?', a: 'No. We repair washing machines at your home. In the rare case that a workshop repair is needed, we will discuss it with you first.' },
-  { q: 'How do I pay?', a: '[CONFIRM: payment methods, e.g. EFT, card, cash] Payment is due when the repair is complete.' },
 ];
 ---
 <BaseLayout
@@ -122,7 +121,7 @@ const faqs = [
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.warranty} warranty on parts and labour</li>
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="check" /></span> {f.fiveStarReviews} five-star reviews from local customers</li>
         </ul>
-        <p class="mt-4 text-sm text-ink-soft">{hoursText()}</p>
+        {hasHours && <p class="mt-4 text-sm text-ink-soft">{hoursText()}</p>}
       </div>
     </div>
   </section>

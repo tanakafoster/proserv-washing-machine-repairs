@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
-import { hoursText } from '../data/site';
+import { hoursText, hasHours } from '../data/site';
 ---
 <BaseLayout title="Thank You | ProServ" description="Thanks for your washing machine repair request. We'll be in touch soon." noindex crumbs={[{ name: 'Thank you', href: '/thank-you/' }]}>
   <section class="section">
     <div class="container-site max-w-2xl text-center">
       <h1 class="text-3xl font-extrabold sm:text-4xl">Thanks, we've got your request</h1>
-      <p class="mt-4 text-lg text-ink-soft">We'll get back to you as soon as we can during business hours ({hoursText()}). If your machine is leaking or it's urgent, please call or WhatsApp us now.</p>
+      <p class="mt-4 text-lg text-ink-soft">We'll get back to you as soon as we can{hasHours ? ` during business hours (${hoursText()})` : ''}. If your machine is leaking or it's urgent, please call or WhatsApp us now.</p>
       <ContactButtons class="mt-6 justify-center" />
       <p class="mt-8"><a href="/">Back to the home page</a> · <a href="/problems/">Common washing machine problems</a></p>
     </div>

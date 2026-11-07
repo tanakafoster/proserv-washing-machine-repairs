@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactButtons from '../components/ContactButtons.astro';
 import Icon from '../components/Icon.astro';
-import { site, telHref, whatsappHref, mailHref, hoursText, areaList } from '../data/site';
+import { site, telHref, whatsappHref, mailHref, hoursText, hasHours, areaList } from '../data/site';
 import { brands, otherBrands } from '../data/brands';
 const path = '/contact/';
 const f = site.facts;
@@ -29,7 +29,7 @@ const phonePattern = String.raw`[\s.\(\)\+\-]*(?:\d[\s.\(\)\+\-]*){9,15}`;
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="phone" /></span><span><strong class="block">Phone</strong><a href={telHref} data-track="call">{site.phone.display}</a></span></li>
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="whatsapp" /></span><span><strong class="block">WhatsApp</strong><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">{site.phone.display}</a></span></li>
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="mail" /></span><span><strong class="block">Email</strong><a href={mailHref} class="break-all">{site.email}</a></span></li>
-          <li class="flex gap-3"><span class="text-brand-dark"><Icon name="clock" /></span><span><strong class="block">Hours</strong>{hoursText()}<br />{site.hoursNote}</span></li>
+          {hasHours && <li class="flex gap-3"><span class="text-brand-dark"><Icon name="clock" /></span><span><strong class="block">Hours</strong>{hoursText()}{site.hoursNote && <><br />{site.hoursNote}</>}</span></li>}
           <li class="flex gap-3"><span class="text-brand-dark"><Icon name="map" /></span><span><strong class="block">Areas</strong>{areaList()}. <a href="/areas/">See all areas</a>.</span></li>
         </ul>
         <div class="card mt-8 bg-brand-tint">

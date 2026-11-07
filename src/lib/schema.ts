@@ -10,10 +10,10 @@ export function businessSchema() {
   const sameAs = site.sameAs.filter((u) => /^https?:\/\//.test(u));
   const address: Record<string, string> = {
     '@type': 'PostalAddress',
-    addressLocality: site.address.locality,
     addressRegion: site.address.region,
     addressCountry: site.address.country,
   };
+  if (site.address.locality) address.addressLocality = site.address.locality;
   if (site.address.street) address.streetAddress = site.address.street;
   if (site.address.postalCode) address.postalCode = site.address.postalCode;
 
@@ -28,13 +28,17 @@ export function businessSchema() {
     email: site.email,
     address,
     areaServed: site.areas.map((a) => ({ '@type': 'City', name: a.name, containedInPlace: { '@type': 'State', name: 'Gauteng' } })),
-    openingHoursSpecification: site.hours.map((h) => ({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
-      opens: h.opens,
-      closes: h.closes,
-    })),
-    priceRange: site.priceRange,
+    ...(site.hours.length
+      ? {
+          openingHoursSpecification: site.hours.map((h) => ({
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
+            opens: h.opens,
+            closes: h.closes,
+          })),
+        }
+      : {}),
+    ...(site.priceRange ? { priceRange: site.priceRange } : {}),
     ...(sameAs.length ? { sameAs } : {}),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

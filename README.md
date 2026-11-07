@@ -116,7 +116,7 @@ src/
   content/blog/  blog articles (Markdown)
   styles/        global.css (theme tokens)
 integrations/    sitemap generator, {{PHONE}} token plugin for blog posts
-scripts/         audit.mjs, generate-placeholders.mjs
+scripts/         audit.mjs, generate-images.mjs
 extras/cpanel/   optional PHP form handler
 public/          static files (.htaccess, _redirects, robots.txt, images, favicons)
 ```

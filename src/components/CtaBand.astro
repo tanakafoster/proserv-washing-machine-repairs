@@ -1,6 +1,6 @@
 ---
 import ContactButtons from './ContactButtons.astro';
-import { site, hoursText } from '../data/site';
+import { site, hoursText, hasHours } from '../data/site';
 interface Props { heading?: string; text?: string }
 const {
   heading = 'Washing machine broken? Let\'s get it fixed.',
@@ -12,6 +12,6 @@ const {
     <h2 id="cta-h" class="text-2xl font-bold sm:text-3xl">{heading}</h2>
     <p class="mx-auto mt-3 max-w-2xl text-gray-200">{text}</p>
     <ContactButtons class="mt-6 justify-center" size="lg" />
-    <p class="mt-4 text-sm text-gray-300">{hoursText()} · {site.email}</p>
+    <p class="mt-4 text-sm text-gray-300">{hasHours ? `${hoursText()} · ` : ''}{site.email}</p>
   </div>
 </section>

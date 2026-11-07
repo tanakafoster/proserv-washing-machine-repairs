@@ -1,10 +1,9 @@
 ---
 import Logo from './Logo.astro';
-import { site, telHref, whatsappHref, mailHref, areaUrl, hoursText } from '../data/site';
+import { site, telHref, whatsappHref, mailHref, areaUrl, hoursText, hasHours } from '../data/site';
 import { services, serviceUrl } from '../data/services';
 import { trademarkNote } from '../data/brands';
 const year = new Date().getFullYear();
-const reviewHref = site.googleReviewUrl || '/contact/';
 ---
 <footer class="border-t-4 border-brand bg-surface pb-20 text-ink">
   <div class="container-site grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -15,8 +14,8 @@ const reviewHref = site.googleReviewUrl || '/contact/';
         <li><a href={telHref} data-track="call" class="font-semibold">{site.phone.display}</a></li>
         <li><a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">WhatsApp {site.phone.display}</a></li>
         <li><a href={mailHref} class="break-all">{site.email}</a></li>
-        <li class="text-ink-soft">{hoursText()}</li>
-        <li class="text-ink-soft">{site.hoursNote}</li>
+        {hasHours && <li class="text-ink-soft">{hoursText()}</li>}
+        {hasHours && site.hoursNote && <li class="text-ink-soft">{site.hoursNote}</li>}
       </ul>
     </div>
     <nav aria-labelledby="f-areas">
@@ -45,7 +44,7 @@ const reviewHref = site.googleReviewUrl || '/contact/';
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/contact/">Contact and bookings</a></li>
         <li><a href="/privacy-policy/">Privacy policy</a></li>
-        <li><a href={reviewHref} {...(site.googleReviewUrl ? { target: '_blank', rel: 'noopener' } : {})}>Leave us a Google review{site.googleReviewUrl ? '' : ' [GBP REVIEW LINK]'}</a></li>
+        {site.googleReviewUrl && <li><a href={site.googleReviewUrl} target="_blank" rel="noopener">Leave us a Google review</a></li>}
       </ul>
     </nav>
   </div>

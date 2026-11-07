@@ -7,17 +7,23 @@ export interface ErrorCode {
   causes: string;
   /** Safe, non-electrical check for the owner. */
   check: string;
-  /**
-   * true until this code has been checked against the manufacturer's manual for the
-   * models you service. Shows a [VERIFY] tag on the site. Set to false once confirmed.
-   */
-  verify: boolean;
+  /** @deprecated Codes are only published once checked against the manufacturer's own documentation. */
+  verify?: boolean;
+}
+
+/** A manufacturer document or support page the codes on a guide were checked against. */
+export interface CodeSource {
+  /** e.g. "Samsung South Africa support: washing machine error codes" */
+  label: string;
+  url: string;
 }
 
 export interface ErrorGuide extends ContentPage {
   brand: string;
   brandSlug: string;
   codes: ErrorCode[];
+  /** Where the codes were checked: shown on the page under the code table. */
+  sources?: CodeSource[];
 }
 
 export const errorGuides: ErrorGuide[] = [
