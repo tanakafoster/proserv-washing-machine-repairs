@@ -9,80 +9,105 @@ imageAlt: "Illustration of an open front loader door seal with a cleaning cloth 
 summary: "Musty, mouldy or rotten-egg smell? Here's where it comes from and how to get rid of it for good."
 ---
 
-If your washing machine smells musty, mouldy or like rotten eggs, you're not alone. It's one of the most common complaints we hear, and it's especially common with front loaders. The good news is that a smelly washing machine is rarely a sign of a broken machine. It's almost always a build-up problem, and you can usually fix it yourself without any tools.
+A washing machine smell is hardly ever a sign that the machine is broken. In most cases it's a build-up problem: detergent residue, lint and stale water collecting in places you don't see, where bacteria and mould are happy to grow. That's good news, because you can usually clear it yourself in an afternoon.
 
-Here's what causes the smell, how to get rid of it, and how to stop it coming back.
+Here's what each smell points to, where it starts, how to clear it safely, and which smells do mean a fault.
 
-## Where the smell actually comes from
+## What the smell is telling you
 
-Washing machines are warm, damp and dark, which is exactly what mould and bacteria like. Add a steady supply of food in the form of detergent residue, fabric softener, skin cells, body oils and lint, and you have the perfect breeding ground. The smell comes from the bacteria and mould feeding on that build-up.
+The kind of smell tells you where to look first.
 
-The main hiding places are:
+| Smell | Likely cause | First step |
+|---|---|---|
+| Musty, mouldy or damp | Mould and residue in the door seal, the drawer or between the drum and tub | Clean the seal and drawer, then run a hot empty wash |
+| Rotten eggs or sewage | Stale water by the pump, or drain air coming back into the machine | Clean the pump filter, then check the drain hose set-up |
+| Sour, like damp washing | Wet laundry left in the drum, or clothes drying too slowly | Unload promptly and give the machine a hot wash |
+| Burning, hot rubber or hot plastic | An electrical, motor, belt or heating fault | Switch off at the wall and call a technician |
 
-### 1. The door seal (front loaders)
+## Where the smell starts
 
-The rubber seal around the door has deep folds that trap water, hair, lint and the odd sock. Pull the folds back gently and you'll often find black spots of mould or a grey slime. This is the number one source of smells in front loaders.
+A washing machine is warm, damp and dark, and every wash leaves behind detergent, softener, lint, hair and body oils for bacteria and mould to feed on. Four places collect most of it.
 
-### 2. The detergent drawer
+### The door seal on a front loader
 
-Powder and liquid detergent and fabric softener leave a sticky residue in the drawer and in the housing behind it. Mould grows in there quietly, out of sight.
+The rubber seal around the door (also called the door boot or gasket) has deep folds that hold water after every wash. Hair, lint, grit and the odd coin settle in the bottom of it, and black spots of mould or a grey slime often grow in the folds. Because it never fully dries, it's the first place to check.
 
-### 3. The pump filter and sump
+### The detergent drawer and its housing
 
-The pump filter, behind the little flap at the bottom front of most front loaders, collects lint, hair and bits of debris, along with a small amount of standing water. Over a few months that can turn rank. Top loaders have similar build-up in the sump and pump area.
+Detergent and softener don't always rinse fully out of the drawer. What's left turns sticky and grows mould, in the drawer and in the housing behind it, out of sight.
 
-### 4. Between the drum and the outer tub
+### The drain pump filter and sump
 
-You can't see this area, but it's where a lot of residue collects, especially if you mostly wash on cold or quick cycles. That's why a smell can persist even when the parts you can see look clean.
+Most front loaders hide a pump filter behind a cover low down on the front of the machine, where it traps lint, hair, buttons and coins on their way to the pump. A little water always sits behind it, and over a few months that water goes stale, which is a frequent cause of a rotten-egg smell. Top loaders collect similar debris around the pump, and many also have a lint filter inside the tub.
 
-### 5. The drain
+### Between the drum and the outer tub
 
-If the smell is more like sewage than mould, the problem may be the household drain, not the machine. A drain hose pushed too far into the standpipe, or a dry or blocked trap, can let drain smells back into the machine. If the sink next to the machine also smells, that's a clue.
+The drum you can see turns inside a second, outer tub. Residue builds up on the hidden outside of the drum and the inside of the tub, especially if you mostly use cold, quick or eco programmes. That's why a machine can smell even when every part you can see looks clean. On a top loader, look under the rim of the tub and around the agitator or pulsator too.
 
-## Why it happens more now than it used to
+## Habits that make it worse
 
-A few modern habits make smells more likely:
+Modern machines and modern habits both play a part:
 
-- **Washing on cold and eco cycles.** Saving electricity is sensible, but cold water doesn't dissolve detergent and grease as well, so more residue stays behind.
-- **Using too much detergent.** More detergent doesn't mean cleaner clothes. The excess doesn't rinse away and becomes food for bacteria. Front loaders use much less water than top loaders, so they need much less detergent. Use a low-suds (HE) detergent and follow the dose for your water and load size.
-- **Lots of fabric softener.** Softener coats the inside of the machine just like it coats your clothes.
-- **Closing the door straight after washing.** Trapped moisture keeps the inside damp for days.
+- **Cold and eco washes.** They save electricity, but cool water doesn't dissolve grease and detergent as well, so more residue stays behind.
+- **Too much detergent.** The extra doesn't rinse away; it feeds bacteria. Front loaders use far less water than top loaders, so they need far less detergent, and it must be a low-suds type made for automatic machines. Follow the dose on the pack.
+- **Only ever using liquid detergent.** Many washing powders contain bleaching ingredients that help keep the inside of the machine clean. Liquids generally don't, so if liquid is all you use, regular hot washes matter more.
+- **Lots of fabric softener.** Softener leaves a waxy coating inside the machine, just as it does on your towels.
+- **Closing the door straight after the wash.** Trapped moisture keeps the inside damp for days.
 
 ## How to get rid of the smell
 
-You don't need special products for most of this. Always unplug the machine before cleaning the filter or seal.
+<div class="callout callout-safety">
 
-1. **Clean the door seal.** Pull back the folds and wipe them out with a cloth and warm soapy water, or a mild diluted bleach solution if there's mould (check your manual first, and never mix bleach with other cleaners). Dry the seal afterwards. Remove any hair, coins or fluff.
-2. **Clean the detergent drawer.** Most drawers pull right out if you press a release tab. Soak it in warm water, scrub it with an old toothbrush, and wipe out the housing it slides into.
-3. **Clean the pump filter.** Put down towels and a shallow tray, because water will come out. Open the flap, unscrew the filter slowly, let the water drain, then rinse the filter and remove any debris. Screw it back in firmly so it doesn't leak.
-4. **Run a hot maintenance wash.** With the drum empty, run the hottest cycle your machine offers (many have a "drum clean" or "tub clean" programme). Use a washing machine cleaner or a small amount of your normal detergent. Don't add clothes.
-5. **Leave it open.** After the hot wash, leave the door and the drawer open so everything dries.
+**Safety first:** switch the machine off at the wall and unplug it before you clean the door seal or the filter. Expect water to come out of the filter, so have towels and a shallow tray ready.
 
-If the smell is gone, great. If it comes back quickly, or there's a sewage smell even after cleaning, check the drain hose set-up. It should hook into the standpipe with a gap around it, not be sealed tightly or pushed deep down. If you're not sure, our [washing machine installation](/services/washing-machine-installation/) service can check and correct the drain set-up.
+</div>
 
-## How to stop it coming back
+1. **Clean the door seal.** Gently fold back the rubber and wipe out the folds with warm water and a little mild detergent, clearing out hair, grit and anything caught at the bottom. Manufacturers differ on what else is safe: some suggest a weak bleach solution for mould, while others say warm water is enough and warn that abrasive cleaners attack the rubber. Check your manual, wear gloves, and rinse and dry the seal. Never mix cleaning products: bleach and ammonia-based cleaners give off toxic fumes together.
+2. **Clean the detergent drawer.** Most drawers lift out when you press a release tab. Soak the drawer in warm water, scrub the corners with an old toothbrush, and wipe out the housing it slides into, including the top, where the water sprays in.
+3. **Clean the drain pump filter.** Follow your manual. On many machines you let the water out first through a small emergency hose beside the filter, then unscrew the filter slowly, rinse it and remove any debris. Screw it back in firmly and check for drips on the next wash.
+4. **Run a hot maintenance wash.** Leave the drum empty and choose the drum clean or tub clean programme if your machine has one, or the hottest cotton programme if it doesn't. Your manual says whether to add a washing machine cleaner, a little powder detergent or nothing at all.
+5. **Let it dry.** Wipe the door glass and the seal dry afterwards, and leave the door and the drawer open for a few hours.
 
-- Run a hot maintenance wash once a month.
-- Use the right amount of low-suds detergent, and go easy on the fabric softener.
-- Mix in a 40°C or 60°C wash for towels and bedding regularly.
-- Take washing out promptly. Damp clothes left in the drum smell, and so does the drum.
-- Leave the door and the detergent drawer slightly open between washes.
-- Wipe the door seal dry after the last wash of the day.
-- Clean the pump filter every month or two. It also prevents [drainage problems](/problems/washing-machine-not-draining/).
+If the smell returns within days, or a sewage smell survives the clean, look at the drain next.
 
-## When a smell means something else
+## When the drain is the problem
 
-Most smells are build-up. But call a technician if:
+A sewage smell usually means air from the household drain is reaching the machine, especially if the sink or basin next to it smells too. Three things are worth checking:
 
-- **It smells of burning or hot electrics.** Switch off at the wall straight away. This can mean a motor, wiring or heating element problem.
-- **There's water under the machine as well.** A [leaking washing machine](/problems/washing-machine-leaking/) can leave stagnant water inside the base that smells.
-- **The machine isn't draining fully.** Water left in the sump or drum between washes goes stale quickly. A partly blocked pump is a common cause.
-- **You've done everything and it still smells.** Heavy build-up between the drum and outer tub sometimes needs a technician to strip and clean.
+- **Where the drain hose sits.** Your manual gives the height the hose should reach and how far it should go into the standpipe. A hose pushed deep into the standpipe, sealed tightly into it or lying too low can let dirty water and drain air siphon back into the machine.
+- **A dry or blocked trap.** If the standpipe or a nearby basin hasn't had water through it for a while, for example after you've been away, the water in its trap can dry out and let drain gases up. Running water through it may be all it needs. A slow, gurgling drain points to a partial blockage in the household plumbing, which is a job for a plumber.
+- **The connection under the sink.** If the hose drains into a sink waste, check that it's tight and clear.
 
-A regular [washing machine service](/services/washing-machine-servicing/) includes cleaning the filter, inspecting the door seal and checking the drain, which deals with most smell problems at the source.
+If you're not sure the machine's side of the set-up is right, our [washing machine installation](/services/washing-machine-installation/) service can check how the drain hose is connected and set it up correctly.
+
+## A routine that keeps it fresh
+
+Once the machine is clean, a few habits keep it that way:
+
+- **After every wash:** take the washing out promptly, wipe the door seal dry and leave the door and drawer ajar so the inside can dry. If you have small children or pets, close the laundry door instead.
+- **Every week:** do at least one wash at 60°C, such as towels or bedding, if the care labels allow it.
+- **Every month:** run a hot empty maintenance wash and rinse out the drawer.
+- **Every month or two:** clean the drain pump filter as the manual describes. It also helps prevent draining problems.
+
+### When it's the clothes that smell
+
+Sometimes the machine smells fine but clean washing comes out musty. The cause is usually what happens after the wash: laundry left wet in the drum for hours, a drum packed too tightly to rinse properly, or clothes drying slowly indoors on rainy Highveld afternoons. Hang the load as soon as the programme ends, and use the highest spin speed the fabric allows so it dries faster.
+
+## Smells that mean a fault
+
+Most smells are build-up, but a few need a technician:
+
+- **Burning, hot plastic or electrical smells.** Switch off at the wall straight away and leave the machine unplugged. The cause could be the motor, the wiring or the heating element, or a slipping drive belt on machines that have one.
+- **The earth leakage or circuit breaker trips when the machine runs.** Leave it off and call a technician, because this can indicate a dangerous fault.
+- **Water under the machine.** A slow leak from a hose, the pump or the door seal can leave stagnant water in the base, which smells. See our guide to a [washing machine leaking](/problems/washing-machine-leaking/).
+- **Water left in the drum after the cycle.** A machine that doesn't drain fully keeps stale water in the sump, and it smells within days. Our guide to a [washing machine not draining](/problems/washing-machine-not-draining/) covers the causes.
+- **A torn seal, or mould that won't come off.** Mould that has grown into the rubber can't be cleaned out, so the fix is a new door seal, which our [washing machine parts replacement](/services/washing-machine-parts-replacement/) service can supply and fit.
+- **A smell that keeps coming back** despite regular cleaning. Heavy build-up between the drum and the tub may need a technician to open the machine and clean it.
+
+A [washing machine service](/services/washing-machine-servicing/) includes cleaning the filter and checking the door seal, hoses and drain, so it deals with most smells at the source and catches small leaks early.
 
 ## The bottom line
 
-A smelly washing machine is usually telling you it needs a clean, not a repair. Clean the door seal, the drawer and the filter, run a hot empty wash, and then change a couple of habits: less detergent, a few hotter washes, and leaving the door open. If the smell persists, or there's burning, leaking or poor draining as well, we're happy to help.
+A smelly washing machine usually needs a clean, not a repair. Clear the seal, the drawer and the filter, run a hot empty wash, then keep it fresh with measured detergent, the odd hot wash and time to dry. If there's burning, leaking or poor draining too, switch off at the wall and have it checked.
 
-**Washing machine still smells, won't drain or is leaking?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll come to you, find the cause and quote before any work starts.
+**Washing machine still smells, won't drain or is leaking?** Call or WhatsApp ProServ on [{{PHONE}}]({{TEL}}) or [book a technician online](/contact/). We'll come to you, track down the cause and give you a quote before any work starts.
