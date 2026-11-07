@@ -3,24 +3,36 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import LongFormSection from '../../components/LongFormSection.astro';
+import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Icon from '../../components/Icon.astro';
-import { site } from '../../data/site';
+import { site, areaList } from '../../data/site';
+import { faqSchema } from '../../lib/schema';
+const f = site.facts;
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
+const faqs = [
+  { q: 'Are the tips in these articles safe to try myself?', a: 'Yes, as long as you follow them as written. They stick to checks that don\'t involve electrical work, and they always start with switching off at the wall and unplugging. Where an article says to call a technician, it\'s because the next step means opening the machine or working on electrical parts.' },
+  { q: 'Do the tips apply to my brand of machine?', a: 'The principles apply to almost every washing machine, but details such as where the pump filter sits or which programme cleans the drum vary between brands and models. Check your manual for those details, and see our <a href="/brands/">brands we repair</a> page for brand-specific help.' },
+  { q: 'How often should I clean my washing machine?', a: 'Clean the detergent drawer every few weeks, wipe the door seal now and then, and run a hot maintenance wash with no clothes about once a month, or as often as your manual suggests. Clean the pump filter at the intervals in your manual, and more often if you wash a lot of pet hair, sand or work clothes.' },
+  { q: 'Can good habits stop my machine from breaking down?', a: 'They can\'t stop normal wear, because bearings, motors and electronics age with use. What they do is reduce the strain on pumps, seals and suspension, and help you notice early signs such as a new noise or a slow drain while the repair is still small.' },
+  { q: 'Why don\'t the articles explain how to replace parts?', a: 'Replacing parts means working inside a machine that runs on mains electricity and holds water, and some parts are heavy or held under spring tension. A mistake can cause an electric shock, a flood or a bigger repair. Instead, we explain what the technician checks, so you can follow what\'s happening and why.' },
+  { q: 'Can I ask about a problem the articles don\'t cover?', a: 'Yes. Send us a WhatsApp with the brand, the model number and what the machine is doing, with a photo or a short video if you can. We\'ll tell you whether it sounds like something you can check yourself or a job for a technician.' },
+];
 ---
 <BaseLayout
   title="Washing Machine Tips & Advice Blog | ProServ"
   description={`Washing machine tips from Gauteng technicians: smells, bearings, load shedding, buying advice and more. Need a repair? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Blog', href: '/blog/' }]}
   preloadImage={posts[0] && { src: posts[0].data.image }}
+  schema={[faqSchema(faqs)]}
 >
   <PageHero
     h1="Washing machine tips and advice"
     eyebrow="Blog"
     actions={false}
     trust={false}
-    intro={`<p>Practical washing machine tips from the technicians who fix them every day. We write about the problems we see most in Gauteng homes: how to keep your machine running, how to spot trouble early, and how to protect it from power problems. No DIY electrical work, just honest advice that saves you money.</p>`}
+    intro={`<p>Practical washing machine tips from ProServ, drawing on ${f.yearsInBusiness} years of washing machine repair experience. These articles explain why machines smell, rumble or stop working, how to protect yours from power problems, and what to weigh up when you buy a new one. Every tip sticks to checks you can do safely, with no DIY electrical work.</p>`}
   />
   <section class="section-y bg-surface" aria-labelledby="posts-h">
     <div class="container-site">
@@ -45,10 +57,48 @@ const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 
     </div>
   </section>
   <LongFormSection toc={false}>
+    <h2>What the articles cover</h2>
+    <p>Each article takes one topic in depth: the causes in plain language, the checks you can do yourself, and the point where a technician should take over.</p>
+    <h3>Why your washing machine smells</h3>
+    <p>A musty or rotten-egg smell is rarely a fault. Our article on <a href="/blog/why-does-my-washing-machine-smell/">why a washing machine smells</a> shows where the build-up hides (the door seal, the detergent drawer, the pump filter, the gap between the drum and the outer tub, and the drain), why it has become more common, and how to clean it out and keep it away. It also explains the smells that do point to a problem.</p>
+    <h3>Signs of worn bearings</h3>
+    <p>Our guide to <a href="/blog/signs-washing-machine-bearings-are-worn/">spotting worn washing machine bearings</a> explains what the bearings do and how to recognise wear, from a rumble that grows louder on spin to a rough or loose drum, leaks from underneath and rusty streaks. It also covers why bearings fail, what replacing them involves and when the repair is still worth doing.</p>
+    <h3>Load shedding and power surges</h3>
+    <p>Our article on how to <a href="/blog/protect-washing-machine-from-load-shedding/">protect your washing machine from load shedding</a> explains why the moment the power returns is hard on electronics, how low voltage and mid-cycle cuts affect a machine, and what helps: timing your washes, switching off at the wall, surge protection, and care with inverters and backup power. It ends with what to check after an outage and the signs of surge damage.</p>
+    <h3>Front loader or top loader?</h3>
+    <p>Buying a new machine? Our comparison of a <a href="/blog/front-loader-vs-top-loader/">front loader vs top loader</a> weighs up cleaning, water and electricity use, detergent, space, ease of use, price and how each type holds up over the years, so you can choose for your household rather than for the showroom.</p>
+
+    <h2>Start here</h2>
+    <p>Not sure where to begin? Pick the line that fits:</p>
+    <ul class="checklist">
+      <li><strong>The machine has stopped working properly:</strong> start with our guide to <a href="/problems/">common washing machine problems</a>, then the guide for your symptom, such as <a href="/problems/washing-machine-not-draining/">washing machine not draining</a>, <a href="/problems/washing-machine-not-spinning/">washing machine not spinning</a> or <a href="/problems/washing-machine-leaking/">washing machine leaking</a>.</li>
+      <li><strong>There's a code on the display:</strong> go to <a href="/error-codes/">washing machine error codes</a> and choose your brand.</li>
+      <li><strong>It smells, but works:</strong> read <a href="/blog/why-does-my-washing-machine-smell/">how to get rid of a washing machine smell</a> before you book anything.</li>
+      <li><strong>It's getting louder on spin:</strong> read <a href="/blog/signs-washing-machine-bearings-are-worn/">the signs of worn bearings</a>, then <a href="/problems/washing-machine-noisy-when-spinning/">washing machine noisy when spinning</a> for the other causes of noise.</li>
+      <li><strong>The power keeps going off:</strong> read <a href="/blog/protect-washing-machine-from-load-shedding/">our load shedding advice</a>, and if the machine is dead, see <a href="/problems/washing-machine-wont-turn-on/">washing machine won't turn on</a>.</li>
+      <li><strong>You're choosing a new machine:</strong> read <a href="/blog/front-loader-vs-top-loader/">which type of machine suits your home</a>, and if you're weighing up your old one, our guide on whether to <a href="/repair-or-replace/">repair or replace a washing machine</a>.</li>
+    </ul>
+
+    <h2>Habits that help any machine last</h2>
+    <p>Most of the advice in these articles comes back to a few habits:</p>
+    <ul>
+      <li><strong>Empty pockets</strong>, and wash socks and underwired bras in a mesh bag, so nothing reaches the pump or slips between the drum and the tub.</li>
+      <li><strong>Measure the detergent.</strong> Use one made for automatic machines, in the amount the pack suggests. More doesn't clean better, and the residue feeds smells.</li>
+      <li><strong>Don't overload or underload.</strong> A packed drum strains the bearings and motor, while a single heavy item on its own can't be balanced for spin.</li>
+      <li><strong>Let it dry out.</strong> Leave the door and the detergent drawer open after the last wash of the day.</li>
+      <li><strong>Keep the filters clean</strong>, as your manual describes, after switching off at the wall and unplugging, with towels and a tray ready for the water.</li>
+      <li><strong>Look at the hoses</strong> now and then for cracks or bulges, and keep the machine standing level.</li>
+      <li><strong>Switch off at the wall</strong> during load shedding, and wait for the power to settle before you restart.</li>
+    </ul>
+    <p>A regular <a href="/services/washing-machine-servicing/">washing machine service</a> takes care of the checks that need a technician.</p>
+
+    <h2>How we write our advice</h2>
+    <p>Every article is written for owners, not technicians. We explain how the machine works and what usually goes wrong, and we only suggest checks that are safe for anyone to do: nothing that involves opening panels, testing electrical parts or forcing a locked door. Where a fix needs a technician, we say so and explain what the technician does, so you know what you're paying for.</p>
+    <p>The advice is written for South African homes, with load shedding, water pressure that comes and goes, and the detergents sold here in mind. Machines differ, so where your manual gives different instructions for your model, follow the manual.</p>
+
     <h2>Looking for help with a specific fault?</h2>
-    <p>Our <a href="/problems/">washing machine problems</a> guides cover not draining, not spinning, leaks, power, doors, noise, error codes and filling problems. For codes on the display, see our <a href="/error-codes/">error code guides</a>.</p>
-    <h2>Coming up on the blog</h2>
-    <p>We publish new articles twice a month. Coming soon: how to clean your washing machine filter, simple maintenance habits that make a machine last longer, what to check before you call a technician, why a washing machine trips the electricity, and how to move a washing machine without damaging it. If there's something you'd like us to cover, send us a WhatsApp.</p>
+    <p>Our <a href="/problems/">washing machine problem guides</a> cover machines that won't drain, spin, switch on, fill or open, as well as leaks, noise and error codes. If the articles don't solve it, a technician can come to your home in {areaList()}. Call or WhatsApp us, or use our <a href="/contact/">booking form</a>, and you'll get a quote before any work starts.</p>
   </LongFormSection>
+  <Faq items={faqs} />
   <CtaBand />
 </BaseLayout>
