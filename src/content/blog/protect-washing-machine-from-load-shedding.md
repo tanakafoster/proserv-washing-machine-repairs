@@ -5,7 +5,7 @@ description: "How to protect your washing machine from load shedding and surges,
 primaryKeyword: "protect washing machine from load shedding"
 pubDate: 2026-11-06
 image: "/images/blog-load-shedding.webp"
-imageAlt: "Washing machine plug connected to a wall-mounted surge protector in a laundry"
+imageAlt: "Illustration of a washing machine plugged into a surge protector, with a lightning bolt symbol"
 summary: "Power cuts and surges are hard on modern machines. Simple ways to protect yours, and what to do when the power comes back."
 ---
 

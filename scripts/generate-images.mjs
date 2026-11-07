@@ -1,19 +1,26 @@
-// Generates the placeholder photos, the text logo (SVG + PNG), the favicons and app icons,
-// and the social share image.
+// Generates the illustrations in public/images/ (drawn as SVG in scripts/illustrations/), the
+// social share image, the text logo (SVG + PNG), and the favicons and app icons.
 //
 //   npm run images                 create any of these files that don't exist yet (never overwrites)
+//   npm run images -- photos       re-render the illustrations from their SVGs: OVERWRITES real photos
+//   npm run images -- og           rebuild the share image, e.g. after changing the phone number
 //   npm run images -- icons        rebuild the favicons and app icons, e.g. after a colour change
-//   npm run images -- logo og      rebuild the text logo and the share image (only if you still use them)
-//   npm run images -- photos       rebuild the placeholder photos: OVERWRITES real photos
+//   npm run images -- logo         rebuild the text logo (only if you still use it)
 //   npm run images -- --force      rebuild everything: OVERWRITES real photos and your logo
 //
+// The pictures on the site are illustrations, not photos. Any of them can be replaced with a real
+// photo of the SAME file name and size; after that, don't run `photos` or `--force` again.
+// To change an illustration, edit its SVG in scripts/illustrations/ and run `npm run images -- photos`.
+//
 // Colours are read from src/styles/global.css (@theme) and the phone number from src/data/site.ts.
-// Replace each placeholder in public/images/ with a real photo of the SAME file name and size.
+// The SVGs are drawn in the default orange: after changing the brand colours, `photos` and `og`
+// redraw them in the new ones.
 import sharp from 'sharp';
 import { writeFile, readFile, mkdir, access } from 'node:fs/promises';
 
 const OUT = 'public';
 const IMG = `${OUT}/images`;
+const SRC = 'scripts/illustrations';
 await mkdir(IMG, { recursive: true });
 
 const GROUPS = ['photos', 'logo', 'icons', 'og'];
@@ -34,9 +41,10 @@ const css = await readFile('src/styles/global.css', 'utf8');
 const color = (name, fallback) => css.match(new RegExp(`--color-${name}:\\s*(#[0-9a-fA-F]{3,8})`))?.[1] ?? fallback;
 const ORANGE = color('brand', '#F97316');
 const DARK = color('brand-dark', '#C2410C');
+const DARKER = color('brand-darker', '#9A3412');
+const TINT = color('brand-tint', '#FFF7ED');
 const INK = color('ink', '#1F2937');
 const SOFT = color('ink-soft', '#4B5563');
-const SURFACE = color('surface', '#F3F4F6');
 // Phone number from src/data/site.ts (plain Node can't import TypeScript, so read it as text).
 const siteTs = await readFile('src/data/site.ts', 'utf8');
 const PHONE = siteTs.match(/phone:\s*\{[^}]*display:\s*'([^']+)'/)?.[1];
@@ -55,41 +63,75 @@ async function output(group, file, make) {
   written.push(file);
 }
 
-const placeholders = [
-  // [file, width, height, label]
-  ['hero-technician.webp', 1200, 900, 'Technician at a customer\'s front loader'],
-  ['hero-technician-640.webp', 640, 480, 'Technician at a customer\'s front loader'],
-  ['about-technician-van.webp', 960, 640, 'Technician with branded van'],
-  ['service-front-loader.webp', 960, 640, 'Front loader repair in progress'],
-  ['service-top-loader.webp', 960, 640, 'Top loader with lid open'],
-  ['service-washer-dryer.webp', 960, 640, 'Washer-dryer in a kitchen'],
-  ['service-installation.webp', 960, 640, 'Connecting inlet hose to tap'],
-  ['service-servicing.webp', 960, 640, 'Cleaning the pump filter'],
-  ['service-parts.webp', 960, 640, 'Pump, door seal and brushes'],
-  ['blog-smelly-washing-machine.webp', 960, 540, 'Door seal being cleaned'],
-  ['blog-worn-bearings.webp', 960, 540, 'Drum bearing removed from a tub'],
-  ['blog-load-shedding.webp', 960, 540, 'Machine plugged into surge protector'],
-  ['blog-front-vs-top-loader.webp', 960, 540, 'Front loader next to a top loader'],
-];
-
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/'/g, '&#39;');
 
-function placeholderSvg(w, h, label, file) {
-  const fs = Math.round(w / 26);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="100%" height="100%" fill="${SURFACE}"/>
-  <rect x="12" y="12" width="${w - 24}" height="${h - 24}" fill="none" stroke="${ORANGE}" stroke-width="6" stroke-dasharray="24 14" rx="16"/>
-  <circle cx="${w / 2}" cy="${h / 2 - fs * 2.2}" r="${fs * 1.6}" fill="none" stroke="${ORANGE}" stroke-width="${fs / 4}"/>
-  <circle cx="${w / 2}" cy="${h / 2 - fs * 2.2}" r="${fs * 0.6}" fill="${ORANGE}"/>
-  <text x="50%" y="${h / 2 + fs * 0.6}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${fs}" font-weight="700" fill="${INK}">PLACEHOLDER PHOTO</text>
-  <text x="50%" y="${h / 2 + fs * 2}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${fs * 0.75}" fill="${DARK}">${esc(label)}</text>
-  <text x="50%" y="${h / 2 + fs * 3.3}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${fs * 0.55}" fill="${SOFT}">${esc(file)} · ${w}×${h}</text>
-</svg>`;
+// The SVGs use the default theme colours (left). If global.css sets others, they're swapped in,
+// and the light orange tints are mixed from the new brand colour and white.
+const hex6 = (c) => {
+  let h = c.slice(1);
+  if (h.length <= 4) h = [...h].map((d) => d + d).join('');
+  return `#${h.slice(0, 6).toUpperCase()}`;
+};
+const tint = (c, share) =>
+  '#' +
+  [1, 3, 5]
+    .map((i) => Math.round(255 - (255 - parseInt(hex6(c).slice(i, i + 2), 16)) * share).toString(16).padStart(2, '0'))
+    .join('')
+    .toUpperCase();
+const swaps = new Map(
+  [
+    ['#F97316', ORANGE],
+    ['#C2410C', DARK],
+    ['#9A3412', DARKER],
+    ['#FFF7ED', TINT],
+    ['#1F2937', INK],
+  ]
+    .map(([from, to]) => [from, hex6(to)])
+    .filter(([from, to]) => from !== to),
+);
+if (swaps.has('#F97316')) {
+  for (const [from, share] of [['#FFEDD5', 0.16], ['#FED7AA', 0.33], ['#FDBA74', 0.55], ['#FB923C', 0.8]]) {
+    swaps.set(from, tint(ORANGE, share));
+  }
 }
 
+/** Reads scripts/illustrations/<name>.svg, in the site's colours. */
+async function illustration(name) {
+  const file = `${SRC}/${name}.svg`;
+  const svg = await readFile(file, 'utf8').catch(() => {
+    throw new Error(`Missing ${file}. Restore it from git, or put a real photo in ${IMG}/ and skip this group.`);
+  });
+  return svg.replace(/#[0-9A-Fa-f]{6}\b/g, (c) => swaps.get(c.toUpperCase()) ?? c);
+}
+
+/** Draws an SVG at exactly w×h pixels (rendered at that size, so the lines stay crisp). */
+function render(svg, w, h) {
+  const svgWidth = Number(svg.match(/viewBox="[\d.]+ [\d.]+ ([\d.]+)/)?.[1] ?? w);
+  return sharp(Buffer.from(svg), { density: (72 * w) / svgWidth }).resize(w, h);
+}
+
+const photos = [
+  // [SVG in scripts/illustrations/, file in public/images/, width, height]
+  ['hero-technician', 'hero-technician.webp', 1200, 900],
+  ['hero-technician', 'hero-technician-640.webp', 640, 480],
+  ['about-technician-van', 'about-technician-van.webp', 960, 640],
+  ['service-front-loader', 'service-front-loader.webp', 960, 640],
+  ['service-top-loader', 'service-top-loader.webp', 960, 640],
+  ['service-washer-dryer', 'service-washer-dryer.webp', 960, 640],
+  ['service-installation', 'service-installation.webp', 960, 640],
+  ['service-servicing', 'service-servicing.webp', 960, 640],
+  ['service-parts', 'service-parts.webp', 960, 640],
+  ['blog-smelly-washing-machine', 'blog-smelly-washing-machine.webp', 960, 540],
+  ['blog-worn-bearings', 'blog-worn-bearings.webp', 960, 540],
+  ['blog-load-shedding', 'blog-load-shedding.webp', 960, 540],
+  ['blog-front-vs-top-loader', 'blog-front-vs-top-loader.webp', 960, 540],
+];
+
 if (runs('photos')) {
-  for (const [file, w, h, label] of placeholders) {
-    await output('photos', `${IMG}/${file}`, (f) => sharp(Buffer.from(placeholderSvg(w, h, label, file))).webp({ quality: 70 }).toFile(f));
+  for (const [name, file, w, h] of photos) {
+    await output('photos', `${IMG}/${file}`, async (f) =>
+      render(await illustration(name), w, h).webp({ quality: 82, effort: 6, smartSubsample: true }).toFile(f),
+    );
   }
 }
 
@@ -147,20 +189,23 @@ if (runs('icons')) {
   }
 }
 
-// Social share image 1200x630
-const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#ffffff"/>
-  <rect x="0" y="590" width="1200" height="40" fill="${ORANGE}"/>
-  <rect x="80" y="110" width="140" height="140" rx="30" fill="${ORANGE}"/>
-  <circle cx="150" cy="180" r="40" fill="none" stroke="${INK}" stroke-width="12"/>
-  <circle cx="150" cy="180" r="16" fill="${INK}"/>
-  <text x="250" y="200" font-family="Arial, sans-serif" font-size="96" font-weight="800" fill="${INK}">Pro<tspan fill="${DARK}">Serv</tspan></text>
-  <text x="82" y="340" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="${INK}">Washing machine repairs</text>
-  <text x="82" y="410" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="${INK}">at your door, across Gauteng</text>
-  <text x="82" y="510" font-family="Arial, sans-serif" font-size="46" font-weight="700" fill="${DARK}">Call or WhatsApp ${PHONE}</text>
-</svg>`;
+// Social share image 1200x630, from scripts/illustrations/og-default.svg with the phone number filled in.
+/** Fits the orange pill (id="phone-pill") to the phone number (id="phone") as it renders. */
+async function fitPhonePill(svg) {
+  const text = svg.match(/<text id="phone"[^>]*>[^<]*<\/text>/)?.[0];
+  const pill = svg.match(/<rect id="phone-pill"[^>]*>/)?.[0];
+  if (!text || !pill) return svg;
+  const probe = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">${text}</svg>`;
+  const { info } = await sharp(Buffer.from(probe)).trim().toBuffer({ resolveWithObject: true });
+  const right = info.width - info.trimOffsetLeft; // right edge of the number
+  const x = Number(pill.match(/ x="([\d.]+)"/)?.[1] ?? 0);
+  return svg.replace(pill, pill.replace(/ width="[\d.]+"/, ` width="${Math.round(right + 40 - x)}"`));
+}
 if (runs('og')) {
-  await output('og', `${IMG}/og-default.jpg`, (f) => sharp(Buffer.from(ogSvg)).jpeg({ quality: 85 }).toFile(f));
+  await output('og', `${IMG}/og-default.jpg`, async (f) => {
+    const svg = await fitPhonePill((await illustration('og-default')).replaceAll('{{PHONE}}', esc(PHONE)));
+    await render(svg, 1200, 630).jpeg({ quality: 85, mozjpeg: true }).toFile(f);
+  });
 }
 
 console.log(`Wrote ${written.length} file(s)${written.length ? ': ' + written.join(', ') : ''}`);

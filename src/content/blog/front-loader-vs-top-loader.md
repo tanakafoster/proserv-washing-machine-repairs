@@ -5,7 +5,7 @@ description: "Front loader vs top loader: cleaning, water and power use, cost, s
 primaryKeyword: "front loader vs top loader"
 pubDate: 2026-11-06
 image: "/images/blog-front-vs-top-loader.webp"
-imageAlt: "A front loader washing machine standing next to a top loader in a laundry room"
+imageAlt: "Illustration of a front loader washing machine next to a top loader"
 summary: "An honest comparison from the people who repair both: cleaning, running costs, space, and what goes wrong."
 ---
 

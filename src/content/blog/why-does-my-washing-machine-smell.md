@@ -5,7 +5,7 @@ description: "Washing machine smells musty or like rotten eggs? The real causes,
 primaryKeyword: "washing machine smell"
 pubDate: 2026-11-06
 image: "/images/blog-smelly-washing-machine.webp"
-imageAlt: "Hand wiping mould and detergent residue from the folds of a front loader door seal"
+imageAlt: "Illustration of an open front loader door seal with a cleaning cloth and a spray bottle"
 summary: "Musty, mouldy or rotten-egg smell? Here's where it comes from and how to get rid of it for good."
 ---
 

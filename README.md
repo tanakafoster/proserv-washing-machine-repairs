@@ -83,24 +83,30 @@ Import the repo. `vercel.json` sets the build, trailing slashes, and the www →
 
 ## Images and photos to take
 
-Every image in `public/images/` is a labelled placeholder. Replace each with a real photo **using the same file name and the same size** (or update the width/height in the code). Export as WebP, around 70–80% quality. Free tools: Squoosh (squoosh.app).
+The site ships with original flat illustrations in `public/images/`, so nothing needs replacing before launch. They contain no text, people or brand names. Each one is drawn as an SVG file in `scripts/illustrations/` and rendered to WebP by `npm run images -- photos` (the share image by `npm run images -- og`). To change one, edit its SVG and run that command. After changing the brand colours, `npm run images -- photos og` redraws them in the new colours (leave out `photos` once you have real photos in).
 
-| File | Size (px) | Photo to take |
-|---|---|---|
-| `hero-technician.webp` | 1200 × 900 | Main photo: technician kneeling at a front loader in a real customer's kitchen or laundry, smiling, tools visible |
-| `hero-technician-640.webp` | 640 × 480 | Same photo, smaller (mobile) |
-| `about-technician-van.webp` | 960 × 640 | You/technician standing next to the van |
-| `service-front-loader.webp` | 960 × 640 | Front loader with front panel off, technician working on the drum or pump |
-| `service-top-loader.webp` | 960 × 640 | Top loader with lid open or cabinet tilted, technician working |
-| `service-washer-dryer.webp` | 960 × 640 | A washer-dryer (ideally integrated) in a kitchen |
-| `service-installation.webp` | 960 × 640 | Connecting the inlet hose to the tap / levelling a new machine |
-| `service-servicing.webp` | 960 × 640 | Cleaning the pump filter at the bottom of a front loader |
-| `service-parts.webp` | 960 × 640 | Parts laid out: pump, door seal, carbon brushes, bearing |
-| `blog-smelly-washing-machine.webp` | 960 × 540 | Hand cleaning the folds of a door seal |
-| `blog-worn-bearings.webp` | 960 × 540 | An old rusted bearing next to a new one |
-| `blog-load-shedding.webp` | 960 × 540 | Washing machine plugged into a surge protector |
-| `blog-front-vs-top-loader.webp` | 960 × 540 | A front loader next to a top loader |
-| `og-default.jpg` | 1200 × 630 | Social share image (generated: logo and phone; rebuild with `npm run images -- og` after changing the number). Optional: replace with a branded photo |
+Real photos of your own work build more trust than any drawing, so swap them in as you get good ones, starting with the top of the table:
+
+- Use **the same file name and the same size** (or update the width/height in the code). Export as WebP, around 75–80% quality. Free tool: Squoosh (squoosh.app).
+- Update the picture's alt text, which describes the illustration ("Illustration of …"): home page hero in `src/pages/index.astro`, About page in `src/pages/about.astro`, service pages in `src/data/services.ts` (`image.alt`), blog posts in the post's `imageAlt`.
+- Once a real photo is in, don't run `npm run images -- photos` or `--force` again: they rewrite all 13 WebP files from the illustrations, over your photos.
+
+| File | Size (px) | Illustration now | Worth replacing? Photo to take |
+|---|---|---|---|
+| `hero-technician.webp` | 1200 × 900 | Front loader with an open toolbox, a spanner, a plant and a laundry basket | **Yes, first.** You or your technician at a front loader in a real customer's kitchen or laundry, smiling, tools visible |
+| `hero-technician-640.webp` | 640 × 480 | Same, smaller (mobile) | The same photo, smaller |
+| `about-technician-van.webp` | 960 × 640 | Front door of a home, washing machine inside, toolbox on the step | **Yes.** You or your technician standing next to the van |
+| `service-front-loader.webp` | 960 × 640 | Front loader with the door open, a spanner and a screwdriver | **Yes.** Front loader with the front panel off, working on the drum or pump |
+| `service-top-loader.webp` | 960 × 640 | Top loader with the lid open, laundry basket, detergent | **Yes.** Top loader with the lid open or cabinet tilted, mid-repair |
+| `service-installation.webp` | 960 × 640 | Machine connected to a wall tap and a standpipe, spirit level on top | When you can: connecting the inlet hose to the tap, or levelling a new machine |
+| `service-servicing.webp` | 960 × 640 | Machine beside a ticked checklist and a toolbox | When you can: cleaning the pump filter at the bottom of a front loader |
+| `service-washer-dryer.webp` | 960 × 640 | Washer dryer drying a load, folded towels | When you can: a washer-dryer (ideally integrated) in a kitchen |
+| `service-parts.webp` | 960 × 640 | Drain pump, door seal, bearings, control board, carbon brushes | Optional: real parts laid out on a workbench |
+| `blog-smelly-washing-machine.webp` | 960 × 540 | Open door seal, cleaning cloth, spray bottle | No, the illustration explains the article. Optional: cleaning the folds of a door seal |
+| `blog-worn-bearings.webp` | 960 × 540 | Drum with its bearings and seal | No. Optional: an old rusted bearing next to a new one |
+| `blog-load-shedding.webp` | 960 × 540 | Machine plugged into a surge protector, lightning bolt | No |
+| `blog-front-vs-top-loader.webp` | 960 × 540 | Front loader next to a top loader | No |
+| `og-default.jpg` | 1200 × 630 | Social share image: logo, "Washing machine repairs at your door", Gauteng, the phone number and the hero illustration | No. It's generated: rebuild it with `npm run images -- og` after changing the phone number or brand colours. Optional: replace with your own branded image |
 
 Photo tips: natural light, no brand logos as the focus, no customers' faces or house numbers without permission, landscape orientation. Don't use stock photos of foreign kitchens; local, real photos build trust.
 

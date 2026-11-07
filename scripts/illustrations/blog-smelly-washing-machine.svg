@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>Smelly washing machine: cleaning the door seal</title>
+  <desc>Flat illustration: a front loader with its door open showing the rubber door seal, a cleaning cloth draped over the seal, odour lines rising from the drum, and a spray bottle of cleaner.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="540" fill="#FFF7ED"/>
+  <path d="M828.41 327.46 C808.22 375.66 731.34 425.41 661.5 452.64 C591.66 479.88 482.9 503.73 409.36 490.87 C335.82 478 261 422.03 220.27 375.45 C179.55 328.87 145.03 259.09 165.02 211.39 C185 163.7 269.26 116.32 340.2 89.28 C411.14 62.23 516.89 36.77 590.64 49.13 C664.38 61.49 743.04 117.05 782.67 163.44 C822.3 209.83 848.61 279.26 828.41 327.46 Z" fill="#FFEDD5"/>
+  <path d="M790 380h0M812 380h0M834 380h0M856 380h0M790 402h0M812 402h0M834 402h0M856 402h0M790 424h0M812 424h0M834 424h0M856 424h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <!-- floor -->
+  <ellipse cx="490" cy="463.88" rx="400" ry="28" fill="#FED7AA" opacity="0.45"/>
+
+  <!-- floor shadows -->
+  <ellipse cx="535.2" cy="459.88" rx="150" ry="12" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <ellipse cx="222" cy="463.88" rx="60" ry="8" fill="#1F2937" opacity="0.14" filter="url(#soft)"/>
+
+  <!-- front loader with its door open, showing the rubber door seal -->
+  <g transform="translate(404 104) scale(0.82)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- opening with the rubber door seal and the drum -->
+      <circle cx="150" cy="234" r="92" fill="#E5E7EB"/>
+      <circle cx="150" cy="234" r="86" fill="#D1D5DB"/>
+      <circle cx="150" cy="234" r="82" fill="url(#washer-seal)"/>
+      <circle cx="150" cy="234" r="70" fill="none" stroke="#9CA3AF" stroke-width="3"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-drum)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- perforated drum -->
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#6B7280" stroke-width="3.2" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="150" cy="234" r="30" fill="none" stroke="#6B7280" stroke-width="2" opacity="0.5"/>
+        <circle cx="150" cy="234" r="14" fill="#6B7280" opacity="0.5"/>
+        <!-- lifters (paddles) -->
+        <g transform="rotate(270 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+        <g transform="rotate(30 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+        <g transform="rotate(150 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="5" opacity="0.15"/>
+      <!-- hinge -->
+      <rect x="44" y="204" width="20" height="14" rx="4" fill="#9CA3AF"/>
+      <rect x="44" y="250" width="20" height="14" rx="4" fill="#9CA3AF"/>
+      <!-- the open door, swung out to the left -->
+      <ellipse cx="21" cy="238" rx="41" ry="95" fill="#1F2937" opacity="0.08"/>
+      <ellipse cx="18" cy="234" rx="40" ry="94" fill="url(#washer-chrome)"/>
+      <ellipse cx="18" cy="234" rx="32" ry="78" fill="#374151"/>
+      <ellipse cx="15" cy="234" rx="26" ry="66" fill="url(#washer-glass)"/>
+      <path d="M0 194 Q-4 234 0 274" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- machine-local details: cleaning cloth over the seal, odour drifting out of the drum -->
+  <g transform="translate(404 104) scale(0.82)">
+    <!-- cleaning cloth draped over the bottom of the door seal -->
+    <path d="M96 300 Q150 324 206 298 C212 320 214 342 210 366 C206 380 196 384 188 376 C176 362 160 360 146 364 C128 368 112 372 100 362 C92 344 92 322 96 300 Z" fill="#60A5FA"/>
+    <path d="M96 300 Q150 324 206 298 L208 314 Q150 342 95 316 Z" fill="#93C5FD"/>
+    <path d="M188 376 C196 384 206 380 210 366 C204 354 196 348 186 346 Z" fill="#93C5FD"/>
+    <path d="M106 352 C122 358 136 354 150 350 C162 347 172 349 180 356" fill="none" stroke="#BFDBFE" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+    <!-- odour rising out of the drum -->
+    <linearGradient id="odour" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-190">
+      <stop offset="0" stop-color="#9CA3AF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#9CA3AF" stop-opacity="0.1"/>
+    </linearGradient>
+    <g fill="none" stroke="url(#odour)" stroke-width="8" stroke-linecap="round">
+      <path d="M0 0 C11.7 -6.5 11.7 -19.5 0 -26 C-11.7 -32.5 -11.7 -45.5 0 -52 C11.7 -58.5 11.7 -71.5 0 -78 C-11.7 -84.5 -11.7 -97.5 0 -104 C11.7 -110.5 11.7 -123.5 0 -130 C-11.7 -136.5 -11.7 -149.5 0 -156 C11.7 -162.5 11.7 -175.5 0 -182" transform="translate(190 176) rotate(48)"/>
+      <path d="M0 0 C11.7 -6.5 11.7 -19.5 0 -26 C-11.7 -32.5 -11.7 -45.5 0 -52 C11.7 -58.5 11.7 -71.5 0 -78 C-11.7 -84.5 -11.7 -97.5 0 -104 C11.7 -110.5 11.7 -123.5 0 -130 C-11.7 -136.5 -11.7 -149.5 0 -156 C11.7 -162.5 11.7 -175.5 0 -182" transform="translate(204 206) rotate(52)"/>
+      <path d="M0 0 C11.7 -6.5 11.7 -19.5 0 -26 C-11.7 -32.5 -11.7 -45.5 0 -52 C11.7 -58.5 11.7 -71.5 0 -78 C-11.7 -84.5 -11.7 -97.5 0 -104 C11.7 -110.5 11.7 -123.5 0 -130 C-11.7 -136.5 -11.7 -149.5 0 -156" transform="translate(212 238) rotate(58)"/>
+    </g>
+  </g>
+
+  <!-- spray bottle of cleaner -->
+  <g transform="translate(220 463.88) scale(0.95)">
+    <g>
+      <!-- bottle -->
+      <path d="M-40 -116 Q-40 -132 -26 -134 L26 -134 Q40 -132 40 -116 L44 -12 Q44 0 32 0 L-32 0 Q-44 0 -44 -12 Z" fill="#BFDBFE"/>
+      <path d="M-42 -70 L42 -70 L44 -12 Q44 0 32 0 L-32 0 Q-44 0 -44 -12 Z" fill="#93C5FD"/>
+      <path d="M20 -132 Q40 -130 40 -116 L44 -12 Q44 0 32 0 L22 0 Z" fill="#1F2937" opacity="0.07"/>
+      <rect x="-30" y="-122" width="9" height="104" rx="4.5" fill="#FFFFFF" opacity="0.6"/>
+      <!-- label: a sparkle symbol, no text -->
+      <rect x="-26" y="-58" width="52" height="40" rx="9" fill="#FFFFFF"/>
+      <path d="M0 -50 Q2 -40 10 -38 Q2 -36 0 -26 Q-2 -36 -10 -38 Q-2 -40 0 -50 Z" fill="#F97316"/>
+      <!-- neck and trigger head -->
+      <rect x="-16" y="-150" width="32" height="20" rx="4" fill="#E5E7EB"/>
+      <path d="M-26 -150 L-22 -186 Q-20 -196 -8 -196 L44 -196 Q54 -196 54 -186 L54 -176 Q54 -168 46 -168 L22 -168 L22 -150 Z" fill="#F97316"/>
+      <path d="M-26 -150 L-24 -170 L22 -170 L22 -150 Z" fill="#C2410C" opacity="0.35"/>
+      <rect x="54" y="-190" width="16" height="16" rx="3" fill="#374151"/>
+      <!-- trigger -->
+      <path d="M20 -166 Q34 -158 32 -134 Q31 -126 24 -128 Q26 -150 14 -160 Z" fill="#C2410C"/>
+    </g>
+  </g>
+
+  <path d="M296 201 Q298.34 211.66 309 214 Q298.34 216.34 296 227 Q293.66 216.34 283 214 Q293.66 211.66 296 201 Z" fill="#F97316"/>
+  <path d="M316 255 Q317.26 260.74 323 262 Q317.26 263.26 316 269 Q314.74 263.26 309 262 Q314.74 260.74 316 255 Z" fill="#FDBA74"/>
+</svg>

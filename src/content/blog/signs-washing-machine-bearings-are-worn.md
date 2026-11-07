@@ -5,7 +5,7 @@ description: "Worn washing machine bearings cause rumbling, drum play and leaks.
 primaryKeyword: "worn washing machine bearings"
 pubDate: 2026-11-06
 image: "/images/blog-worn-bearings.webp"
-imageAlt: "Old rusted drum bearing next to a new replacement bearing on a workbench"
+imageAlt: "Illustration of a washing machine drum bearing and seal beside the back of a drum"
 summary: "That rumble on spin might be your bearings. Here's how to tell, and why it pays to act early."
 ---
 

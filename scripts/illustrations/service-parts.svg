@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <title>Washing machine spare parts laid out on a workbench mat</title>
+  <desc>Flat illustration: a drain pump, a rubber door seal, a drum bearing and seal, a green control board and a pair of carbon brushes, arranged neatly on a mat.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="640" fill="#FFF7ED"/>
+  <circle cx="70" cy="560" r="120" fill="#FFEDD5"/>
+  <circle cx="900" cy="70" r="110" fill="#FFEDD5"/>
+
+  <!-- workbench mat -->
+  <rect x="86" y="68" width="800" height="520" rx="30" fill="#1F2937" opacity="0.08"/>
+  <rect x="80" y="62" width="800" height="520" rx="30" fill="#E5E7EB"/>
+  <rect x="80" y="56" width="800" height="520" rx="30" fill="#FFFFFF"/>
+  <clipPath id="mat-clip">
+    <rect x="80" y="56" width="800" height="520" rx="30"/>
+  </clipPath>
+  <path d="M120 56V576M160 56V576M200 56V576M240 56V576M280 56V576M320 56V576M360 56V576M400 56V576M440 56V576M480 56V576M520 56V576M560 56V576M600 56V576M640 56V576M680 56V576M720 56V576M760 56V576M800 56V576M840 56V576M80 96H880M80 136H880M80 176H880M80 216H880M80 256H880M80 296H880M80 336H880M80 376H880M80 416H880M80 456H880M80 496H880M80 536H880" stroke="#F3F4F6" stroke-width="2" clip-path="url(#mat-clip)"/>
+
+  <!-- rubber door seal -->
+  <g transform="translate(240 222)">
+    <g>
+      <circle cx="5" cy="7" r="112" fill="#1F2937" opacity="0.14"/>
+      <circle cx="0" cy="0" r="112" fill="#6B7280"/>
+      <circle cx="0" cy="0" r="102" fill="none" stroke="#9CA3AF" stroke-width="5"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#374151" stroke-width="9"/>
+      <circle cx="0" cy="0" r="78" fill="none" stroke="#9CA3AF" stroke-width="5"/>
+      <circle cx="0" cy="0" r="70" fill="#374151"/>
+      <circle cx="0" cy="0" r="64" fill="#F3F4F6"/>
+      <path d="M-100.55 -36.6 A107 107 0 0 1 -36.6 -100.55" fill="none" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+      <path d="M-76.13 -35.5 A84 84 0 0 1 -42 -72.75" fill="none" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+      <!-- drain holes at the bottom of the seal -->
+      <circle cx="-14" cy="96" r="3.5" fill="#374151"/>
+      <circle cx="0" cy="97" r="3.5" fill="#374151"/>
+      <circle cx="14" cy="96" r="3.5" fill="#374151"/>
+    </g>
+  </g>
+
+  <!-- control board (PCB) -->
+  <g transform="translate(532 206) rotate(-3)">
+    <g>
+      <rect x="-110" y="-74" width="226" height="154" rx="10" fill="#1F2937" opacity="0.14"/>
+      <rect x="-116" y="-80" width="226" height="154" rx="10" fill="#16A34A"/>
+      <rect x="-110" y="-74" width="214" height="142" rx="7" fill="#22C55E"/>
+      <!-- copper traces -->
+      <path d="M-96 -40 H-40 V-10 H10 M-96 30 H-60 V50 H40 M20 -60 V-30 H70 M-30 30 V10 H60 V40 M80 -10 V30" fill="none" stroke="#86EFAC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <!-- mounting holes -->
+      <circle cx="-100" cy="-64" r="5" fill="#F3F4F6" stroke="#86EFAC" stroke-width="2"/>
+      <circle cx="94" cy="-64" r="5" fill="#F3F4F6" stroke="#86EFAC" stroke-width="2"/>
+      <circle cx="-100" cy="58" r="5" fill="#F3F4F6" stroke="#86EFAC" stroke-width="2"/>
+      <circle cx="94" cy="58" r="5" fill="#F3F4F6" stroke="#86EFAC" stroke-width="2"/>
+      <!-- microcontroller -->
+      <rect x="-34" y="-36" width="56" height="44" rx="4" fill="#1F2937"/>
+      <path d="M-30 -40v-6M-22 -40v-6M-14 -40v-6M-6 -40v-6M2 -40v-6M10 -40v-6M18 -40v-6M-30 12v6M-22 12v6M-14 12v6M-6 12v6M2 12v6M10 12v6M18 12v6" stroke="#D1D5DB" stroke-width="3"/>
+      <circle cx="-26" cy="-28" r="3" fill="#374151"/>
+      <!-- relay -->
+      <rect x="44" y="-58" width="50" height="40" rx="5" fill="#93C5FD"/>
+      <rect x="44" y="-58" width="50" height="10" rx="5" fill="#BFDBFE"/>
+      <!-- capacitors (seen from above) -->
+      <circle cx="-74" cy="-14" r="15" fill="#374151"/>
+      <circle cx="-74" cy="-14" r="10" fill="#6B7280"/>
+      <path d="M-80 -14 H-68 M-74 -20 V-8" stroke="#374151" stroke-width="2.5"/>
+      <circle cx="58" cy="10" r="12" fill="#374151"/>
+      <circle cx="58" cy="10" r="7.5" fill="#6B7280"/>
+      <!-- small parts -->
+      <rect x="-62" y="24" width="20" height="9" rx="3" fill="#FED7AA"/>
+      <rect x="-36" y="24" width="20" height="9" rx="3" fill="#FED7AA"/>
+      <rect x="80" y="20" width="9" height="20" rx="3" fill="#FED7AA"/>
+      <!-- connectors -->
+      <rect x="-96" y="44" width="58" height="20" rx="3" fill="#FFFFFF"/>
+      <path d="M-88 54h0M-78 54h0M-68 54h0M-58 54h0M-48 54h0" stroke="#9CA3AF" stroke-width="5" stroke-linecap="round"/>
+      <rect x="2" y="46" width="44" height="18" rx="3" fill="#FFFFFF"/>
+      <path d="M10 55h0M20 55h0M30 55h0M38 55h0" stroke="#9CA3AF" stroke-width="5" stroke-linecap="round"/>
+      <!-- status LED -->
+      <circle cx="72" cy="-6" r="4" fill="#F97316"/>
+    </g>
+  </g>
+
+  <!-- drain pump -->
+  <g transform="translate(774 300) rotate(90)">
+    <g>
+      <g opacity="0.14" fill="#1F2937" transform="translate(5 7)">
+        <rect x="-70" y="-48" width="78" height="96" rx="12"/>
+        <circle cx="44" cy="0" r="56"/>
+        <rect x="70" y="-86" width="34" height="70" rx="12"/>
+      </g>
+      <!-- outlet spout -->
+      <rect x="70" y="-86" width="34" height="70" rx="12" fill="#374151"/>
+      <rect x="74" y="-84" width="26" height="12" rx="6" fill="#6B7280"/>
+      <!-- motor -->
+      <rect x="-70" y="-48" width="78" height="96" rx="12" fill="#9CA3AF"/>
+      <rect x="-58" y="-34" width="54" height="68" rx="8" fill="#C2410C"/>
+      <path d="M-58 -24 H-4 M-58 -14 H-4 M-58 -4 H-4 M-58 6 H-4 M-58 16 H-4 M-58 26 H-4" stroke="#F97316" stroke-width="3"/>
+      <rect x="-70" y="-48" width="78" height="10" rx="5" fill="#D1D5DB"/>
+      <!-- terminals -->
+      <rect x="-92" y="-22" width="24" height="12" rx="3" fill="#D1D5DB"/>
+      <rect x="-92" y="10" width="24" height="12" rx="3" fill="#D1D5DB"/>
+      <!-- filter housing with its cap -->
+      <circle cx="44" cy="0" r="56" fill="#374151"/>
+      <circle cx="44" cy="0" r="44" fill="#6B7280"/>
+      <circle cx="44" cy="0" r="34" fill="#9CA3AF"/>
+      <rect x="16" y="-8" width="56" height="16" rx="8" fill="#374151"/>
+      <path d="M-2.98 -17.1 A50 50 0 0 1 35.32 -49.24" fill="none" stroke="#6B7280" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- drum bearing -->
+  <g transform="translate(196 468)">
+    <g>
+      <circle cx="4" cy="6" r="58" fill="#1F2937" opacity="0.14"/>
+      <circle cx="0" cy="0" r="58" fill="#D1D5DB"/>
+      <circle cx="0" cy="0" r="49.88" fill="#9CA3AF"/>
+      <circle cx="0" cy="0" r="48.98" fill="#374151"/>
+      <circle cx="0" cy="0" r="27.58" fill="#D1D5DB"/>
+      <circle cx="38.28" cy="0" r="8.7" fill="#E5E7EB"/><circle cx="35.67" cy="-2.61" r="3.04" fill="#FFFFFF"/>
+      <circle cx="32.2" cy="20.7" r="8.7" fill="#E5E7EB"/><circle cx="29.59" cy="18.09" r="3.04" fill="#FFFFFF"/>
+      <circle cx="15.9" cy="34.82" r="8.7" fill="#E5E7EB"/><circle cx="13.29" cy="32.21" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-5.45" cy="37.89" r="8.7" fill="#E5E7EB"/><circle cx="-8.06" cy="35.28" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-25.07" cy="28.93" r="8.7" fill="#E5E7EB"/><circle cx="-27.68" cy="26.32" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-36.73" cy="10.78" r="8.7" fill="#E5E7EB"/><circle cx="-39.34" cy="8.17" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-36.73" cy="-10.78" r="8.7" fill="#E5E7EB"/><circle cx="-39.34" cy="-13.39" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-25.07" cy="-28.93" r="8.7" fill="#E5E7EB"/><circle cx="-27.68" cy="-31.54" r="3.04" fill="#FFFFFF"/>
+      <circle cx="-5.45" cy="-37.89" r="8.7" fill="#E5E7EB"/><circle cx="-8.06" cy="-40.5" r="3.04" fill="#FFFFFF"/>
+      <circle cx="15.9" cy="-34.82" r="8.7" fill="#E5E7EB"/><circle cx="13.29" cy="-37.43" r="3.04" fill="#FFFFFF"/>
+      <circle cx="32.2" cy="-20.7" r="8.7" fill="#E5E7EB"/><circle cx="29.59" cy="-23.31" r="3.04" fill="#FFFFFF"/>
+      <circle cx="0" cy="0" r="27.88" fill="#9CA3AF"/>
+      <circle cx="0" cy="0" r="20.88" fill="#F3F4F6"/>
+      <path d="M-52.16 -13.98 A54 54 0 0 1 -13.98 -52.16" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+
+    </g>
+  </g>
+
+  <!-- drum seal -->
+  <g transform="translate(322 476)">
+    <g>
+      <circle cx="4" cy="6" r="42" fill="#1F2937" opacity="0.14"/>
+      <circle cx="0" cy="0" r="42" fill="#374151"/>
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#6B7280" stroke-width="3"/>
+      <circle cx="0" cy="0" r="27" fill="none" stroke="#9CA3AF" stroke-width="4" stroke-dasharray="3 2"/>
+      <circle cx="0" cy="0" r="21" fill="#F3F4F6"/>
+      <path d="M-36.65 -13.34 A39 39 0 0 1 -13.34 -36.65" fill="none" stroke="#6B7280" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- pair of motor carbon brushes -->
+  <g transform="translate(520 432)">
+    <g>
+      <g transform="translate(-58 0) rotate(-4)">
+        <g>
+          <!-- braided copper lead and its terminal -->
+          <path d="M6 46 C10 76 40 78 44 104" fill="none" stroke="#C2410C" stroke-width="7" stroke-linecap="round"/>
+          <path d="M6 46 C10 76 40 78 44 104" fill="none" stroke="#FDBA74" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
+          <path d="M34 100 H54 L56 122 Q56 126 52 126 H36 Q32 126 32 122 Z" fill="#D1D5DB"/>
+          <circle cx="44" cy="115" r="4" fill="#6B7280"/>
+          <!-- holder with mounting ears -->
+          <path d="M-34 -6 H-20 V-18 Q-20 -24 -14 -24 H14 Q20 -24 20 -18 V-6 H34 Q40 -6 40 0 V8 Q40 14 34 14 H20 V42 Q20 48 14 48 H-14 Q-20 48 -20 42 V14 H-34 Q-40 14 -40 8 V0 Q-40 -6 -34 -6 Z" fill="#1F2937" opacity="0.14" transform="translate(4 6)"/>
+          <path d="M-34 -6 H-20 V-18 Q-20 -24 -14 -24 H14 Q20 -24 20 -18 V-6 H34 Q40 -6 40 0 V8 Q40 14 34 14 H20 V42 Q20 48 14 48 H-14 Q-20 48 -20 42 V14 H-34 Q-40 14 -40 8 V0 Q-40 -6 -34 -6 Z" fill="#E5E7EB"/>
+          <circle cx="-31" cy="4" r="4" fill="#9CA3AF"/>
+          <circle cx="31" cy="4" r="4" fill="#9CA3AF"/>
+          <rect x="-20" y="-24" width="40" height="9" rx="4" fill="#FFFFFF"/>
+          <!-- carbon block -->
+          <rect x="-13" y="-74" width="26" height="54" rx="3" fill="#1F2937" opacity="0.14" transform="translate(4 6)"/>
+          <rect x="-13" y="-74" width="26" height="54" rx="3" fill="#374151"/>
+          <rect x="-13" y="-74" width="8" height="54" rx="3" fill="#6B7280"/>
+          <path d="M-13 -66 Q0 -72 13 -66" fill="none" stroke="#1F2937" stroke-width="2" opacity="0.5"/>
+        </g>
+      </g>
+      <g transform="translate(58 4) rotate(4)">
+        <g>
+          <!-- braided copper lead and its terminal -->
+          <path d="M6 46 C10 76 40 78 44 104" fill="none" stroke="#C2410C" stroke-width="7" stroke-linecap="round"/>
+          <path d="M6 46 C10 76 40 78 44 104" fill="none" stroke="#FDBA74" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
+          <path d="M34 100 H54 L56 122 Q56 126 52 126 H36 Q32 126 32 122 Z" fill="#D1D5DB"/>
+          <circle cx="44" cy="115" r="4" fill="#6B7280"/>
+          <!-- holder with mounting ears -->
+          <path d="M-34 -6 H-20 V-18 Q-20 -24 -14 -24 H14 Q20 -24 20 -18 V-6 H34 Q40 -6 40 0 V8 Q40 14 34 14 H20 V42 Q20 48 14 48 H-14 Q-20 48 -20 42 V14 H-34 Q-40 14 -40 8 V0 Q-40 -6 -34 -6 Z" fill="#1F2937" opacity="0.14" transform="translate(4 6)"/>
+          <path d="M-34 -6 H-20 V-18 Q-20 -24 -14 -24 H14 Q20 -24 20 -18 V-6 H34 Q40 -6 40 0 V8 Q40 14 34 14 H20 V42 Q20 48 14 48 H-14 Q-20 48 -20 42 V14 H-34 Q-40 14 -40 8 V0 Q-40 -6 -34 -6 Z" fill="#E5E7EB"/>
+          <circle cx="-31" cy="4" r="4" fill="#9CA3AF"/>
+          <circle cx="31" cy="4" r="4" fill="#9CA3AF"/>
+          <rect x="-20" y="-24" width="40" height="9" rx="4" fill="#FFFFFF"/>
+          <!-- carbon block -->
+          <rect x="-13" y="-74" width="26" height="54" rx="3" fill="#1F2937" opacity="0.14" transform="translate(4 6)"/>
+          <rect x="-13" y="-74" width="26" height="54" rx="3" fill="#374151"/>
+          <rect x="-13" y="-74" width="8" height="54" rx="3" fill="#6B7280"/>
+          <path d="M-13 -66 Q0 -72 13 -66" fill="none" stroke="#1F2937" stroke-width="2" opacity="0.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- screws -->
+  <g transform="translate(706 494) rotate(15)">
+    <circle cx="1" cy="3" r="12" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="12" fill="#D1D5DB"/>
+    <rect x="-7.800000000000001" y="-1.6" width="15.600000000000001" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-7.800000000000001" width="3.2" height="15.600000000000001" rx="1.6" fill="#6B7280"/>
+  </g>
+  <g transform="translate(748 494) rotate(60)">
+    <circle cx="1" cy="3" r="12" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="12" fill="#D1D5DB"/>
+    <rect x="-7.800000000000001" y="-1.6" width="15.600000000000001" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-7.800000000000001" width="3.2" height="15.600000000000001" rx="1.6" fill="#6B7280"/>
+  </g>
+  <g transform="translate(790 494) rotate(35)">
+    <circle cx="1" cy="3" r="12" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="12" fill="#D1D5DB"/>
+    <rect x="-7.800000000000001" y="-1.6" width="15.600000000000001" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-7.800000000000001" width="3.2" height="15.600000000000001" rx="1.6" fill="#6B7280"/>
+  </g>
+  <g transform="translate(832 494) rotate(80)">
+    <circle cx="1" cy="3" r="12" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="12" fill="#D1D5DB"/>
+    <rect x="-7.800000000000001" y="-1.6" width="15.600000000000001" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-7.800000000000001" width="3.2" height="15.600000000000001" rx="1.6" fill="#6B7280"/>
+  </g>
+
+  <path d="M904 185 Q906.7 197.3 919 200 Q906.7 202.7 904 215 Q901.3 202.7 889 200 Q901.3 197.3 904 185 Z" fill="#F97316"/>
+  <path d="M54 320 Q55.8 328.2 64 330 Q55.8 331.8 54 340 Q52.2 331.8 44 330 Q52.2 328.2 54 320 Z" fill="#FDBA74"/>
+</svg>

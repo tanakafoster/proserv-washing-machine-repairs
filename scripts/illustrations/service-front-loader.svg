@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <title>Front loader washing machine with its door open</title>
+  <desc>Flat illustration: a front loader washing machine with the door open, showing the drum and door seal, with a spanner, a screwdriver and screws on the floor.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="640" fill="#FFF7ED"/>
+  <path d="M789.11 453 C749.92 503.81 652.62 545.3 572.06 562.42 C491.5 579.54 373.06 585.15 305.75 555.71 C238.44 526.26 190.71 447.4 168.21 385.74 C145.71 324.08 132.3 236.88 170.77 185.76 C209.24 134.64 317.04 94.54 399.04 79.05 C481.03 63.56 594.73 63.08 662.75 92.83 C730.77 122.59 786.11 197.55 807.17 257.58 C828.23 317.61 828.29 402.19 789.11 453 Z" fill="#FFEDD5"/>
+  <path d="M96 96h0M118 96h0M140 96h0M162 96h0M96 118h0M118 118h0M140 118h0M162 118h0M96 140h0M118 140h0M140 140h0M162 140h0M96 162h0M118 162h0M140 162h0M162 162h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <!-- floor -->
+  <ellipse cx="480" cy="560" rx="410" ry="34" fill="#FED7AA" opacity="0.45"/>
+
+  <!-- floor shadows -->
+  <ellipse cx="510" cy="552" rx="178" ry="15" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <ellipse cx="748" cy="580" rx="92" ry="9" fill="#1F2937" opacity="0.12" filter="url(#soft)"/>
+  <ellipse cx="220" cy="584" rx="100" ry="9" fill="#1F2937" opacity="0.12" filter="url(#soft)"/>
+
+  <!-- front loader washing machine with the door open (drum and door seal visible) -->
+  <g transform="translate(360 118)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- opening with the rubber door seal and the drum -->
+      <circle cx="150" cy="234" r="92" fill="#E5E7EB"/>
+      <circle cx="150" cy="234" r="86" fill="#D1D5DB"/>
+      <circle cx="150" cy="234" r="82" fill="url(#washer-seal)"/>
+      <circle cx="150" cy="234" r="70" fill="none" stroke="#9CA3AF" stroke-width="3"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-drum)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- perforated drum -->
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#6B7280" stroke-width="3.2" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="150" cy="234" r="30" fill="none" stroke="#6B7280" stroke-width="2" opacity="0.5"/>
+        <circle cx="150" cy="234" r="14" fill="#6B7280" opacity="0.5"/>
+        <!-- lifters (paddles) -->
+        <g transform="rotate(270 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+        <g transform="rotate(30 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+        <g transform="rotate(150 150 234)"><rect x="184" y="226" width="40" height="16" rx="8" fill="#E5E7EB"/><rect x="184" y="236" width="40" height="6" rx="3" fill="#9CA3AF" opacity="0.6"/></g>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="5" opacity="0.15"/>
+      <!-- hinge -->
+      <rect x="44" y="204" width="20" height="14" rx="4" fill="#9CA3AF"/>
+      <rect x="44" y="250" width="20" height="14" rx="4" fill="#9CA3AF"/>
+      <!-- the open door, swung out to the left -->
+      <ellipse cx="21" cy="238" rx="41" ry="95" fill="#1F2937" opacity="0.08"/>
+      <ellipse cx="18" cy="234" rx="40" ry="94" fill="url(#washer-chrome)"/>
+      <ellipse cx="18" cy="234" rx="32" ry="78" fill="#374151"/>
+      <ellipse cx="15" cy="234" rx="26" ry="66" fill="url(#washer-glass)"/>
+      <path d="M0 194 Q-4 234 0 274" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- spanner on the floor -->
+  <g transform="translate(750 574) rotate(-14) scale(0.78)">
+    <g id="spanner">
+      <defs>
+        <mask id="spanner-cut" maskUnits="userSpaceOnUse" x="-140" y="-50" width="280" height="100">
+          <rect x="-140" y="-50" width="280" height="100" fill="#FFFFFF"/>
+          <circle cx="-92" cy="0" r="11" fill="#000000"/>
+          <g transform="rotate(-15 94 0)">
+            <rect x="94" y="-10.5" width="50" height="21" fill="#000000"/>
+            <circle cx="94" cy="0" r="10.5" fill="#000000"/>
+          </g>
+        </mask>
+        <g id="spanner-shape" mask="url(#spanner-cut)">
+          <circle cx="-92" cy="0" r="24"/>
+          <path d="M-82 -10 C-40 -8 40 -8 82 -12 L82 12 C40 8 -40 8 -82 10 Z"/>
+          <circle cx="94" cy="0" r="27"/>
+        </g>
+      </defs>
+      <use href="#spanner-shape" fill="#6B7280" transform="translate(0 5)"/>
+      <use href="#spanner-shape" fill="#9CA3AF"/>
+      <path d="M-70 -3 C-30 -2 30 -2 70 -4" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-109.23 -3.04 A17.5 17.5 0 0 1 -86.01 -16.44" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+      <path d="M75.21 -6.84 A20 20 0 0 1 104 -17.32" fill="none" stroke="#E5E7EB" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- screwdriver on the floor -->
+  <g transform="translate(214 580) rotate(8) scale(0.82)">
+    <g id="screwdriver">
+      <rect x="-10" y="-4" width="104" height="13" rx="3" fill="#6B7280"/>
+      <rect x="-10" y="-7" width="104" height="13" rx="3" fill="#9CA3AF"/>
+      <rect x="-10" y="-7" width="104" height="4" rx="2" fill="#E5E7EB"/>
+      <path d="M94 -8 L108 -4 L108 4 L94 6 Z" fill="#6B7280"/>
+      <rect x="-104" y="-17" width="98" height="40" rx="16" fill="#C2410C"/>
+      <rect x="-104" y="-21" width="98" height="38" rx="16" fill="#F97316"/>
+      <rect x="-92" y="-13" width="70" height="6" rx="3" fill="#FFFFFF" opacity="0.35"/>
+      <rect x="-14" y="-17" width="12" height="32" rx="4" fill="#1F2937"/>
+    </g>
+  </g>
+
+  <!-- screws -->
+  <g transform="translate(640 596) rotate(20)">
+    <circle cx="1" cy="3" r="8" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="8" fill="#D1D5DB"/>
+    <rect x="-5.2" y="-1.6" width="10.4" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-5.2" width="3.2" height="10.4" rx="1.6" fill="#6B7280"/>
+  </g>
+  <g transform="translate(666 588) rotate(70)">
+    <circle cx="1" cy="3" r="7" fill="#6B7280"/>
+    <circle cx="0" cy="0" r="7" fill="#D1D5DB"/>
+    <rect x="-4.55" y="-1.6" width="9.1" height="3.2" rx="1.6" fill="#6B7280"/>
+    <rect x="-1.6" y="-4.55" width="3.2" height="9.1" rx="1.6" fill="#6B7280"/>
+  </g>
+
+  <path d="M710 154 Q712.88 167.12 726 170 Q712.88 172.88 710 186 Q707.12 172.88 694 170 Q707.12 167.12 710 154 Z" fill="#F97316"/>
+  <path d="M744 213 Q745.62 220.38 753 222 Q745.62 223.62 744 231 Q742.38 223.62 735 222 Q742.38 220.38 744 213 Z" fill="#FDBA74"/>
+</svg>
