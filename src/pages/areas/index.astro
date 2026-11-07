@@ -13,11 +13,16 @@ const faqs = [
   { q: 'What if I live outside these six areas?', a: `Call or WhatsApp us with your suburb anyway. We cover ${areaList()}, and we'll tell you honestly whether a technician can reach you before anything is booked.` },
   { q: 'Can I book a repair for someone else, such as an elderly parent?', a: 'Yes. Give us their address and phone number, and tell us who will be there to let the technician in. Because the quote comes before any work, agree beforehand who will approve it.' },
   { q: 'Do you repair machines in rented homes?', a: 'Yes, whether you\'re the tenant or the landlord. Tell us who will give the technician access and who approves the quote, because the technician quotes before starting any work.' },
-  { q: 'Is the warranty the same wherever I live?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour, whichever area you're in. If the same fault comes back within that time, get in touch.` },
-  { q: 'Can the technician work on a machine in a tight space?', a: 'Yes. Machines under counters, in cupboards, on balconies or built into kitchen units can all be repaired, though a tightly fitted machine may take a little extra time to ease out safely. Mention where the machine stands when you book.' },
+  { q: 'Is the warranty the same wherever I live?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour, whichever area you're in. If a part we fitted fails, or our work gives trouble, within that time, we come back and put it right.` },
+  { q: 'Can the technician work on a machine in a tight space?', a: 'Usually, yes. Machines under counters, in cupboards, on balconies or built into kitchen units can normally be repaired where they stand, as long as the machine can be eased out of its space. A tightly fitted one may take a little extra time to ease out safely, so mention where the machine stands when you book.' },
   { q: 'Should I take the washing out before the technician arrives?', a: 'If the door opens normally, yes. Take the washing out and set it aside, so the technician can get into the drum and run the machine. If the door is locked with water inside, leave it closed and don\'t force it: the technician deals with the water first.' },
-  { q: 'What if there\'s load shedding or a water outage when my repair is booked?', a: 'Let us know as soon as you see it coming. The technician needs power and water to run the machine, find the fault and test the repair, so it usually makes sense to move the visit to a time when both are on.' },
+  { q: 'What if there\'s a power cut or a water outage when my repair is booked?', a: 'Let us know as soon as you see it coming. The technician needs power and water to run the machine, find the fault and test the repair, so it usually makes sense to move the visit to a time when both are on.' },
 ];
+/** Card text: the area's first four suburbs as a finished sentence, e.g. "Suburbs include A, B, C and D." */
+const cardText = (slug: string) => {
+  const s = areaContent[slug]?.suburbs.slice(0, 4) ?? [];
+  return s.length > 1 ? `Suburbs include ${s.slice(0, -1).join(', ')} and ${s[s.length - 1]}.` : '';
+};
 ---
 <BaseLayout
   title="Washing Machine Repairs Gauteng: Areas | ProServ"
@@ -30,7 +35,7 @@ const faqs = [
     eyebrow="Areas we cover"
     intro={`<p>ProServ provides mobile washing machine repairs across Gauteng. A technician drives to your home, finds the fault and quotes before any work starts, so there's no need to load a heavy machine into a car. Our call-outs cover ${areaList()}. Choose your area below for local details and the suburbs we work in, or call or WhatsApp if you're not sure whether we reach you.</p>`}
   />
-  <LinkCards alt eyebrow="Areas we cover" heading="Choose your area" headingId="area-list" icon="map" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.name}`, text: areaContent[a.slug]?.suburbs.slice(0, 4).join(', ') + '…' }))} />
+  <LinkCards alt eyebrow="Areas we cover" heading="Choose your area" headingId="area-list" icon="map" items={site.areas.map((a) => ({ href: areaUrl(a.slug), title: `Washing machine repairs ${a.inName}`, text: cardText(a.slug) }))} />
   <LongFormSection reservedIds={['area-list']}>
       <h2>How call-outs work</h2>
       <p>Booking takes a few minutes. Call or WhatsApp us, or send a request through the <a href="/contact/">booking form</a>, with your suburb, the brand of machine and what it's doing. We'll agree a time with you, and on urgent call-outs we aim to arrive {f.arrivalTime}, depending on where the technician is working. If it's urgent, for example the machine is leaking or a load of washing is locked inside, say so when you get in touch.</p>
@@ -39,7 +44,7 @@ const faqs = [
       <h2>The six areas we cover</h2>
       <p>Each area has its own page with the suburbs we cover and local details. In short:</p>
       <h3>Johannesburg</h3>
-      <p>Our Johannesburg area runs from Randburg and Roodepoort in the north-west to Mondeor and Glenvista in the south, with established suburbs such as Parkhurst, Linden and Northcliff in between. Weltevreden Park in the west and Bassonia in the south are part of it too. It's a mix of older freestanding houses, flats and cluster complexes. See <a href={areaUrl('johannesburg')}>washing machine repairs in Johannesburg</a>.</p>
+      <p>Our Johannesburg area runs from Randburg and Roodepoort in the north-west to Mondeor and Glenvista in the south, with established suburbs such as Parkhurst, Linden and Northcliff in between. Weltevredenpark in the west and Bassonia in the south are part of it too. It's a mix of older freestanding houses, flats and cluster complexes. See <a href={areaUrl('johannesburg')}>washing machine repairs in Johannesburg</a>.</p>
       <h3>Pretoria</h3>
       <p>Pretoria stretches from Montana and Sinoville in the north to eastern suburbs such as Lynnwood, Faerie Glen, Garsfontein and Moreleta Park, with Hatfield, Brooklyn and Arcadia closer to the city centre. Homes range from student flats near the university to large family houses in the east. In rented flats around Hatfield and Brooklyn, check whether the landlord or the property manager needs to approve the repair before the visit. See <a href={areaUrl('pretoria')}>washing machine repairs in Pretoria</a>.</p>
       <h3>Centurion</h3>
@@ -77,8 +82,8 @@ const faqs = [
       </ul>
 
       <h2>Water and power interruptions</h2>
-      <p>Gauteng households deal with load shedding and with water supply interruptions, and both affect washing machines. When the water comes back after an outage, air and sediment in the pipes can clog the fine mesh filter where the inlet hose meets the machine, leaving it slow to fill or showing a water supply code. Low pressure during supply problems has the same effect. After an outage, run a nearby cold tap until the water comes out clear before you start a wash, so the first dirty water goes down the sink instead. See <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.</p>
-      <p>A power cut stops the machine mid-cycle with water in the drum, and the surge when the power returns can damage the control board. Switching the machine off at the wall during load shedding, and waiting for the supply to settle before restarting it, both help. Our article on how to <a href="/blog/protect-washing-machine-from-load-shedding/">protect your washing machine from load shedding</a> explains what else you can do.</p>
+      <p>Power cuts still happen in Gauteng, from load reduction in some areas or a local fault, and so do water supply interruptions. Both affect washing machines. When the water comes back after an outage, air in the pipes can slow the fill, and loosened sediment can clog the fine mesh filter where the inlet hose meets the machine, so it fills slowly or shows a water supply code. Low pressure during supply problems has the same effect. After an outage, run a nearby cold tap until the water comes out clear before you start a wash, so the first dirty water goes down the sink instead. See <a href="/problems/washing-machine-not-filling-with-water/">washing machine not filling with water</a>.</p>
+      <p>A power cut stops the machine mid-cycle with water in the drum, and the surge when the power returns can damage the control board. Switching the machine off at the wall during a power cut, and waiting for the supply to settle before restarting it, both help. Our article on how to <a href="/blog/protect-washing-machine-from-load-shedding/">protect your washing machine from load shedding</a> explains what else you can do.</p>
 
       <h2>What we repair in every area</h2>
       <p>Our full range of <a href="/services/">washing machine repair services</a> is available in every area we cover: front loader, top loader and washer-dryer repairs, installation, servicing and parts replacement. We repair all major washing machine brands (see <a href="/brands/">brands we repair</a>), and if your machine is showing a code, our <a href="/error-codes/">error code guides</a> explain what it usually means. Before you book, our guides to <a href="/problems/">common washing machine problems</a> can help you describe the fault and rule out the simple causes.</p>
