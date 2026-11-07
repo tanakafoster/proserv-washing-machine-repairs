@@ -101,7 +101,10 @@ for (const file of files) {
       errors.push(`${url}: invalid JSON-LD (${e.message})`);
     }
   }
-  const hasDetails = /<details/.test(mainHtml.replace(/<details class="relative lg:hidden"[\s\S]*?<\/details>/, ''));
+  // The phone menu and the phone "On this page" toggle are <details> too, but they aren't FAQs.
+  const hasDetails = /<details/.test(
+    mainHtml.replace(/<details class="relative lg:hidden"[\s\S]*?<\/details>/, '').replace(/<details class="toc-mobile[\s\S]*?<\/details>/g, ''),
+  );
   if (hasDetails && !types.includes('FAQPage')) warnings.push(`${url}: visible FAQ accordion but no FAQPage schema`);
   if (url !== '/' && url !== '/404.html' && !types.includes('BreadcrumbList')) warnings.push(`${url}: no BreadcrumbList`);
 
