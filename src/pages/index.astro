@@ -5,6 +5,7 @@ import HeroTrustRow from '../components/HeroTrustRow.astro';
 import TrustBar from '../components/TrustBar.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import LinkCards from '../components/LinkCards.astro';
+import LongFormSection from '../components/LongFormSection.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -23,11 +24,38 @@ const hero = {
   sizes: '(min-width: 1280px) 560px, (min-width: 1024px) 44vw, 100vw',
 };
 const faqs = [
-  { q: 'How much is the call-out fee?', a: `The call-out fee is ${f.calloutFee}, ${f.calloutCondition}. The technician diagnoses the fault and gives you a quote before any work starts.` },
-  { q: 'How quickly can you get here?', a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working. Otherwise we book a time that suits you.` },
-  { q: 'Do you repair all brands?', a: 'We repair all major washing machine brands, including Defy, LG, Samsung, Bosch, Whirlpool, Hisense, AEG, Siemens, Miele, Smeg, Electrolux and Speed Queen. We are an independent repairer, not an agent for any brand.' },
-  { q: 'Are your repairs guaranteed?', a: `Yes. Every repair carries our ${f.warranty} warranty on parts and labour.` },
-  { q: 'Do I need to take my machine anywhere?', a: 'No. We repair washing machines at your home. In the rare case that a workshop repair is needed, we will discuss it with you first.' },
+  {
+    q: 'Can you give me a price over the phone?',
+    a: `Not an exact one, because the same symptom can have several causes and the price depends on which part has failed. The technician diagnoses the machine in your home and gives you a price before doing any work. Our <a href="/washing-machine-repair-cost/">repair cost guide</a> explains what drives the price.`,
+  },
+  {
+    q: 'How soon can a technician get to me?',
+    a: `We aim to arrive ${f.arrivalTime} on urgent call-outs, depending on where the technician is working at the time. If it can wait, we book a time that suits you. Sending the brand, the model and the fault when you book helps us plan the visit.`,
+  },
+  {
+    q: 'What should I do while I wait for the technician?',
+    a: 'If the machine is leaking, tripping the electricity or smells of burning, switch it off at the wall, unplug it and close the tap. If the door is locked with water inside, leave it closed: the technician can drain the machine safely.',
+  },
+  {
+    q: 'Where do I find my washing machine\'s model number?',
+    a: 'Look for a label or plate around the door opening, under the lid of a top loader or on the back of the machine. The model number tells the technician which parts your machine uses, and a photo of the label on WhatsApp is the easiest way to share it.',
+  },
+  {
+    q: 'My washing machine is showing an error code. What should I do?',
+    a: `Write the code down or take a photo, then look it up in your manual or our <a href="/error-codes/">washing machine error code guides</a> for LG, Samsung, Bosch and Defy. Many codes point to something you can check safely, such as a closed tap, a kinked hose or a door that isn't fully shut. If the code comes back, book a technician.`,
+  },
+  {
+    q: 'Does load shedding damage washing machines?',
+    a: 'It can. The surge when the power returns can damage the control board or the mains filter, and a machine cut off mid-cycle stops with water inside and the door locked. Switch off at the wall when the power goes, and wait a few minutes after it returns. See <a href="/blog/protect-washing-machine-from-load-shedding/">how to protect your washing machine from load shedding</a>.',
+  },
+  {
+    q: 'Do you repair washer-dryers that won\'t dry?',
+    a: `Yes. A washer-dryer can stop drying while it still washes normally, and the fault is then on the drying side: the heater, its thermostats or thermal fuse, the fan, or lint blocking the condenser. See <a href="${serviceUrl('washer-dryer-repairs')}">washer dryer repairs</a>.`,
+  },
+  {
+    q: 'How can I make my washing machine last longer?',
+    a: `Don't overload it, use the right detergent at the right dose, and wipe the door seal and detergent drawer clean regularly. Leave the door ajar after each wash so the drum can dry out. A regular <a href="${serviceUrl('washing-machine-servicing')}">washing machine service</a> catches worn hoses, seals and bearings early.`,
+  },
 ];
 const benefits = [
   'Quote before we start',
@@ -42,6 +70,36 @@ const expectations = [
   `${f.calloutFee} call-out fee, ${f.calloutCondition}`,
   `${f.warranty} warranty on parts and labour`,
   `${f.fiveStarReviews} five-star reviews from local customers`,
+];
+// "Faults we fix": each fault links to the guide or service page that covers it.
+// `text` follows the link directly, so it starts with its own punctuation.
+const faults = [
+  { href: problemUrl('washing-machine-door-wont-open'), label: 'Door lock faults', text: ': the door won\'t lock, so the wash can\'t start, or won\'t unlock afterwards.' },
+  { href: serviceUrl('top-loader-repairs'), label: 'Faulty lid switches', text: ', which can stop a top loader agitating or spinning.' },
+  { href: problemUrl('washing-machine-not-spinning'), label: 'Worn or broken drive belts', text: ': the motor runs but the drum hardly turns.' },
+  { href: problemUrl('washing-machine-not-draining'), label: 'Blocked pump filters, coin traps and failed drain pumps', text: ', which leave water in the drum.' },
+  { href: problemUrl('washing-machine-leaking'), label: 'Torn door seals and split hoses', text: ' that leak onto the floor.' },
+  { href: problemUrl('washing-machine-not-filling-with-water'), label: 'Detergent left in the drawer', text: ', often from weak water flow or a blocked drawer.' },
+  { href: problemUrl('washing-machine-noisy-when-spinning'), label: 'Shaking, walking and banging', text: ' during the spin.' },
+  { href: '/blog/why-does-my-washing-machine-smell/', label: 'Bad smells', text: ' from the drum, door seal or detergent drawer.' },
+  { href: problemUrl('washing-machine-showing-error-code'), label: 'Machines that stop mid-cycle', text: ', often with an error code on the display.' },
+  { href: '/blog/signs-washing-machine-bearings-are-worn/', label: 'Worn drum bearings', text: ' and other drum and tub problems.' },
+  { href: problemUrl('washing-machine-not-filling-with-water'), label: 'Machines that won\'t fill', text: ', or fill very slowly.' },
+  { href: serviceUrl('washing-machine-parts-replacement'), label: 'Motors, carbon brushes, heating elements and control boards', text: ' that need replacing.' },
+];
+// "Brands we repair": every brand guide, linked. Other makes follow as plain text.
+const brandRows = [
+  { slug: 'defy', name: 'Defy', machines: 'Front loaders and top loaders' },
+  { slug: 'lg', name: 'LG', machines: 'Direct drive front loaders and washer-dryers, plus top loaders' },
+  { slug: 'samsung', name: 'Samsung', machines: 'Top loaders, front loaders and washer-dryers' },
+  { slug: 'bosch', name: 'Bosch', machines: 'Freestanding and built-in front loaders and washer-dryers' },
+  { slug: 'whirlpool', name: 'Whirlpool', machines: 'Front loaders and top loaders' },
+  { slug: 'hisense', name: 'Hisense', machines: 'Front loaders and top loaders' },
+  { slug: 'aeg', name: 'AEG', machines: 'Front loaders and washer-dryers' },
+  { slug: 'siemens', name: 'Siemens', machines: 'Front loaders and washer-dryers from the iQ range' },
+  { slug: 'miele', name: 'Miele', machines: 'Front loaders and washer-dryers' },
+  { slug: 'smeg', name: 'Smeg', machines: 'Front loaders' },
+  { slug: 'speed-queen', name: 'Speed Queen', machines: 'Heavy-duty top loaders and front loaders' },
 ];
 ---
 <BaseLayout
@@ -61,7 +119,7 @@ const expectations = [
           <span class="block text-brand-dark">at your door</span>
         </h1>
         <p class="type-lead mt-5 max-w-xl">
-          Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work, and fix most faults on the spot. We repair all major washing machine brands across {areaList()}.
+          Washing machine broken? ProServ sends a washing machine technician to your home to diagnose the problem, quote before any work starts and, when the part is available, fix most faults on the spot. We repair all major washing machine brands across {areaList()}.
         </p>
         <ul class="mt-6 grid max-w-xl gap-x-6 gap-y-2.5 text-[15px] text-ink sm:grid-cols-2">
           {benefits.map((b) => (
@@ -100,7 +158,7 @@ const expectations = [
     eyebrow="What we repair"
     heading="Washing machine repair services"
     headingId="services-h"
-    intro="Whatever kind of machine you have, we'll come to you and fix it properly."
+    intro="Front loaders, top loaders and washer-dryers, repaired at your home."
     items={services.map((s) => ({ href: serviceUrl(s.slug), title: s.name, text: s.summary, icon: serviceIcon(s.slug) }))}
   >
     <p class="mt-8 text-center">
@@ -132,19 +190,73 @@ const expectations = [
     eyebrow="Fault guides"
     heading="Common washing machine problems we fix"
     headingId="problems-h"
+    intro="Pick your symptom for the likely causes, the safe checks and when to call a technician."
     cols={4}
     items={problems.map((p) => ({ href: problemUrl(p.slug), title: p.name, text: p.summary, icon: problemIcon(p.slug) }))}
   />
 
+  <!-- The full guide: what we repair, warning signs, troubleshooting, faults and brands -->
+  <LongFormSection reservedIds={['services-h', 'brands-h', 'problems-h', 'why-h', 'areas-h']}>
+    <h2>Front loaders, top loaders and washer-dryers</h2>
+    <p>ProServ carries out washing machine repairs across Gauteng on all major brands and every common type of machine: <a href={serviceUrl('front-loader-repairs')}>front loader repairs</a>, <a href={serviceUrl('top-loader-repairs')}>top loader repairs</a> and <a href={serviceUrl('washer-dryer-repairs')}>washer-dryer repairs</a>, freestanding or built in, new or old.</p>
+    <p>We repair belt-driven and direct drive machines. On a belt-driven machine the motor turns the drum through a rubber belt, so the belt and, on many models, the motor's carbon brushes wear with use. A direct drive motor is built onto the back of the tub and turns the drum without a belt, so drive faults come down to the motor, its wiring or the control board.</p>
+
+    <h2>What caused my broken washing machine?</h2>
+    <p>A dead machine is hard to miss, but many faults give some warning first. Watch for these signs:</p>
+    <ul>
+      <li><strong>Water left in the drum</strong>: a <a href={problemUrl('washing-machine-not-draining')}>washing machine not draining</a>.</li>
+      <li><strong>Clothes still dripping wet</strong>: a <a href={problemUrl('washing-machine-not-spinning')}>washing machine not spinning</a>.</li>
+      <li><strong>Puddles under or behind it</strong>: a <a href={problemUrl('washing-machine-leaking')}>washing machine leaking</a>.</li>
+      <li><strong>No lights, no response</strong>: a <a href={problemUrl('washing-machine-wont-turn-on')}>washing machine that won't turn on</a>.</li>
+    </ul>
+    <p>Water that won't drain is often held back by a sock, coin or hair clip in the pump filter (the coin trap on some machines) or by a kinked drain hose, and you can clean the filter as your manual describes. If it's clear and the water still won't drain, the pump or the controls may have failed, which is a job for a technician.</p>
+    <div class="callout callout-safety"><p><strong>Safety first:</strong> switch off at the wall and unplug the machine before you open the pump filter. Expect a lot of water, so put down towels and a shallow tray, and if it stopped during a hot wash, let the water cool first.</p></div>
+
+    <h2>Troubleshooting before you call</h2>
+    <p>The checks you can safely do, and what the technician looks at next.</p>
+    <h3>Washing machine won't agitate</h3>
+    <p>On a top loader, the agitator (the centre post) or the impeller (the low disc in the base) moves the washing through the water. If the tub fills but nothing moves, make sure the lid is fully closed: many top loaders pause when the lid is open. If that isn't it, the technician checks the lid switch, water level sensor, belt or motor coupling, motor, gearbox and control board, plus the drive cogs on dual-action agitators. See <a href={serviceUrl('top-loader-repairs')}>top loader repairs</a>.</p>
+    <h3>Washing machine won't spin</h3>
+    <p>Check that the load isn't a single heavy item the machine can't balance, such as a bath mat or duvet, that the door is properly shut and that the water has drained. Too much detergent can stop the spin on many front loaders, and some wool, delicates and rinse hold settings spin gently or not at all. Otherwise the technician checks the carbon brushes, belt, motor, door lock and control board. See <a href={problemUrl('washing-machine-not-spinning')}>why a washing machine won't spin</a>.</p>
+    <h3>Washing machine won't start</h3>
+    <p>If it's completely dead, check that it's plugged in and switched on at the wall, that the house has power (load shedding catches everyone out) and that the socket works with a lamp. If the display lights up but nothing happens, check that a delay-start time or the child lock isn't set, that the door is firmly shut and that the tap is open. Past that, the fault is inside the machine: see <a href={problemUrl('washing-machine-wont-turn-on')}>washing machine won't turn on</a> and <a href={problemUrl('washing-machine-door-wont-open')}>washing machine door won't open or lock</a>.</p>
+    <div class="callout callout-safety"><p><strong>Safety first:</strong> if the earth leakage or circuit breaker trips when the machine runs, leave the machine switched off at the wall and unplugged, and call a technician. Tripping can point to a dangerous fault.</p></div>
+    <h3>Washing machine making loud noises</h3>
+    <p>Notice when it happens. A rattle or scrape during the wash is often a coin, button or bra wire in the pump filter or between the drum and the tub. Banging on the spin points to an unbalanced load, a machine that isn't level or worn shock absorbers, while a rumble that grows louder with spin speed is the classic sign of <a href="/blog/signs-washing-machine-bearings-are-worn/">worn washing machine bearings</a>. You can rebalance the load, adjust the levelling feet and clean the pump filter, following the safety steps above. Anything else needs a technician soon, before the damage spreads. See <a href={problemUrl('washing-machine-noisy-when-spinning')}>washing machine noisy when spinning</a>.</p>
+    <h3>Washing machine not cleaning clothes</h3>
+    <p>Grey or stale-smelling washing is often down to loading and dosing. Leave a hand's width of space above the load, choose a programme to suit how dirty it is, use detergent made for your type of machine at the dose on the pack, and run an empty hot maintenance wash every month or so. If that doesn't help, the machine may not be filling, heating or draining properly. See <a href={serviceUrl('washing-machine-servicing')}>washing machine servicing</a> and <a href="/blog/why-does-my-washing-machine-smell/">why a washing machine smells</a>.</p>
+
+    <h2>When to call a technician</h2>
+    <p>If the fault is still there after the safe checks, or you'd rather not do them, it's time to call. Switch off at the wall and call straight away if the electricity trips, you smell burning, water is near the plug or the drum grinds on the spin. When you <a href="/contact/">book a washing machine repair</a>, a photo of the error code or the model label on WhatsApp helps.</p>
+
+    <h2>Washing machine faults we fix</h2>
+    <p>The faults we repair include:</p>
+    <ul class="checklist">
+      {faults.map((x) => <li><a href={x.href}>{x.label}</a>{x.text}</li>)}
+    </ul>
+
+    <h2>Washing machine brands we repair</h2>
+    <p>We cover all major washing machine brands, and each of these has its own guide:</p>
+    <table>
+      <thead><tr><th>Brand</th><th>Machines we repair</th></tr></thead>
+      <tbody>
+        {brandRows.map((b) => <tr><td><a href={brandUrl(b.slug)}>{b.name}</a></td><td>{b.machines}</td></tr>)}
+      </tbody>
+    </table>
+    <p>We also repair other makes, including Electrolux, Beko and Midea.</p>
+  </LongFormSection>
+
   <!-- Why us -->
-  <section class="section-y bg-white" aria-labelledby="why-h">
+  <section class="section-y bg-surface" aria-labelledby="why-h">
     <div class="container-site grid items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
       <div class="min-w-0">
         <p class="type-eyebrow mb-3">Why choose ProServ</p>
         <h2 id="why-h" class="type-h2">A local washing machine repair service you can trust</h2>
         <div class="rich-text mt-6 max-w-[65ch] space-y-4 text-[1.0625rem] leading-relaxed text-ink">
-          <p>When your washing machine stops, life gets complicated fast. Laundry piles up, school uniforms don't get washed and the laundromat eats your weekend. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
-          <p>Our technicians have been doing washing machine repair work for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. We carry the most common parts on the van, so many machines are fixed on the first visit. We explain what's wrong in plain language, show you the faulty part, and give you a price before we start.</p>
+          <p>When your washing machine stops, laundry piles up and school uniforms don't get washed. We've built ProServ around getting you back to normal quickly, with no surprises on the bill.</p>
+          <p>We've been repairing washing machines for {f.yearsInBusiness} years and have completed {f.repairsCompleted} repairs. The technician explains what's wrong in plain language and quotes before doing any work. The call-out fee is {f.calloutFee}, {f.calloutCondition}, and covers the trip to your home and the diagnosis.</p>
+          <p>Repairs happen at your home. Your machine is diagnosed and fixed where it stands, not taken away, and most repairs are finished on the same visit when the part is available. If a part has to be ordered, you're told before you agree to the repair.</p>
+          <p>Our repairs come with a <span class="whitespace-nowrap">{f.warranty}</span> warranty on parts and labour. In plain words: if a part we fitted fails, or the fault we repaired comes back within that time, we come back and put it right, with the part and the work covered.</p>
           <p>If a machine isn't worth repairing, we'll say so. Our <a href="/repair-or-replace/">repair or replace guide</a> explains how we think about it, and our <a href="/washing-machine-repair-cost/">washing machine repair cost</a> page explains what affects the price.</p>
         </div>
       </div>
@@ -171,12 +283,11 @@ const expectations = [
 
   <!-- Areas -->
   <LinkCards
-    alt
     variant="compact"
     eyebrow="Where we work"
     heading="Areas we cover"
     headingId="areas-h"
-    intro="Our mobile technicians cover these areas and the suburbs around them."
+    intro="A technician comes to homes across these areas and nearby suburbs. Not sure about yours? Call or WhatsApp us."
     icon="map"
     items={site.areas.map((a) => ({ href: areaUrl(a.slug), kicker: 'Washing machine repairs', title: a.name }))}
   >
@@ -185,6 +296,6 @@ const expectations = [
     </p>
   </LinkCards>
 
-  <Faq items={faqs} tone="white" />
+  <Faq items={faqs} tone="surface" />
   <CtaBand />
 </BaseLayout>
