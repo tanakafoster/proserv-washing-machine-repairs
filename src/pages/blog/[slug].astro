@@ -5,8 +5,9 @@ import PageHero from '../../components/PageHero.astro';
 import LongFormSection from '../../components/LongFormSection.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import LinkCards from '../../components/LinkCards.astro';
+import Faq from '../../components/Faq.astro';
 import Icon from '../../components/Icon.astro';
-import { articleSchema } from '../../lib/schema';
+import { articleSchema, faqSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -18,12 +19,14 @@ const path = `/blog/${post.id}/`;
 const modified = post.data.updatedDate ?? post.data.pubDate;
 const others = (await getCollection('blog')).filter((p) => p.id !== post.id);
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
+// The post's FAQs, from its front matter. A post without any gets no FAQ section and no FAQPage schema.
+const faqs = post.data.faqs ?? [];
 ---
 <BaseLayout
   title={post.data.metaTitle}
   description={post.data.description}
   crumbs={[{ name: 'Blog', href: '/blog/' }, { name: post.data.title, href: path }]}
-  schema={[articleSchema({ title: post.data.title, description: post.data.description, path, image: post.data.image, published: post.data.pubDate, modified })]}
+  schema={[articleSchema({ title: post.data.title, description: post.data.description, path, image: post.data.image, published: post.data.pubDate, modified }), ...(faqs.length ? [faqSchema(faqs)] : [])]}
   ogType="article"
   article={{ published: post.data.pubDate, modified }}
   preloadImage={{ src: post.data.image }}
@@ -56,5 +59,6 @@ const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 
     icon="book"
     items={others.map((o) => ({ href: `/blog/${o.id}/`, title: o.data.title, text: o.data.summary }))}
   />
+  {faqs.length > 0 && <Faq items={faqs} tone="white" />}
   <CtaBand />
 </BaseLayout>

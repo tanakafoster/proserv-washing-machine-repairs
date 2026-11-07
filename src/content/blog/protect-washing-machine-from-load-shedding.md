@@ -7,6 +7,19 @@ pubDate: 2026-11-06
 image: "/images/blog-load-shedding.webp"
 imageAlt: "Illustration of a washing machine plugged into a surge protector, with a lightning bolt symbol"
 summary: "Power cuts and surges are hard on modern machines. Simple ways to protect yours, and what to do when the power comes back."
+faqs:
+  - q: "If I use a surge protector, do I still need to switch off at the wall?"
+    a: "It's still worth doing. A surge protector absorbs spikes, but it doesn't stop the supply flickering on and off as it settles, and the parts inside it that soak up surges wear a little with every hit. Switching off costs nothing and keeps the machine clear of both."
+  - q: "Does an inverter protect my machine from power surges?"
+    a: "Not necessarily. Many home systems pass grid power straight through while it's on, so a spike on the grid can still reach the machine, and the surge protection built into inverters varies. Ask your installer what protection your system has, and keep using a plug-in protector or DB board protection either way."
+  - q: "Can my inverter and batteries run a whole wash?"
+    a: "Only if the inverter's continuous rating covers the machine's full draw on top of everything else that's running, and the batteries hold enough for the whole programme. A cold, quick programme is the easiest to fit within both limits. If the batteries do run flat mid-wash, the machine stops just as it would in a power cut, so restart it the same way."
+  - q: "Will a cold wash on backup power still get my washing clean?"
+    a: "For everyday loads, yes. Modern detergents are made to work in cool water, and a cold wash handles lightly and normally soiled clothes well. Keep towels, bedding and heavily soiled loads for a hot wash when grid power is back, and run a hot empty wash now and then to keep the machine fresh."
+  - q: "Should I unplug the machine when we go away?"
+    a: "Yes. With nobody home to switch it off when the power fails or a storm builds, unplugging is the simplest protection there is. Close the tap too, so a hose that gives way can't flood the floor while you're away."
+  - q: "What should I mention when I book a repair after a power cut?"
+    a: "Say when it stopped working (during the cut, as the power came back or in a storm), whether the earth leakage or a breaker tripped, and whether other appliances were damaged at the same time. Add any code on the display and the brand and model number. Those details point the technician to the likely cause before testing starts."
 ---
 
 To protect your washing machine from load shedding and power surges, start with the moment the power comes back, because that's often when the damage happens. Load shedding has eased a great deal since its worst years, but power cuts haven't gone away in Gauteng. Load reduction still switches off some areas at peak times, and municipal faults, cable theft, transformer failures and summer storms take suburbs off the grid without warning. Modern washing machines are full of electronics, and every outage ends with a restart they'd rather do gently.
@@ -29,7 +42,7 @@ Gauteng's summer thunderstorms bring a lot of lightning, and a nearby strike can
 
 ### Stopping halfway through a wash
 
-A cut in the middle of a programme leaves the machine stopped with water inside and the door still locked. Most machines handle a single interruption well and resume or restart when the power returns. Repeated flickering while the machine is trying to restart is harder on the electronics and the door lock.
+A cut in the middle of a programme can leave the machine stopped with water inside, and on many machines the door stays locked until the electricity is back. Most machines handle a single interruption well and resume or restart when the power returns. Repeated flickering while the machine is trying to restart is harder on the electronics and the door lock.
 
 ## Habits that protect your machine
 
@@ -51,7 +64,7 @@ Don't start a wash with a thunderstorm building, and unplug the machine until th
 
 ### A quality plug-in surge protector
 
-A good plug-in surge protector between the wall socket and the machine absorbs spikes before they reach the electronics. Choose one from a reputable supplier that is rated for the machine's full load: a washing machine heating water can draw around 2,000 watts or more, and the rating plate on the machine gives the exact figure. Cheap multi-plugs with a "surge" label don't always offer much protection, and a washing machine shouldn't share a multi-plug or extension lead with other appliances.
+A good plug-in surge protector between the wall socket and the machine absorbs spikes before they reach the electronics. Choose one from a reputable supplier that is rated for the machine's full load: a washing machine heating water can draw around 2,000 watts or more, and the rating plate on the machine gives the exact figure. Cheap multi-plugs with a "surge" label don't always offer much protection. Plug the protector straight into the wall socket and the machine straight into the protector, and never run a washing machine from a multi-plug or extension lead.
 
 The parts inside a protector that absorb surges wear out over time, and many protectors have an indicator light that shows whether the protection still works. Replace the protector when the light says so, or after a big surge.
 
@@ -69,6 +82,7 @@ You can run a washing machine on a home inverter, a solar system or a generator,
 
 - **Heating is the big load.** A machine heating water can draw around 2,000 watts or more, and many home inverter systems aren't sized for that on top of everything else. A cold wash draws far less, because heating the water takes most of the power. Any programme that heats, including 30°C and eco settings, switches the element on at full power, so on battery power choose a cold wash. A washer-dryer runs a heater for a long time when drying, so save drying for when grid power is on.
 - **The type of inverter matters.** A pure sine wave inverter gives the cleanest supply. Modified sine wave inverters and some generators produce a rougher supply that can upset sensitive electronics.
+- **Generators need care.** Run a portable generator outdoors, well away from doors and windows, because its exhaust contains carbon monoxide. Have it connected to the house through a changeover switch fitted by a registered electrician, rather than running the washing machine from it on an extension lead.
 - **The changeover can cause a blip.** Some systems take a moment to switch between grid and battery, and some machines notice it and stop or restart.
 - **Use the sun.** If you have solar panels, run the machine in the middle of a sunny day, when the panels produce the most.
 
