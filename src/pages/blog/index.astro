@@ -13,7 +13,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
 const fmt = (d: Date) => d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' });
 const faqs = [
   { q: 'Are the tips in these articles safe to try myself?', a: 'Yes, as long as you follow them as written. They stick to checks that don\'t involve electrical work, and they always start with switching off at the wall and unplugging. Where an article says to call a technician, it\'s because the next step means opening the machine or working on electrical parts.' },
-  { q: 'Do the tips apply to my brand of machine?', a: 'The principles apply to almost every washing machine, but details such as where the pump filter sits or which programme cleans the drum vary between brands and models. Check your manual for those details, and see our <a href="/brands/">brands we repair</a> page for brand-specific help.' },
+  { q: 'Do the tips apply to my brand of machine?', a: 'The principles apply to almost every washing machine, but details such as where the pump filter sits or which programme cleans the drum vary between brands and models. Check your manual for those details, and see our <a href="/brands/">washing machine brand guides</a> for brand-specific help.' },
   { q: 'How often should I clean my washing machine?', a: 'Clean the detergent drawer every few weeks, wipe the door seal now and then, and run a hot maintenance wash with no clothes about once a month, or as often as your manual suggests. Clean the pump filter at the intervals in your manual, and more often if you wash a lot of pet hair, sand or work clothes.' },
   { q: 'Can good habits stop my machine from breaking down?', a: 'They can\'t stop normal wear, because bearings, motors and electronics age with use. What they do is reduce the strain on pumps, seals and suspension, and help you notice early signs such as a new noise or a slow drain while the repair is still small.' },
   { q: 'Why don\'t the articles explain how to replace parts?', a: 'Replacing parts means working inside a machine that runs on mains electricity and holds water, and some parts are heavy or held under spring tension. A mistake can cause an electric shock, a flood or a bigger repair. Instead, we explain what the technician checks, so you can follow what\'s happening and why.' },
@@ -22,7 +22,7 @@ const faqs = [
 ---
 <BaseLayout
   title="Washing Machine Tips & Advice Blog | ProServ"
-  description={`Washing machine tips from Gauteng technicians: smells, bearings, load shedding, buying advice and more. Need a repair? Call ${site.phone.display}.`}
+  description={`Washing machine tips from a Gauteng repairer: smells, bearings, load shedding, buying advice and more. Need a repair? Call ${site.phone.display}.`}
   crumbs={[{ name: 'Blog', href: '/blog/' }]}
   preloadImage={posts[0] && { src: posts[0].data.image }}
   schema={[faqSchema(faqs)]}
@@ -40,14 +40,14 @@ const faqs = [
       <ul class="grid gap-5 sm:grid-cols-2 lg:gap-6">
         {posts.map((p, i) => (
           <li class="min-w-0">
-            <a href={`/blog/${p.id}/`} class="card-surface card-interactive group flex h-full flex-col overflow-hidden text-ink no-underline hover:text-ink">
+            <a href={`/blog/${p.id}/`} aria-labelledby={`post-${p.id}`} aria-describedby={`post-${p.id}-summary`} class="card-surface card-interactive group flex h-full flex-col overflow-hidden text-ink no-underline hover:text-ink">
               <span class="relative block aspect-[16/9] overflow-hidden bg-surface">
                 <img src={p.data.image} alt={p.data.imageAlt} width="960" height="540" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
               </span>
               <span class="flex flex-1 flex-col p-5 sm:p-6">
                 <span class="block text-sm text-ink-soft"><time datetime={p.data.pubDate.toISOString().slice(0, 10)}>{fmt(p.data.pubDate)}</time></span>
-                <span class="type-h3 mt-1.5 block text-xl">{p.data.title}</span>
-                <span class="mt-2 block flex-1 leading-relaxed text-ink-soft">{p.data.summary}</span>
+                <span id={`post-${p.id}`} class="type-h3 mt-1.5 block text-xl">{p.data.title}</span>
+                <span id={`post-${p.id}-summary`} class="mt-2 block flex-1 leading-relaxed text-ink-soft">{p.data.summary}</span>
                 <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-ink-strong" aria-hidden="true">Read the article <Icon name="arrow" class="h-4 w-4 text-brand transition-transform group-hover:translate-x-0.5" /></span>
               </span>
             </a>
@@ -85,7 +85,7 @@ const faqs = [
       <li><strong>Empty pockets</strong>, and wash socks and underwired bras in a mesh bag, so nothing reaches the pump or slips between the drum and the tub.</li>
       <li><strong>Measure the detergent.</strong> Use one made for automatic machines, in the amount the pack suggests. More doesn't clean better, and the residue feeds smells.</li>
       <li><strong>Don't overload or underload.</strong> A packed drum strains the bearings and motor, while a single heavy item on its own can't be balanced for spin.</li>
-      <li><strong>Let it dry out.</strong> Leave the door and the detergent drawer open after the last wash of the day.</li>
+      <li><strong>Let it dry out.</strong> Leave the door and the detergent drawer open after the last wash of the day, and close the laundry door if you have small children or pets.</li>
       <li><strong>Keep the filters clean</strong>, as your manual describes, after switching off at the wall and unplugging, with towels and a tray ready for the water.</li>
       <li><strong>Look at the hoses</strong> now and then for cracks or bulges, and keep the machine standing level.</li>
       <li><strong>Switch off at the wall</strong> during load shedding, and wait for the power to settle before you restart.</li>
@@ -95,6 +95,15 @@ const faqs = [
     <h2>How we write our advice</h2>
     <p>Every article is written for owners, not technicians. We explain how the machine works and what usually goes wrong, and we only suggest checks that are safe for anyone to do: nothing that involves opening panels, testing electrical parts or forcing a locked door. Where a fix needs a technician, we say so and explain what the technician does, so you know what you're paying for.</p>
     <p>The advice is written for South African homes, with load shedding, water pressure that comes and goes, and the detergents sold here in mind. Machines differ, so where your manual gives different instructions for your model, follow the manual.</p>
+    <h3>How each article is set out</h3>
+    <p>The articles follow the same plan, so it's easy to find your way around:</p>
+    <ul class="checklist">
+      <li><strong>The short answer first.</strong> The opening paragraphs tell you what's most likely going on, and the <em>On this page</em> list takes you straight to the section you need.</li>
+      <li><strong>Safety notes in a box.</strong> Where an article suggests a hands-on check, such as cleaning the door seal or feeling for play in the drum, a boxed note above the steps says what to do first.</li>
+      <li><strong>Tables where they help.</strong> Some articles sum things up in a table, matching a smell to its likely cause, or a household's needs to the type of machine that suits them.</li>
+      <li><strong>A bottom line to finish.</strong> Each article ends with a short recap of the main points and how to reach a technician if you need one.</li>
+      <li><strong>Dates at the top.</strong> Every article shows when it was published, and the date of any later update.</li>
+    </ul>
 
     <h2>Looking for help with a specific fault?</h2>
     <p>Our <a href="/problems/">washing machine problem guides</a> cover machines that won't drain, spin, switch on, fill or open, as well as leaks, noise and error codes. If the articles don't solve it, a technician can come to your home in {areaList()}. Call or WhatsApp us, or use our <a href="/contact/">booking form</a>, and you'll get a quote before any work starts.</p>

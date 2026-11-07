@@ -7,6 +7,19 @@ pubDate: 2026-11-06
 image: "/images/blog-smelly-washing-machine.webp"
 imageAlt: "Illustration of an open front loader door seal with a cleaning cloth and a spray bottle"
 summary: "Musty, mouldy or rotten-egg smell? Here's where it comes from and how to get rid of it for good."
+faqs:
+  - q: "Can I clean my washing machine with vinegar or bicarbonate of soda?"
+    a: "Advice differs between manufacturers, so check your manual before you try either. Vinegar must never meet bleach, because together they give off toxic gas, so don't use it in a machine you've just cleaned with bleach. For most build-up, a hot empty wash with the cleaner or detergent your manual suggests does the job on its own."
+  - q: "How can I tell if I'm using too much detergent?"
+    a: "Look for a lot of foam in the drum, clothes that feel stiff or slippery after the rinse, white marks on dark fabrics, and a slimy coating in the drawer or the door seal. Some machines also add rinses, run longer or show a foam warning when they sense too many suds. Dose by the pack's guide for your load size and how dirty it is, and remember that concentrated detergents need less."
+  - q: "Why are there dark flecks on my clean washing?"
+    a: "They're usually flakes of the greasy residue that builds up between the drum and the outer tub, breaking loose during the wash. Cool washes and generous doses of fabric softener make it build up faster. One or two hot empty maintenance washes usually clear it, and if the flecks keep coming, the machine may need a technician to open it and clean out the build-up."
+  - q: "Do top loaders get smelly as well?"
+    a: "They can, though the build-up collects in different places: under the rim of the tub, around the agitator or pulsator, and in the lint filter on models that have one. Many top loaders have no heater, so a hot maintenance wash depends on a hot-water supply; use the tub clean programme if your model has one, with the cleaner your manual suggests. Leaving the lid up after the last wash of the day lets the tub dry, as long as no small children or pets can get to it."
+  - q: "Can I leave a wet load in the machine overnight?"
+    a: "It's better not to. Washing left damp in a closed drum for hours can turn sour, and it keeps the inside of the machine damp too. Start the wash when you'll be home and awake to hang it as soon as it finishes, and if a load does sit overnight, wash it again rather than drying the smell in."
+  - q: "Why do my towels smell musty even after a wash?"
+    a: "Towels hold more water than anything else in the load, so they're the first to turn musty when they dry slowly. Fabric softener adds to it, because it coats the fibres, makes towels less absorbent and leaves residue behind. Use little or no softener on towels, wash them hot if the care label allows, and hang them in the sun or tumble dry them straight after the wash."
 ---
 
 A washing machine smell is hardly ever a sign that the machine is broken. In most cases it's a build-up problem: detergent residue, lint and stale water collecting in places you don't see, where bacteria and mould are happy to grow. That's good news, because you can usually clear it yourself in an afternoon.
@@ -62,11 +75,11 @@ Modern machines and modern habits both play a part:
 
 </div>
 
-1. **Clean the door seal.** Gently fold back the rubber and wipe out the folds with warm water and a little mild detergent, clearing out hair, grit and anything caught at the bottom. Manufacturers differ on what else is safe: some suggest a weak bleach solution for mould, while others say warm water is enough and warn that abrasive cleaners attack the rubber. Check your manual, wear gloves, and rinse and dry the seal. Never mix cleaning products: bleach and ammonia-based cleaners give off toxic fumes together.
+1. **Clean the door seal.** Gently fold back the rubber and wipe out the folds with warm water and a little mild detergent, clearing out hair, grit and anything caught at the bottom. Manufacturers differ on what else is safe: some suggest a weak bleach solution for mould, while others say warm water is enough and warn that abrasive cleaners attack the rubber. Check your manual, wear gloves, and rinse and dry the seal. Never mix cleaning products: bleach gives off toxic gas with ammonia-based cleaners and with acids such as vinegar or acidic descalers, so rinse well and don't follow a bleach clean with vinegar or a descaler.
 2. **Clean the detergent drawer.** Most drawers lift out when you press a release tab. Soak the drawer in warm water, scrub the corners with an old toothbrush, and wipe out the housing it slides into, including the top, where the water sprays in.
 3. **Clean the drain pump filter.** Follow your manual. On many machines you let the water out first through a small emergency hose beside the filter, then unscrew the filter slowly, rinse it and remove any debris. Screw it back in firmly and check for drips on the next wash.
 4. **Run a hot maintenance wash.** Leave the drum empty and choose the drum clean or tub clean programme if your machine has one, or the hottest cotton programme if it doesn't. Your manual says whether to add a washing machine cleaner, a little powder detergent or nothing at all.
-5. **Let it dry.** Wipe the door glass and the seal dry afterwards, and leave the door and the drawer open for a few hours.
+5. **Let it dry.** Wipe the door glass and the seal dry afterwards, and leave the door and the drawer open for a few hours, with the laundry door shut if small children or pets are around.
 
 If the smell returns within days, or a sewage smell survives the clean, look at the drain next.
 

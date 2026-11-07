@@ -7,9 +7,22 @@ pubDate: 2026-11-06
 image: "/images/blog-worn-bearings.webp"
 imageAlt: "Illustration of a washing machine drum bearing and seal beside the back of a drum"
 summary: "That rumble on spin might be your bearings. Here's how to tell, and why it pays to act early."
+faqs:
+  - q: "How loud should a healthy machine be on spin?"
+    a: "Every machine gets louder in the final spin, and the higher the spin speed, the more you'll hear. A healthy machine makes a smooth, even whirr that sounds much the same from one wash to the next. What points to wear is a change: a rumble or grinding that wasn't there before and grows louder over the weeks."
+  - q: "Does water under the machine always mean worn bearings?"
+    a: "No. A puddle under the middle or back of the machine together with a rumble on spin points to the shaft seal and bearings, but many leaks have simpler causes, such as a loose or split hose, the pump filter cover, the door seal or too many suds. Our guide to a <a href=\"/problems/washing-machine-leaking/\">washing machine leaking</a> shows how to tell them apart by where the water appears."
+  - q: "Can I grease noisy bearings myself?"
+    a: "No. The bearings sit in a housing on the outer tub, behind the shaft seal, so they can't be reached without taking the machine apart, and once they're rough, fresh grease won't bring them back. Spraying lubricant around the drum or the door seal won't reach them either, and it can attract dirt and harm the rubber."
+  - q: "How does a technician confirm the bearings are worn?"
+    a: "First by the same signs you can check: the noise on a test spin, roughness when the drum is turned by hand and play when it's lifted. With a panel off, the technician also looks for water and rust streaks around the bearing housing, and rules out the pump, the shock absorbers and anything caught between the drum and the tub."
+  - q: "Why are the bearings and the seal replaced together?"
+    a: "The seal is what keeps water away from the bearings, and it's usually the part that failed first. Refitting an old seal in front of new bearings would let water in again and wear them out the same way, so the two go in as a set."
+  - q: "Will new bearings make my machine quiet again?"
+    a: "Usually, yes. With new bearings and a seal, the roar on spin should go and the drum should turn smoothly by hand again. Every machine still makes some noise on spin, though, and if worn shock absorbers or an uneven floor were adding to it, those need attention too."
 ---
 
-Worn washing machine bearings rarely fail without warning. The bearings let the drum spin smoothly at well over a thousand revolutions a minute while it carries a heavy, wet load, and as they wear, the machine starts telling you: a rumble on spin, a rough feel when you turn the drum, a drip under the machine. Acting on those signs early matters, because a bearing repair grows bigger and dearer the longer the machine keeps running on worn ones.
+Worn washing machine bearings rarely fail without warning. The bearings let the drum spin smoothly at 1,000 to 1,400 revolutions a minute on many front loaders while it carries a heavy, wet load, and as they wear, the machine starts telling you: a rumble on spin, a rough feel when you turn the drum, a drip under the machine. Acting on those signs early matters, because a bearing repair grows bigger and dearer the longer the machine keeps running on worn ones.
 
 Below are the six signs to look and listen for, the simple checks you can do safely, the faults that sound similar, and what a bearing repair actually involves.
 
