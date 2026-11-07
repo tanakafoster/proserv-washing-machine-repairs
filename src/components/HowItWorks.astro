@@ -12,7 +12,7 @@ const steps = [
   { t: 'Repair', d: `Most repairs are done on the spot when the part is available, and every repair carries our <span class="whitespace-nowrap">${f.warranty}</span> warranty.` },
 ];
 ---
-<section class:list={['section-y', tone === 'surface' ? 'bg-surface' : 'bg-white']} aria-labelledby="how-h">
+<section data-shared="how-it-works" class:list={['section-y', tone === 'surface' ? 'bg-surface' : 'bg-white']} aria-labelledby="how-h">
   <div class="container-site">
     <SectionHeading id="how-h" eyebrow={heading === 'How it works' ? 'Four simple steps' : 'How it works'} heading={heading} />
     {/* Phones: a vertical timeline. From sm: numbered cards. */}

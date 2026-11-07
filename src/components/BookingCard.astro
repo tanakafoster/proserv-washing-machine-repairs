@@ -9,7 +9,7 @@ interface Props { heading?: string; class?: string }
 const { heading = 'Book a technician', class: cls = '' } = Astro.props;
 const f = site.facts;
 ---
-<div class:list={['card-surface overflow-hidden', cls]}>
+<div data-shared="booking-card" class:list={['card-surface overflow-hidden', cls]}>
   <div class="h-1 bg-brand" aria-hidden="true"></div>
   <div class="p-5">
     <h2 class="type-h3 text-lg">{heading}</h2>

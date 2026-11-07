@@ -34,7 +34,7 @@ const basis = {
   4: 'sm:basis-[calc((100%_-_1rem)/2)] lg:basis-[calc((100%_-_3rem)/4)]',
 }[cols];
 ---
-<section class:list={['section-y', alt ? 'bg-surface' : 'bg-white']} aria-labelledby={heading ? headingId : undefined}>
+<section data-shared="link-cards" class:list={['section-y', alt ? 'bg-surface' : 'bg-white']} aria-labelledby={heading ? headingId : undefined}>
   <div class="container-site">
     {heading && <SectionHeading id={headingId} eyebrow={eyebrow} heading={heading} intro={intro} align={align} />}
     {variant === 'chips' ? (

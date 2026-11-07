@@ -16,13 +16,13 @@ const items: { icon: IconName; text: string }[] = [
 ];
 ---
 {variant === 'phone' ? (
-  <p class:list={['mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft', cls]}>
+  <p data-shared="trust-row" class:list={['mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-soft', cls]}>
     <Icon name="phone" class="h-4 w-4 text-brand" />
     Call or WhatsApp
     <a href={telHref} data-track="call" class="-my-1.5 inline-block py-1.5 font-bold whitespace-nowrap text-ink-strong decoration-2">{site.phone.display}</a>
   </p>
 ) : (
-  <ul class:list={['mt-6 flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-ink', cls]}>
+  <ul data-shared="trust-row" class:list={['mt-6 flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-ink', cls]}>
     {items.map((i) => (
       <li class="flex items-center gap-2">
         <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-tint text-brand-dark">

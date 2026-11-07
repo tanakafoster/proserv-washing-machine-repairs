@@ -17,7 +17,7 @@ const items: { icon: IconName; t: string; d: string }[] = [
   { icon: 'clock', t: `Aim to arrive ${f.arrivalTime}`, d: 'On urgent call-outs' },
 ];
 ---
-<div class:list={['card-surface overflow-hidden', cls]}>
+<div data-shared="hero-facts" class:list={['card-surface overflow-hidden', cls]}>
   <div class="h-1 bg-brand" aria-hidden="true"></div>
   <ul class="divide-y divide-line">
     {items.map((i) => (
