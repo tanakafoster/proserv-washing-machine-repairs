@@ -25,12 +25,12 @@ const others = brands.filter((o) => o.slug !== b.slug);
   schema={[serviceSchema({ name: `${b.brand} washing machine repairs`, description: b.description, path }), faqSchema(b.faqs)]}
 >
   <PageHero h1={b.h1} intro={b.intro} eyebrow="Brands we repair" />
-  <LongFormSection reservedIds={['areas-h', 'other-brands']} bookingHeading={`Book a ${b.brand} repair`}>
+  <LongFormSection reservedIds={['areas-h', 'other-brands']} bookingHeading={`Book your ${b.brand} repair`}>
     <Fragment set:html={b.body} />
     {b.hasErrorGuide && (
       <Fragment slot="aside">
         <AsideLinks
-          heading={`${b.brand} error codes`}
+          heading={`${b.brand} error code guide`}
           intro={`What the codes on your ${b.brand} display mean and what to check first.`}
           items={[{ href: errorCodeUrl(b.slug), title: `${b.brand} washing machine error codes`, icon: 'alert' }]}
         />
@@ -52,7 +52,7 @@ const others = brands.filter((o) => o.slug !== b.slug);
     eyebrow="More brands"
     heading="Other brands we repair"
     headingId="other-brands"
-    items={others.map((o) => ({ href: brandUrl(o.slug), title: `${o.brand} washing machine repairs` }))}
+    items={others.map((o) => ({ href: brandUrl(o.slug), title: o.brand }))}
   />
   <Faq items={b.faqs} heading={`${b.brand} washing machine repair questions`} tone="white" />
   <CtaBand heading={`${b.brand} washing machine playing up?`} />
