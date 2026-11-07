@@ -4,46 +4,114 @@ import PageHero from '../components/PageHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import LongFormSection from '../components/LongFormSection.astro';
 import HowItWorks from '../components/HowItWorks.astro';
+import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { site, areaList } from '../data/site';
+import EmailText from '../components/EmailText.astro';
+import { site, areaList, areaUrl, brandUrl, telHref, whatsappHref, mailHref } from '../data/site';
+import { brands, otherBrands } from '../data/brands';
+import { faqSchema } from '../lib/schema';
 const f = site.facts;
 const hero = { src: '/images/about-technician-van.webp', alt: "Illustration of a home with a washing machine and a technician's toolbox at the front door", width: 960, height: 640 };
+
+/** "A, B and C" */
+const listOf = (items: string[]) => (items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}` : items.join(''));
+// The area and brand links come from the data files, so a new area or brand page is linked here automatically.
+const areaLinks = listOf(site.areas.map((a) => a.label.replace(a.name, `<a href="${areaUrl(a.slug)}">${a.name}</a>`)));
+const brandLinks = listOf(brands.map((b) => `<a href="${brandUrl(b.slug)}">${b.brand}</a>`));
+const extraBrands = otherBrands.filter((o) => !brands.some((b) => b.brand === o));
+const brandSentence = `We repair all major washing machine brands, including ${brandLinks}${extraBrands.length ? `, and we also work on ${listOf(extraBrands)} machines` : ''}. Each brand page covers that brand's machines and the faults to look out for.`;
+
+const faqs = [
+  {
+    q: 'Can you look at more than one problem on the same visit?',
+    a: 'Yes. Tell us about everything you have noticed when you book, even if it seems minor, such as a slow drain as well as a noisy spin. The technician checks each one, and the quote sets out what each repair involves so you can choose what to go ahead with.',
+  },
+  {
+    q: 'Can you repair a machine that someone else has already worked on?',
+    a: 'Yes. Let us know what was done before and when, and keep any paperwork from that repair, because the history helps the technician find the fault. Our warranty applies to the parts we fit and the work we do, not to earlier repairs by someone else.',
+  },
+  {
+    q: 'Will the technician tell me what caused the fault?',
+    a: "Where the cause is clear, yes. A coin or a loose bra underwire that jammed the drain pump, or an inlet hose that perished with age, leaves tell-tale signs, and knowing the cause helps you stop it happening again. Where it's simply wear and tear, the technician will say so.",
+  },
+  {
+    q: 'How long will the technician be at my home?',
+    a: 'It depends on the fault. Replacing a pump, door lock or inlet valve is a much shorter job than drum bearings, which mean taking the machine apart down to the tub. The technician will give you an idea of how long the repair will take when they quote.',
+  },
+  {
+    q: 'Is there anything I should do after a repair?',
+    a: "Use the machine normally and keep an eye on the first few washes. A few habits help any repair last: don't overload the drum, use the right amount of detergent for your machine and run a hot maintenance wash now and then. Our guides to <a href=\"/blog/why-does-my-washing-machine-smell/\">stopping a washing machine from smelling</a> and <a href=\"/blog/protect-washing-machine-from-load-shedding/\">protecting it from load shedding</a> have more tips.",
+  },
+  {
+    q: "What if I'm not sure the problem is worth a call-out?",
+    a: "Start with our <a href=\"/problems/\">washing machine problems</a> guides. Some causes, such as a tap that's been turned off, a kinked hose or a blocked pump filter, are safe to check yourself by following the steps there. If those checks don't help, or the machine is leaking, tripping the power or smelling of burning, switch it off at the wall and call us.",
+  },
+];
 ---
 <BaseLayout
   title="ProServ Washing Machine Repairs: About Us"
-  description={`About ProServ Washing Machine Repairs: local, mobile technicians across Gauteng. Honest quotes and warranty on repairs. Call ${site.phone.display}.`}
+  description={`About ProServ Washing Machine Repairs: mobile repairs at your door across Gauteng, ${f.yearsInBusiness} years of experience, quote first. Call ${site.phone.display}.`}
   crumbs={[{ name: 'About us', href: '/about/' }]}
+  schema={[faqSchema(faqs)]}
   preloadImage={{ src: hero.src }}
 >
   <PageHero
     h1="About ProServ Washing Machine Repairs"
     eyebrow="Who we are"
     image={hero}
-    intro={`<p>ProServ Washing Machine Repairs is a local, mobile repair service for Gauteng homes. We do one thing and do it well: we fix washing machines at your door. Our technicians have been repairing washing machines for ${f.yearsInBusiness} years, and we've completed ${f.repairsCompleted} repairs in homes across ${areaList()}.</p>`}
+    intro={`<p>ProServ Washing Machine Repairs is a mobile repair service for homes across Gauteng. We come to your door, find out what's wrong with your washing machine, give you a price before any work starts and, when the part is available, usually fix it on the spot. We've been repairing washing machines for ${f.yearsInBusiness} years, have completed ${f.repairsCompleted} repairs and work across ${areaList()}.</p>`}
   />
   <TrustBar />
   <LongFormSection>
-      <h2>Why we do things the way we do</h2>
-      <p>Most people call us on a bad day. The machine has stopped mid-wash, there's water in the drum, and there's a pile of laundry waiting. So we keep it simple: answer the phone, turn up when we said we would, find the actual fault, and tell you the price before we touch anything.</p>
-      <p>[PLACEHOLDER: a few sentences about the owner, how the business started, and the team. Real detail here builds trust and helps Google understand who you are.]</p>
+      <h2>What ProServ does</h2>
+      <p>ProServ is an independent washing machine repairer, and washing machines are our speciality. We repair <a href="/services/front-loader-repairs/">front loaders</a>, <a href="/services/top-loader-repairs/">top loaders</a> and <a href="/services/washer-dryer-repairs/">washer-dryers</a>, and we also install and service them and replace worn parts. Our <a href="/services/">washing machine repair services</a> page sets out everything we do.</p>
+      <p>Working on one kind of appliance means knowing how the different makes are put together, which parts wear with age and use, and how to tell a failed part from a problem with the way a machine is installed or used. Over {f.yearsInBusiness} years we've worked on everything from older belt-driven top loaders to modern front loaders with inverter motors and electronic controls.</p>
+      <p>Our aim on every job is simple: get the machine you already own working properly again, at a price you've agreed before we start, or tell you honestly when it isn't worth the money.</p>
 
-      <h2>Our promises</h2>
-      <ul class="checklist">
-        <li><strong>Quote first.</strong> You'll know the price before any work starts.</li>
-        <li><strong>Fair call-out.</strong> The call-out fee is {f.calloutFee}, {f.calloutCondition}.</li>
-        <li><strong>Warranty.</strong> Every repair carries our {f.warranty} warranty on parts and labour.</li>
-        <li><strong>Honest advice.</strong> If a machine isn't worth repairing, we'll tell you. See <a href="/repair-or-replace/">repair or replace</a>.</li>
-        <li><strong>Respect for your home.</strong> We protect your floors and clean up after ourselves.</li>
-        <li><strong>Plain language.</strong> We explain what's wrong and show you the old part.</li>
-      </ul>
+      <h2>Why we repair at your home</h2>
+      <p>A washing machine is heavy, awkward on stairs and easily damaged in transit. A front loader going anywhere by car or bakkie should have its transit bolts refitted first, so the drum can't swing about on the road. Repairing the machine where it stands avoids all of that, and you aren't left without it while it's away.</p>
+      <p>Seeing the machine in its own setting also makes for a better diagnosis. Some problems start outside the machine: a tap that's only partly open, an inlet hose kinked behind the cabinet, a drain hose at the wrong height or a floor that isn't level. The technician checks these along with the machine itself, so you don't pay for a part that was never the problem.</p>
 
-      <h2>What we repair</h2>
-      <p>We repair all major washing machine brands: front loaders, top loaders and washer-dryers. Have a look at our <a href="/services/">washing machine repair services</a>, the <a href="/brands/">brands we repair</a> and the <a href="/areas/">areas we cover</a>.</p>
-      <p>ProServ is an independent repairer. We aren't affiliated with, or authorised by, any washing machine manufacturer. Brand names on this site are trademarks of their owners.</p>
+      <h2>How a visit works</h2>
+      <p>You call, WhatsApp or send the booking form, and we agree a time. For urgent call-outs, such as a machine that's leaking or stuck full of water, we aim to arrive {f.arrivalTime}, depending on where the technician is working. Our contact page explains <a href="/contact/">what to tell us when you book</a>, so the technician knows what to expect.</p>
+      <h3>Finding the fault</h3>
+      <p>The technician starts by asking what you've noticed: when the problem began, what the machine does and at what point in the programme. Next come the basics, such as the power, the water supply, the drain and the levelling, before anything inside the machine. Many modern machines also have a built-in service test that helps pin down which part has failed.</p>
+      <p>An error code is a useful clue, but it usually points to a symptom rather than a particular broken part. A drain error, for example, can come from a blocked pump filter, a kinked hose or a pump that has failed, which is why the fault is confirmed before you're quoted. If your machine is showing a code now, our <a href="/error-codes/">washing machine error code guides</a> explain what many of them mean.</p>
+      <h3>The repair</h3>
+      <p>Once you've accepted the quote, most repairs are finished on the same visit if the part is available. If a part has to be ordered, the technician tells you before you agree to the repair, so you know what's involved, and we arrange a time to come back and fit it.</p>
+      <h3>Before the technician leaves</h3>
+      <p>The machine is tested after the repair so you can see it working. You'll hear what was wrong and what was replaced, in plain language, along with anything worth knowing to stop the same fault coming back.</p>
+
+      <h2>How we quote</h2>
+      <p>Every quote comes after the diagnosis, never before it. Nothing is replaced and no work starts until you've seen the price and said yes. If anything changes once the machine is open, you'll hear about it before any extra work is done.</p>
+      <p>Whether you go ahead is entirely up to you. The call-out fee is {f.calloutFee}, {f.calloutCondition}.</p>
+      <p>The price of a repair depends mainly on the part that has failed, the make and model of the machine, and how much of it has to come apart to reach the fault. Our guide to <a href="/washing-machine-repair-cost/">washing machine repair cost</a> explains what drives the price in more detail.</p>
+
+      <h2>Our warranty</h2>
+      <p>Every repair carries our {f.warranty} warranty on parts and labour. In plain words: if a part we fitted fails, or our work gives trouble, within the warranty period, tell us and we'll come back and put it right.</p>
+      <p>The warranty covers the repair we did rather than the whole machine. A washing machine has many parts that wear at their own pace, so an unrelated fault later on, such as a pump giving up months after we replaced a door lock, is a new repair, quoted in the usual way. If you're ever unsure whether something is covered, call or WhatsApp us and ask.</p>
+
+      <h2>Repair or replace: honest advice</h2>
+      <p>Not every washing machine is worth fixing, and we'd rather tell you so than sell you a repair that doesn't make sense. Once the fault is found, the technician talks it through with you: how old the machine is and what condition it's in, what the repair costs compared with a similar new machine, whether other parts are close to wearing out, and whether parts for that model are still available.</p>
+      <p>The decision is always yours. Our <a href="/repair-or-replace/">repair or replace guide</a> sets out how to weigh it up. If you decide on a new machine, our comparison of <a href="/blog/front-loader-vs-top-loader/">front loaders and top loaders</a> can help you choose, and our <a href="/services/washing-machine-installation/">washing machine installation</a> service can connect and test it for you.</p>
+
+      <h2>Where we work</h2>
+      <p>We cover <Fragment set:html={areaLinks} />. You'll find a list of suburbs on each area page, and if you're not sure whether we reach you, call or WhatsApp and ask.</p>
+      <p>Because we're mobile, the technician comes to wherever the machine is: a house, a townhouse in a complex, a flat or a home in a security estate. If visitors need to be booked in at your gate, let us know when you book so the technician isn't held up.</p>
+
+      <h2>Brands we repair</h2>
+      <p set:html={brandSentence} />
+      <p>ProServ is an independent repairer. We aren't affiliated with, authorised or endorsed by any manufacturer, and the brand names on this site belong to their owners. If your machine is still under the manufacturer's warranty, contact the manufacturer or the shop you bought it from first, because a repair by anyone else may affect that warranty.</p>
+
+      <h2>Safety and respect for your home</h2>
+      <p>Mains electricity, water and a heavy drum spinning at speed all call for care. The machine is switched off at the wall and unplugged before any cover comes off, and it's checked for leaks before it goes back into place.</p>
+      <p>We also know we're guests in your home. Floors are protected when the machine is pulled out, because tiles chip and laminate scratches easily. Any spilt water is mopped up, and the machine goes back where it was, connected and level, with the area left tidy.</p>
+      <p>If the technician spots something else that could cause trouble, such as a perished inlet hose, they'll point it out even if it isn't part of the job you called us for. A burst inlet hose can flood a kitchen, so it's worth knowing about.</p>
 
       <h2>Get in touch</h2>
-      <p>Call or WhatsApp us on <a href={`tel:${site.phone.e164}`} data-track="call">{site.phone.display}</a>, email <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href="/contact/">send us a booking request</a>.</p>
+      <p>Call us on <a href={telHref} data-track="call">{site.phone.display}</a>, send a <a href={whatsappHref} target="_blank" rel="noopener" data-track="whatsapp">WhatsApp message<span class="sr-only"> (opens in a new tab)</span></a> to the same number, email <a href={mailHref}><EmailText /></a>, or <a href="/contact/">send us a booking request</a>. If you'd like to read up first, our <a href="/faq/">washing machine repair questions</a> page covers call-outs, quotes and the warranty.</p>
   </LongFormSection>
   <HowItWorks tone="surface" />
+  <Faq items={faqs} heading="Questions about ProServ" tone="white" />
   <CtaBand />
 </BaseLayout>

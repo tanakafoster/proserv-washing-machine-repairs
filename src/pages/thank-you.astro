@@ -11,11 +11,13 @@ import { hoursText, hasHours } from '../data/site';
         <Icon name="check" class="h-8 w-8" strokeWidth={2.5} />
       </span>
       <h1 class="type-page-h1 mt-8">Thanks, we've got your request</h1>
-      <p class="type-lead mx-auto mt-5 max-w-xl">We'll get back to you as soon as we can{hasHours ? ` during business hours (${hoursText()})` : ''}. If your machine is leaking or it's urgent, please call or WhatsApp us now.</p>
+      <p class="type-lead mx-auto mt-5 max-w-xl">We'll call or WhatsApp you back as soon as we can{hasHours ? ` during business hours (${hoursText()})` : ''} to confirm a time. If you have a photo of the error code or the model sticker, WhatsApp it to us. If it's urgent or the machine is leaking, call us now, and keep the machine switched off at the wall with its tap turned off until the technician arrives.</p>
       <ContactButtons class="mt-8 justify-center" size="lg" />
       <ul class="mt-10 flex flex-wrap justify-center gap-2.5">
-        <li><a href="/" class="chip">Back to the home page</a></li>
         <li><a href="/problems/" class="chip">Common washing machine problems</a></li>
+        <li><a href="/services/" class="chip">Washing machine repair services</a></li>
+        <li><a href="/error-codes/" class="chip">Error code guides</a></li>
+        <li><a href="/" class="chip">Back to the home page</a></li>
       </ul>
     </div>
   </section>
