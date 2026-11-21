@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>How much washing powder to use</title>
+  <desc>Flat illustration: an orange box of washing powder with a measuring scoop of powder in front of it, beside a front loader with its detergent drawer pulled out and powder in the main wash compartment.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="540" fill="#FFF7ED"/>
+  <path d="M828.41 327.46 C808.22 375.66 731.34 425.41 661.5 452.64 C591.66 479.88 482.9 503.73 409.36 490.87 C335.82 478 261 422.03 220.27 375.45 C179.55 328.87 145.03 259.09 165.02 211.39 C185 163.7 269.26 116.32 340.2 89.28 C411.14 62.23 516.89 36.77 590.64 49.13 C664.38 61.49 743.04 117.05 782.67 163.44 C822.3 209.83 848.61 279.26 828.41 327.46 Z" fill="#FFEDD5"/>
+  <path d="M104 96h0M126 96h0M148 96h0M170 96h0M104 118h0M126 118h0M148 118h0M170 118h0M104 140h0M126 140h0M148 140h0M170 140h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <!-- floor -->
+  <ellipse cx="490" cy="463.88" rx="400" ry="28" fill="#FED7AA" opacity="0.45"/>
+  <ellipse cx="625.2" cy="459.88" rx="150" ry="12" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <ellipse cx="282" cy="466" rx="92" ry="9" fill="#1F2937" opacity="0.14" filter="url(#soft)"/>
+  <g transform="translate(530 104) scale(0.82)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- door (closed) -->
+      <circle cx="154" cy="239" r="95" fill="#1F2937" opacity="0.08"/>
+      <circle cx="150" cy="234" r="93" fill="url(#washer-chrome)" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="150" cy="234" r="79" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+      <circle cx="150" cy="234" r="77" fill="#374151"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-glass)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- empty drum seen through the glass -->
+        <circle cx="150" cy="234" r="40" fill="none" stroke="#93C5FD" stroke-width="5"/>
+        <circle cx="150" cy="234" r="16" fill="#93C5FD"/>
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#60A5FA" stroke-width="3.2" stroke-linecap="round" opacity="0.35"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(270 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(30 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(150 150 234)"/>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="3" opacity="0.12"/>
+      <!-- reflection on the glass -->
+      <path d="M97.69 217 A55 55 0 0 1 127.63 183.75" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <path d="M136.69 180.63 A55 55 0 0 1 146.16 179.13" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <!-- door handle (grip moulded into the right of the door ring) -->
+      <path d="M232.24 208.86 A86 86 0 0 1 232.24 259.14" fill="none" stroke="#6B7280" stroke-width="9" stroke-linecap="round"/>
+      <path d="M233.07 211.74 A86 86 0 0 1 233.07 256.26" fill="none" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <!-- detergent drawer pulled out -->
+    <rect x="16" y="17" width="94" height="44" rx="8" fill="#374151"/>
+    <path d="M-18 30 L18 19 L108 19 L76 30 Z" fill="#E5E7EB"/>
+    <path d="M-12 29 L16 21 L44 21 L18 29 Z" fill="#D1D5DB"/>
+    <path d="M22 29 L48 21 L74 21 L50 29 Z" fill="#D1D5DB"/>
+    <path d="M54 29 L78 21 L104 21 L72 29 Z" fill="#D1D5DB"/>
+    <path d="M-6 28 Q8 18 20 22 Q30 26 20 29 Z" fill="#FFFFFF"/>
+    <circle cx="4" cy="25" r="1.6" fill="#93C5FD"/><circle cx="12" cy="24" r="1.6" fill="#F97316"/>
+    <rect x="-24" y="30" width="104" height="40" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+    <rect x="-12" y="57" width="80" height="6" rx="3" fill="#D1D5DB"/>
+  </g>
+  <!-- box of washing powder, open at the top -->
+  <path d="M206 236 L236 214 L354 214 L324 236 Z" fill="#FDBA74"/>
+  <path d="M220 228 Q262 196 300 214 Q318 222 314 228 Z" fill="#FFFFFF"/>
+  <circle cx="246" cy="220" r="2.4" fill="#93C5FD"/><circle cx="268" cy="214" r="2.4" fill="#F97316"/><circle cx="290" cy="221" r="2.4" fill="#93C5FD"/>
+  <path d="M206 236 L176 196 L210 190 L236 214 Z" fill="#FED7AA"/>
+  <path d="M324 236 L354 214 L354 438 L324 462 Z" fill="#C2410C"/>
+  <rect x="206" y="236" width="118" height="226" fill="#F97316"/>
+  <rect x="222" y="292" width="86" height="104" rx="12" fill="#FFFFFF"/>
+  <path d="M234 352 Q250 336 266 352 Q282 368 298 352" fill="none" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+  <path d="M234 372 Q250 356 266 372 Q282 388 298 372" fill="none" stroke="#93C5FD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M265 309 Q267.34 319.66 278 322 Q267.34 324.34 265 335 Q262.66 324.34 252 322 Q262.66 319.66 265 309 Z" fill="#F97316"/>
+  <!-- measuring scoop full of powder -->
+  <g transform="translate(400 412)">
+    <rect x="34" y="8" width="70" height="14" rx="7" fill="#9CA3AF" transform="rotate(-12 34 15)"/>
+    <path d="M-40 0 L40 0 L32 52 Q30 58 24 58 L-24 58 Q-30 58 -32 52 Z" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="3"/>
+    <path d="M-40 0 Q0 -30 40 0 Z" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+    <circle cx="-14" cy="-6" r="2.4" fill="#93C5FD"/><circle cx="6" cy="-12" r="2.4" fill="#F97316"/><circle cx="20" cy="-5" r="2.4" fill="#93C5FD"/>
+    <path d="M-30 20 h12 M-29 32 h12 M-28 44 h12" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <path d="M820 96 Q822.52 107.48 834 110 Q822.52 112.52 820 124 Q817.48 112.52 806 110 Q817.48 107.48 820 96 Z" fill="#F97316"/>
+  <path d="M470 111 Q471.62 118.38 479 120 Q471.62 121.62 470 129 Q468.38 121.62 461 120 Q468.38 118.38 470 111 Z" fill="#FDBA74"/>
+  <path d="M860 292 Q861.44 298.56 868 300 Q861.44 301.44 860 308 Q858.56 301.44 852 300 Q858.56 298.56 860 292 Z" fill="#FDBA74"/>
+</svg>

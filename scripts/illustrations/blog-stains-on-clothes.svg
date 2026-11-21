@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>Washing machine leaving stains on clothes</title>
+  <desc>Flat illustration: a white T-shirt on a hanger with grey and brown marks on it, a magnifying glass held over one of the marks, and a front loader beside it.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="540" fill="#FFF7ED"/>
+  <path d="M828.41 327.46 C808.22 375.66 731.34 425.41 661.5 452.64 C591.66 479.88 482.9 503.73 409.36 490.87 C335.82 478 261 422.03 220.27 375.45 C179.55 328.87 145.03 259.09 165.02 211.39 C185 163.7 269.26 116.32 340.2 89.28 C411.14 62.23 516.89 36.77 590.64 49.13 C664.38 61.49 743.04 117.05 782.67 163.44 C822.3 209.83 848.61 279.26 828.41 327.46 Z" fill="#FFEDD5"/>
+  <path d="M104 96h0M126 96h0M148 96h0M170 96h0M104 118h0M126 118h0M148 118h0M170 118h0M104 140h0M126 140h0M148 140h0M170 140h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <!-- floor -->
+  <ellipse cx="490" cy="463.88" rx="400" ry="28" fill="#FED7AA" opacity="0.45"/>
+  <ellipse cx="665.2" cy="459.88" rx="150" ry="12" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <g transform="translate(560 104) scale(0.82)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- door (closed) -->
+      <circle cx="154" cy="239" r="95" fill="#1F2937" opacity="0.08"/>
+      <circle cx="150" cy="234" r="93" fill="url(#washer-chrome)" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="150" cy="234" r="79" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+      <circle cx="150" cy="234" r="77" fill="#374151"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-glass)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- empty drum seen through the glass -->
+        <circle cx="150" cy="234" r="40" fill="none" stroke="#93C5FD" stroke-width="5"/>
+        <circle cx="150" cy="234" r="16" fill="#93C5FD"/>
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#60A5FA" stroke-width="3.2" stroke-linecap="round" opacity="0.35"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(270 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(30 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(150 150 234)"/>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="3" opacity="0.12"/>
+      <!-- reflection on the glass -->
+      <path d="M97.69 217 A55 55 0 0 1 127.63 183.75" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <path d="M136.69 180.63 A55 55 0 0 1 146.16 179.13" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <!-- door handle (grip moulded into the right of the door ring) -->
+      <path d="M232.24 208.86 A86 86 0 0 1 232.24 259.14" fill="none" stroke="#6B7280" stroke-width="9" stroke-linecap="round"/>
+      <path d="M233.07 211.74 A86 86 0 0 1 233.07 256.26" fill="none" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+  <!-- white T-shirt on a hanger -->
+  <path d="M300 92 q0 -16 14 -16 q14 0 14 14" fill="none" stroke="#9CA3AF" stroke-width="5" stroke-linecap="round"/>
+  <path d="M232 122 L314 98 L396 122" fill="none" stroke="#9CA3AF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M276 112 Q314 140 352 112 L404 128 L452 186 L414 216 L388 192 L388 420 Q314 434 240 420 L240 192 L214 216 L176 186 L224 128 Z" fill="#1F2937" opacity="0.08" transform="translate(6 8)"/>
+  <path d="M276 112 Q314 140 352 112 L404 128 L452 186 L414 216 L388 192 L388 420 Q314 434 240 420 L240 192 L214 216 L176 186 L224 128 Z" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M276 112 Q314 140 352 112" fill="none" stroke="#D1D5DB" stroke-width="5" stroke-linecap="round"/>
+  <!-- marks: grey smudges, brown spots and a greasy streak -->
+  <ellipse cx="282" cy="232" rx="22" ry="12" fill="#9CA3AF" opacity="0.45" transform="rotate(-15 282 232)"/>
+  <ellipse cx="300" cy="246" rx="10" ry="6" fill="#9CA3AF" opacity="0.4"/>
+  <circle cx="346" cy="318" r="9" fill="#B45309" opacity="0.4"/>
+  <circle cx="330" cy="336" r="5" fill="#B45309" opacity="0.35"/>
+  <circle cx="360" cy="342" r="4" fill="#B45309" opacity="0.35"/>
+  <path d="M262 362 C276 352 292 370 308 360" fill="none" stroke="#92400E" stroke-width="7" stroke-linecap="round" opacity="0.28"/>
+  <!-- magnifying glass over the brown spots -->
+  <g transform="translate(346 330)">
+    <circle r="48" fill="#DBEAFE" opacity="0.35"/>
+    <circle r="48" fill="none" stroke="#1F2937" stroke-width="10"/>
+    <path d="M-26 -26 A36 36 0 0 1 8 -36" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+    <rect x="44" y="-9" width="76" height="18" rx="9" fill="#F97316" transform="rotate(40)"/>
+    <rect x="44" y="-9" width="76" height="7" rx="3.5" fill="#FDBA74" transform="rotate(40)"/>
+  </g>
+  <path d="M500 105 Q501.98 114.02 511 116 Q501.98 117.98 500 127 Q498.02 117.98 489 116 Q498.02 114.02 500 105 Z" fill="#FDBA74"/>
+  <path d="M820 89 Q822.7 101.3 835 104 Q822.7 106.7 820 119 Q817.3 106.7 805 104 Q817.3 101.3 820 89 Z" fill="#F97316"/>
+  <path d="M470 292 Q471.44 298.56 478 300 Q471.44 301.44 470 308 Q468.56 301.44 462 300 Q468.56 298.56 470 292 Z" fill="#F97316"/>
+</svg>

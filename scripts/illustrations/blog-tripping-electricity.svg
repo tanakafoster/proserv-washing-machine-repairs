@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>Washing machine tripping the electricity</title>
+  <desc>Flat illustration: a household DB board on the wall with its earth leakage switch tripped down and highlighted in orange, and a washing machine beside it, unplugged, with a warning sign above it.</desc>
+  <defs>
+    <!-- Soft blur for the shadows under objects -->
+    <filter id="soft" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="soft-sm" x="-50%" y="-200%" width="200%" height="500%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+  </defs>
+  <!-- background -->
+  <rect width="960" height="540" fill="#FFF7ED"/>
+  <path d="M828.41 327.46 C808.22 375.66 731.34 425.41 661.5 452.64 C591.66 479.88 482.9 503.73 409.36 490.87 C335.82 478 261 422.03 220.27 375.45 C179.55 328.87 145.03 259.09 165.02 211.39 C185 163.7 269.26 116.32 340.2 89.28 C411.14 62.23 516.89 36.77 590.64 49.13 C664.38 61.49 743.04 117.05 782.67 163.44 C822.3 209.83 848.61 279.26 828.41 327.46 Z" fill="#FFEDD5"/>
+  <path d="M104 96h0M126 96h0M148 96h0M170 96h0M104 118h0M126 118h0M148 118h0M170 118h0M104 140h0M126 140h0M148 140h0M170 140h0" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <!-- floor -->
+  <ellipse cx="490" cy="463.88" rx="400" ry="28" fill="#FED7AA" opacity="0.45"/>
+  <ellipse cx="665.2" cy="459.88" rx="150" ry="12" fill="#1F2937" opacity="0.16" filter="url(#soft)"/>
+  <ellipse cx="500" cy="466" rx="40" ry="6" fill="#1F2937" opacity="0.12" filter="url(#soft)"/>
+  <!-- DB board on the wall -->
+  <rect x="146" y="118" width="268" height="232" rx="16" fill="#1F2937" opacity="0.08" transform="translate(4 6)"/>
+  <rect x="146" y="118" width="268" height="232" rx="16" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="3"/>
+  <rect x="164" y="136" width="232" height="196" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="164" y="214" width="232" height="6" fill="#E5E7EB"/>
+  <rect x="176" y="176" width="50" height="84" rx="5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="193.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="194.0" y="194" width="14" height="22" rx="4" fill="#1F2937"/>
+  <rect x="180" y="248" width="42" height="5" rx="2.5" fill="#E5E7EB"/>
+  <rect x="232" y="176" width="50" height="84" rx="5" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <rect x="249.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="250.0" y="220" width="14" height="22" rx="4" fill="#F97316"/>
+  <circle cx="272" cy="186" r="5" fill="#FDBA74" stroke="#C2410C" stroke-width="1.5"/>
+  <rect x="236" y="248" width="42" height="5" rx="2.5" fill="#E5E7EB"/>
+  <rect x="288" y="176" width="24" height="84" rx="5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="292.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="293.0" y="194" width="14" height="22" rx="4" fill="#1F2937"/>
+  <rect x="292" y="248" width="16" height="5" rx="2.5" fill="#E5E7EB"/>
+  <rect x="318" y="176" width="24" height="84" rx="5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="322.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="323.0" y="194" width="14" height="22" rx="4" fill="#1F2937"/>
+  <rect x="322" y="248" width="16" height="5" rx="2.5" fill="#E5E7EB"/>
+  <rect x="348" y="176" width="24" height="84" rx="5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="352.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="353.0" y="194" width="14" height="22" rx="4" fill="#1F2937"/>
+  <rect x="352" y="248" width="16" height="5" rx="2.5" fill="#E5E7EB"/>
+  <rect x="378" y="176" width="24" height="84" rx="5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="382.0" y="196" width="16" height="44" rx="4" fill="#E5E7EB"/>
+  <rect x="383.0" y="194" width="14" height="22" rx="4" fill="#1F2937"/>
+  <rect x="382" y="248" width="16" height="5" rx="2.5" fill="#E5E7EB"/>
+  <!-- burst lines around the tripped earth leakage switch -->
+  <path d="M217.0 288 l-12 10 M257.0 294 v16 M297.0 288 l12 10" stroke="#F97316" stroke-width="6" stroke-linecap="round"/>
+  <g transform="translate(560 104) scale(0.82)">
+    <g id="washer">
+      <defs>
+        <linearGradient id="washer-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset="1" stop-color="#F3F4F6"/>
+        </linearGradient>
+        <linearGradient id="washer-chrome" x1="0.2" y1="0.1" x2="0.8" y2="0.9">
+          <stop offset="0" stop-color="#F9FAFB"/>
+          <stop offset="0.55" stop-color="#D1D5DB"/>
+          <stop offset="1" stop-color="#9CA3AF"/>
+        </linearGradient>
+        <radialGradient id="washer-glass" cx="0.42" cy="0.38" r="0.7">
+          <stop offset="0" stop-color="#DBEAFE"/>
+          <stop offset="1" stop-color="#93C5FD"/>
+        </radialGradient>
+        <radialGradient id="washer-drum" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#6B7280"/>
+          <stop offset="0.45" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#D1D5DB"/>
+        </radialGradient>
+        <radialGradient id="washer-seal" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.7" stop-color="#6B7280"/>
+          <stop offset="0.86" stop-color="#9CA3AF"/>
+          <stop offset="1" stop-color="#6B7280"/>
+        </radialGradient>
+        <clipPath id="washer-window">
+          <circle cx="150" cy="234" r="66"/>
+        </clipPath>
+      </defs>
+      <!-- feet -->
+      <rect x="22" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <rect x="244" y="416" width="34" height="18" rx="5" fill="#374151"/>
+      <!-- top of the cabinet, seen from slightly above -->
+      <path d="M2 8 L298 8 L289 -27 Q288 -32 282 -32 L18 -32 Q12 -32 11 -27 Z" fill="#E5E7EB"/>
+      <path d="M8 -6 L292 -6" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+      <!-- front panel -->
+      <rect x="0" y="0" width="300" height="425" rx="12" fill="url(#washer-body)"/>
+      <!-- control panel strip -->
+      <path d="M12 0 H288 A12 12 0 0 1 300 12 V78 H0 V12 A12 12 0 0 1 12 0 Z" fill="#F3F4F6"/>
+      <rect x="0" y="78" width="300" height="3" fill="#E5E7EB"/>
+      <!-- detergent drawer -->
+      <rect x="16" y="17" width="94" height="44" rx="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="28" y="48" width="70" height="6" rx="3" fill="#D1D5DB"/>
+      <!-- power button -->
+      <circle cx="128" cy="39" r="8" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="128" cy="39" r="3" fill="#F97316"/>
+      <!-- display -->
+      <rect x="146" y="25" width="66" height="28" rx="6" fill="#1F2937"/>
+      <!-- programme dial -->
+      <circle cx="229.02" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="222.26" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="224.81" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="235.88" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="9" r="2" fill="#9CA3AF"/>
+      <circle cx="268.12" cy="13.7" r="2" fill="#9CA3AF"/>
+      <circle cx="279.19" cy="26.32" r="2" fill="#9CA3AF"/>
+      <circle cx="281.74" cy="42.92" r="2" fill="#9CA3AF"/>
+      <circle cx="274.98" cy="58.28" r="2" fill="#9CA3AF"/>
+      <circle cx="252" cy="39" r="23" fill="#E5E7EB"/>
+      <circle cx="252" cy="39" r="18" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="250" y="24" width="4" height="13" rx="2" fill="#F97316" transform="rotate(-40 252 39)"/>
+      <!-- kick plate with the pump filter flap -->
+      <rect x="0" y="384" width="300" height="3" fill="#E5E7EB"/>
+      <rect x="18" y="396" width="60" height="22" rx="6" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+      <rect x="38" y="401" width="20" height="4" rx="2" fill="#D1D5DB"/>
+      <!-- shaded right-hand edge -->
+      <path d="M284 0 H288 A12 12 0 0 1 300 12 V413 A12 12 0 0 1 288 425 H284 Z" fill="#1F2937" opacity="0.06"/>
+      <!-- door (closed) -->
+      <circle cx="154" cy="239" r="95" fill="#1F2937" opacity="0.08"/>
+      <circle cx="150" cy="234" r="93" fill="url(#washer-chrome)" stroke="#D1D5DB" stroke-width="2"/>
+      <circle cx="150" cy="234" r="79" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.8"/>
+      <circle cx="150" cy="234" r="77" fill="#374151"/>
+      <circle cx="150" cy="234" r="66" fill="url(#washer-glass)"/>
+      <g clip-path="url(#washer-window)">
+        <!-- empty drum seen through the glass -->
+        <circle cx="150" cy="234" r="40" fill="none" stroke="#93C5FD" stroke-width="5"/>
+        <circle cx="150" cy="234" r="16" fill="#93C5FD"/>
+        <path d="M122.5 179h0M133.5 179h0M144.5 179h0M155.5 179h0M166.5 179h0M177.5 179h0M117 190h0M128 190h0M139 190h0M150 190h0M161 190h0M172 190h0M183 190h0M100.5 201h0M111.5 201h0M122.5 201h0M133.5 201h0M144.5 201h0M155.5 201h0M166.5 201h0M177.5 201h0M188.5 201h0M199.5 201h0M95 212h0M106 212h0M117 212h0M128 212h0M139 212h0M150 212h0M161 212h0M172 212h0M183 212h0M194 212h0M205 212h0M89.5 223h0M100.5 223h0M111.5 223h0M122.5 223h0M177.5 223h0M188.5 223h0M199.5 223h0M210.5 223h0M95 234h0M106 234h0M117 234h0M128 234h0M172 234h0M183 234h0M194 234h0M205 234h0M89.5 245h0M100.5 245h0M111.5 245h0M122.5 245h0M177.5 245h0M188.5 245h0M199.5 245h0M210.5 245h0M95 256h0M106 256h0M117 256h0M128 256h0M139 256h0M150 256h0M161 256h0M172 256h0M183 256h0M194 256h0M205 256h0M100.5 267h0M111.5 267h0M122.5 267h0M133.5 267h0M144.5 267h0M155.5 267h0M166.5 267h0M177.5 267h0M188.5 267h0M199.5 267h0M117 278h0M128 278h0M139 278h0M150 278h0M161 278h0M172 278h0M183 278h0M122.5 289h0M133.5 289h0M144.5 289h0M155.5 289h0M166.5 289h0M177.5 289h0" stroke="#60A5FA" stroke-width="3.2" stroke-linecap="round" opacity="0.35"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(270 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(30 150 234)"/>
+        <rect x="190" y="227" width="30" height="14" rx="7" fill="#BFDBFE" transform="rotate(150 150 234)"/>
+      </g>
+      <circle cx="150" cy="234" r="66" fill="none" stroke="#1F2937" stroke-width="3" opacity="0.12"/>
+      <!-- reflection on the glass -->
+      <path d="M97.69 217 A55 55 0 0 1 127.63 183.75" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <path d="M136.69 180.63 A55 55 0 0 1 146.16 179.13" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+      <!-- door handle (grip moulded into the right of the door ring) -->
+      <path d="M232.24 208.86 A86 86 0 0 1 232.24 259.14" fill="none" stroke="#6B7280" stroke-width="9" stroke-linecap="round"/>
+      <path d="M233.07 211.74 A86 86 0 0 1 233.07 256.26" fill="none" stroke="#374151" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+  <!-- the washing machine's cable, unplugged, with its plug on the floor -->
+  <path d="M566 418 C540 430 520 452 492 452" fill="none" stroke="#374151" stroke-width="6" stroke-linecap="round"/>
+  <g transform="translate(470 450) rotate(-6)">
+    <rect x="-24" y="-16" width="40" height="32" rx="8" fill="#1F2937"/>
+    <rect x="-24" y="-16" width="40" height="10" rx="5" fill="#374151"/>
+    <circle cx="-30" cy="-7" r="3.5" fill="#9CA3AF"/><rect x="-36" y="-9" width="12" height="4" rx="2" fill="#9CA3AF"/>
+    <rect x="-36" y="4" width="12" height="4" rx="2" fill="#9CA3AF"/>
+  </g>
+  <!-- warning sign above the washing machine -->
+  <g transform="translate(872 112)">
+    <circle r="40" fill="#FFFFFF" stroke="#F97316" stroke-width="6"/>
+    <path d="M6 -26 L-14 4 L0 4 L-6 26 L14 -6 L0 -6 Z" fill="#F97316" stroke="#C2410C" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+  <path d="M470 86 Q471.8 94.2 480 96 Q471.8 97.8 470 106 Q468.2 97.8 460 96 Q468.2 94.2 470 86 Z" fill="#FDBA74"/>
+  <path d="M880 222 Q881.44 228.56 888 230 Q881.44 231.44 880 238 Q878.56 231.44 872 230 Q878.56 228.56 880 222 Z" fill="#FDBA74"/>
+</svg>
