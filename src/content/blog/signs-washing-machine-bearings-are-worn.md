@@ -70,7 +70,7 @@ Bearings usually fail because the shaft seal in front of them failed first. Once
 
 ### 6. Rust-coloured marks
 
-Water that has passed through the bearings picks up rust, so a leak from this area can leave brown, rusty marks or drips. When a technician opens the machine, rust streaks running down the back of the tub from the bearing housing are a tell-tale sign. You won't see those without removing panels, so leave that part to the technician.
+Water that has passed through the bearings picks up rust, so a leak from this area can leave brown, rusty marks or drips. When a technician opens the machine, rust streaks running down the back of the tub from the bearing housing are a tell-tale sign. You won't see those without removing panels, so leave that part to the technician. Greasy brown streaks on your washing can be an early warning too; our guide to a [washing machine leaving stains on clothes](/blog/washing-machine-leaving-stains-on-clothes/) explains how to tell them apart from other marks.
 
 ## Noises that aren't bearings
 

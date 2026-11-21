@@ -125,6 +125,11 @@ const photos = [
   ['blog-worn-bearings', 'blog-worn-bearings.webp', 960, 540],
   ['blog-load-shedding', 'blog-load-shedding.webp', 960, 540],
   ['blog-front-vs-top-loader', 'blog-front-vs-top-loader.webp', 960, 540],
+  ['blog-cleaning-washing-machine', 'blog-cleaning-washing-machine.webp', 960, 540],
+  ['blog-tripping-electricity', 'blog-tripping-electricity.webp', 960, 540],
+  ['blog-washing-powder', 'blog-washing-powder.webp', 960, 540],
+  ['blog-stains-on-clothes', 'blog-stains-on-clothes.webp', 960, 540],
+  ['blog-moving-washing-machine', 'blog-moving-washing-machine.webp', 960, 540],
 ];
 
 if (runs('photos')) {

@@ -13,7 +13,7 @@ faqs:
   - q: "How can I tell if I'm using too much detergent?"
     a: "Look for a lot of foam in the drum, clothes that feel stiff or slippery after the rinse, white marks on dark fabrics, and a slimy coating in the drawer or the door seal. Some machines also add rinses, run longer or show a foam warning when they sense too many suds. Dose by the pack's guide for your load size and how dirty it is, and remember that concentrated detergents need less."
   - q: "Why are there dark flecks on my clean washing?"
-    a: "They're usually flakes of the greasy residue that builds up between the drum and the outer tub, breaking loose during the wash. Cool washes and generous doses of fabric softener make it build up faster. One or two hot empty maintenance washes usually clear it, and if the flecks keep coming, the machine may need a technician to open it and clean out the build-up."
+    a: "They're usually flakes of the greasy residue that builds up between the drum and the outer tub, breaking loose during the wash. Cool washes and generous doses of fabric softener make it build up faster. One or two hot empty maintenance washes usually clear it, and if the flecks keep coming, the machine may need a technician to open it and clean out the build-up. Our guide to a <a href=\"/blog/washing-machine-leaving-stains-on-clothes/\">washing machine leaving stains on clothes</a> covers other kinds of marks."
   - q: "Do top loaders get smelly as well?"
     a: "They can, though the build-up collects in different places: under the rim of the tub, around the agitator or pulsator, and in the lint filter on models that have one. Many top loaders have no heater, so a hot maintenance wash depends on a hot-water supply; use the tub clean programme if your model has one, with the cleaner your manual suggests. Leaving the lid up after the last wash of the day lets the tub dry, as long as no small children or pets can get to it."
   - q: "Can I leave a wet load in the machine overnight?"
@@ -81,7 +81,7 @@ Modern machines and modern habits both play a part:
 4. **Run a hot maintenance wash.** Leave the drum empty and choose the drum clean or tub clean programme if your machine has one, or the hottest cotton programme if it doesn't. Your manual says whether to add a washing machine cleaner, a little powder detergent or nothing at all.
 5. **Let it dry.** Wipe the door glass and the seal dry afterwards, and leave the door and the drawer open for a few hours, with the laundry door shut if small children or pets are around.
 
-If the smell returns within days, or a sewage smell survives the clean, look at the drain next.
+For a fuller clean, including the inlet filters and the parts of a top loader, see our step-by-step guide on [how to clean a washing machine](/blog/how-to-clean-a-washing-machine/). If the smell returns within days, or a sewage smell survives the clean, look at the drain next.
 
 ## When the drain is the problem
 

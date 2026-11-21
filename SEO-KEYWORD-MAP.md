@@ -96,7 +96,7 @@ Pattern: `washing machine repairs [area]`. Areas come from `src/data/site.ts`.
 | `/areas/washing-machine-repairs-midrand/` | washing machine repairs Midrand | washing machine repair Midrand, washing machine technician Midrand |
 | `/areas/washing-machine-repairs-east-rand/` | washing machine repairs East Rand | washing machine repairs Benoni, washing machine repairs Boksburg, washing machine repairs Kempton Park |
 
-## Blog articles (first 4, written)
+## Blog articles (written)
 
 | URL | Primary keyword | Secondary keywords |
 |---|---|---|
@@ -104,8 +104,13 @@ Pattern: `washing machine repairs [area]`. Areas come from `src/data/site.ts`.
 | `/blog/signs-washing-machine-bearings-are-worn/` | worn washing machine bearings | washing machine bearing noise, bearing replacement cost, drum bearings |
 | `/blog/protect-washing-machine-from-load-shedding/` | protect washing machine from load shedding | load shedding washing machine, power surge washing machine, surge protector for washing machine, washing machine after power outage |
 | `/blog/front-loader-vs-top-loader/` | front loader vs top loader | which washing machine is better, top loader or front loader South Africa |
+| `/blog/how-to-clean-a-washing-machine/` | how to clean washing machine | how to clean washing machine top loader, how to clean washing machine filter, how to clean washing machine rubber seal, clean washing machine with vinegar |
+| `/blog/washing-machine-tripping-electricity/` | washing machine tripping electricity | washing machine tripping earth leakage, washing machine tripping power when plugged in, washing machine tripping breaker |
+| `/blog/how-much-washing-powder-to-use/` | how much washing powder to use | how much washing powder to use in top loader, how much washing powder to use in 7kg washing machine, hand washing powder in washing machine |
+| `/blog/washing-machine-leaving-stains-on-clothes/` | washing machine leaving stains on clothes | washing machine leaving white marks on clothes, washing machine leaving black marks on clothes, brown stains on clothes after washing, grey marks on clothes after washing |
+| `/blog/how-to-move-a-washing-machine/` | how to move a washing machine | washing machine transit bolts, how to move a washing machine when moving house, forgot to remove transit bolts |
 
-The remaining 8 planned articles and their keywords are in `CONTENT-PLAN.md`.
+The last five articles (added 21 November 2026) were picked from Google South Africa autocomplete suggestions and Google Trends, because the keyword tools connected to the project couldn't return data at the time: Ahrefs is on its free plan, Semrush had no API units left, and the Google Ads Keyword Planner allowance resets on 20 December 2026. Their keywords have no measured search volume yet, so check them in Search Console once the pages have been live for a few weeks. The remaining planned articles and their keywords are in `CONTENT-PLAN.md`.
 
 ## Cannibalisation checks
 
@@ -113,3 +118,11 @@ The remaining 8 planned articles and their keywords are in `CONTENT-PLAN.md`.
 - `washing machine repair cost` (cost page) owns "bearing replacement cost" as a secondary; the bearings blog post links to it rather than competing with prices.
 - `washing machine noisy when spinning` (problem page) vs `worn washing machine bearings` (blog): the problem page covers all causes of noise; the blog post goes deep on bearings only and links back.
 - `front loader repairs` (service) vs `front loader vs top loader` (blog): commercial vs informational intent.
+- `washing machine smell` (blog) vs `how to clean washing machine` (blog): the smell post finds the cause of a smell; the cleaning guide is the step-by-step routine for every part of the machine. Each links to the other rather than repeating it.
+- `washing machine servicing` (service) vs `how to clean washing machine` (blog): commercial vs DIY intent. The cleaning guide's "When cleaning won't fix it" section routes to the service.
+- "how to clean washing machine filter" was planned as its own article (number 5 in `CONTENT-PLAN.md`). It is now a secondary keyword of the cleaning guide, which covers the pump, lint and inlet filters, so two pages don't compete for it.
+- `washing machine won't turn on` (problem page) vs `washing machine tripping electricity` (blog): the problem page covers a dead machine from every cause; the blog post covers trips only, tells owners to leave the machine off and links back.
+- `washing machine leaking` (problem page) vs `how much washing powder to use` (blog): the leak page covers every cause of a leak; the powder post covers dosing and links to the leak page for leaks caused by foam.
+- `worn washing machine bearings` (blog) vs `washing machine leaving stains on clothes` (blog): the stains post covers every kind of mark on laundry and only mentions greasy streaks as a warning sign, linking to the bearings post for the detail.
+- `washing machine installation` (service) vs `how to move a washing machine` (blog): the service page sells disconnecting and connecting the machine; the blog post is the do-it-yourself moving guide, and the service page's transit bolt paragraph links to it instead of repeating it.
+- `repair or replace washing machine` already targets "how long do washing machines last" as a secondary, so article 9 in `CONTENT-PLAN.md` needs a different primary keyword before it's written. Likewise "washing machine maintenance" is a secondary of `/services/washing-machine-servicing/`, and "washer dryer not drying" of `/services/washer-dryer-repairs/` (articles 6 and 12).
